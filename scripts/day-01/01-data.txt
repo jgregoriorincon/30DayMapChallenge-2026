@@ -1,0 +1,9 @@
+# Día 1 — Points: Los gigantes de Bogotá — 1 · DATOS
+map.basemap {"name": "blank"}
+# Mapa Base Bogotá (IDECA), teselas vectoriales con su estilo oficial
+map.addTiles {"url": "https://tiles.arcgis.com/tiles/J5ltM0ovtzXUbp7B/arcgis/rest/services/Mapa_Base_Bogot%C3%A1/VectorTileServer/resources/styles/root.json", "kind": "style", "name": "Mapa Base Bogotá (IDECA)"}
+map.zoomToExtent {"extent": [-74.23, 4.47, -74.01, 4.84]}
+
+# Árboles de más de 30 m (3364): dos páginas de 2000 de la misma consulta, ordenadas por OBJECTID
+layer.addUrl {"url": "https://geoportal.jbb.gov.co/agc/rest/services/IDECA/CensoArbol/FeatureServer/0/query?where=Altura_Total%3E30&outFields=Nombre_Esp,Altura_Total,Tipo_Emplazamiento,Codigo_Localidad&orderByFields=OBJECTID&resultOffset=0&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Arboles 1", "zoom": false}
+layer.addUrl {"url": "https://geoportal.jbb.gov.co/agc/rest/services/IDECA/CensoArbol/FeatureServer/0/query?where=Altura_Total%3E30&outFields=Nombre_Esp,Altura_Total,Tipo_Emplazamiento,Codigo_Localidad&orderByFields=OBJECTID&resultOffset=2000&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Arboles 2", "zoom": false}

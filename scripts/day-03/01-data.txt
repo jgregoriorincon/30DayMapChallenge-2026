@@ -1,0 +1,13 @@
+# Día 3 — Polygons: Barranquilla, manzana por manzana — 1 · DATOS
+map.basemap {"name": "paper"}
+map.zoomToExtent {"extent": [-74.92, 10.90, -74.74, 11.07]}
+
+# Límite municipal (IGAC)
+layer.addUrl {"url": "https://mapas2.igac.gov.co/server/rest/services/limites/limites/MapServer/1/query?where=MpCodigo%3D%2708001%27&outFields=MpNombre&outSR=4326&f=pbf", "name": "Barranquilla", "zoom": false}
+
+# Estrato predominante por manzana (DANE 2018 / Esri Colombia), 8.984 manzanas en 5 páginas de 2000
+layer.addUrl {"url": "https://ags.esri.co/arcgis/rest/services/LivingAtlas/Estrato_predominante_por_manzana_2018/MapServer/0/query?where=MPIO%3D%27Barranquilla%27&outFields=ESTRATO_PREDOMINANTE_INT&orderByFields=OBJECTID&resultOffset=0&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Manzanas 1", "zoom": false}
+layer.addUrl {"url": "https://ags.esri.co/arcgis/rest/services/LivingAtlas/Estrato_predominante_por_manzana_2018/MapServer/0/query?where=MPIO%3D%27Barranquilla%27&outFields=ESTRATO_PREDOMINANTE_INT&orderByFields=OBJECTID&resultOffset=2000&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Manzanas 2", "zoom": false}
+layer.addUrl {"url": "https://ags.esri.co/arcgis/rest/services/LivingAtlas/Estrato_predominante_por_manzana_2018/MapServer/0/query?where=MPIO%3D%27Barranquilla%27&outFields=ESTRATO_PREDOMINANTE_INT&orderByFields=OBJECTID&resultOffset=4000&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Manzanas 3", "zoom": false}
+layer.addUrl {"url": "https://ags.esri.co/arcgis/rest/services/LivingAtlas/Estrato_predominante_por_manzana_2018/MapServer/0/query?where=MPIO%3D%27Barranquilla%27&outFields=ESTRATO_PREDOMINANTE_INT&orderByFields=OBJECTID&resultOffset=6000&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Manzanas 4", "zoom": false}
+layer.addUrl {"url": "https://ags.esri.co/arcgis/rest/services/LivingAtlas/Estrato_predominante_por_manzana_2018/MapServer/0/query?where=MPIO%3D%27Barranquilla%27&outFields=ESTRATO_PREDOMINANTE_INT&orderByFields=OBJECTID&resultOffset=8000&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Manzanas 5", "zoom": false}

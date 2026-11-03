@@ -1,0 +1,7 @@
+# Día 2 — Lines: Bogotá en bicicleta — 2 · VISTA (proceso y estilo)
+gp.run {"tool": "merge", "params": {"inputs": "Red 01;Red 02;Red 03;Red 04;Red 05;Red 06;Red 07;Red 08;Red 09;Red 10;Red 11;Red 12;Red 13;Red 14;Red 15;Red 16", "attributes": true, "output": "Red Biciusuarios"}}
+layer.remove {"layer": ["Red 01", "Red 02", "Red 03", "Red 04", "Red 05", "Red 06", "Red 07", "Red 08", "Red 09", "Red 10", "Red 11", "Red 12", "Red 13", "Red 14", "Red 15", "Red 16"]}
+
+# Neón: halo ancho translúcido, línea media y núcleo claro
+layer.symbology {"layer": "Red Biciusuarios", "type": "single"}
+layer.lineStrokes {"layer": "Red Biciusuarios", "strokes": [{"color": "#00E5FF33", "width": 5, "cap": "round", "join": "round"}, {"color": "#00E5FFAA", "width": 2, "cap": "round", "join": "round"}, {"color": "#E6FFFF", "width": 0.6, "cap": "round", "join": "round"}]}

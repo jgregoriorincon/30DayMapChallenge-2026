@@ -80,7 +80,7 @@
   <footer data-i18n="footer"></footer>
 </div>
 <script>
-  // Los días publicados. Al publicar uno: subir diaNN.rgis y diaNN.webp y añadirlo aquí.
+  // Los días publicados. Al publicar uno: subir results/day-NN/day-NN.{rgis,webp,pdf} y scripts/day-NN/ y añadirlo aquí.
   const DAYS = [
     { n: 1, theme: "Points",
       title: { es: "Los gigantes de Bogotá", en: "Bogotá's giants" },
@@ -97,13 +97,13 @@
   const T = {
     es: {
       lead: 'Mapas de Bogotá, Barranquilla y Colombia hechos de principio a fin con <a href="https://github.com/opengeos/RustGIS">RustGIS</a> en el navegador, con datos de servicios públicos. Cada proyecto se abre en web.rustgis.app tal como se ve en la imagen.',
-      day: "Día", open: "Abrir en RustGIS", image: "Imagen", script: "Script",
+      day: "Día", open: "Abrir en RustGIS", image: "Imagen", s1: "Datos", s2: "Vista", s3: "Layout",
       pending: "Imagen pendiente", data: "Datos",
       footer: 'Imágenes y proyectos: CC BY 4.0, @jgregoriorincon. Scripts y galería: MIT. Los datos conservan la licencia de su fuente. <a href="https://github.com/jgregoriorincon/30DayMapChallenge-2026/blob/main/README.es.md">Cómo reproducir cada día</a>.',
     },
     en: {
       lead: 'Maps of Bogotá, Barranquilla and Colombia made end to end with <a href="https://github.com/opengeos/RustGIS">RustGIS</a> in the browser, from public web services. Each project opens in web.rustgis.app exactly as in the image. The maps themselves are in Spanish.',
-      day: "Day", open: "Open in RustGIS", image: "Image", script: "Script",
+      day: "Day", open: "Open in RustGIS", image: "Image", s1: "Data", s2: "View", s3: "Layout",
       pending: "Image coming soon", data: "Data",
       footer: 'Images and projects: CC BY 4.0, @jgregoriorincon. Scripts and gallery: MIT. The data keeps its source\'s licence. <a href="https://github.com/jgregoriorincon/30DayMapChallenge-2026/blob/main/README.md">How to reproduce each day</a>.',
     },
@@ -130,20 +130,23 @@
     document.querySelectorAll("[data-i18n]").forEach(el => { el.innerHTML = t[el.dataset.i18n]; });
     document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
     document.getElementById("grid").innerHTML = DAYS.map(d => {
-      const id = "dia" + pad(d.n);
+      const dir = "day-" + pad(d.n);
+      const out = "results/" + dir + "/" + dir;
       const title = esc(d.title[lang]);
       return `<article class="card">
-        <a class="thumb" href="${id}.webp" aria-label="${t.image}: ${title}">
-          <img src="${id}.webp" alt="${title}" loading="lazy" onerror="this.parentNode.textContent='${t.pending}'">
+        <a class="thumb" href="${out}.webp" aria-label="${t.image}: ${title}">
+          <img src="${out}.webp" alt="${title}" loading="lazy" onerror="this.parentNode.textContent='${t.pending}'">
         </a>
         <div class="body">
           <div class="meta">${t.day} ${d.n} · ${esc(d.theme)}</div>
           <h2>${title}</h2>
           <p class="data">${t.data}: ${esc(d.data[lang])}</p>
           <div class="links">
-            <a class="primary" href="https://web.rustgis.app/?project=${BASE}${id}.rgis">${t.open}</a>
-            <a href="scripts/${id}-a.txt">${t.script} A</a>
-            <a href="scripts/${id}-b.txt">${t.script} B</a>
+            <a class="primary" href="https://web.rustgis.app/?project=${BASE}${out}.rgis">${t.open}</a>
+            <a href="${out}.pdf">PDF</a>
+            <a href="scripts/${dir}/01-data.txt">1 · ${t.s1}</a>
+            <a href="scripts/${dir}/02-view.txt">2 · ${t.s2}</a>
+            <a href="scripts/${dir}/03-layout.txt">3 · ${t.s3}</a>
           </div>
         </div>
       </article>`;

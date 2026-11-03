@@ -1,0 +1,16 @@
+# Día 1 — Points: Los gigantes de Bogotá — 3 · LAYOUT
+layout.new {"name": "Dia 01", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Dia 01", "x": 10, "y": 28, "w": 190, "h": 200}
+# El marco se ajusta a los árboles, no a la vista que haya quedado en el mapa
+layout.frameZoom {"layout": "Dia 01", "to": "layer", "layer": "Gigantes verdes de Bogotá"}
+layout.addElement {"layout": "Dia 01", "kind": "text", "text": "Los gigantes de Bogotá", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
+layout.addElement {"layout": "Dia 01", "kind": "text", "text": "3.364 árboles de más de 30 m. Los más altos, en los cerros de Santa Fe: el mayor mide 51 m", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+layout.addElement {"layout": "Dia 01", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
+layout.addElement {"layout": "Dia 01", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 50, "h": 6}
+# Debajo del marco: la leyenda a la izquierda; a la derecha, cómo se hizo y las fuentes.
+# El texto no se parte solo: cada línea lleva su \n (en la interfaz, Shift+Enter)
+layout.addElement {"layout": "Dia 01", "kind": "legend", "title": "Altura de los árboles", "hideOther": false, "x": 10, "y": 232, "w": 58, "h": 40}
+layout.addElement {"layout": "Dia 01", "kind": "text", "text": "Cómo se hizo: todo en RustGIS web (web.rustgis.app), con tres scripts.\n1 · Datos: el Censo de Arbolado Urbano en 2 consultas PBF de hasta 2000 árboles (más de 30 m)\n     y el Mapa Base Bogotá de IDECA como teselas vectoriales, con su estilo oficial.\n2 · Vista: Merge de las 2 consultas; Graduated Colors por Altura_Total (cortes en 35, 40 y 45 m)\n     y tamaño por expresión: (Altura_Total − 20) / 2.\n3 · Layout: armado por script. Los scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 7, "x": 72, "y": 232, "w": 128, "h": 22}
+layout.addElement {"layout": "Dia 01", "kind": "text", "text": "Datos: Censo de Arbolado Urbano, Jardín Botánico de Bogotá / IDECA (CC BY 4.0),\nconsultado el 2026-11-03. Mapa base: Mapa Base Bogotá, IDECA.", "size": 7, "x": 72, "y": 257, "w": 128, "h": 9}
+layout.addElement {"layout": "Dia 01", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 1: Points · Hecho con RustGIS · rustgis.app", "size": 8, "align": "right", "x": 10, "y": 284, "w": 190, "h": 6}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz (ver "Cómo correr los scripts")

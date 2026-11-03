@@ -1,0 +1,16 @@
+# Día 3 — Polygons: Barranquilla, manzana por manzana — 3 · LAYOUT
+layout.new {"name": "Dia 03", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Dia 03", "x": 10, "y": 28, "w": 190, "h": 200}
+# El marco se ajusta a las manzanas, no a la vista que haya quedado en el mapa
+layout.frameZoom {"layout": "Dia 03", "to": "layer", "layer": "Estrato por manzana"}
+layout.addElement {"layout": "Dia 03", "kind": "text", "text": "Barranquilla, manzana por manzana", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
+layout.addElement {"layout": "Dia 03", "kind": "text", "text": "4 de cada 10 manzanas son estrato 1; solo 3 de cada 100 son estrato 5 o 6", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+layout.addElement {"layout": "Dia 03", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
+layout.addElement {"layout": "Dia 03", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 50, "h": 6}
+# Debajo del marco: la leyenda a la izquierda; a la derecha, cómo se hizo y las fuentes.
+# El texto no se parte solo: cada línea lleva su \n (en la interfaz, Shift+Enter)
+layout.addElement {"layout": "Dia 03", "kind": "legend", "title": "Estrato predominante", "exclude": ["Barranquilla"], "hideOther": false, "x": 10, "y": 232, "w": 58, "h": 50}
+layout.addElement {"layout": "Dia 03", "kind": "text", "text": "Cómo se hizo: todo en RustGIS web (web.rustgis.app), con tres scripts.\n1 · Datos: el estrato predominante por manzana en 5 consultas PBF de 2000 manzanas y el límite\n     municipal del IGAC, sobre el mapa base Paper de RustGIS.\n2 · Vista: Merge de las 5 consultas; Unique Values por ESTRATO_PREDOMINANTE_INT, un color\n     y una etiqueta por estrato (1 · Bajo-bajo … 6 · Alto).\n3 · Layout: armado por script. Los scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 7, "x": 72, "y": 232, "w": 128, "h": 21}
+layout.addElement {"layout": "Dia 03", "kind": "text", "text": "Datos: Estrato predominante por manzana 2018 — Esri Colombia, con datos del CNPV 2018 del DANE\n(referencial, no oficial). Límite municipal: IGAC. Consultado el 2026-11-03.", "size": 7, "x": 72, "y": 255, "w": 128, "h": 9}
+layout.addElement {"layout": "Dia 03", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 3: Polygons · Hecho con RustGIS · rustgis.app", "size": 8, "align": "right", "x": 10, "y": 284, "w": 190, "h": 6}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz (ver "Cómo correr los scripts")

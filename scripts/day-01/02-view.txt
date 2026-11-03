@@ -1,0 +1,17 @@
+# Día 1 — Points: Los gigantes de Bogotá — 2 · VISTA (proceso y estilo)
+gp.run {"tool": "merge", "params": {"inputs": "Arboles 1;Arboles 2", "attributes": true, "output": "Gigantes verdes de Bogotá"}}
+layer.remove {"layer": ["Arboles 1", "Arboles 2"]}
+
+# Color y tamaño por altura: 4 clases con cortes redondos (35, 40, 45 m; la última cierra en el máximo).
+# Colores cálidos, de naranja a morado (más oscuro = más alto): el mapa base oficial dibuja parques y
+# arbolado en verde, y unos puntos verdes se confundían con ellos
+layer.symbology {"layer": "Gigantes verdes de Bogotá", "type": "graduated", "field": "Altura_Total", "method": "manual", "breaks": [35, 40, 45]}
+layer.classStyle {"layer": "Gigantes verdes de Bogotá", "index": 0, "color": "#F28E2B", "label": "30–35 m"}
+layer.classStyle {"layer": "Gigantes verdes de Bogotá", "index": 1, "color": "#E15759", "label": "35–40 m"}
+layer.classStyle {"layer": "Gigantes verdes de Bogotá", "index": 2, "color": "#B6246B", "label": "40–45 m"}
+layer.classStyle {"layer": "Gigantes verdes de Bogotá", "index": 3, "color": "#5B1A7A", "label": "45–51 m"}
+# Círculo (la copa vista desde arriba; el triángulo es el símbolo de los vértices geodésicos),
+# borde blanco para separar los círculos encimados, tamaño de 5 pt (30 m) a 15,7 pt (51 m)
+layer.marker {"layer": "Gigantes verdes de Bogotá", "shape": "circle"}
+layer.outline {"layer": "Gigantes verdes de Bogotá", "color": "#FFFFFF", "width": 0.6}
+layer.symbolBy {"layer": "Gigantes verdes de Bogotá", "size": "(Altura_Total - 20) / 2"}

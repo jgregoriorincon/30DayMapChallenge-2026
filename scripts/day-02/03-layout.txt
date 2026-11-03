@@ -1,0 +1,15 @@
+# Día 2 — Lines: Bogotá en bicicleta — 3 · LAYOUT
+layout.new {"name": "Dia 02", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Dia 02", "x": 10, "y": 28, "w": 190, "h": 200}
+# El marco se ajusta a la red, no a la vista que haya quedado en el mapa
+layout.frameZoom {"layout": "Dia 02", "to": "layer", "layer": "Red Biciusuarios"}
+layout.addElement {"layout": "Dia 02", "kind": "text", "text": "Bogotá en bicicleta", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
+layout.addElement {"layout": "Dia 02", "kind": "text", "text": "Los 15.985 tramos de la red de ciclorrutas de la ciudad", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+layout.addElement {"layout": "Dia 02", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
+layout.addElement {"layout": "Dia 02", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 50, "h": 6}
+# Debajo del marco: cómo se hizo y las fuentes (sin leyenda: un solo símbolo).
+# El texto no se parte solo: cada línea lleva su \n (en la interfaz, Shift+Enter)
+layout.addElement {"layout": "Dia 02", "kind": "text", "text": "Cómo se hizo: todo en RustGIS web (web.rustgis.app), con tres scripts.\n1 · Datos: la Red Biciusuarios (IDU / IDECA) en 16 consultas PBF de 1000 tramos,\n     ordenadas por OBJECTID, sobre el mapa base Midnight de RustGIS.\n2 · Vista: Merge de las 16 consultas; tres trazos apilados por línea (halo, línea y núcleo).\n3 · Layout: armado por script. Los scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 7, "x": 10, "y": 232, "w": 190, "h": 18}
+layout.addElement {"layout": "Dia 02", "kind": "text", "text": "Datos: Red Biciusuarios, Bogotá D.C. — IDU / IDECA (CC BY 4.0), servicio Mapa de Referencia,\nconsultado el 2026-11-02.", "size": 7, "x": 10, "y": 252, "w": 190, "h": 9}
+layout.addElement {"layout": "Dia 02", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 2: Lines · Hecho con RustGIS · rustgis.app", "size": 8, "align": "right", "x": 10, "y": 284, "w": 190, "h": 6}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz (ver "Cómo correr los scripts")
