@@ -1,0 +1,24 @@
+# Día 1 — Points: Los gigantes de Bogotá — PARTE B (proceso, estilo, salida)
+layer.noFill {"layer": "Localidades"}
+layer.outline {"layer": "Localidades", "color": "#5A6B7A", "width": 0.6}
+
+gp.run {"tool": "merge", "params": {"inputs": "Arboles 30-35 m;Arboles mas de 35 m", "attributes": true, "output": "Gigantes"}}
+layer.remove {"layer": ["Arboles 30-35 m", "Arboles mas de 35 m"]}
+
+# Color por especie (agrupada: la leyenda no puede tener 30 especies), tamaño por altura
+layer.symbology {"layer": "Gigantes", "type": "unique", "expression": "CASE WHEN Nombre_Esp = 'Eucalipto común' THEN 'Eucalipto común' WHEN Nombre_Esp LIKE 'Eucalipto%' THEN 'Otros eucaliptos' WHEN Nombre_Esp LIKE '%Pino%' OR Nombre_Esp LIKE 'Cipr%' THEN 'Pinos y cipreses' WHEN Nombre_Esp LIKE 'Urapán%' THEN 'Urapán' ELSE 'Otras especies' END"}
+layer.marker {"layer": "Gigantes", "shape": "circle"}
+layer.symbolBy {"layer": "Gigantes", "size": "Altura_Total / 6"}
+layer.transparency {"layer": "Gigantes", "value": 15}
+
+# Layout
+layout.new {"name": "Dia 01", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Dia 01", "x": 10, "y": 28, "w": 190, "h": 212}
+layout.addElement {"layout": "Dia 01", "kind": "text", "text": "Los gigantes de Bogotá", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
+layout.addElement {"layout": "Dia 01", "kind": "text", "text": "3364 árboles de más de 30 m: 9 de cada 10 son eucalipto común", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+layout.addElement {"layout": "Dia 01", "kind": "legend", "title": "Especie", "exclude": ["Localidades"], "hideOther": false, "x": 142, "y": 190, "w": 56, "h": 48}
+layout.addElement {"layout": "Dia 01", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
+layout.addElement {"layout": "Dia 01", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 232, "w": 50, "h": 6}
+layout.addElement {"layout": "Dia 01", "kind": "text", "text": "Tamaño del punto según la altura. Fuente: Censo de Arbolado Urbano, Jardín Botánico de Bogotá / IDECA (CC BY 4.0). Localidades: Catastro Bogotá / IDECA. Datos consultados el 2026-11-02.", "size": 7, "x": 10, "y": 244, "w": 190, "h": 12}
+layout.addElement {"layout": "Dia 01", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 1: Points · Hecho con RustGIS", "size": 8, "align": "right", "x": 10, "y": 284, "w": 190, "h": 6}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz (ver "Cómo correr los scripts")

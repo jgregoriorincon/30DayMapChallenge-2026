@@ -1,0 +1,10 @@
+# Día 1 — Points: Los gigantes de Bogotá — PARTE A (datos)
+map.basemap {"name": "midnight"}
+map.zoomToExtent {"extent": [-74.23, 4.47, -74.01, 4.84]}
+
+# Localidades de Bogotá (Catastro / IDECA), 20 polígonos
+layer.addUrl {"url": "https://serviciosgis.catastrobogota.gov.co/arcgis/rest/services/ordenamientoterritorial/localidad/MapServer/0/query?where=1%3D1&outFields=LOCNOMBRE&outSR=4326&f=geojson", "name": "Localidades", "zoom": false}
+
+# Árboles de más de 30 m, en dos consultas (el servidor da 2000 como máximo por petición)
+layer.addUrl {"url": "https://geoportal.jbb.gov.co/agc/rest/services/IDECA/CensoArbol/FeatureServer/0/query?where=Altura_Total%3E30%20AND%20Altura_Total%3C%3D35&outFields=Nombre_Esp,Altura_Total,Tipo_Emplazamiento,Codigo_Localidad&outSR=4326&f=geojson", "name": "Arboles 30-35 m", "zoom": false}
+layer.addUrl {"url": "https://geoportal.jbb.gov.co/agc/rest/services/IDECA/CensoArbol/FeatureServer/0/query?where=Altura_Total%3E35&outFields=Nombre_Esp,Altura_Total,Tipo_Emplazamiento,Codigo_Localidad&outSR=4326&f=geojson", "name": "Arboles mas de 35 m", "zoom": false}
