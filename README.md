@@ -21,8 +21,8 @@ Each day has:
 | Day | Theme | Map | Open | Scripts | Data |
 |---|---|---|---|---|---|
 | 1 | Points | Bogotá's giants: its tallest trees (Los gigantes de Bogotá) | [project](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-01/day-01.rgis) | [1](scripts/day-01/01-data.txt) · [2](scripts/day-01/02-view.txt) · [3](scripts/day-01/03-layout.txt) | Urban tree census, JBB / IDECA (CC BY 4.0); basemap: Mapa Base Bogotá, IDECA |
-| 2 | Lines | Bogotá by bike (Bogotá en bicicleta) | [project](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-02/day-02.rgis) | [1](scripts/day-02/01-data.txt) · [2](scripts/day-02/02-view.txt) · [3](scripts/day-02/03-layout.txt) | Bike lane network (Red Biciusuarios), IDU / IDECA (CC BY 4.0) |
-| 3 | Polygons | Barranquilla, block by block (Barranquilla, manzana por manzana) | [project](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-03/day-03.rgis) | [1](scripts/day-03/01-data.txt) · [2](scripts/day-03/02-view.txt) · [3](scripts/day-03/03-layout.txt) | Predominant socioeconomic stratum per block 2018, Esri Colombia from DANE data; municipal boundary, IGAC |
+| 2 | Lines | Bogotá by bike (Bogotá en bicicleta) | [project](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-02/day-02.rgis) | [1](scripts/day-02/01-data.txt) · [2](scripts/day-02/02-view.txt) · [3](scripts/day-02/03-layout.txt) | Bike lane network (Red Biciusuarios), IDU / IDECA (CC BY 4.0); basemap: Mapa base azul, IDECA |
+| 3 | Polygons | Barranquilla, block by block (Barranquilla, manzana por manzana) | [project](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-03/day-03.rgis) | [1](scripts/day-03/01-data.txt) · [2](scripts/day-03/02-view.txt) · [3](scripts/day-03/03-layout.txt) | Predominant socioeconomic stratum per block 2018, DANE / Esri Colombia; municipal boundary, IGAC; basemap: Mi Ciudad, Alcaldía de Barranquilla |
 
 The maps themselves (titles, legends, sources) are in Spanish.
 

@@ -1,5 +1,8 @@
 # Día 3 — Polygons: Barranquilla, manzana por manzana — 1 · DATOS
-map.basemap {"name": "paper"}
+# Mapa base oficial oscuro de la Alcaldía (Mi Ciudad), con su estilo sin ajustes. Su estilo no trae
+# crédito, así que va en "attribution"
+map.basemap {"name": "blank"}
+map.addTiles {"url": "https://miciudad.barranquilla.gov.co/server/rest/services/Hosted/mapareferencia_oscuro/VectorTileServer/resources/styles/root.json", "kind": "style", "name": "Mapa base Mi Ciudad oscuro (Alcaldía de Barranquilla)", "attribution": "Mapa base: Mi Ciudad, Alcaldía de Barranquilla"}
 map.zoomToExtent {"extent": [-74.92, 10.90, -74.74, 11.07]}
 
 # Límite municipal (IGAC)

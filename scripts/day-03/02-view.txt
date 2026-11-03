@@ -2,18 +2,22 @@
 gp.run {"tool": "merge", "params": {"inputs": "Manzanas 1;Manzanas 2;Manzanas 3;Manzanas 4;Manzanas 5", "attributes": true, "output": "Estrato por manzana"}}
 layer.remove {"layer": ["Manzanas 1", "Manzanas 2", "Manzanas 3", "Manzanas 4", "Manzanas 5"]}
 
-# Una clase por estrato. Por expresión, las clases van en orden de texto ("1" … "6");
-# el nulo ("Sin Estrato") queda en <all other values>
+# Una clase por estrato, de morado a amarillo claro (magma): sobre el fondo oscuro del mapa base
+# (#142334), más claro = estrato más alto. El estrato 1 (39 % de las manzanas) no es oscuro, para
+# que no se pierda en el fondo. Colores con alfa FF: opacos (con #RRGGBB conservan la transparencia).
+# Por expresión, las clases van en orden de texto ("1" … "6"); el nulo ("Sin Estrato") queda en
+# <all other values>
 layer.symbology {"layer": "Estrato por manzana", "type": "unique", "expression": "ESTRATO_PREDOMINANTE_INT"}
-layer.outline {"layer": "Estrato por manzana", "color": "#FFFFFF99", "width": 0.15}
-layer.classStyle {"layer": "Estrato por manzana", "value": "1", "color": "#EDF8B1", "label": "1 · Bajo-bajo"}
-layer.classStyle {"layer": "Estrato por manzana", "value": "2", "color": "#C7E9B4", "label": "2 · Bajo"}
-layer.classStyle {"layer": "Estrato por manzana", "value": "3", "color": "#7FCDBB", "label": "3 · Medio-bajo"}
-layer.classStyle {"layer": "Estrato por manzana", "value": "4", "color": "#41B6C4", "label": "4 · Medio"}
-layer.classStyle {"layer": "Estrato por manzana", "value": "5", "color": "#2C7FB8", "label": "5 · Medio-alto"}
-layer.classStyle {"layer": "Estrato por manzana", "value": "6", "color": "#253494", "label": "6 · Alto"}
-layer.classStyle {"layer": "Estrato por manzana", "other": true, "color": "#D9D9D9", "label": "Sin estrato"}
+# Borde del color de la ciudad en el mapa base: las manzanas se separan como por sus calles
+layer.outline {"layer": "Estrato por manzana", "color": "#142334", "width": 0.2}
+layer.classStyle {"layer": "Estrato por manzana", "value": "1", "color": "#8C2981FF", "label": "1 · Bajo-bajo"}
+layer.classStyle {"layer": "Estrato por manzana", "value": "2", "color": "#B5367AFF", "label": "2 · Bajo"}
+layer.classStyle {"layer": "Estrato por manzana", "value": "3", "color": "#DE4968FF", "label": "3 · Medio-bajo"}
+layer.classStyle {"layer": "Estrato por manzana", "value": "4", "color": "#F7705CFF", "label": "4 · Medio"}
+layer.classStyle {"layer": "Estrato por manzana", "value": "5", "color": "#FE9F6DFF", "label": "5 · Medio-alto"}
+layer.classStyle {"layer": "Estrato por manzana", "value": "6", "color": "#FCFDBFFF", "label": "6 · Alto"}
+layer.classStyle {"layer": "Estrato por manzana", "other": true, "color": "#5C6672FF", "label": "Sin estrato"}
 
 # Límite del municipio
 layer.noFill {"layer": "Barranquilla"}
-layer.outline {"layer": "Barranquilla", "color": "#3A3A3A", "width": 0.8}
+layer.outline {"layer": "Barranquilla", "color": "#9AA7B5", "width": 0.8}

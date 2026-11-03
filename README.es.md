@@ -22,8 +22,8 @@ Cada día tiene:
 | Día | Tema | Mapa | Abrir | Scripts | Datos |
 |---|---|---|---|---|---|
 | 1 | Points | Los gigantes de Bogotá | [proyecto](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-01/day-01.rgis) | [1](scripts/day-01/01-data.txt) · [2](scripts/day-01/02-view.txt) · [3](scripts/day-01/03-layout.txt) | Censo del arbolado urbano, JBB / IDECA (CC BY 4.0); mapa base: Mapa Base Bogotá, IDECA |
-| 2 | Lines | Bogotá en bicicleta | [proyecto](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-02/day-02.rgis) | [1](scripts/day-02/01-data.txt) · [2](scripts/day-02/02-view.txt) · [3](scripts/day-02/03-layout.txt) | Red Biciusuarios, IDU / IDECA (CC BY 4.0) |
-| 3 | Polygons | Barranquilla, manzana por manzana | [proyecto](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-03/day-03.rgis) | [1](scripts/day-03/01-data.txt) · [2](scripts/day-03/02-view.txt) · [3](scripts/day-03/03-layout.txt) | Estrato predominante por manzana 2018, Esri Colombia con datos del DANE; límite municipal, IGAC |
+| 2 | Lines | Bogotá en bicicleta | [proyecto](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-02/day-02.rgis) | [1](scripts/day-02/01-data.txt) · [2](scripts/day-02/02-view.txt) · [3](scripts/day-02/03-layout.txt) | Red Biciusuarios, IDU / IDECA (CC BY 4.0); mapa base: Mapa base azul, IDECA |
+| 3 | Polygons | Barranquilla, manzana por manzana | [proyecto](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-03/day-03.rgis) | [1](scripts/day-03/01-data.txt) · [2](scripts/day-03/02-view.txt) · [3](scripts/day-03/03-layout.txt) | Estrato predominante por manzana 2018, DANE / Esri Colombia; límite municipal, IGAC; mapa base: Mi Ciudad, Alcaldía de Barranquilla |
 
 ## Cómo reproducir un día
 
