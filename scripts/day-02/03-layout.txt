@@ -5,8 +5,13 @@ layout.addFrame {"layout": "Dia 02", "x": 10, "y": 28, "w": 190, "h": 200}
 layout.frameZoom {"layout": "Dia 02", "to": "layer", "layer": "Red Biciusuarios"}
 layout.addElement {"layout": "Dia 02", "kind": "text", "text": "Bogotá en bicicleta", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
 layout.addElement {"layout": "Dia 02", "kind": "text", "text": "697 km de red. La mitad es ciclorruta, fuera de la calzada; un 22 %, carril en la calle", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+# Escala y norte se dibujan en gris oscuro: sobre el mapa oscuro llevan detrás un rectángulo claro.
+# La escala dibuja el largo redondo que cabe en su ancho (5 km ≈ 25 mm): 30 mm de ancho y el
+# rectángulo a su medida
+layout.addElement {"layout": "Dia 02", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 184.5, "y": 30, "w": 14, "h": 17}
 layout.addElement {"layout": "Dia 02", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
-layout.addElement {"layout": "Dia 02", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 50, "h": 6}
+layout.addElement {"layout": "Dia 02", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 11, "y": 218.5, "w": 32, "h": 9}
+layout.addElement {"layout": "Dia 02", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 30, "h": 6}
 # Debajo del marco: la leyenda a la izquierda; a la derecha, cómo se hizo y las fuentes.
 # El texto no se parte solo: cada línea lleva su \n (en la interfaz, Shift+Enter)
 layout.addElement {"layout": "Dia 02", "kind": "legend", "title": "Tipo de vía", "hideOther": false, "x": 10, "y": 232, "w": 58, "h": 32}
