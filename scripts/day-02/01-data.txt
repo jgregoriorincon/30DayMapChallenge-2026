@@ -1,5 +1,7 @@
 # Día 2 — Lines: Bogotá en bicicleta — 1 · DATOS
-map.basemap {"name": "midnight"}
+# Mapa base azul de IDECA con su estilo oficial (no cuenta entre las 16 descargas de layer.addUrl)
+map.basemap {"name": "blank"}
+map.addTiles {"url": "https://tiles.arcgis.com/tiles/J5ltM0ovtzXUbp7B/arcgis/rest/services/mapabaseazul/VectorTileServer/resources/styles/root.json", "kind": "style", "name": "Mapa base azul (IDECA)"}
 map.zoomToExtent {"extent": [-74.23, 4.47, -74.01, 4.84]}
 
 # Red Biciusuarios (IDU / IDECA), 15.985 tramos en 16 páginas de 1000

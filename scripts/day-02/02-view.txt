@@ -2,6 +2,18 @@
 gp.run {"tool": "merge", "params": {"inputs": "Red 01;Red 02;Red 03;Red 04;Red 05;Red 06;Red 07;Red 08;Red 09;Red 10;Red 11;Red 12;Red 13;Red 14;Red 15;Red 16", "attributes": true, "output": "Red Biciusuarios"}}
 layer.remove {"layer": ["Red 01", "Red 02", "Red 03", "Red 04", "Red 05", "Red 06", "Red 07", "Red 08", "Red 09", "Red 10", "Red 11", "Red 12", "Red 13", "Red 14", "Red 15", "Red 16"]}
 
-# Neón: halo ancho translúcido, línea media y núcleo claro
-layer.symbology {"layer": "Red Biciusuarios", "type": "single"}
-layer.lineStrokes {"layer": "Red Biciusuarios", "strokes": [{"color": "#00E5FF33", "width": 5, "cap": "round", "join": "round"}, {"color": "#00E5FFAA", "width": 2, "cap": "round", "join": "round"}, {"color": "#E6FFFF", "width": 0.6, "cap": "round", "join": "round"}]}
+# Tres grupos por RBICLASE (dominio del servicio): 1 ciclorruta (2 Ciclorruta, 6 CicloTunel,
+# 8 Ciclo-Puente), 2 bicicarril y carril BusBici (3, 5), 3 compartida y el resto
+edit.addField {"layer": "Red Biciusuarios", "name": "Tipo", "type": "long"}
+edit.calculateField {"layer": "Red Biciusuarios", "field": "Tipo", "expression": "CASE WHEN RBICLASE IN (2, 6, 8) THEN 1 WHEN RBICLASE IN (3, 5) THEN 2 ELSE 3 END"}
+layer.symbology {"layer": "Red Biciusuarios", "type": "unique", "field": "Tipo"}
+# El color de la clase es el de la muestra en la leyenda
+layer.classStyle {"layer": "Red Biciusuarios", "value": 1, "color": "#00E5FF", "label": "Ciclorruta · 349 km"}
+layer.classStyle {"layer": "Red Biciusuarios", "value": 2, "color": "#FF3DB8", "label": "Bicicarril y BusBici · 155 km"}
+layer.classStyle {"layer": "Red Biciusuarios", "value": 3, "color": "#8FB3C2", "label": "Compartida y otros · 193 km"}
+
+# Neón por clase (halo, línea, núcleo) y niveles: los halos abajo, la ciclorruta encima
+layer.strokeLevels {"layer": "Red Biciusuarios", "on": true}
+layer.lineStrokes {"layer": "Red Biciusuarios", "value": 3, "strokes": [{"color": "#8FB3C299", "width": 0.6, "cap": "round", "join": "round", "level": 0}]}
+layer.lineStrokes {"layer": "Red Biciusuarios", "value": 2, "strokes": [{"color": "#FF3DB833", "width": 4, "cap": "round", "join": "round", "level": 1}, {"color": "#FF3DB8CC", "width": 1.4, "cap": "round", "join": "round", "level": 3}, {"color": "#FFE0F4", "width": 0.4, "cap": "round", "join": "round", "level": 4}]}
+layer.lineStrokes {"layer": "Red Biciusuarios", "value": 1, "strokes": [{"color": "#00E5FF33", "width": 6, "cap": "round", "join": "round", "level": 2}, {"color": "#00E5FFCC", "width": 2.2, "cap": "round", "join": "round", "level": 5}, {"color": "#E6FFFF", "width": 0.7, "cap": "round", "join": "round", "level": 6}]}
