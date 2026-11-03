@@ -1,0 +1,14 @@
+# Día 1 — Points: Los gigantes de Bogotá — 4 · LAYOUT EN INGLÉS
+# Correr después del 3. Solo añade el layout "Day 01" sobre el mismo mapa: no toca capas ni datos
+layout.new {"name": "Day 01", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Day 01", "x": 10, "y": 28, "w": 190, "h": 200}
+layout.frameZoom {"layout": "Day 01", "to": "layer", "layer": "Gigantes verdes de Bogotá"}
+layout.addElement {"layout": "Day 01", "kind": "text", "text": "Bogotá's giants", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
+layout.addElement {"layout": "Day 01", "kind": "text", "text": "3,364 trees over 30 m tall. The tallest grow on the hills of Santa Fe: the highest reaches 51 m", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+layout.addElement {"layout": "Day 01", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
+layout.addElement {"layout": "Day 01", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 50, "h": 6}
+layout.addElement {"layout": "Day 01", "kind": "legend", "title": "Tree height", "hideOther": false, "x": 10, "y": 232, "w": 58, "h": 40}
+layout.addElement {"layout": "Day 01", "kind": "text", "text": "How it was made: all in RustGIS web (web.rustgis.app), with four scripts.\n1 · Data: the Urban Tree Census in 2 PBF queries of up to 2,000 trees (over 30 m)\n     and IDECA's Mapa Base Bogotá as vector tiles, with its official style.\n2 · View: Merge of the 2 queries; Graduated Colors by Altura_Total (breaks at 35, 40, 45 m)\n     and size by expression: (Altura_Total − 20) / 2.\n3–4 · Layouts in Spanish and English, by script: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 7, "x": 72, "y": 232, "w": 128, "h": 22}
+layout.addElement {"layout": "Day 01", "kind": "text", "text": "Data: Urban Tree Census, Jardín Botánico de Bogotá / IDECA (CC BY 4.0),\naccessed 2026-11-03. Basemap: Mapa Base Bogotá, IDECA.", "size": 7, "x": 72, "y": 257, "w": 128, "h": 9}
+layout.addElement {"layout": "Day 01", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 1: Points · Made with RustGIS · rustgis.app", "size": 8, "align": "right", "x": 10, "y": 284, "w": 190, "h": 6}
+# Entrega: exportar "Dia 01" como day-01-es y "Day 01" como day-01-en; guardar day-01.rgis

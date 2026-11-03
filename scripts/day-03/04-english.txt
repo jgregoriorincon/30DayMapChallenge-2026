@@ -1,0 +1,16 @@
+# Día 3 — Polygons: Barranquilla, manzana por manzana — 4 · LAYOUT EN INGLÉS
+# Correr después del 3. Solo añade el layout "Day 03" sobre el mismo mapa: no toca capas ni datos
+layout.new {"name": "Day 03", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Day 03", "x": 10, "y": 28, "w": 190, "h": 200}
+layout.frameZoom {"layout": "Day 03", "to": "layer", "layer": "Estrato por manzana"}
+layout.addElement {"layout": "Day 03", "kind": "text", "text": "Barranquilla, block by block", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
+layout.addElement {"layout": "Day 03", "kind": "text", "text": "On Colombia's 1–6 socioeconomic scale, 4 in 10 blocks are stratum 1; only 3 in 100 are 5 or 6", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+layout.addElement {"layout": "Day 03", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 184.5, "y": 30, "w": 14, "h": 17}
+layout.addElement {"layout": "Day 03", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
+layout.addElement {"layout": "Day 03", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 11, "y": 218.5, "w": 32, "h": 9}
+layout.addElement {"layout": "Day 03", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 30, "h": 6}
+layout.addElement {"layout": "Day 03", "kind": "legend", "title": "Predominant stratum", "exclude": ["Barranquilla"], "hideOther": false, "x": 10, "y": 232, "w": 58, "h": 50}
+layout.addElement {"layout": "Day 03", "kind": "text", "text": "How it was made: all in RustGIS web (web.rustgis.app), with four scripts.\n1 · Data: the predominant stratum per block in 5 PBF queries of 2,000 blocks and the IGAC\n     municipal boundary, on the Alcaldía's dark Mi Ciudad basemap, with its official style.\n2 · View: Merge of the 5 queries, Simplify to 1 m (7 times fewer vertices) and Unique Values\n     by ESTRATO_PREDOMINANTE_INT: one colour (magma) and one label per stratum.\n3–4 · Layouts in Spanish and English, by script: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 7, "x": 72, "y": 232, "w": 128, "h": 21}
+layout.addElement {"layout": "Day 03", "kind": "text", "text": "Data: Predominant stratum per block 2018 — DANE, Esri Colombia team (CNPV 2018;\nreference only, not official). Municipal boundary: IGAC. Accessed 2026-11-03.\nBasemap: Mi Ciudad (dark), Alcaldía de Barranquilla.", "size": 7, "x": 72, "y": 255, "w": 128, "h": 13}
+layout.addElement {"layout": "Day 03", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 3: Polygons · Made with RustGIS · rustgis.app", "size": 8, "align": "right", "x": 10, "y": 284, "w": 190, "h": 6}
+# Entrega: exportar "Dia 03" como day-03-es y "Day 03" como day-03-en; guardar day-03.rgis

@@ -1,0 +1,16 @@
+# Día 2 — Lines: Bogotá en bicicleta — 4 · LAYOUT EN INGLÉS
+# Correr después del 3. Solo añade el layout "Day 02" sobre el mismo mapa: no toca capas ni datos
+layout.new {"name": "Day 02", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Day 02", "x": 10, "y": 28, "w": 190, "h": 200}
+layout.frameZoom {"layout": "Day 02", "to": "layer", "layer": "Red Biciusuarios"}
+layout.addElement {"layout": "Day 02", "kind": "text", "text": "Bogotá by bike", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
+layout.addElement {"layout": "Day 02", "kind": "text", "text": "697 km of network. Half is cycle track, off the road; 22 % is lanes on the street", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+layout.addElement {"layout": "Day 02", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 184.5, "y": 30, "w": 14, "h": 17}
+layout.addElement {"layout": "Day 02", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
+layout.addElement {"layout": "Day 02", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 11, "y": 218.5, "w": 32, "h": 9}
+layout.addElement {"layout": "Day 02", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 30, "h": 6}
+layout.addElement {"layout": "Day 02", "kind": "legend", "title": "Type of route", "hideOther": false, "x": 10, "y": 232, "w": 58, "h": 32}
+layout.addElement {"layout": "Day 02", "kind": "text", "text": "How it was made: all in RustGIS web (web.rustgis.app), with four scripts.\n1 · Data: the Red Biciusuarios (IDU / IDECA) in 16 PBF queries of 1,000 segments\n     and IDECA's blue basemap as vector tiles, with its official style.\n2 · View: Merge; field Tipo from RBICLASE (CASE … IN); Unique Values and, per class,\n     three stacked strokes (halo, line, core) with levels: cycle tracks on top.\n3–4 · Layouts in Spanish and English, by script: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 7, "x": 72, "y": 232, "w": 128, "h": 22}
+layout.addElement {"layout": "Day 02", "kind": "text", "text": "Data: Red Biciusuarios, Bogotá D.C. — IDU / IDECA (CC BY 4.0), accessed\n2026-11-03. Lengths in EPSG:3116. Basemap: Mapa base azul, IDECA.", "size": 7, "x": 72, "y": 257, "w": 128, "h": 9}
+layout.addElement {"layout": "Day 02", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 2: Lines · Made with RustGIS · rustgis.app", "size": 8, "align": "right", "x": 10, "y": 284, "w": 190, "h": 6}
+# Entrega: exportar "Dia 02" como day-02-es y "Day 02" como day-02-en; guardar day-02.rgis
