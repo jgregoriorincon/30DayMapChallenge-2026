@@ -1,6 +1,9 @@
 # Día 3 — Polygons: Barranquilla, manzana por manzana — 2 · VISTA (proceso y estilo)
-gp.run {"tool": "merge", "params": {"inputs": "Manzanas 1;Manzanas 2;Manzanas 3;Manzanas 4;Manzanas 5", "attributes": true, "output": "Estrato por manzana"}}
-layer.remove {"layer": ["Manzanas 1", "Manzanas 2", "Manzanas 3", "Manzanas 4", "Manzanas 5"]}
+gp.run {"tool": "merge", "params": {"inputs": "Manzanas 1;Manzanas 2;Manzanas 3;Manzanas 4;Manzanas 5", "attributes": true, "output": "Manzanas unidas"}}
+# Simplificar a 1 m (tolerancia en km): 464.887 → ~99.000 vértices y el .rgis de 22 MB a ~3 MB.
+# En el layout 1 m es 0,01 mm; cada anillo conserva sus cuatro esquinas y sus atributos
+gp.run {"tool": "simplify", "params": {"input": "Manzanas unidas", "tolerance": 0.001, "output": "Estrato por manzana"}}
+layer.remove {"layer": ["Manzanas 1", "Manzanas 2", "Manzanas 3", "Manzanas 4", "Manzanas 5", "Manzanas unidas"]}
 
 # Una clase por estrato, de morado a amarillo claro (magma): sobre el fondo oscuro del mapa base
 # (#142334), más claro = estrato más alto. El estrato 1 (39 % de las manzanas) no es oscuro, para
