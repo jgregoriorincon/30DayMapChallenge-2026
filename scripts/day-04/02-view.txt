@@ -1,0 +1,22 @@
+# Día 4 — Clusters: Los puntos negros de Bogotá — 2 · VISTA (proceso y estilo)
+gp.run {"tool": "merge", "params": {"inputs": "Siniestros 1;Siniestros 2;Siniestros 3", "attributes": true, "output": "Siniestros mortales"}}
+layer.remove {"layer": ["Siniestros 1", "Siniestros 2", "Siniestros 3"]}
+
+# Densidad de kernel (Quartic, radio 600 m, celdas de 50 m) en MAGNA-SIRGAS Origen Nacional (EPSG:9377),
+# en metros. Con peso 1.000.000 por siniestro el resultado sale en siniestros por km² en vez de por m²
+edit.addField {"layer": "Siniestros mortales", "name": "Peso", "type": "double"}
+edit.calculateField {"layer": "Siniestros mortales", "field": "Peso", "expression": "1000000"}
+gp.run {"tool": "kernelDensity", "params": {"input": "Siniestros mortales", "field": "Peso", "radius": 600, "pixelSize": 50, "kernel": "Quartic", "extent": "4863000,2050500,4890000,2093500", "crs": "EPSG:9377", "output": "Densidad de siniestros"}}
+
+# Inferno de 0 a 100 por km² (el máximo ronda 106: Av. Boyacá con Av. Primero de Mayo). Bajo 5 por km²
+# no se dibuja: ahí se ve el mapa base. Sobre el azul oscuro, lo poco denso se funde y los focos brillan
+raster.symbology {"layer": "Densidad de siniestros", "type": "stretch", "ramp": "Inferno"}
+raster.stretch {"layer": "Densidad de siniestros", "type": "custom", "min": 0, "max": 100}
+raster.mask {"layer": "Densidad de siniestros", "min": 5}
+layer.transparency {"layer": "Densidad de siniestros", "value": 10}
+
+# Cada siniestro, un punto blanco pequeño y translúcido, encima de la densidad
+layer.move {"layer": "Siniestros mortales", "to": 0}
+layer.marker {"layer": "Siniestros mortales", "shape": "circle", "size": 1.6}
+layer.color {"layer": "Siniestros mortales", "color": "#FFFFFF66"}
+layer.outline {"layer": "Siniestros mortales", "color": "#1F2937", "width": 0}

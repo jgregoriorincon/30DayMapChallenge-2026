@@ -1,0 +1,17 @@
+# Día 4 — Clusters: Los puntos negros de Bogotá — 4 · LAYOUT EN INGLÉS
+# Correr después del 3. Solo añade el layout "Day 04" sobre el mismo mapa: no toca capas ni datos
+layout.new {"name": "Day 04", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Day 04", "x": 10, "y": 28, "w": 190, "h": 200}
+layout.frameZoom {"layout": "Day 04", "to": "layer", "layer": "Densidad de siniestros"}
+layout.addElement {"layout": "Day 04", "kind": "text", "text": "Bogotá's black spots", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
+layout.addElement {"layout": "Day 04", "kind": "text", "text": "5,176 fatal crashes in 10 years, 4 in 10 hitting pedestrians. The worst spot: Av. Boyacá at Primero de Mayo", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+layout.addElement {"layout": "Day 04", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 184.5, "y": 30, "w": 14, "h": 17}
+layout.addElement {"layout": "Day 04", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
+layout.addElement {"layout": "Day 04", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 11, "y": 218.5, "w": 32, "h": 9}
+layout.addElement {"layout": "Day 04", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 30, "h": 6}
+layout.addElement {"layout": "Day 04", "kind": "colorbar", "layer": "Densidad de siniestros", "title": "Fatal crashes per km²", "orientation": "horizontal", "ticks": 5, "tickSide": "below", "x": 10, "y": 232, "w": 58, "h": 16}
+layout.addElement {"layout": "Day 04", "kind": "legend", "title": "Each dot", "exclude": ["Densidad de siniestros"], "x": 10, "y": 251, "w": 58, "h": 14}
+layout.addElement {"layout": "Day 04", "kind": "text", "text": "How it was made: all in RustGIS web (web.rustgis.app), with four scripts.\n1 · Data: SIMUR's fatal crashes 2016–2025 in 3 PBF queries of 2,000, without the service's\n     duplicates, on IDECA's blue basemap, with its official style.\n2 · View: Merge and Kernel Density (Quartic, 600 m radius, 50 m cells, EPSG:9377) in crashes\n     per km², Inferno ramp; under 5 per km² is not drawn. On top, each crash.\n3–4 · Layouts in Spanish and English, by script: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 7, "x": 72, "y": 232, "w": 128, "h": 21}
+layout.addElement {"layout": "Day 04", "kind": "text", "text": "Data: Road crashes with deaths 2016–2025, Secretaría Distrital de Movilidad (SIMUR),\naccessed 2026-11-03. \"AA\" forms are left out: they copy another crash.\nBasemap: Mapa base azul, IDECA.", "size": 7, "x": 72, "y": 255, "w": 128, "h": 13}
+layout.addElement {"layout": "Day 04", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 4: Clusters · Made with RustGIS · rustgis.app", "size": 8, "align": "right", "x": 10, "y": 284, "w": 190, "h": 6}
+# Entrega: exportar "Dia 04" como day-04-es y "Day 04" como day-04-en; guardar day-04.rgis

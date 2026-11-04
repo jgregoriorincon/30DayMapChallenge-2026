@@ -1,0 +1,21 @@
+# Día 4 — Clusters: Los puntos negros de Bogotá — 3 · LAYOUT
+layout.new {"name": "Dia 04", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Dia 04", "x": 10, "y": 28, "w": 190, "h": 200}
+# El marco se ajusta a la densidad, no a la vista que haya quedado en el mapa
+layout.frameZoom {"layout": "Dia 04", "to": "layer", "layer": "Densidad de siniestros"}
+layout.addElement {"layout": "Dia 04", "kind": "text", "text": "Los puntos negros de Bogotá", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
+layout.addElement {"layout": "Dia 04", "kind": "text", "text": "5.176 siniestros con muertos en 10 años, 4 de cada 10 atropellos. El foco: Av. Boyacá con Primero de Mayo", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+# Escala y norte se dibujan en gris oscuro: sobre el mapa oscuro llevan detrás un rectángulo claro.
+# La escala dibuja el largo redondo que cabe en su ancho: 30 mm de ancho y el rectángulo a su medida
+layout.addElement {"layout": "Dia 04", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 184.5, "y": 30, "w": 14, "h": 17}
+layout.addElement {"layout": "Dia 04", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
+layout.addElement {"layout": "Dia 04", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 11, "y": 218.5, "w": 32, "h": 9}
+layout.addElement {"layout": "Dia 04", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 30, "h": 6}
+# Debajo del marco, a la izquierda: la barra de color de la densidad y la leyenda de los puntos.
+# A la derecha, cómo se hizo y las fuentes. El texto no se parte solo: cada línea lleva su \n
+layout.addElement {"layout": "Dia 04", "kind": "colorbar", "layer": "Densidad de siniestros", "title": "Siniestros mortales por km²", "orientation": "horizontal", "ticks": 5, "tickSide": "below", "x": 10, "y": 232, "w": 58, "h": 16}
+layout.addElement {"layout": "Dia 04", "kind": "legend", "title": "Cada punto", "exclude": ["Densidad de siniestros"], "x": 10, "y": 251, "w": 58, "h": 14}
+layout.addElement {"layout": "Dia 04", "kind": "text", "text": "Cómo se hizo: todo en RustGIS web (web.rustgis.app), con tres scripts.\n1 · Datos: los siniestros con muertos 2016–2025 del SIMUR en 3 consultas PBF de 2000, sin los\n     duplicados del servicio, sobre el mapa base azul de IDECA, con su estilo oficial.\n2 · Vista: Merge y Kernel Density (Quartic, radio 600 m, celdas de 50 m, EPSG:9377) en siniestros\n     por km², con rampa Inferno; bajo 5 por km² no se dibuja. Encima, cada siniestro.\n3 · Layout: armado por script. Los scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 7, "x": 72, "y": 232, "w": 128, "h": 21}
+layout.addElement {"layout": "Dia 04", "kind": "text", "text": "Datos: Siniestros viales con muertos 2016–2025, Secretaría Distrital de Movilidad (SIMUR),\nconsultado el 2026-11-03. Se omiten los formularios \"AA\", copia de otro siniestro.\nMapa base: Mapa base azul, IDECA.", "size": 7, "x": 72, "y": 255, "w": 128, "h": 13}
+layout.addElement {"layout": "Dia 04", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 4: Clusters · Hecho con RustGIS · rustgis.app", "size": 8, "align": "right", "x": 10, "y": 284, "w": 190, "h": 6}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz (ver "Cómo correr los scripts")
