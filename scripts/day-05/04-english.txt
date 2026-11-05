@@ -1,0 +1,22 @@
+# Día 5 — Senses: Sight: ¿Qué se ve desde Monserrate? — 4 · LAYOUT EN INGLÉS
+layout.new {"name": "Day 05", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Day 05", "x": 10, "y": 28, "w": 190, "h": 200}
+# El marco se ajusta al recorte del terreno, no a la vista que haya quedado en el mapa
+layout.frameZoom {"layout": "Day 05", "to": "layer", "layer": "MDT Bogotá 2025"}
+layout.addElement {"layout": "Day 05", "kind": "text", "text": "What can you see from Monserrate?", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
+layout.addElement {"layout": "Day 05", "kind": "text", "text": "From the sanctuary, at about 3,150 m, you can see some 375 km² of Bogotá: over half the land within 25 km", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+# Escala y norte se dibujan en gris oscuro: sobre el mapa oscuro llevan detrás un rectángulo claro
+layout.addElement {"layout": "Day 05", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 184.5, "y": 30, "w": 14, "h": 17}
+layout.addElement {"layout": "Day 05", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
+layout.addElement {"layout": "Day 05", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 11, "y": 218.5, "w": 32, "h": 9}
+layout.addElement {"layout": "Day 05", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 30, "h": 6}
+# Debajo del marco, a la izquierda: la muestra de lo que se ve (un rectángulo del color de la capa,
+# ya que la leyenda de un ráster estirado dibuja la rampa entera) y la leyenda del observador
+layout.addElement {"layout": "Day 05", "kind": "text", "text": "From the top", "size": 13, "x": 10, "y": 232, "w": 58, "h": 7}
+layout.addElement {"layout": "Day 05", "kind": "rectangle", "fill": "#A8B480", "outline": "#1F2937", "width": 0.5, "x": 11, "y": 241, "w": 6, "h": 4}
+layout.addElement {"layout": "Day 05", "kind": "text", "text": "Visible", "size": 10, "x": 20, "y": 240, "w": 48, "h": 6}
+layout.addElement {"layout": "Day 05", "kind": "legend", "title": " ", "exclude": ["MDT Bogotá 2025", "Lo que se ve"], "x": 10, "y": 246, "w": 58, "h": 12}
+layout.addElement {"layout": "Day 05", "kind": "text", "text": "How it was made: all in RustGIS web (web.rustgis.app), with four scripts.\n1 · Data: IDECA's 2025 Digital Terrain Model, clipped by the server (exportImage, ~55 m),\n     on IDECA's blue basemap, with its official style.\n2 · View: Visibility Analysis from the sanctuary (2 m high, 25 km radius) on the bare\n     terrain; relief with Shaded Relief.\n3–4 · Layouts in Spanish and English, by script: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 7, "x": 72, "y": 232, "w": 128, "h": 21}
+layout.addElement {"layout": "Day 05", "kind": "text", "text": "Data: Digital Terrain Model of Bogotá D.C. 2025 — IDECA (CC BY 4.0), accessed\n2026-11-04. No buildings or trees: it shows what the relief lets you see.\nBasemap: Mapa base azul, IDECA.", "size": 7, "x": 72, "y": 255, "w": 128, "h": 13}
+layout.addElement {"layout": "Day 05", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 5: Senses: Sight · Made with RustGIS · rustgis.app", "size": 8, "align": "right", "x": 10, "y": 284, "w": 190, "h": 6}
+# Entrega: exportar "Dia 05" como day-05-es y "Day 05" como day-05-en; guardar day-05.rgis

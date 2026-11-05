@@ -1,0 +1,22 @@
+# Día 5 — Senses: Sight: ¿Qué se ve desde Monserrate? — 2 · VISTA (proceso y estilo)
+# Cuenca visual: una persona (2 m) en el santuario, hasta 25 km. Cada celda queda en 1 (se ve) o
+# 0 (la tapa el terreno); fuera del radio o del Distrito, sin dato. Tiene en cuenta la curvatura
+# de la Tierra y la refracción. Es sobre el terreno desnudo: los edificios y árboles no tapan
+analysis.viewshed {"layer": "MDT Bogotá 2025", "lon": -74.0560, "lat": 4.6055, "height": 2, "radius": 25000, "name": "Lo que se ve"}
+
+# El relieve como textura: sombreado gris sobre el mapa base, muy transparente
+raster.symbology {"layer": "MDT Bogotá 2025", "type": "shadedRelief", "azimuth": 315, "altitude": 45, "zFactor": 1, "grey": true}
+layer.transparency {"layer": "MDT Bogotá 2025", "value": 70}
+
+# Lo que se ve, en amarillo claro (el extremo alto de Inferno, de 0 a 1); lo que no, se oculta
+raster.symbology {"layer": "Lo que se ve", "type": "stretch", "ramp": "Inferno"}
+raster.stretch {"layer": "Lo que se ve", "type": "custom", "min": 0, "max": 1}
+raster.mask {"layer": "Lo que se ve", "values": [0]}
+layer.transparency {"layer": "Lo que se ve", "value": 35}
+
+# El observador, encima de todo: un círculo blanco con borde oscuro (la leyenda dibuja los puntos
+# siempre como círculo; con triángulo, el mapa y la leyenda no coincidían)
+layer.move {"layer": "Monserrate", "to": 0}
+layer.marker {"layer": "Monserrate", "shape": "circle", "size": 10}
+layer.color {"layer": "Monserrate", "color": "#FFFFFF"}
+layer.outline {"layer": "Monserrate", "color": "#1F2937", "width": 1}

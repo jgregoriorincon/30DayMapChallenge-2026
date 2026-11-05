@@ -1,0 +1,13 @@
+# Día 5 — Senses: Sight: ¿Qué se ve desde Monserrate? — 1 · DATOS
+# Mapa base azul de IDECA con su estilo oficial
+map.basemap {"name": "blank"}
+map.addTiles {"url": "https://tiles.arcgis.com/tiles/J5ltM0ovtzXUbp7B/arcgis/rest/services/mapabaseazul/VectorTileServer/resources/styles/root.json", "kind": "style", "name": "Mapa base azul (IDECA)"}
+map.zoomToExtent {"extent": [-74.23, 4.46, -73.99, 4.84]}
+
+# Modelo Digital de Terreno de Bogotá 2025 (IDECA), recortado por el servidor (exportImage) a la
+# ciudad y los cerros: 480 × 760 celdas de 0,0005° (~55 m), Float32, ~1,4 MB. Fuera del Distrito no
+# hay datos (0 = sin dato). "whole": se descarga entero como ráster, para poder analizarlo
+layer.addUrl {"url": "https://serviciosgis.catastrobogota.gov.co/image/rest/services/Imagenes/modelodigitalterreno2025funcion/ImageServer/exportImage?bbox=-74.23,4.46,-73.99,4.84&bboxSR=4326&imageSR=4326&size=480,760&format=tiff&pixelType=F32&noData=0&interpolation=RSP_BilinearInterpolation&f=image", "name": "MDT Bogotá 2025", "whole": true, "zoom": false}
+
+# El observador: el santuario de Monserrate (4,6055 N, 74,0560 O), como un punto escrito aquí
+layer.addDataBytes {"fileName": "monserrate.geojson", "data": "eyJ0eXBlIjoiRmVhdHVyZUNvbGxlY3Rpb24iLCJmZWF0dXJlcyI6W3sidHlwZSI6IkZlYXR1cmUiLCJwcm9wZXJ0aWVzIjp7Im5vbWJyZSI6Ik1vbnNlcnJhdGUifSwiZ2VvbWV0cnkiOnsidHlwZSI6IlBvaW50IiwiY29vcmRpbmF0ZXMiOlstNzQuMDU2MCw0LjYwNTVdfX1dfQ==", "name": "Monserrate"}
