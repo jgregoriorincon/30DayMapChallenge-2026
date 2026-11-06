@@ -1,0 +1,16 @@
+# Día 6 — Vintage: La Cartagena de Herrera — 4 · LAYOUT EN INGLÉS
+layout.new {"name": "Day 06", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Day 06", "x": 10, "y": 28, "w": 190, "h": 200}
+# El marco se ajusta a la hoja entera ya georreferenciada (girada sobre OpenStreetMap)
+layout.frameZoom {"layout": "Day 06", "to": "layer", "layer": "Plano de Herrera"}
+layout.addElement {"layout": "Day 06", "kind": "text", "text": "Cartagena de Indias, as Herrera drew it", "size": 24, "bold": true, "x": 10, "y": 8, "w": 190, "h": 12}
+layout.addElement {"layout": "Day 06", "kind": "text", "text": "Colombia, 18th century: its wall tips (bastions) land typically about 16 m from where they stand today", "size": 11, "x": 10, "y": 19, "w": 190, "h": 7}
+layout.addElement {"layout": "Day 06", "kind": "northArrow", "style": "compass", "x": 186, "y": 31, "w": 11, "h": 15}
+layout.addElement {"layout": "Day 06", "kind": "scaleBar", "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 220, "w": 30, "h": 6}
+# Debajo del marco, a la izquierda: la leyenda de los puntos de hoy, sin el plano
+layout.addElement {"layout": "Day 06", "kind": "text", "text": "In red, today", "size": 13, "x": 10, "y": 232, "w": 58, "h": 7}
+layout.addElement {"layout": "Day 06", "kind": "legend", "title": " ", "exclude": ["Plano de Herrera"], "x": 10, "y": 240, "w": 58, "h": 12}
+layout.addElement {"layout": "Day 06", "kind": "text", "text": "How it was made: all in RustGIS web (web.rustgis.app), with four scripts.\n1 · Data: Herrera's plan from Wikimedia Commons, as a picture with no coordinates, and\n     the tips of 9 bastions and the San Felipe Castle taken from OpenStreetMap.\n2 · View: Control Point Fit and Georeference with those 10 points (affine transform). The\n     plan's north ends up at the lower left, as Herrera drew it.\n3–4 · Layouts in Spanish and English, by script: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 7, "x": 72, "y": 232, "w": 128, "h": 21}
+layout.addElement {"layout": "Day 06", "kind": "text", "text": "Data: Plano de Cartagena de las Indias, Juan de Herrera y Sotomayor (18th century) —\nBibliothèque nationale de France, Gallica (public domain), via Wikimedia Commons.\nBastions and basemap: © OpenStreetMap contributors (ODbL), accessed 2026-11-05.", "size": 7, "x": 72, "y": 255, "w": 128, "h": 13}
+layout.addElement {"layout": "Day 06", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 6: Vintage · Made with RustGIS · rustgis.app", "size": 8, "align": "right", "x": 10, "y": 284, "w": 190, "h": 6}
+# Entrega: exportar "Dia 06" como day-06-es y "Day 06" como day-06-en; guardar day-06.rgis

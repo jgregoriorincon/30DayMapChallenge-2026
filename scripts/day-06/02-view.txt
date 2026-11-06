@@ -1,0 +1,21 @@
+# Día 6 — Vintage: La Cartagena de Herrera — 2 · VISTA (georreferenciación y estilo)
+# Cada punto es [columna, fila del plano (imagen de 1920 px), longitud, latitud de hoy]: los números
+# son los del plano (1 San Ignacio, 2 San Francisco Javier, 3 Santiago, 4 Santo Domingo, 5 Santa
+# Cruz, 7 Santa Catalina, 8 San Lucas, 12 El Reducto, 13 San José) y la R del Castillo de San Felipe
+# Primero se mide el ajuste de cada transformación (no cambia el proyecto)
+raster.gcpFit {"points": [[1363, 879, -75.550566, 10.420926], [1412, 1017, -75.552834, 10.421509], [1354, 1126, -75.553758, 10.423316], [1314, 1198, -75.554339, 10.424439], [1229, 1201, -75.553579, 10.425434], [665, 997, -75.545599, 10.431019], [691, 889, -75.544481, 10.429714], [1353, 477, -75.545288, 10.417197], [1180, 492, -75.543808, 10.419881], [857, 322, -75.539004, 10.42269]], "compare": true}
+
+# Afín: con 10 puntos repartidos por la ciudad y una hoja sin deformar, gira, escala y estira el plano
+# entero sin doblarlo. El plano queda girado unos 125°: Herrera dibujó el norte abajo a la izquierda
+raster.georeference {"layer": "Plano de Herrera", "points": [[1363, 879, -75.550566, 10.420926], [1412, 1017, -75.552834, 10.421509], [1354, 1126, -75.553758, 10.423316], [1314, 1198, -75.554339, 10.424439], [1229, 1201, -75.553579, 10.425434], [665, 997, -75.545599, 10.431019], [691, 889, -75.544481, 10.429714], [1353, 477, -75.545288, 10.417197], [1180, 492, -75.543808, 10.419881], [857, 322, -75.539004, 10.42269]], "transform": "affine", "resampling": "cubic"}
+
+# Los puntos de hoy encima del plano: tinta roja con borde claro, para ver cuánto acertó Herrera
+layer.move {"layer": "Baluartes hoy", "to": 0}
+layer.marker {"layer": "Baluartes hoy", "shape": "circle", "size": 6}
+layer.color {"layer": "Baluartes hoy", "color": "#9B1C1C"}
+layer.outline {"layer": "Baluartes hoy", "color": "#FFF8E7", "width": 1}
+
+# La vista se aleja a un recuadro mayor que el marco del layout: el layout solo pinta las teselas que
+# la vista ya descargó (no se redibuja cuando llegan otras). Esperar a que el mapa base se vea
+# completo antes de correr los scripts 3 y 4
+map.zoomToExtent {"extent": [-75.590, 10.385, -75.500, 10.465]}
