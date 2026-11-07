@@ -1,0 +1,43 @@
+# Día 7 — 10 minute map: Una tarde de nubes sobre Colombia — 3 · LAYOUT
+layout.new {"name": "Dia 07", "page": "a4", "orientation": "landscape", "template": "blank"}
+# Ocho marcos, 4 × 2: los elementos se numeran en orden, así que los marcos son el 1 al 8
+layout.addFrame {"layout": "Dia 07", "map": "12:00", "x": 10, "y": 30, "w": 66.25, "h": 78}
+layout.addFrame {"layout": "Dia 07", "map": "13:00", "x": 80.25, "y": 30, "w": 66.25, "h": 78}
+layout.addFrame {"layout": "Dia 07", "map": "14:00", "x": 150.5, "y": 30, "w": 66.25, "h": 78}
+layout.addFrame {"layout": "Dia 07", "map": "15:00", "x": 220.75, "y": 30, "w": 66.25, "h": 78}
+layout.addFrame {"layout": "Dia 07", "map": "16:00", "x": 10, "y": 112, "w": 66.25, "h": 78}
+layout.addFrame {"layout": "Dia 07", "map": "17:00", "x": 80.25, "y": 112, "w": 66.25, "h": 78}
+layout.addFrame {"layout": "Dia 07", "map": "18:00", "x": 150.5, "y": 112, "w": 66.25, "h": 78}
+layout.addFrame {"layout": "Dia 07", "map": "19:00", "x": 220.75, "y": 112, "w": 66.25, "h": 78}
+layout.frameZoom {"layout": "Dia 07", "element": 1, "to": "layer", "layer": "Colombia"}
+layout.frameZoom {"layout": "Dia 07", "element": 2, "to": "layer", "layer": "Colombia"}
+layout.frameZoom {"layout": "Dia 07", "element": 3, "to": "layer", "layer": "Colombia"}
+layout.frameZoom {"layout": "Dia 07", "element": 4, "to": "layer", "layer": "Colombia"}
+layout.frameZoom {"layout": "Dia 07", "element": 5, "to": "layer", "layer": "Colombia"}
+layout.frameZoom {"layout": "Dia 07", "element": 6, "to": "layer", "layer": "Colombia"}
+layout.frameZoom {"layout": "Dia 07", "element": 7, "to": "layer", "layer": "Colombia"}
+layout.frameZoom {"layout": "Dia 07", "element": 8, "to": "layer", "layer": "Colombia"}
+# La hora de cada cuadro, arriba a la izquierda: amarillo sobre un recuadro oscuro, para que se lea
+# sobre nubes blancas y sobre la noche
+layout.addElement {"layout": "Dia 07", "kind": "rectangle", "fill": "#000000A6", "width": 0, "radius": 1, "x": 11.5, "y": 31, "w": 17, "h": 7.5}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "12:00", "size": 13, "bold": true, "color": "#FFD60A", "x": 12.5, "y": 31.5, "w": 16, "h": 7}
+layout.addElement {"layout": "Dia 07", "kind": "rectangle", "fill": "#000000A6", "width": 0, "radius": 1, "x": 81.75, "y": 31, "w": 17, "h": 7.5}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "13:00", "size": 13, "bold": true, "color": "#FFD60A", "x": 82.75, "y": 31.5, "w": 16, "h": 7}
+layout.addElement {"layout": "Dia 07", "kind": "rectangle", "fill": "#000000A6", "width": 0, "radius": 1, "x": 152, "y": 31, "w": 17, "h": 7.5}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "14:00", "size": 13, "bold": true, "color": "#FFD60A", "x": 153, "y": 31.5, "w": 16, "h": 7}
+layout.addElement {"layout": "Dia 07", "kind": "rectangle", "fill": "#000000A6", "width": 0, "radius": 1, "x": 222.25, "y": 31, "w": 17, "h": 7.5}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "15:00", "size": 13, "bold": true, "color": "#FFD60A", "x": 223.25, "y": 31.5, "w": 16, "h": 7}
+layout.addElement {"layout": "Dia 07", "kind": "rectangle", "fill": "#000000A6", "width": 0, "radius": 1, "x": 11.5, "y": 113, "w": 17, "h": 7.5}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "16:00", "size": 13, "bold": true, "color": "#FFD60A", "x": 12.5, "y": 113.5, "w": 16, "h": 7}
+layout.addElement {"layout": "Dia 07", "kind": "rectangle", "fill": "#000000A6", "width": 0, "radius": 1, "x": 81.75, "y": 113, "w": 17, "h": 7.5}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "17:00", "size": 13, "bold": true, "color": "#FFD60A", "x": 82.75, "y": 113.5, "w": 16, "h": 7}
+layout.addElement {"layout": "Dia 07", "kind": "rectangle", "fill": "#000000A6", "width": 0, "radius": 1, "x": 152, "y": 113, "w": 17, "h": 7.5}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "18:00", "size": 13, "bold": true, "color": "#FFD60A", "x": 153, "y": 113.5, "w": 16, "h": 7}
+layout.addElement {"layout": "Dia 07", "kind": "rectangle", "fill": "#000000A6", "width": 0, "radius": 1, "x": 222.25, "y": 113, "w": 17, "h": 7.5}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "19:00", "size": 13, "bold": true, "color": "#FFD60A", "x": 223.25, "y": 113.5, "w": 16, "h": 7}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "Una tarde de nubes sobre Colombia", "size": 22, "bold": true, "x": 10, "y": 7, "w": 277, "h": 11}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "5 de noviembre de 2026, hora de Colombia. El satélite GOES-East la mira cada 10 minutos; aquí, una imagen por hora.\nDesde las 17:00, el producto GeoColor pasa a su vista de noche (el sol se pone entre las 17:10 y las 18:00, según la región).", "size": 10, "x": 10, "y": 18.5, "w": 277, "h": 10}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "Cómo se hizo: todo en RustGIS web (web.rustgis.app), con cuatro scripts. 1 · Datos: las teselas GeoColor de GOES-East de NASA GIBS, con la hora en la dirección,\ny el límite de Colombia. 2 · Vista: un mapa por hora (Duplicate Map y su propia imagen). 3–4 · Layouts en español e inglés. Los scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 6.5, "x": 10, "y": 190, "w": 277, "h": 8}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "Datos: NOAA GOES-East ABI, producto GeoColor (CIRA/NOAA), servido por NASA GIBS (Worldview); consultado el 2026-11-06. Límite: geoBoundaries (CC0).", "size": 6.5, "x": 10, "y": 198.5, "w": 277, "h": 4}
+layout.addElement {"layout": "Dia 07", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 7: 10 minute map · Hecho con RustGIS · rustgis.app", "size": 7, "align": "right", "x": 10, "y": 203.5, "w": 277, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz

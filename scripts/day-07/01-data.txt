@@ -1,0 +1,16 @@
+# Día 7 — 10 minute map: Una tarde de nubes sobre Colombia — 1 · DATOS
+# GOES-East (NOAA) toma una imagen completa del continente cada 10 minutos. NASA GIBS la publica
+# como teselas, con la hora en la dirección: aquí, el producto GeoColor (color real de día y
+# luces de las ciudades de noche). Un mapa por hora, del 5 de noviembre de 2026, de 12:00 a 19:00
+# hora de Colombia (UTC−5: 17:00 a 00:00 UTC). GIBS guarda unos 3 meses de GOES: pasado ese
+# tiempo, estas direcciones y el proyecto se quedan sin imagen
+
+# El primer mapa, 12:00 (17:00 UTC). Sin atribución en las teselas: se repetiría en los ocho
+# cuadros; los créditos van en el layout
+map.rename {"name": "12:00"}
+map.basemap {"name": "blank"}
+map.addTiles {"url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GOES-East_ABI_GeoColor/default/2026-11-05T17:00:00Z/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png", "kind": "raster", "name": "GOES-East 12:00", "maxZoom": 7}
+map.zoomToExtent {"extent": [-82.0, -4.6, -66.5, 13.6]}
+
+# El límite de Colombia (geoBoundaries, CC0), simplificado
+layer.addUrl {"url": "https://media.githubusercontent.com/media/wmgeolab/geoBoundaries/9469f09592ced973a3448cf66b6100b741b64c0d/releaseData/gbOpen/COL/ADM0/geoBoundaries-COL-ADM0_simplified.geojson", "name": "Colombia"}

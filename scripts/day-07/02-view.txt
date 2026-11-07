@@ -1,0 +1,39 @@
+# Día 7 — 10 minute map: Una tarde de nubes sobre Colombia — 2 · VISTA
+# Esperar a que "Colombia" esté en el panel de capas. Su límite en rojo: resalta sobre las nubes
+# blancas, la selva verde y la noche oscura
+layer.noFill {"layer": "Colombia"}
+layer.outline {"layer": "Colombia", "color": "#FF3B30", "width": 0.9}
+
+# Los otros siete mapas: copias del de las 12:00, cada una con la imagen de su hora
+map.duplicate {"map": "12:00", "name": "13:00"}
+map.activate {"name": "13:00"}
+map.removeTiles {"name": "GOES-East 12:00"}
+map.addTiles {"url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GOES-East_ABI_GeoColor/default/2026-11-05T18:00:00Z/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png", "kind": "raster", "name": "GOES-East 13:00", "maxZoom": 7}
+map.duplicate {"map": "12:00", "name": "14:00"}
+map.activate {"name": "14:00"}
+map.removeTiles {"name": "GOES-East 12:00"}
+map.addTiles {"url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GOES-East_ABI_GeoColor/default/2026-11-05T19:00:00Z/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png", "kind": "raster", "name": "GOES-East 14:00", "maxZoom": 7}
+map.duplicate {"map": "12:00", "name": "15:00"}
+map.activate {"name": "15:00"}
+map.removeTiles {"name": "GOES-East 12:00"}
+map.addTiles {"url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GOES-East_ABI_GeoColor/default/2026-11-05T20:00:00Z/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png", "kind": "raster", "name": "GOES-East 15:00", "maxZoom": 7}
+map.duplicate {"map": "12:00", "name": "16:00"}
+map.activate {"name": "16:00"}
+map.removeTiles {"name": "GOES-East 12:00"}
+map.addTiles {"url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GOES-East_ABI_GeoColor/default/2026-11-05T21:00:00Z/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png", "kind": "raster", "name": "GOES-East 16:00", "maxZoom": 7}
+map.duplicate {"map": "12:00", "name": "17:00"}
+map.activate {"name": "17:00"}
+map.removeTiles {"name": "GOES-East 12:00"}
+map.addTiles {"url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GOES-East_ABI_GeoColor/default/2026-11-05T22:00:00Z/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png", "kind": "raster", "name": "GOES-East 17:00", "maxZoom": 7}
+map.duplicate {"map": "12:00", "name": "18:00"}
+map.activate {"name": "18:00"}
+map.removeTiles {"name": "GOES-East 12:00"}
+map.addTiles {"url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GOES-East_ABI_GeoColor/default/2026-11-05T23:00:00Z/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png", "kind": "raster", "name": "GOES-East 18:00", "maxZoom": 7}
+map.duplicate {"map": "12:00", "name": "19:00"}
+map.activate {"name": "19:00"}
+map.removeTiles {"name": "GOES-East 12:00"}
+map.addTiles {"url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GOES-East_ABI_GeoColor/default/2026-11-06T00:00:00Z/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png", "kind": "raster", "name": "GOES-East 19:00", "maxZoom": 7}
+
+# El layout solo pinta las teselas que la vista ya descargó: antes de los scripts 3 y 4, abrir
+# cada mapa (Browser › Maps, de 19:00 a 12:00) y esperar a que se vea su imagen completa
+map.activate {"name": "12:00"}
