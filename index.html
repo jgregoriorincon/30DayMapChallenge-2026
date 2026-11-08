@@ -5,7 +5,7 @@
 <base target="_blank">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>#30DayMapChallenge 2026 · RustGIS</title>
-<meta name="description" content="30 mapas de Bogotá, Barranquilla y Colombia hechos con RustGIS en el navegador. 30 maps of Bogotá, Barranquilla and Colombia made with RustGIS in the browser.">
+<meta name="description" content="30 mapas de Colombia y sus ciudades hechos con RustGIS en el navegador, por Jose Gregorio Rincon Albarracin. 30 maps of Colombia and its cities made with RustGIS in the browser.">
 <style>
   :root {
     --bg: #f6f4ef;
@@ -40,7 +40,8 @@
   header { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; justify-content: space-between; }
   h1 { margin: 0; font-size: clamp(1.6rem, 4vw, 2.4rem); line-height: 1.15; letter-spacing: -0.01em; }
   .lead { margin: 8px 0 0; max-width: 60ch; color: var(--muted); }
-  .lead a, footer a { color: var(--accent); }
+  .lead a, .byline a, footer a { color: var(--accent); }
+  .byline { margin: 10px 0 0; max-width: 60ch; font-size: 0.95rem; }
   .lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; flex-shrink: 0; }
   .lang button {
     border: 0; background: transparent; color: var(--muted); padding: 6px 14px; font: inherit;
@@ -71,6 +72,7 @@
     <div>
       <h1>#30DayMapChallenge 2026</h1>
       <p class="lead" data-i18n="lead"></p>
+      <p class="byline" data-i18n="byline"></p>
     </div>
     <div class="lang" role="group" aria-label="Idioma / Language">
       <button type="button" data-lang="es">ES</button>
@@ -104,21 +106,26 @@
     { n: 7, theme: "10 minute map",
       title: { es: "Una tarde de nubes sobre Colombia", en: "An afternoon of clouds over Colombia" },
       data: { es: "NOAA GOES-East ABI GeoColor (CIRA/NOAA), vía NASA GIBS; límite, geoBoundaries (CC0)", en: "NOAA GOES-East ABI GeoColor (CIRA/NOAA), via NASA GIBS; boundary, geoBoundaries (CC0)" } },
+    { n: 8, theme: "Utopia",
+      title: { es: "La utopía del 3-30-300 en Medellín", en: "The 3-30-300 utopia in Medellín" },
+      data: { es: "Alcaldía de Medellín, GeoMedellín (CC BY-SA 4.0): ortofoto 2024, manzanas, espacio público y comunas. Este mapa y su proyecto: CC BY-SA 4.0", en: "Alcaldía de Medellín, GeoMedellín (CC BY-SA 4.0): 2024 orthophoto, city blocks, public space and comunas. This map and its project: CC BY-SA 4.0" } },
   ];
 
   const BASE = "https://jgregoriorincon.github.io/30DayMapChallenge-2026/";
   const T = {
     es: {
-      lead: 'Mapas de Bogotá, Barranquilla y Colombia hechos de principio a fin con <a href="https://github.com/opengeos/RustGIS">RustGIS</a> en el navegador, con datos de servicios públicos. Cada proyecto se abre en web.rustgis.app tal como se ve en la imagen.',
+      lead: 'Mapas de Colombia y de sus ciudades (Bogotá, Barranquilla, Cartagena, Medellín, Bucaramanga, Cali y Cúcuta) hechos de principio a fin con <a href="https://github.com/opengeos/RustGIS">RustGIS</a> en el navegador, con datos de servicios públicos. Cada proyecto se abre en web.rustgis.app tal como se ve en la imagen.',
+      byline: 'Por <a href="https://github.com/jgregoriorincon">Jose Gregorio Rincon Albarracin</a>, ingeniero catastral y geodesta, contribuidor de RustGIS.',
       day: "Día", open: "Abrir en RustGIS", image: "Imagen", s1: "Datos", s2: "Vista", s3: "Layout", s4: "Layout EN",
       pending: "Imagen pendiente", data: "Datos",
-      footer: 'Imágenes y proyectos: CC BY 4.0, @jgregoriorincon. Scripts y galería: MIT. Los datos conservan la licencia de su fuente. <a href="https://github.com/jgregoriorincon/30DayMapChallenge-2026/blob/main/README.es.md">Cómo reproducir cada día</a>.',
+      footer: 'Imágenes y proyectos: CC BY 4.0, @jgregoriorincon, salvo el día que indique otra licencia. Scripts y galería: MIT. Los datos conservan la licencia de su fuente. <a href="https://github.com/jgregoriorincon/30DayMapChallenge-2026/blob/main/README.es.md">Cómo reproducir cada día</a>.',
     },
     en: {
-      lead: 'Maps of Bogotá, Barranquilla and Colombia made end to end with <a href="https://github.com/opengeos/RustGIS">RustGIS</a> in the browser, from public web services. Each project opens in web.rustgis.app exactly as in the image. Each map comes in Spanish and in English.',
+      lead: 'Maps of Colombia and its cities (Bogotá, Barranquilla, Cartagena, Medellín, Bucaramanga, Cali and Cúcuta) made end to end with <a href="https://github.com/opengeos/RustGIS">RustGIS</a> in the browser, from public web services. Each project opens in web.rustgis.app exactly as in the image. Each map comes in Spanish and in English.',
+      byline: 'By <a href="https://github.com/jgregoriorincon">Jose Gregorio Rincon Albarracin</a>, cadastral engineer and geodesist, RustGIS contributor.',
       day: "Day", open: "Open in RustGIS", image: "Image", s1: "Data", s2: "View", s3: "Layout", s4: "English layout",
       pending: "Image coming soon", data: "Data",
-      footer: 'Images and projects: CC BY 4.0, @jgregoriorincon. Scripts and gallery: MIT. The data keeps its source\'s licence. <a href="https://github.com/jgregoriorincon/30DayMapChallenge-2026/blob/main/README.md">How to reproduce each day</a>.',
+      footer: 'Images and projects: CC BY 4.0, @jgregoriorincon, unless a day states another licence. Scripts and gallery: MIT. The data keeps its source\'s licence. <a href="https://github.com/jgregoriorincon/30DayMapChallenge-2026/blob/main/README.md">How to reproduce each day</a>.',
     },
   };
 

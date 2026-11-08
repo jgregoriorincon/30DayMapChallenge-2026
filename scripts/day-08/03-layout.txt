@@ -1,0 +1,29 @@
+# Día 8 — Utopia: La utopía del 3-30-300 en Medellín — 3 · LAYOUT
+layout.new {"name": "Dia 08", "page": "a4", "orientation": "landscape", "template": "blank"}
+# Dos marcos lado a lado (elementos 1 y 2), cada uno ajustado a las comunas
+layout.addFrame {"layout": "Dia 08", "map": "El 30", "x": 10, "y": 37, "w": 102, "h": 128}
+layout.addFrame {"layout": "Dia 08", "map": "El 300", "x": 118, "y": 37, "w": 102, "h": 128}
+layout.frameZoom {"layout": "Dia 08", "element": 1, "to": "layer", "layer": "Comunas"}
+layout.frameZoom {"layout": "Dia 08", "element": 2, "to": "layer", "layer": "Comunas"}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "La utopía del 3-30-300 en Medellín", "size": 22, "bold": true, "x": 10, "y": 7, "w": 277, "h": 11}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "Regla de urbanismo verde (Konijnendijk, 2021): 3 árboles visibles desde cada casa, 30 % de copa arbórea en cada barrio y un parque a menos de 300 m.\nCon datos públicos se miden dos: 6 de las 16 comunas pasan del 30 % de vegetación y 7 de cada 10 manzanas tienen un parque a 300 m o menos.", "size": 10, "x": 10, "y": 18.5, "w": 277, "h": 10}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "30 · Vegetación por comuna (NDVI de la ortofoto 2024)", "size": 9, "bold": true, "x": 10, "y": 31, "w": 102, "h": 5}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "300 · Cada manzana y su parque más cercano de al menos 0,5 ha", "size": 9, "bold": true, "x": 118, "y": 31, "w": 102, "h": 5}
+# Norte y escala en el primer marco, sobre un rectángulo claro
+layout.addElement {"layout": "Dia 08", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 96.5, "y": 39, "w": 14, "h": 17}
+layout.addElement {"layout": "Dia 08", "kind": "northArrow", "frame": 1, "style": "compass", "x": 98, "y": 40, "w": 11, "h": 15}
+layout.addElement {"layout": "Dia 08", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 11, "y": 155.5, "w": 32, "h": 9}
+layout.addElement {"layout": "Dia 08", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 157, "w": 30, "h": 6}
+layout.addElement {"layout": "Dia 08", "kind": "legend", "frame": 1, "title": " ", "exclude": ["Comunas"], "columns": 2, "x": 10, "y": 167, "w": 100, "h": 18}
+layout.addElement {"layout": "Dia 08", "kind": "legend", "frame": 2, "title": " ", "exclude": ["Comunas"], "columns": 2, "x": 118, "y": 167, "w": 100, "h": 18}
+# Columna derecha: el 3 y cómo leer el mapa
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "¿Y el 3?", "size": 9, "bold": true, "x": 228, "y": 37, "w": 59, "h": 5}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "Ver 3 árboles desde cada casa no se\npuede medir con datos públicos: el\ninventario de árboles de Medellín\nregistra intervenciones, no todos los\nárboles, y lo que se ve desde una\nventana pide imágenes de calle.", "size": 7, "x": 228, "y": 43, "w": 59, "h": 24}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "Por comuna", "size": 9, "bold": true, "x": 228, "y": 74, "w": 59, "h": 5}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "Pasan del 30 %: El Poblado (52 %),\nBuenos Aires (43 %), Robledo (41 %),\nBelén (34 %), Villa Hermosa (34 %)\ny Guayabal (31 %).\nLas menos verdes: Santa Cruz y Doce\nde Octubre, con 13 % cada una.", "size": 7, "x": 228, "y": 80, "w": 59, "h": 24}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "Al leerlo", "size": 9, "bold": true, "x": 228, "y": 111, "w": 59, "h": 5}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "El NDVI cuenta toda la vegetación:\nárboles, prados y jardines. Guayabal\nsuma el pasto del aeropuerto Olaya\nHerrera. Es una aproximación a la\ncopa, no la copa.\nLos 300 m son en línea recta, de\nborde a borde, no caminando.", "size": 7, "x": 228, "y": 117, "w": 59, "h": 28}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "Cómo se hizo: todo en RustGIS web (web.rustgis.app), con cuatro scripts. 1 · Datos: comunas, parques, manzanas y una imagen de vegetación (NDVI > 0,3) que el servidor de la Alcaldía calcula de la ortofoto 2024.\n2 · Vista: Zonal Statistics (la media por comuna es su % de vegetación), Merge, Simplify y Near (distancia de cada manzana al parque más cercano). 3–4 · Layouts. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 6.5, "x": 10, "y": 188, "w": 277, "h": 8}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "Datos: Alcaldía de Medellín, Departamento Administrativo de Planeación (GeoMedellín), CC BY-SA 4.0: ortofoto de noviembre de 2024, manzanas, espacio público existente y comunas;\nconsultado el 2026-11-07. Mapa base: Alcaldía de Medellín. Este mapa y su proyecto: CC BY-SA 4.0.", "size": 6.5, "x": 10, "y": 196, "w": 277, "h": 7}
+layout.addElement {"layout": "Dia 08", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 8: Utopia · Hecho con RustGIS · rustgis.app", "size": 7, "align": "right", "x": 10, "y": 203.5, "w": 277, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz

@@ -1,0 +1,29 @@
+# Day 8 — Utopia: The 3-30-300 utopia in Medellín — 4 · ENGLISH LAYOUT
+layout.new {"name": "Day 08", "page": "a4", "orientation": "landscape", "template": "blank"}
+# Two frames side by side (elements 1 and 2), each fitted to the comunas
+layout.addFrame {"layout": "Day 08", "map": "El 30", "x": 10, "y": 37, "w": 102, "h": 128}
+layout.addFrame {"layout": "Day 08", "map": "El 300", "x": 118, "y": 37, "w": 102, "h": 128}
+layout.frameZoom {"layout": "Day 08", "element": 1, "to": "layer", "layer": "Comunas"}
+layout.frameZoom {"layout": "Day 08", "element": 2, "to": "layer", "layer": "Comunas"}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "The 3-30-300 utopia in Medellín", "size": 22, "bold": true, "x": 10, "y": 7, "w": 277, "h": 11}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "A green urban planning rule (Konijnendijk, 2021): 3 trees in view from every home, 30 % tree canopy in every neighbourhood and a park within 300 m.\nPublic data can measure two of them: 6 of the 16 comunas pass 30 % vegetation, and 7 in 10 city blocks have a park within 300 m.", "size": 10, "x": 10, "y": 18.5, "w": 277, "h": 10}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "30 · Vegetation by comuna (NDVI from the 2024 orthophoto)", "size": 9, "bold": true, "x": 10, "y": 31, "w": 102, "h": 5}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "300 · Each city block and its nearest park of at least 0.5 ha", "size": 9, "bold": true, "x": 118, "y": 31, "w": 102, "h": 5}
+# North arrow and scale bar in the first frame, on a light rectangle
+layout.addElement {"layout": "Day 08", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 96.5, "y": 39, "w": 14, "h": 17}
+layout.addElement {"layout": "Day 08", "kind": "northArrow", "frame": 1, "style": "compass", "x": 98, "y": 40, "w": 11, "h": 15}
+layout.addElement {"layout": "Day 08", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 11, "y": 155.5, "w": 32, "h": 9}
+layout.addElement {"layout": "Day 08", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 157, "w": 30, "h": 6}
+layout.addElement {"layout": "Day 08", "kind": "legend", "frame": 1, "title": " ", "exclude": ["Comunas"], "columns": 2, "x": 10, "y": 167, "w": 100, "h": 18}
+layout.addElement {"layout": "Day 08", "kind": "legend", "frame": 2, "title": " ", "exclude": ["Comunas"], "columns": 2, "x": 118, "y": 167, "w": 100, "h": 18}
+# Right column: the 3 and how to read the map
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "And the 3?", "size": 9, "bold": true, "x": 228, "y": 37, "w": 59, "h": 5}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "Seeing 3 trees from every home can't\nbe measured with public data: Medellín's\ntree inventory records the work done\non trees, not every tree, and what you\nsee from a window needs street-level\nimagery.", "size": 7, "x": 228, "y": 43, "w": 59, "h": 24}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "By comuna", "size": 9, "bold": true, "x": 228, "y": 74, "w": 59, "h": 5}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "Above 30 %: El Poblado (52 %),\nBuenos Aires (43 %), Robledo (41 %),\nBelén (34 %), Villa Hermosa (34 %)\nand Guayabal (31 %).\nThe least green: Santa Cruz and Doce\nde Octubre, at 13 % each.", "size": 7, "x": 228, "y": 80, "w": 59, "h": 24}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "Reading it", "size": 9, "bold": true, "x": 228, "y": 111, "w": 59, "h": 5}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "NDVI counts all vegetation: trees,\nlawns and gardens. Guayabal adds the\ngrass of Olaya Herrera airport. It\napproximates the canopy; it isn't\nthe canopy.\nThe 300 m are a straight line, edge\nto edge, not a walk.", "size": 7, "x": 228, "y": 117, "w": 59, "h": 28}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "How it was made: all in RustGIS web (web.rustgis.app), with four scripts. 1 · Data: comunas, parks, city blocks and a vegetation image (NDVI > 0.3) that the city's server computes from the 2024 orthophoto.\n2 · View: Zonal Statistics (each comuna's mean is its vegetation share), Merge, Simplify and Near (distance from each block to the nearest park). 3–4 · Layouts. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 6.5, "x": 10, "y": 188, "w": 277, "h": 8}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "Data: Alcaldía de Medellín, Administrative Department of Planning (GeoMedellín), CC BY-SA 4.0: November 2024 orthophoto, city blocks, existing public space and comunas;\naccessed 2026-11-07. Basemap: Alcaldía de Medellín. This map and its project: CC BY-SA 4.0.", "size": 6.5, "x": 10, "y": 196, "w": 277, "h": 7}
+layout.addElement {"layout": "Day 08", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 8: Utopia · Made with RustGIS · rustgis.app", "size": 7, "align": "right", "x": 10, "y": 203.5, "w": 277, "h": 4}
+# Delivery: export the layout and save the project from the interface

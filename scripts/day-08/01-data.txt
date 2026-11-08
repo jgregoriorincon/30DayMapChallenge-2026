@@ -1,0 +1,29 @@
+# Día 8 — Utopia: La utopía del 3-30-300 en Medellín — 1 · DATOS
+# La regla 3-30-300 de urbanismo verde: 3 árboles visibles desde cada casa, 30 % de copa arbórea
+# en cada barrio y un parque a menos de 300 m. Con datos públicos se miden dos: el 30 y el 300.
+# Todo viene del servidor de mapas de la Alcaldía de Medellín (CC BY-SA 4.0), que permite CORS.
+map.rename {"name": "El 30"}
+map.basemap {"name": "blank"}
+# Cartografía base de la Alcaldía de Medellín, teselas vectoriales con su estilo oficial
+map.addTiles {"url": "https://www.medellin.gov.co/servidormapas/rest/services/Hosted/CartografiaBase_ZER_VectorTile/VectorTileServer/resources/styles/root.json", "kind": "style", "name": "Cartografía base (Alcaldía de Medellín)"}
+map.zoomToExtent {"extent": [-75.633, 6.175, -75.524, 6.3135]}
+
+# Las 16 comunas de la zona urbana (sin los corregimientos)
+layer.addUrl {"url": "https://www.medellin.gov.co/servidormapas/rest/services/ServiciosCiudad/MAP6_Indicadores/MapServer/4/query?where=subtipo_comunacorregimiento%3D1%20AND%20codigo%20NOT%20IN%20%28%27SD%27,%27SN01%27%29&outFields=codigo,nombre&outSR=4326&f=pbf", "name": "Comunas", "zoom": false}
+
+# El 30: vegetación de la ortofoto de noviembre de 2024 (10 cm, con infrarrojo cercano). El
+# servidor calcula el NDVI de las bandas 1 (rojo) y 4 (infrarrojo) y lo pasa a 1 donde NDVI > 0,3
+# (vegetación) y a 0 donde no. Llega como una imagen de 2400 × 3060 celdas de unos 5 m
+layer.addUrl {"url": "https://www.medellin.gov.co/servidormapas/rest/services/ServiciosImagen/Ortofoto_Medellin_2024/ImageServer/exportImage?bbox=-75.6330,6.1750,-75.5240,6.3135&bboxSR=4326&imageSR=4326&size=2400,3060&format=tiff&pixelType=U8&compression=LZW&renderingRule=%7B%22rasterFunction%22%3A%22Remap%22,%22rasterFunctionArguments%22%3A%7B%22InputRanges%22%3A%5B0,130,130,201%5D,%22OutputValues%22%3A%5B0,1%5D,%22Raster%22%3A%7B%22rasterFunction%22%3A%22NDVI%22,%22rasterFunctionArguments%22%3A%7B%22VisibleBandID%22%3A0,%22InfraredBandID%22%3A3%7D%7D%7D,%22outputPixelType%22%3A%22U8%22%7D&f=image", "name": "Vegetación (NDVI > 0,3)", "whole": true, "zoom": false}
+
+# El 300: parques, zonas verdes recreativas y ecoparques de al menos 0,5 ha (311) del espacio
+# público existente
+layer.addUrl {"url": "https://www.medellin.gov.co/servidormapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer/17/query?where=categoria%20IN%20%28%27Zona%20Verde%20Recreacional%27,%27Ecoparque%27,%27Parque%20recreativo%27%29%20AND%20st_area%28shape%29%3E%3D5000&outFields=nombre,categoria&outSR=4326&f=pbf", "name": "Parques", "zoom": false}
+# Las manzanas de las comunas (9656): cinco páginas de 2000, ordenadas por objectid
+layer.addUrl {"url": "https://www.medellin.gov.co/servidormapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer/20/query?where=tipo_manzana%3D%27MZ%27%20AND%20cobama%3C%2717%27&outFields=cobama&orderByFields=objectid&resultOffset=0&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Manzanas 1", "zoom": false}
+layer.addUrl {"url": "https://www.medellin.gov.co/servidormapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer/20/query?where=tipo_manzana%3D%27MZ%27%20AND%20cobama%3C%2717%27&outFields=cobama&orderByFields=objectid&resultOffset=2000&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Manzanas 2", "zoom": false}
+layer.addUrl {"url": "https://www.medellin.gov.co/servidormapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer/20/query?where=tipo_manzana%3D%27MZ%27%20AND%20cobama%3C%2717%27&outFields=cobama&orderByFields=objectid&resultOffset=4000&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Manzanas 3", "zoom": false}
+layer.addUrl {"url": "https://www.medellin.gov.co/servidormapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer/20/query?where=tipo_manzana%3D%27MZ%27%20AND%20cobama%3C%2717%27&outFields=cobama&orderByFields=objectid&resultOffset=6000&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Manzanas 4", "zoom": false}
+layer.addUrl {"url": "https://www.medellin.gov.co/servidormapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer/20/query?where=tipo_manzana%3D%27MZ%27%20AND%20cobama%3C%2717%27&outFields=cobama&orderByFields=objectid&resultOffset=8000&resultRecordCount=2000&outSR=4326&f=pbf", "name": "Manzanas 5", "zoom": false}
+
+# Esperar a que estén las 8 capas en el panel de capas. Luego, el script 2 (vista).

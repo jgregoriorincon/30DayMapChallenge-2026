@@ -3,8 +3,10 @@
 **English** · [Español](README.es.md) · [Gallery](https://jgregoriorincon.github.io/30DayMapChallenge-2026/)
 
 The November 2026 maps, made end to end in [RustGIS](https://github.com/opengeos/RustGIS) in
-the browser ([web.rustgis.app](https://web.rustgis.app)), with data on Bogotá, Barranquilla and
-Colombia read straight from public web services.
+the browser ([web.rustgis.app](https://web.rustgis.app)), with data on Colombia and its cities
+(Bogotá, Barranquilla, Cartagena, Medellín, Bucaramanga, Cali and Cúcuta) read straight from public web services.
+
+By [Jose Gregorio Rincon Albarracin](https://github.com/jgregoriorincon), cadastral engineer and geodesist, RustGIS contributor.
 
 Each day has:
 
@@ -30,6 +32,7 @@ Each day has:
 | 5 | Senses: Sight | What can you see from Monserrate? (¿Qué se ve desde Monserrate?) | [project](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-05/day-05.rgis) | [1](scripts/day-05/01-data.txt) · [2](scripts/day-05/02-view.txt) · [3](scripts/day-05/03-layout.txt) · [4](scripts/day-05/04-english.txt) | Digital Terrain Model of Bogotá D.C. 2025, IDECA (CC BY 4.0); basemap: Mapa base azul, IDECA |
 | 6 | Vintage | Cartagena de Indias, as Herrera drew it (Cartagena de Indias, según Herrera) | [project](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-06/day-06.rgis) | [1](scripts/day-06/01-data.txt) · [2](scripts/day-06/02-view.txt) · [3](scripts/day-06/03-layout.txt) · [4](scripts/day-06/04-english.txt) | Plan of Cartagena by Juan de Herrera y Sotomayor (18th c.), Bibliothèque nationale de France / Gallica (public domain), via Wikimedia Commons; today's bastions and basemap: © OpenStreetMap contributors (ODbL) |
 | 7 | 10 minute map | An afternoon of clouds over Colombia (Una tarde de nubes sobre Colombia) | [project](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-07/day-07.rgis) | [1](scripts/day-07/01-data.txt) · [2](scripts/day-07/02-view.txt) · [3](scripts/day-07/03-layout.txt) · [4](scripts/day-07/04-english.txt) | NOAA GOES-East ABI, GeoColor product (CIRA/NOAA), served by NASA GIBS (accessed 2026-11-06; GIBS keeps these images for about 3 months, so the project may later open without them); boundary: geoBoundaries (CC0) |
+| 8 | Utopia | The 3-30-300 utopia in Medellín (La utopía del 3-30-300 en Medellín) | [project](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-08/day-08.rgis) | [1](scripts/day-08/01-data.txt) · [2](scripts/day-08/02-view.txt) · [3](scripts/day-08/03-layout.txt) · [4](scripts/day-08/04-english.txt) | Alcaldía de Medellín, Administrative Department of Planning (GeoMedellín), CC BY-SA 4.0: November 2024 orthophoto, city blocks, existing public space and comunas; basemap: Alcaldía de Medellín. **This map and its project: CC BY-SA 4.0** |
 
 Each map comes in Spanish and in English; the legend classes keep the data's Spanish names.
 
@@ -51,7 +54,8 @@ keeps the data as it was on the day of the map.
 - Scripts (`scripts/`) and the gallery (`index.html`): [MIT](LICENSE).
 - Images (`results/day-NN/day-NN-{es,en}.webp`, `results/day-NN/day-NN-{es,en}.pdf`) and projects (`results/day-NN/day-NN.rgis`):
   [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), credited as
-  "@jgregoriorincon, #30DayMapChallenge 2026, made with RustGIS".
+  "@jgregoriorincon, #30DayMapChallenge 2026, made with RustGIS". Exception: day 8 is
+  [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), because its data is.
 - The data inside each `.rgis` keeps its source's licence (table above). Days with
   OpenStreetMap data: © OpenStreetMap contributors,
   [ODbL](https://opendatacommons.org/licenses/odbl/).

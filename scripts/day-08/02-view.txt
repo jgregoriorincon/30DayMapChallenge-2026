@@ -1,0 +1,53 @@
+# Día 8 — Utopia: La utopía del 3-30-300 en Medellín — 2 · VISTA (proceso y estilo)
+
+# El 30: la media de la imagen de vegetación (0 o 1) en cada comuna es la parte de su área con
+# NDVI > 0,3. Queda en el campo veg_mean, de 0 a 1
+gp.run {"tool": "zonalStats", "params": {"raster": "Vegetación (NDVI > 0,3)", "polygons": "Comunas", "stats": "Mean", "prefix": "veg", "output": "Vegetación · Vegetation"}}
+# La imagen ya dio su número: sale del proyecto (el script 1 la vuelve a traer con su URL)
+layer.remove {"layer": "Vegetación (NDVI > 0,3)"}
+
+# El 300: une las cinco páginas de manzanas y simplifica a 1 m (tolerancia en km), que en el layout
+# es 0,01 mm y deja el proyecto más liviano
+gp.run {"tool": "merge", "params": {"inputs": "Manzanas 1;Manzanas 2;Manzanas 3;Manzanas 4;Manzanas 5", "attributes": true, "output": "Manzanas unidas"}}
+gp.run {"tool": "simplify", "params": {"input": "Manzanas unidas", "tolerance": 0.001, "output": "Manzanas"}}
+layer.remove {"layer": ["Manzanas 1", "Manzanas 2", "Manzanas 3", "Manzanas 4", "Manzanas 5", "Manzanas unidas"]}
+# Los parques también a 1 m: Near mide contra cada vértice, y así hace menos trabajo
+gp.run {"tool": "simplify", "params": {"input": "Parques", "tolerance": 0.001, "output": "Parques ≥ 0,5 ha · Parks ≥ 0.5 ha"}}
+layer.remove {"layer": "Parques"}
+# Distancia en línea recta, de borde a borde, de cada manzana al parque de 0,5 ha o más más cercano
+# (campo near_dist, en metros)
+gp.run {"tool": "near", "params": {"input": "Manzanas", "near": "Parques ≥ 0,5 ha · Parks ≥ 0.5 ha", "units": "Meters", "output": "Manzanas · Blocks"}}
+layer.remove {"layer": "Manzanas"}
+
+# Encima de todo, el límite de las comunas con su nombre; debajo, los parques
+layer.move {"layer": "Comunas", "to": 0}
+layer.move {"layer": "Parques ≥ 0,5 ha · Parks ≥ 0.5 ha", "to": 1}
+layer.noFill {"layer": "Comunas"}
+layer.outline {"layer": "Comunas", "color": "#1F2937", "width": 0.8}
+labels.field {"layer": "Comunas", "field": "nombre"}
+labels.style {"layer": "Comunas", "size": 7, "bold": true, "color": "#1F2937", "halo": true, "haloColor": "#FFFFFF"}
+
+# El 30 en cuatro clases, partidas en el umbral: por debajo del 30 % en tonos tierra, por encima en
+# verdes (BrBG de ColorBrewer). Las etiquetas no llevan palabras: sirven al layout en los dos idiomas
+layer.symbology {"layer": "Vegetación · Vegetation", "type": "graduated", "field": "veg_mean", "method": "manual", "breaks": [0.2, 0.3, 0.4]}
+layer.classStyle {"layer": "Vegetación · Vegetation", "index": 0, "color": "#D8B365FF", "label": "< 20 %"}
+layer.classStyle {"layer": "Vegetación · Vegetation", "index": 1, "color": "#F6E8C3FF", "label": "20–30 %"}
+layer.classStyle {"layer": "Vegetación · Vegetation", "index": 2, "color": "#80CDC1FF", "label": "30–40 %"}
+layer.classStyle {"layer": "Vegetación · Vegetation", "index": 3, "color": "#018571FF", "label": "≥ 40 %"}
+layer.outline {"layer": "Vegetación · Vegetation", "color": "#FFFFFF", "width": 0.5}
+
+# El 300: verde si hay parque a 300 m o menos, naranja si no
+layer.symbology {"layer": "Manzanas · Blocks", "type": "graduated", "field": "near_dist", "method": "manual", "breaks": [300]}
+layer.classStyle {"layer": "Manzanas · Blocks", "index": 0, "color": "#7FBC41FF", "label": "≤ 300 m"}
+layer.classStyle {"layer": "Manzanas · Blocks", "index": 1, "color": "#F1A340FF", "label": "> 300 m"}
+layer.outline {"layer": "Manzanas · Blocks", "color": "#FFFFFF", "width": 0.1}
+layer.color {"layer": "Parques ≥ 0,5 ha · Parks ≥ 0.5 ha", "color": "#1B5E20FF"}
+layer.outline {"layer": "Parques ≥ 0,5 ha · Parks ≥ 0.5 ha", "color": "#1B5E20", "width": 0.2}
+
+# Dos mapas: "El 30" con la vegetación por comuna y "El 300" con las manzanas y los parques. Cada
+# uno se queda solo con sus capas: ocultas, el proyecto las guardaría dos veces
+map.duplicate {"map": "El 30", "name": "El 300"}
+map.activate {"name": "El 300"}
+layer.remove {"layer": "Vegetación · Vegetation"}
+map.activate {"name": "El 30"}
+layer.remove {"layer": ["Manzanas · Blocks", "Parques ≥ 0,5 ha · Parks ≥ 0.5 ha"]}

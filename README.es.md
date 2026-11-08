@@ -4,8 +4,10 @@
 
 Los mapas de noviembre de 2026, hechos de principio a fin en
 [RustGIS](https://github.com/opengeos/RustGIS) desde el navegador
-([web.rustgis.app](https://web.rustgis.app)), con datos de Bogotá, Barranquilla y Colombia
-que se leen directamente de servicios públicos.
+([web.rustgis.app](https://web.rustgis.app)), con datos de Colombia y de sus ciudades
+(Bogotá, Barranquilla, Cartagena, Medellín, Bucaramanga, Cali y Cúcuta) que se leen directamente de servicios públicos.
+
+Por [Jose Gregorio Rincon Albarracin](https://github.com/jgregoriorincon), ingeniero catastral y geodesta, contribuidor de RustGIS.
 
 Cada día tiene:
 
@@ -31,6 +33,7 @@ Cada día tiene:
 | 5 | Senses: Sight | ¿Qué se ve desde Monserrate? | [proyecto](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-05/day-05.rgis) | [1](scripts/day-05/01-data.txt) · [2](scripts/day-05/02-view.txt) · [3](scripts/day-05/03-layout.txt) · [4](scripts/day-05/04-english.txt) | Modelo Digital de Terreno de Bogotá D.C. 2025, IDECA (CC BY 4.0); mapa base: Mapa base azul, IDECA |
 | 6 | Vintage | Cartagena de Indias, según Herrera | [proyecto](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-06/day-06.rgis) | [1](scripts/day-06/01-data.txt) · [2](scripts/day-06/02-view.txt) · [3](scripts/day-06/03-layout.txt) · [4](scripts/day-06/04-english.txt) | Plano de Cartagena de Juan de Herrera y Sotomayor (siglo XVIII), Bibliothèque nationale de France / Gallica (dominio público), vía Wikimedia Commons; baluartes de hoy y mapa base: © colaboradores de OpenStreetMap (ODbL) |
 | 7 | 10 minute map | Una tarde de nubes sobre Colombia | [proyecto](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-07/day-07.rgis) | [1](scripts/day-07/01-data.txt) · [2](scripts/day-07/02-view.txt) · [3](scripts/day-07/03-layout.txt) · [4](scripts/day-07/04-english.txt) | NOAA GOES-East ABI, producto GeoColor (CIRA/NOAA), servido por NASA GIBS (consultado el 2026-11-06; GIBS guarda estas imágenes unos 3 meses, así que más adelante el proyecto puede abrir sin ellas); límite: geoBoundaries (CC0) |
+| 8 | Utopia | La utopía del 3-30-300 en Medellín | [proyecto](https://web.rustgis.app/?project=https://jgregoriorincon.github.io/30DayMapChallenge-2026/results/day-08/day-08.rgis) | [1](scripts/day-08/01-data.txt) · [2](scripts/day-08/02-view.txt) · [3](scripts/day-08/03-layout.txt) · [4](scripts/day-08/04-english.txt) | Alcaldía de Medellín, Departamento Administrativo de Planeación (GeoMedellín), CC BY-SA 4.0: ortofoto de noviembre de 2024, manzanas, espacio público existente y comunas; mapa base: Alcaldía de Medellín. **Este mapa y su proyecto: CC BY-SA 4.0** |
 
 ## Cómo reproducir un día
 
@@ -50,7 +53,8 @@ cambia. El `.rgis` guarda los datos tal como estaban el día del mapa.
 - Scripts (`scripts/`) y la galería (`index.html`): [MIT](LICENSE).
 - Imágenes (`results/day-NN/day-NN-{es,en}.webp`, `results/day-NN/day-NN-{es,en}.pdf`) y proyectos (`results/day-NN/day-NN.rgis`):
   [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), citando
-  "@jgregoriorincon, #30DayMapChallenge 2026, hecho con RustGIS".
+  "@jgregoriorincon, #30DayMapChallenge 2026, hecho con RustGIS". Excepción: el día 8 va con
+  [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), porque así vienen sus datos.
 - Los datos dentro de cada `.rgis` conservan la licencia de su fuente (tabla de arriba).
   Los días con datos de OpenStreetMap: © colaboradores de OpenStreetMap,
   [ODbL](https://opendatacommons.org/licenses/odbl/).
