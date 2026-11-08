@@ -7,7 +7,7 @@ Los mapas de noviembre de 2026, hechos de principio a fin en
 ([web.rustgis.app](https://web.rustgis.app)), con datos de Colombia y de sus ciudades
 (Bogotá, Barranquilla, Cartagena, Medellín, Bucaramanga, Cali y Cúcuta) que se leen directamente de servicios públicos.
 
-Por [Jose Gregorio Rincon Albarracin](https://github.com/jgregoriorincon), ingeniero catastral y geodesta, contribuidor de RustGIS · [LinkedIn](https://www.linkedin.com/in/jgregoriorincon/)
+Por [José Gregorio Rincón Albarracín](https://github.com/jgregoriorincon), arquitecto de soluciones geográficas y contribuidor de RustGIS · [LinkedIn](https://www.linkedin.com/in/jgregoriorincon/)
 
 Cada día tiene:
 

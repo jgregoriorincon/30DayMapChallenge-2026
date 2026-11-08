@@ -6,7 +6,7 @@ The November 2026 maps, made end to end in [RustGIS](https://github.com/opengeos
 the browser ([web.rustgis.app](https://web.rustgis.app)), with data on Colombia and its cities
 (Bogotá, Barranquilla, Cartagena, Medellín, Bucaramanga, Cali and Cúcuta) read straight from public web services.
 
-By [Jose Gregorio Rincon Albarracin](https://github.com/jgregoriorincon), cadastral engineer and geodesist, RustGIS contributor · [LinkedIn](https://www.linkedin.com/in/jgregoriorincon/)
+By [José Gregorio Rincón Albarracín](https://github.com/jgregoriorincon), GIS solutions architect and RustGIS contributor · [LinkedIn](https://www.linkedin.com/in/jgregoriorincon/)
 
 Each day has:
 
