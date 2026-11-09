@@ -1,0 +1,19 @@
+# Día 9 — Urban-rural: ¿Dónde termina la ciudad? — 1 · DATOS
+# El área metropolitana de Bucaramanga (Bucaramanga, Floridablanca, Girón y Piedecuesta) en celdas
+# de 1 km según el grado de urbanización del censo, con el perímetro urbano legal encima.
+map.rename {"name": "Urbano-rural"}
+map.basemap {"name": "blank"}
+# Mapa base OpenFreeMap Positron (teselas vectoriales de OpenStreetMap, estilo claro)
+map.addTiles {"url": "https://tiles.openfreemap.org/styles/positron", "kind": "style", "name": "OpenFreeMap Positron", "attribution": "OpenFreeMap © OpenMapTiles Data from OpenStreetMap"}
+map.zoomToExtent {"extent": [-73.56, 6.77, -72.89, 7.27]}
+
+# Grilla estadística del DANE, nivel de 1 km (N6_1K), con el grado de urbanización (degurba_l2) y
+# las personas del CNPV 2018. Los cuatro municipios son 1230 celdas: una página (el tope es 2000).
+# Ojo: el host es portalgis.dane.gov.co; geoportal.dane.gov.co no permite CORS
+layer.addUrl {"url": "https://portalgis.dane.gov.co/mparcgis/rest/services/Grilla_DANE/Serv_Grilla_DANE/FeatureServer/1/query?where=mpio_cod%20IN%20(%2768001%27,%2768276%27,%2768307%27,%2768547%27)&outFields=n6_cod,degurba_l1,degurba_l2,mpio_cnmbr,viviendas,hogares,personas&outSR=4326&f=pbf", "name": "Grilla 1 km", "zoom": false}
+
+# Perímetros urbanos del mapa base del Área Metropolitana de Bucaramanga (capa "Zonas Urbanas"):
+# un polígono urbano por municipio. El servidor (ArcGIS 10.51) no da PBF: va en GeoJSON
+layer.addUrl {"url": "https://mapa.amb.gov.co/server/rest/services/VISOR/MAPA_BASE_VECTORIAL_105_Nuevo/MapServer/20/query?where=TIPO%3D%27URBANO%27&outFields=NMG,AREA&outSR=4326&f=geojson", "name": "Zonas urbanas", "zoom": false}
+
+# Esperar a que estén las 2 capas en el panel de capas. Luego, el script 2 (vista).

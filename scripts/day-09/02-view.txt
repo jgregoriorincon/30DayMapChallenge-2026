@@ -1,0 +1,42 @@
+# Día 9 — Urban-rural: ¿Dónde termina la ciudad? — 2 · VISTA (proceso y estilo)
+
+# Los perímetros llegan con vértices cada pocos metros (unos 900 KB): simplificados a 5 m
+# (tolerancia en km), que en el layout es menos de 0,02 mm
+gp.run {"tool": "simplify", "params": {"input": "Zonas urbanas", "tolerance": 0.005, "output": "Perímetro urbano · Urban perimeter"}}
+layer.remove {"layer": "Zonas urbanas"}
+
+# Cada celda, dentro o fuera del perímetro según dónde cae su centro: join_count = 1 dentro, 0 fuera
+gp.run {"tool": "spatialJoin", "params": {"target": "Grilla 1 km", "join": "Perímetro urbano · Urban perimeter", "match": "Have their center in", "output": "Grado de urbanización · Degree of urbanisation"}}
+layer.remove {"layer": "Grilla 1 km"}
+
+# La cifra del subtítulo: personas dentro (1) y fuera (0) del perímetro. Debe dar 911 390 y 189 842,
+# en 88 y 1142 celdas (FREQUENCY) (réplica en Python, 2026-11-07). Sale una tabla
+# "…_Statistics", que no se dibuja
+gp.run {"tool": "summaryStatistics", "params": {"input": "Grado de urbanización · Degree of urbanisation", "statistics": [{"field": "personas", "statistic": "SUM"}], "case": "join_count"}}
+
+# La leyenda ordena los valores únicos por número, de menor a mayor: un rango de 1 (ciudad) a 7
+# (agua) deja la ciudad arriba. degurba_l2 es texto
+edit.addField {"layer": "Grado de urbanización · Degree of urbanisation", "name": "Clase", "type": "long"}
+edit.calculateField {"layer": "Grado de urbanización · Degree of urbanisation", "field": "Clase", "expression": "CASE WHEN degurba_l2 = '30' THEN 1 WHEN degurba_l2 = '23' THEN 2 WHEN degurba_l2 = '22' THEN 3 WHEN degurba_l2 = '21' THEN 4 WHEN degurba_l2 = '13' THEN 5 WHEN degurba_l2 = '12' THEN 6 WHEN degurba_l2 = '11' THEN 7 ELSE 8 END"}
+layer.symbology {"layer": "Grado de urbanización · Degree of urbanisation", "type": "unique", "field": "Clase"}
+
+# Colores de GHSL (Comisión Europea) para el grado de urbanización, nivel 2. La clase 22
+# (semidensa) no aparece en el área metropolitana. Etiquetas con el código y las personas
+layer.classStyle {"layer": "Grado de urbanización · Degree of urbanisation", "value": 1, "color": "#FF0000", "label": "30 · Centro urbano · 896 mil"}
+layer.classStyle {"layer": "Grado de urbanización · Degree of urbanisation", "value": 2, "color": "#732600", "label": "23 · Aglomeración urbana densa · 20 mil"}
+layer.classStyle {"layer": "Grado de urbanización · Degree of urbanisation", "value": 4, "color": "#FFFF00", "label": "21 · Suburbano o periurbano · 55 mil"}
+layer.classStyle {"layer": "Grado de urbanización · Degree of urbanisation", "value": 5, "color": "#375623", "label": "13 · Núcleo rural · 2 mil"}
+layer.classStyle {"layer": "Grado de urbanización · Degree of urbanisation", "value": 6, "color": "#ABCD66", "label": "12 · Rural de baja densidad · 110 mil"}
+layer.classStyle {"layer": "Grado de urbanización · Degree of urbanisation", "value": 7, "color": "#CDF57A", "label": "11 · Rural de muy baja densidad · 18 mil"}
+layer.classStyle {"layer": "Grado de urbanización · Degree of urbanisation", "value": 8, "color": "#7AB6F5", "label": "10 · Agua o sin datos"}
+# Borde blanco fino: deja ver la grilla
+layer.outline {"layer": "Grado de urbanización · Degree of urbanisation", "color": "#FFFFFF", "width": 0.1}
+# Un 25 % transparente: debajo se adivinan las calles y los ríos del mapa base
+layer.transparency {"layer": "Grado de urbanización · Degree of urbanisation", "value": 25}
+
+# Encima, el perímetro urbano: línea oscura sin relleno, con el nombre del municipio
+layer.move {"layer": "Perímetro urbano · Urban perimeter", "to": 0}
+layer.noFill {"layer": "Perímetro urbano · Urban perimeter"}
+layer.outline {"layer": "Perímetro urbano · Urban perimeter", "color": "#111111", "width": 0.9}
+labels.field {"layer": "Perímetro urbano · Urban perimeter", "field": "NMG"}
+labels.style {"layer": "Perímetro urbano · Urban perimeter", "size": 7, "bold": true, "color": "#111111", "halo": true, "haloColor": "#FFFFFF"}

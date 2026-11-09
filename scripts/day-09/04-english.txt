@@ -1,0 +1,23 @@
+# Day 9 — Urban-rural: Where does the city end? — 4 · ENGLISH LAYOUT
+layout.new {"name": "Day 09", "page": "a4", "orientation": "landscape", "template": "blank"}
+# One frame (element 1) fitted to the grid
+layout.addFrame {"layout": "Day 09", "map": "Urbano-rural", "x": 10, "y": 32, "w": 190, "h": 150}
+layout.frameZoom {"layout": "Day 09", "element": 1, "to": "layer", "layer": "Grado de urbanización · Degree of urbanisation"}
+layout.addElement {"layout": "Day 09", "kind": "text", "text": "Where does the city end?", "size": 22, "bold": true, "x": 10, "y": 7, "w": 277, "h": 11}
+layout.addElement {"layout": "Day 09", "kind": "text", "text": "Bucaramanga metropolitan area, Colombia: the census degree of urbanisation in 1 km cells and, in black, the legal urban perimeter.\n1 in 6 residents (190,000 of 1.1 million) lives in cells whose centre lies outside the urban perimeter.", "size": 10, "x": 10, "y": 18.5, "w": 277, "h": 10}
+# North arrow and scale bar on a light rectangle
+layout.addElement {"layout": "Day 09", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 184.5, "y": 34, "w": 14, "h": 17}
+layout.addElement {"layout": "Day 09", "kind": "northArrow", "frame": 1, "style": "compass", "x": 186, "y": 35, "w": 11, "h": 15}
+layout.addElement {"layout": "Day 09", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 11, "y": 171.5, "w": 32, "h": 9}
+layout.addElement {"layout": "Day 09", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 173, "w": 30, "h": 6}
+# Right column: legend, outside the perimeter, and how to read it
+layout.addElement {"layout": "Day 09", "kind": "text", "text": "Degree of urbanisation and people", "size": 9, "bold": true, "x": 208, "y": 32, "w": 79, "h": 5}
+layout.addElement {"layout": "Day 09", "kind": "legend", "frame": 1, "title": " ", "x": 208, "y": 37, "w": 79, "h": 45}
+layout.addElement {"layout": "Day 09", "kind": "text", "text": "Outside the perimeter", "size": 9, "bold": true, "x": 208, "y": 86, "w": 79, "h": 5}
+layout.addElement {"layout": "Day 09", "kind": "text", "text": "Girón: 61,000 people. Bucaramanga: 54,000.\nPiedecuesta: 52,000. Floridablanca: 23,000.\nOf the 190,000, 116,000 live in cells the\ncensus already classes as urban or\nsuburban (classes 30, 23 and 21).", "size": 7, "x": 208, "y": 92, "w": 79, "h": 22}
+layout.addElement {"layout": "Day 09", "kind": "text", "text": "Reading it", "size": 9, "bold": true, "x": 208, "y": 120, "w": 79, "h": 5}
+layout.addElement {"layout": "Day 09", "kind": "text", "text": "The degree of urbanisation (UN method,\n2020) classes each cell by its density and\nits neighbours': an urban centre is a group\nof cells with 1,500 inhabitants per km² or\nmore that adds up to at least 50,000.\nEach cell counts whole on the side where its\ncentre falls: a cell split by the perimeter\nisn't shared out.", "size": 7, "x": 208, "y": 126, "w": 79, "h": 34}
+layout.addElement {"layout": "Day 09", "kind": "text", "text": "How it was made: all in RustGIS web (web.rustgis.app), with four scripts. 1 · Data: DANE's 1 km grid and the AMB urban perimeters, queried from their servers.\n2 · View: Simplify, Spatial Join (each cell by its centre) and Summary Statistics (people inside and outside). 3–4 · Layouts. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 6.5, "x": 10, "y": 186, "w": 277, "h": 8}
+layout.addElement {"layout": "Day 09", "kind": "text", "text": "Data: DANE (national statistics office), 1 km statistical grid with the degree of urbanisation (2018 National Population and Housing Census); Bucaramanga Metropolitan Area (AMB), vector basemap (urban zones);\naccessed 2026-11-07. Colours: GHSL (European Commission). Basemap: OpenFreeMap Positron, © OpenMapTiles, data © OpenStreetMap contributors (ODbL). This map and its project: CC BY 4.0.", "size": 6.5, "x": 10, "y": 194, "w": 277, "h": 7}
+layout.addElement {"layout": "Day 09", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 9: Urban-rural · Made with RustGIS · rustgis.app", "size": 7, "align": "right", "x": 10, "y": 203.5, "w": 277, "h": 4}
+# Delivery: export the layout and save the project from the interface

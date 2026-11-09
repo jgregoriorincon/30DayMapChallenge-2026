@@ -1,0 +1,23 @@
+# Día 9 — Urban-rural: ¿Dónde termina la ciudad? — 3 · LAYOUT
+layout.new {"name": "Dia 09", "page": "a4", "orientation": "landscape", "template": "blank"}
+# Un marco (elemento 1) ajustado a la grilla
+layout.addFrame {"layout": "Dia 09", "map": "Urbano-rural", "x": 10, "y": 32, "w": 190, "h": 150}
+layout.frameZoom {"layout": "Dia 09", "element": 1, "to": "layer", "layer": "Grado de urbanización · Degree of urbanisation"}
+layout.addElement {"layout": "Dia 09", "kind": "text", "text": "¿Dónde termina la ciudad?", "size": 22, "bold": true, "x": 10, "y": 7, "w": 277, "h": 11}
+layout.addElement {"layout": "Dia 09", "kind": "text", "text": "Área metropolitana de Bucaramanga, Colombia: el grado de urbanización del censo en celdas de 1 km y, en negro, el perímetro urbano legal.\n1 de cada 6 habitantes (190 mil de 1,1 millones) vive en celdas cuyo centro queda fuera del perímetro urbano.", "size": 10, "x": 10, "y": 18.5, "w": 277, "h": 10}
+# Norte y escala sobre un rectángulo claro
+layout.addElement {"layout": "Dia 09", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 184.5, "y": 34, "w": 14, "h": 17}
+layout.addElement {"layout": "Dia 09", "kind": "northArrow", "frame": 1, "style": "compass", "x": 186, "y": 35, "w": 11, "h": 15}
+layout.addElement {"layout": "Dia 09", "kind": "rectangle", "fill": "#FFFFFFCC", "outline": "#FFFFFFCC", "radius": 1, "x": 11, "y": 171.5, "w": 32, "h": 9}
+layout.addElement {"layout": "Dia 09", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "x": 13, "y": 173, "w": 30, "h": 6}
+# Columna derecha: leyenda, dentro y fuera, y cómo leerlo
+layout.addElement {"layout": "Dia 09", "kind": "text", "text": "Grado de urbanización y personas", "size": 9, "bold": true, "x": 208, "y": 32, "w": 79, "h": 5}
+layout.addElement {"layout": "Dia 09", "kind": "legend", "frame": 1, "title": " ", "x": 208, "y": 37, "w": 79, "h": 45}
+layout.addElement {"layout": "Dia 09", "kind": "text", "text": "Fuera del perímetro", "size": 9, "bold": true, "x": 208, "y": 86, "w": 79, "h": 5}
+layout.addElement {"layout": "Dia 09", "kind": "text", "text": "Girón: 61 mil personas. Bucaramanga: 54 mil.\nPiedecuesta: 52 mil. Floridablanca: 23 mil.\nDe los 190 mil, 116 mil viven en celdas\nque el censo ya clasifica como urbanas\no suburbanas (clases 30, 23 y 21).", "size": 7, "x": 208, "y": 92, "w": 79, "h": 22}
+layout.addElement {"layout": "Dia 09", "kind": "text", "text": "Al leerlo", "size": 9, "bold": true, "x": 208, "y": 120, "w": 79, "h": 5}
+layout.addElement {"layout": "Dia 09", "kind": "text", "text": "El grado de urbanización (método de la ONU,\n2020) clasifica cada celda por su densidad y\nla de sus vecinas: centro urbano es un grupo\nde celdas con 1500 habitantes por km² o más\nque suma al menos 50 000.\nCada celda cuenta entera del lado donde cae\nsu centro: una celda partida por el perímetro\nno se reparte.", "size": 7, "x": 208, "y": 126, "w": 79, "h": 34}
+layout.addElement {"layout": "Dia 09", "kind": "text", "text": "Cómo se hizo: todo en RustGIS web (web.rustgis.app), con cuatro scripts. 1 · Datos: la grilla de 1 km del DANE y los perímetros urbanos del AMB, consultados en sus servidores.\n2 · Vista: Simplify, Spatial Join (cada celda por su centro) y Summary Statistics (personas dentro y fuera). 3–4 · Layouts. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 6.5, "x": 10, "y": 186, "w": 277, "h": 8}
+layout.addElement {"layout": "Dia 09", "kind": "text", "text": "Datos: DANE, Grilla estadística de 1 km con el grado de urbanización (Censo Nacional de Población y Vivienda 2018); Área Metropolitana de Bucaramanga, mapa base vectorial (zonas urbanas);\nconsultados el 2026-11-07. Colores: GHSL (Comisión Europea). Mapa base: OpenFreeMap Positron, © OpenMapTiles, datos de © colaboradores de OpenStreetMap (ODbL). Este mapa y su proyecto: CC BY 4.0.", "size": 6.5, "x": 10, "y": 194, "w": 277, "h": 7}
+layout.addElement {"layout": "Dia 09", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 9: Urban-rural · Hecho con RustGIS · rustgis.app", "size": 7, "align": "right", "x": 10, "y": 203.5, "w": 277, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz
