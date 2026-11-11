@@ -1,0 +1,79 @@
+# Day 11 — Senses: Sound: Where Bogotá can't sleep — 4 · ENGLISH LAYOUT
+# Same design as the Spanish layout (see 03-layout.txt): dark page, edge-to-edge map, a round
+# lens with sound waves over the loudest spot, a big number and a hand-built equalizer legend.
+# Elements are numbered in order from 1: frame = 1, background = 2, kicker, title and subtitle = 3 to 5, lens = 6.
+layout.new {"name": "Day 11", "page": "a4", "orientation": "portrait", "template": "blank"}
+
+# 1 · Edge-to-edge map, between the title band and the numbers band
+layout.addFrame {"layout": "Day 11", "map": "Ruido", "x": 0, "y": 29, "w": 210, "h": 211}
+layout.frameZoom {"layout": "Day 11", "element": 1, "to": "layer", "layer": "Ruido de noche · Night noise"}
+# 2 · Page background, night blue like the basemap, sent behind everything
+layout.addElement {"layout": "Day 11", "kind": "rectangle", "fill": "#0B1220FF", "outline": "#0B1220FF", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Day 11", "element": 2, "to": "back"}
+
+# Title band: spaced kicker, title and one line of context
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "30DAYMAPCHALLENGE · DAY 11 · SOUND · BOGOTÁ", "size": 7.5, "color": "#F57D15", "letterSpacing": 2.5, "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "Where Bogotá can't sleep", "size": 26, "bold": true, "color": "#FFFFFF", "x": 12, "y": 10, "w": 186, "h": 12}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "Environmental noise at night (21:01 to 7:00) on ordinary (non-Sunday) days", "size": 9, "color": "#B8C4D6", "x": 12, "y": 22.5, "w": 186, "h": 5}
+
+# 6 · Lens: a round frame over the largest patch above 80 dB(A) at night (about 22 ha, between the
+# Santa Cecilia and Las Ferias planning zones, Engativá). Top-left corner, outside Bogotá
+layout.addFrame {"layout": "Day 11", "shape": "circle", "map": "Ruido", "x": 8, "y": 36, "w": 48, "h": 48}
+layout.update {"layout": "Day 11", "element": 6, "center": [-74.100, 4.681], "scale": 70000}
+# Waves: the lens edge and two rings fading outwards
+layout.addElement {"layout": "Day 11", "kind": "circle", "outline": "#FCFFA4", "width": 1, "x": 8, "y": 36, "w": 48, "h": 48}
+layout.addElement {"layout": "Day 11", "kind": "circle", "outline": "#FCFFA499", "width": 0.6, "x": 5, "y": 33, "w": 54, "h": 54}
+layout.addElement {"layout": "Day 11", "kind": "circle", "outline": "#FCFFA44D", "width": 0.6, "x": 2, "y": 30, "w": 60, "h": 60}
+# Where the lens sits on the big map, and a line joining them (line position is approximate:
+# adjust it looking at the layout on build day)
+layout.addElement {"layout": "Day 11", "kind": "extentIndicator", "frame": 1, "of": 6, "color": "#FCFFA4", "width": 1}
+layout.addElement {"layout": "Day 11", "kind": "line", "dir": "falling", "color": "#FCFFA4B3", "width": 0.6, "x": 50, "y": 78, "w": 58, "h": 42}
+# The lens text, on a translucent panel
+layout.addElement {"layout": "Day 11", "kind": "rectangle", "fill": "#0B1220CC", "outline": "#0B1220CC", "width": 0, "radius": 1, "x": 6, "y": 91, "w": 56, "h": 19}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "ABOVE 80 dB(A)", "size": 7, "bold": true, "color": "#FCFFA4", "letterSpacing": 1.5, "x": 8, "y": 92.5, "w": 52, "h": 4}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "The largest patch, about 22 ha,\nbetween Santa Cecilia and\nLas Ferias (Engativá).", "size": 7.5, "color": "#E6ECF5", "x": 8, "y": 97, "w": 52, "h": 12}
+
+# North arrow and scale bar, quiet, in blue-grey with no box
+layout.addElement {"layout": "Day 11", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#B8C4D6", "outline": "#B8C4D6", "x": 196, "y": 33, "w": 7, "h": 10}
+layout.addElement {"layout": "Day 11", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "color": "#B8C4D6", "x": 8, "y": 231, "w": 30, "h": 6}
+
+# Bottom band, left: the number as the way in
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "44%", "size": 40, "bold": true, "color": "#FAC127", "x": 12, "y": 242, "w": 62, "h": 17}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "of the mapped area is above 50 dB(A)\nat night, the limit for residential\nareas (Colombia, Res. 0627 of 2006).", "size": 7.5, "color": "#E6ECF5", "x": 12, "y": 260, "w": 64, "h": 12}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "By day, 22% is above its limit of 65.", "size": 7, "color": "#8A97AB", "x": 12, "y": 272.5, "w": 64, "h": 4}
+
+# Bottom band, right: the legend as an equalizer. One bar per 5 dB(A) band, in its colour, as tall
+# as its share of the area (1.8 mm per point; 80+ has a 0.8 mm minimum so it shows). Base at y = 266
+layout.addElement {"layout": "Day 11", "kind": "rectangle", "fill": "#4A1486FF", "outline": "#4A1486FF", "width": 0, "x": 82, "y": 247.8, "w": 14, "h": 18.2}
+layout.addElement {"layout": "Day 11", "kind": "rectangle", "fill": "#65156EFF", "outline": "#65156EFF", "width": 0, "x": 98.5, "y": 249.6, "w": 14, "h": 16.4}
+layout.addElement {"layout": "Day 11", "kind": "rectangle", "fill": "#9F2A63FF", "outline": "#9F2A63FF", "width": 0, "x": 115, "y": 249.1, "w": 14, "h": 16.9}
+layout.addElement {"layout": "Day 11", "kind": "rectangle", "fill": "#D44842FF", "outline": "#D44842FF", "width": 0, "x": 131.5, "y": 250.2, "w": 14, "h": 15.8}
+layout.addElement {"layout": "Day 11", "kind": "rectangle", "fill": "#F57D15FF", "outline": "#F57D15FF", "width": 0, "x": 148, "y": 258.4, "w": 14, "h": 7.6}
+layout.addElement {"layout": "Day 11", "kind": "rectangle", "fill": "#FAC127FF", "outline": "#FAC127FF", "width": 0, "x": 164.5, "y": 262.6, "w": 14, "h": 3.4}
+layout.addElement {"layout": "Day 11", "kind": "rectangle", "fill": "#FCFFA4FF", "outline": "#FCFFA4FF", "width": 0, "x": 181, "y": 265.2, "w": 14, "h": 0.8}
+# The share above each bar
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "10.1%", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 82, "y": 244, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "9.1%", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 98.5, "y": 245.8, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "9.4%", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 115, "y": 245.3, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "8.8%", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 131.5, "y": 246.4, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "4.2%", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 148, "y": 254.6, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "1.9%", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 164.5, "y": 258.8, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "0.3%", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 181, "y": 261.4, "w": 14, "h": 3.5}
+# The bands under each bar
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "50–55", "size": 6, "color": "#B8C4D6", "align": "center", "x": 82, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "55–60", "size": 6, "color": "#B8C4D6", "align": "center", "x": 98.5, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "60–65", "size": 6, "color": "#B8C4D6", "align": "center", "x": 115, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "65–70", "size": 6, "color": "#B8C4D6", "align": "center", "x": 131.5, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "70–75", "size": 6, "color": "#B8C4D6", "align": "center", "x": 148, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "75–80", "size": 6, "color": "#B8C4D6", "align": "center", "x": 164.5, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "80+", "size": 6, "color": "#B8C4D6", "align": "center", "x": 181, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "dB(A) at night · share of the mapped area", "size": 6.5, "color": "#8A97AB", "x": 82, "y": 271, "w": 113, "h": 3.5}
+# What stays under the limit, apart: a swatch in its colour
+layout.addElement {"layout": "Day 11", "kind": "rectangle", "fill": "#1B2A38FF", "outline": "#5A6B82", "width": 0.3, "x": 82, "y": 275.5, "w": 5, "h": 3}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "50 dB(A) or less: 56%, the city that sleeps", "size": 6.5, "color": "#B8C4D6", "x": 89, "y": 275.2, "w": 106, "h": 3.5}
+
+# Footer: a thin line, sources and signature
+layout.addElement {"layout": "Day 11", "kind": "line", "dir": "horizontal", "color": "#2A3A52", "width": 0.5, "x": 12, "y": 280.5, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "Data: Bogotá District Environment Department (SDA), Strategic Noise Maps of Bogotá D.C. 2018-2021, night, ordinary days\n(CC BY 4.0), accessed 2026-11-10. Basemap: Mapa base azul, IDECA. This map and its project: CC BY 4.0.\nHow it was made: all in RustGIS web (web.rustgis.app), with four scripts: data as quantized PBF, Calculate Field,\nUnique Values and layouts. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5.5, "color": "#8A97AB", "x": 12, "y": 282, "w": 186, "h": 10}
+layout.addElement {"layout": "Day 11", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 11: Senses: Sound · Made with RustGIS · rustgis.app", "size": 6.5, "color": "#F57D15", "align": "right", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Delivery: export the layout and save the project from the interface

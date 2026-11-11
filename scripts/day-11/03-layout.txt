@@ -1,0 +1,82 @@
+# Día 11 — Senses: Sound: ¿Dónde no duerme Bogotá? — 3 · LAYOUT
+# Diseño distinto a los días 1–10: página oscura, mapa de borde a borde, una lupa circular con
+# ondas sobre el punto más ruidoso, una cifra grande como entrada y la leyenda hecha a mano como
+# un ecualizador (la leyenda de RustGIS escribe en gris oscuro fijo y no se leería sobre negro).
+# Los elementos se numeran en orden desde 1: marco = 1, fondo = 2, antetítulo, título y subtítulo = 3 a 5, lupa = 6.
+layout.new {"name": "Dia 11", "page": "a4", "orientation": "portrait", "template": "blank"}
+
+# 1 · Mapa de borde a borde, entre la banda del título y la de las cifras
+layout.addFrame {"layout": "Dia 11", "map": "Ruido", "x": 0, "y": 29, "w": 210, "h": 211}
+layout.frameZoom {"layout": "Dia 11", "element": 1, "to": "layer", "layer": "Ruido de noche · Night noise"}
+# 2 · Fondo de la página, azul noche como el mapa base, mandado detrás de todo
+layout.addElement {"layout": "Dia 11", "kind": "rectangle", "fill": "#0B1220FF", "outline": "#0B1220FF", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Dia 11", "element": 2, "to": "back"}
+
+# Banda del título: antetítulo espaciado, título y una línea de contexto
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "30DAYMAPCHALLENGE · DÍA 11 · SONIDO · BOGOTÁ", "size": 7.5, "color": "#F57D15", "letterSpacing": 2.5, "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "¿Dónde no duerme Bogotá?", "size": 26, "bold": true, "color": "#FFFFFF", "x": 12, "y": 10, "w": 186, "h": 12}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "Ruido ambiental de noche (de 21:01 a 7:00) en jornada ordinaria", "size": 9, "color": "#B8C4D6", "x": 12, "y": 22.5, "w": 186, "h": 5}
+
+# 6 · Lupa: marco circular sobre la mancha más grande de más de 80 dB(A) de noche (unas 22 ha,
+# entre las UPZ Santa Cecilia y Las Ferias, Engativá; consultado en los datos y en las UPZ de
+# IDECA, 2026-11-10). Va en la esquina de arriba a la izquierda, que cae fuera de Bogotá
+layout.addFrame {"layout": "Dia 11", "shape": "circle", "map": "Ruido", "x": 8, "y": 36, "w": 48, "h": 48}
+layout.update {"layout": "Dia 11", "element": 6, "center": [-74.100, 4.681], "scale": 70000}
+# Ondas: el borde de la lupa y dos anillos que se apagan hacia afuera
+layout.addElement {"layout": "Dia 11", "kind": "circle", "outline": "#FCFFA4", "width": 1, "x": 8, "y": 36, "w": 48, "h": 48}
+layout.addElement {"layout": "Dia 11", "kind": "circle", "outline": "#FCFFA499", "width": 0.6, "x": 5, "y": 33, "w": 54, "h": 54}
+layout.addElement {"layout": "Dia 11", "kind": "circle", "outline": "#FCFFA44D", "width": 0.6, "x": 2, "y": 30, "w": 60, "h": 60}
+# Dónde está la lupa en el mapa grande, y una línea que las une. La posición de la línea es
+# aproximada (sale de la escala del marco 1): ajustarla viendo el layout el día de construirlo
+layout.addElement {"layout": "Dia 11", "kind": "extentIndicator", "frame": 1, "of": 6, "color": "#FCFFA4", "width": 1}
+layout.addElement {"layout": "Dia 11", "kind": "line", "dir": "falling", "color": "#FCFFA4B3", "width": 0.6, "x": 50, "y": 78, "w": 58, "h": 42}
+# El texto de la lupa, sobre un panel translúcido
+layout.addElement {"layout": "Dia 11", "kind": "rectangle", "fill": "#0B1220CC", "outline": "#0B1220CC", "width": 0, "radius": 1, "x": 6, "y": 91, "w": 56, "h": 19}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "MÁS DE 80 dB(A)", "size": 7, "bold": true, "color": "#FCFFA4", "letterSpacing": 1.5, "x": 8, "y": 92.5, "w": 52, "h": 4}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "La mancha más grande, unas 22 ha,\nentre Santa Cecilia y Las Ferias\n(Engativá).", "size": 7.5, "color": "#E6ECF5", "x": 8, "y": 97, "w": 52, "h": 12}
+
+# Norte y escala, discretos, en gris azulado y sin recuadro
+layout.addElement {"layout": "Dia 11", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#B8C4D6", "outline": "#B8C4D6", "x": 196, "y": 33, "w": 7, "h": 10}
+layout.addElement {"layout": "Dia 11", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "color": "#B8C4D6", "x": 8, "y": 231, "w": 30, "h": 6}
+
+# Banda de abajo, a la izquierda: la cifra como entrada
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "44 %", "size": 40, "bold": true, "color": "#FAC127", "x": 12, "y": 242, "w": 62, "h": 17}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "del área del mapa pasa de 50 dB(A)\nde noche, el máximo para zonas\nresidenciales (Res. 0627 de 2006).", "size": 7.5, "color": "#E6ECF5", "x": 12, "y": 260, "w": 64, "h": 12}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "De día, el 22 % pasa su máximo de 65.", "size": 7, "color": "#8A97AB", "x": 12, "y": 272.5, "w": 64, "h": 4}
+
+# Banda de abajo, a la derecha: la leyenda como ecualizador. Una barra por banda de 5 dB(A), en
+# su color y con alto proporcional a su parte del área (1,8 mm por punto; la de 80+ con un mínimo
+# de 0,8 mm para que se vea). Base de las barras en y = 266
+layout.addElement {"layout": "Dia 11", "kind": "rectangle", "fill": "#4A1486FF", "outline": "#4A1486FF", "width": 0, "x": 82, "y": 247.8, "w": 14, "h": 18.2}
+layout.addElement {"layout": "Dia 11", "kind": "rectangle", "fill": "#65156EFF", "outline": "#65156EFF", "width": 0, "x": 98.5, "y": 249.6, "w": 14, "h": 16.4}
+layout.addElement {"layout": "Dia 11", "kind": "rectangle", "fill": "#9F2A63FF", "outline": "#9F2A63FF", "width": 0, "x": 115, "y": 249.1, "w": 14, "h": 16.9}
+layout.addElement {"layout": "Dia 11", "kind": "rectangle", "fill": "#D44842FF", "outline": "#D44842FF", "width": 0, "x": 131.5, "y": 250.2, "w": 14, "h": 15.8}
+layout.addElement {"layout": "Dia 11", "kind": "rectangle", "fill": "#F57D15FF", "outline": "#F57D15FF", "width": 0, "x": 148, "y": 258.4, "w": 14, "h": 7.6}
+layout.addElement {"layout": "Dia 11", "kind": "rectangle", "fill": "#FAC127FF", "outline": "#FAC127FF", "width": 0, "x": 164.5, "y": 262.6, "w": 14, "h": 3.4}
+layout.addElement {"layout": "Dia 11", "kind": "rectangle", "fill": "#FCFFA4FF", "outline": "#FCFFA4FF", "width": 0, "x": 181, "y": 265.2, "w": 14, "h": 0.8}
+# El porcentaje encima de cada barra
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "10,1 %", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 82, "y": 244, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "9,1 %", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 98.5, "y": 245.8, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "9,4 %", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 115, "y": 245.3, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "8,8 %", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 131.5, "y": 246.4, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "4,2 %", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 148, "y": 254.6, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "1,9 %", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 164.5, "y": 258.8, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "0,3 %", "size": 6.5, "color": "#FFFFFF", "align": "center", "x": 181, "y": 261.4, "w": 14, "h": 3.5}
+# Las bandas debajo de cada barra
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "50–55", "size": 6, "color": "#B8C4D6", "align": "center", "x": 82, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "55–60", "size": 6, "color": "#B8C4D6", "align": "center", "x": 98.5, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "60–65", "size": 6, "color": "#B8C4D6", "align": "center", "x": 115, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "65–70", "size": 6, "color": "#B8C4D6", "align": "center", "x": 131.5, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "70–75", "size": 6, "color": "#B8C4D6", "align": "center", "x": 148, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "75–80", "size": 6, "color": "#B8C4D6", "align": "center", "x": 164.5, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "80+", "size": 6, "color": "#B8C4D6", "align": "center", "x": 181, "y": 267, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "dB(A) de noche · parte del área del mapa", "size": 6.5, "color": "#8A97AB", "x": 82, "y": 271, "w": 113, "h": 3.5}
+# Lo que queda por debajo del límite, aparte: una muestra en su color
+layout.addElement {"layout": "Dia 11", "kind": "rectangle", "fill": "#1B2A38FF", "outline": "#5A6B82", "width": 0.3, "x": 82, "y": 275.5, "w": 5, "h": 3}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "50 dB(A) o menos: 56 %, la ciudad que duerme", "size": 6.5, "color": "#B8C4D6", "x": 89, "y": 275.2, "w": 106, "h": 3.5}
+
+# Pie: una línea fina, las fuentes y la firma
+layout.addElement {"layout": "Dia 11", "kind": "line", "dir": "horizontal", "color": "#2A3A52", "width": 0.5, "x": 12, "y": 280.5, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "Datos: Secretaría Distrital de Ambiente, Mapas Estratégicos de Ruido de Bogotá D.C. 2018-2021, nocturno jornada ordinaria\n(CC BY 4.0), consultado el 2026-11-10. Mapa base: Mapa base azul, IDECA. Este mapa y su proyecto: CC BY 4.0.\nCómo se hizo: todo en RustGIS web (web.rustgis.app), con cuatro scripts: datos en PBF cuantizado, Calculate Field,\nUnique Values y layouts. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5.5, "color": "#8A97AB", "x": 12, "y": 282, "w": 186, "h": 10}
+layout.addElement {"layout": "Dia 11", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 11: Senses: Sound · Hecho con RustGIS · rustgis.app", "size": 6.5, "color": "#F57D15", "align": "right", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz

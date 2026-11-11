@@ -1,0 +1,29 @@
+# Día 11 — Senses: Sound: ¿Dónde no duerme Bogotá? — 2 · VISTA (proceso y estilo)
+
+# El límite: la Resolución 0627 de 2006 (MinAmbiente), Tabla 2 (ruido ambiental), sector B, zonas
+# residenciales: 65 dB(A) de día y 50 dB(A) de noche (de 21:01 a 7:00). Ojo: la Tabla 1 (emisión)
+# dice 65 y 55; no es la que aplica a un mapa de ruido ambiental.
+
+# Una clase por banda desde 50 dB(A) y una sola para lo que queda por debajo. La leyenda ordena
+# los valores únicos por número, de menor a mayor: 1 es la banda más ruidosa y queda arriba.
+# db_lo es texto: el límite inferior de la banda ('0', '35', '40' … '80')
+edit.addField {"layer": "Ruido de noche · Night noise", "name": "Clase", "type": "long"}
+edit.calculateField {"layer": "Ruido de noche · Night noise", "field": "Clase", "expression": "CASE WHEN db_lo = '80' THEN 1 WHEN db_lo = '75' THEN 2 WHEN db_lo = '70' THEN 3 WHEN db_lo = '65' THEN 4 WHEN db_lo = '60' THEN 5 WHEN db_lo = '55' THEN 6 WHEN db_lo = '50' THEN 7 ELSE 8 END"}
+layer.symbology {"layer": "Ruido de noche · Night noise", "type": "unique", "field": "Clase"}
+
+# Rampa tipo inferno: lo más ruidoso brilla más, como una ciudad encendida de noche. Por debajo
+# de 50 dB(A), un azul oscuro translúcido: la ciudad que duerme. Etiquetas con la parte del área
+# del mapa en cada banda (st_area del servicio, capa 3, 2026-11-10; las bandas no se tocan)
+layer.classStyle {"layer": "Ruido de noche · Night noise", "value": 1, "color": "#FCFFA4", "outline": "#FCFFA4", "label": "Más de 80 dB(A) · 0,3 %"}
+layer.classStyle {"layer": "Ruido de noche · Night noise", "value": 2, "color": "#FAC127", "outline": "#FAC127", "label": "75 a 80 · 1,9 %"}
+layer.classStyle {"layer": "Ruido de noche · Night noise", "value": 3, "color": "#F57D15", "outline": "#F57D15", "label": "70 a 75 · 4,2 %"}
+layer.classStyle {"layer": "Ruido de noche · Night noise", "value": 4, "color": "#D44842", "outline": "#D44842", "label": "65 a 70 · 8,8 %"}
+layer.classStyle {"layer": "Ruido de noche · Night noise", "value": 5, "color": "#9F2A63", "outline": "#9F2A63", "label": "60 a 65 · 9,4 %"}
+layer.classStyle {"layer": "Ruido de noche · Night noise", "value": 6, "color": "#65156E", "outline": "#65156E", "label": "55 a 60 · 9,1 %"}
+layer.classStyle {"layer": "Ruido de noche · Night noise", "value": 7, "color": "#4A1486", "outline": "#4A1486", "label": "50 a 55 · 10,1 %"}
+layer.classStyle {"layer": "Ruido de noche · Night noise", "value": 8, "color": "#1B2A3899", "outline": "#1B2A3899", "label": "50 dB(A) o menos · 56 %"}
+# Sin línea entre bandas: cada banda lleva de borde su propio color (classStyle "outline"), fino,
+# para tapar la costura entre polígonos vecinos. Solo se cambia el ancho; los colores se quedan
+layer.outline {"layer": "Ruido de noche · Night noise", "width": 0.3}
+# Un 15 % transparente: debajo se adivinan las vías del mapa base, que son las que hacen el ruido
+layer.transparency {"layer": "Ruido de noche · Night noise", "value": 15}

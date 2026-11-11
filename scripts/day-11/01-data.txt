@@ -1,0 +1,18 @@
+# Día 11 — Senses: Sound: ¿Dónde no duerme Bogotá? — 1 · DATOS
+# El ruido ambiental de noche en un día entre semana, del Mapa Estratégico de Ruido de la
+# Secretaría Distrital de Ambiente, sobre el mapa base azul de IDECA.
+map.rename {"name": "Ruido"}
+map.basemap {"name": "blank"}
+# Mapa base azul de IDECA con su estilo oficial: el oficial de la ciudad, oscuro como la noche, y los
+# cálidos del ruido resaltan sobre el azul (el mismo de los días 2, 4 y 5)
+map.addTiles {"url": "https://tiles.arcgis.com/tiles/J5ltM0ovtzXUbp7B/arcgis/rest/services/mapabaseazul/VectorTileServer/resources/styles/root.json", "kind": "style", "name": "Mapa base azul (IDECA)"}
+map.zoomToExtent {"extent": [-74.23, 4.48, -73.98, 4.84]}
+
+# Mapa Estratégico de Ruido 2018-2021 (SDA), capa 3: nocturno, jornada ordinaria (la otra
+# jornada del servicio es la dominical). Son 11 polígonos, uno por banda de 5 dB(A). Completa pesa 21,6 MB: el servidor no hace
+# caso a maxAllowableOffset, pero sí a quantizationParameters. Con tolerancia de 0,0002° (unos
+# 22 m, 0,13 mm en el layout) baja a 6,1 MB (2026-11-10). RustGIS aplica el "transform" del PBF,
+# así que esas coordenadas enteras se leen igual que las de cualquier PBF
+layer.addUrl {"url": "https://mapas.ambientebogota.gov.co/server/rest/services/Calidad_auditiva/Mapas_Estrategicos_de_Ruido_de_Bogota_DC__2018_2021/MapServer/3/query?where=1%3D1&outFields=rango,db_lo,db_hi&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.0002%2C%22extent%22%3A%7B%22xmin%22%3A-74.23%2C%22ymin%22%3A4.48%2C%22xmax%22%3A-73.98%2C%22ymax%22%3A4.84%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&f=pbf", "name": "Ruido de noche · Night noise", "zoom": false}
+
+# Esperar a que la capa esté en el panel de capas (6 MB: unos segundos). Luego, el script 2 (vista).
