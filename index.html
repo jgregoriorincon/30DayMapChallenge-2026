@@ -175,7 +175,7 @@
           <h2>${title}</h2>
           <p class="data">${t.data}: ${esc(d.data[lang])}</p>
           <div class="links">
-            <a class="primary" href="https://web.rustgis.app/?project=${BASE}${out}.rgis">${t.open}</a>
+            <a class="primary" data-open="${pad(d.n)}" href="https://web.rustgis.app/?project=${BASE}${out}.rgis">${t.open}</a>
             <a href="${img}.pdf">PDF</a>
             ${d.prompts
               ? `<a href="https://github.com/jgregoriorincon/30DayMapChallenge-2026/blob/main/scripts/${dir}/01-prompts.md">${t.prompts}</a>`
@@ -194,6 +194,19 @@
     render(b.dataset.lang);
   }));
   render(pickLang());
+
+  // Cuenta en GoatCounter cada clic en "Abrir en RustGIS". Delegado en #grid porque
+  // render() reemplaza las tarjetas al cambiar de idioma. Si GoatCounter está bloqueado, no hace nada.
+  function countOpen(e) {
+    if (e.type === "auxclick" && e.button !== 1) return;
+    const a = e.target.closest("a[data-open]");
+    const gc = window.goatcounter;
+    if (!a || !gc || typeof gc.count !== "function") return;
+    gc.count({ path: "abrir-rustgis/day-" + a.dataset.open, title: "Abrir en RustGIS · día " + a.dataset.open, event: true });
+  }
+  const grid = document.getElementById("grid");
+  grid.addEventListener("click", countOpen);
+  grid.addEventListener("auxclick", countOpen);
 </script>
 <script data-goatcounter="https://jgregoriorincon.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
