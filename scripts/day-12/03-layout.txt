@@ -41,11 +41,11 @@ layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Cogeneración ·
 layout.addElement {"layout": "Dia 12", "kind": "circle", "fill": "#5FD3C4FF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 73, "w": 3, "h": 3}
 layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Eólica · 0,2 %", "size": 7, "color": "#E6ECF5", "x": 155, "y": 72.7, "w": 50, "h": 3.5}
 layout.addElement {"layout": "Dia 12", "kind": "text", "text": "de 23 553 MW, en operación o en pruebas", "size": 6, "color": "#8A97AB", "x": 150, "y": 78, "w": 52, "h": 3.5}
-# Tamaños: el diámetro del círculo del mapa en el papel (1,2 + 0,5·√MW puntos; 1 pt = 0,353 mm),
+# Tamaños: el diámetro del círculo del mapa en el papel (1,2 + 0,5·√MW puntos; el punto de símbolo de RustGIS es 1/96 de pulgada, 0,265 mm),
 # con la base alineada
-layout.addElement {"layout": "Dia 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 150, "y": 84, "w": 6, "h": 6}
-layout.addElement {"layout": "Dia 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 162, "y": 87.8, "w": 2.2, "h": 2.2}
-layout.addElement {"layout": "Dia 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 172.6, "y": 89, "w": 1, "h": 1}
+layout.addElement {"layout": "Dia 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 150.75, "y": 85.5, "w": 4.5, "h": 4.5}
+layout.addElement {"layout": "Dia 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 162.3, "y": 88.35, "w": 1.65, "h": 1.65}
+layout.addElement {"layout": "Dia 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 172.7, "y": 89.25, "w": 0.75, "h": 0.75}
 layout.addElement {"layout": "Dia 12", "kind": "text", "text": "1 000", "size": 6, "color": "#B8C4D6", "align": "center", "x": 147, "y": 91, "w": 12, "h": 3}
 layout.addElement {"layout": "Dia 12", "kind": "text", "text": "100", "size": 6, "color": "#B8C4D6", "align": "center", "x": 157.1, "y": 91, "w": 12, "h": 3}
 layout.addElement {"layout": "Dia 12", "kind": "text", "text": "10 MW", "size": 6, "color": "#B8C4D6", "align": "center", "x": 167.1, "y": 91, "w": 12, "h": 3}
