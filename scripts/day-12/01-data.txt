@@ -1,0 +1,29 @@
+# Día 12 — Power: El sol llegó tarde, y de golpe — 1 · DATOS
+# Las plantas de generación del Sistema Interconectado Nacional (UPME, con datos de XM) y la red de
+# transmisión, sobre los departamentos del DANE. Colombia entera, en tierra firme.
+map.rename {"name": "Energia"}
+# Midnight: mar y países vecinos oscuros, sin teselas. El fondo de la página va del mismo color del
+# mar (#1A1F26), así el mapa no tiene borde
+map.basemap {"name": "midnight"}
+map.zoomToExtent {"extent": [-79.3, -4.3, -66.8, 12.6]}
+
+# Departamentos: DANE, Marco Geoestadístico Nacional 2025, capa 319 (33 polígonos). Cuantizado a
+# 0,005° (unos 550 m, 0,05 mm en el layout): 190 KB (2026-11-11)
+layer.addUrl {"url": "https://portalgis.dane.gov.co/mparcgis/rest/services/MGN2025/Serv_CapasMGN_2025/FeatureServer/319/query?where=1%3D1&outFields=DPTO_CCDGO,DPTO_CNMBRE&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.005%2C%22extent%22%3A%7B%22xmin%22%3A-82%2C%22ymin%22%3A-5%2C%22xmax%22%3A-66%2C%22ymax%22%3A13.5%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&f=pbf", "name": "Departamentos", "zoom": false}
+
+# Líneas de transmisión construidas (UPME, capa 17: 798 tramos de 57,5 a 500 kV). Cuantizado a
+# 0,002°: 180 KB
+layer.addUrl {"url": "https://geo.upme.gov.co/server/rest/services/Capas_EnergiaElectrica/Sistema_transmision_lineas_construidas/FeatureServer/17/query?where=1%3D1&outFields=tension&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.002%2C%22extent%22%3A%7B%22xmin%22%3A-80%2C%22ymin%22%3A-5%2C%22xmax%22%3A-66%2C%22ymax%22%3A13%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&f=pbf", "name": "Líneas de transmisión", "zoom": false}
+
+# Plantas de generación (UPME, capa 24, con los datos de XM; el servicio se actualiza a diario).
+# Solo las que están en operación o en pruebas (sin las inactivas), en tres capas para dibujar
+# encima las solares, y encima de todas las que entraron este año (2026-11-11):
+# - Otras fuentes: 248 (hidráulicas, térmicas, cogeneradores y eólicas)
+layer.addUrl {"url": "https://geo.upme.gov.co/server/rest/services/Capas_EnergiaElectrica/proyectos_generacion_xm/FeatureServer/24/query?where=tipo_generacion%3C%3E%27SOLAR%27+AND+estado_recurso%3C%3E%27INACTIVO%27&outFields=nombre_recurso,tipo_generacion,capacidad_efectiva_neta_mw,anio_fpo,estado_recurso,municipio_oficial,departamento_oficial&outSR=4326&f=pbf", "name": "Otras fuentes", "zoom": false}
+# - Solares que entraron de 2019 a 2025: 186
+layer.addUrl {"url": "https://geo.upme.gov.co/server/rest/services/Capas_EnergiaElectrica/proyectos_generacion_xm/FeatureServer/24/query?where=tipo_generacion%3D%27SOLAR%27+AND+estado_recurso%3C%3E%27INACTIVO%27+AND+anio_fpo%3C2026&outFields=nombre_recurso,tipo_generacion,capacidad_efectiva_neta_mw,anio_fpo,estado_recurso,municipio_oficial,departamento_oficial&outSR=4326&f=pbf", "name": "Solar hasta 2025", "zoom": false}
+# - Solares que entraron en 2026: 204 (70 de ellas aún en pruebas)
+layer.addUrl {"url": "https://geo.upme.gov.co/server/rest/services/Capas_EnergiaElectrica/proyectos_generacion_xm/FeatureServer/24/query?where=tipo_generacion%3D%27SOLAR%27+AND+estado_recurso%3C%3E%27INACTIVO%27+AND+anio_fpo%3D2026&outFields=nombre_recurso,tipo_generacion,capacidad_efectiva_neta_mw,anio_fpo,estado_recurso,municipio_oficial,departamento_oficial&outSR=4326&f=pbf", "name": "Solar 2026", "zoom": false}
+
+# Esperar a que las cinco capas estén en el panel de capas (menos de 1 MB en total). Luego, el
+# script 2 (vista).

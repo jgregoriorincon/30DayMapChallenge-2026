@@ -1,0 +1,116 @@
+# Día 12 — Power: El sol llegó tarde, y de golpe — 3 · LAYOUT
+# La firma de la serie desde el día 11: página oscura, mapa de borde a borde, una cifra grande de
+# entrada y la leyenda hecha a mano (la de RustGIS escribe en gris oscuro fijo). El gesto de este
+# día: las barras de abajo, los MW que entran cada año, donde el sol aparece tarde y de golpe.
+# Los elementos se numeran en orden desde 1: marco = 1, fondo = 2; no hace falta ningún otro id.
+layout.new {"name": "Dia 12", "page": "a4", "orientation": "portrait", "template": "blank"}
+
+# 1 · Mapa de borde a borde, entre la banda del título y la de las barras. Escala fija (y no
+# frameZoom a los departamentos, que traería a San Andrés y achicaría el país): 1:10 000 000,
+# centrado en tierra firme. Así 1° son unos 11 mm y los textos de abajo caen sobre el mar y los
+# países vecinos (Caribe arriba a la izquierda, Venezuela arriba a la derecha, Brasil abajo)
+layout.addFrame {"layout": "Dia 12", "map": "Energia", "x": 0, "y": 29, "w": 210, "h": 197}
+layout.update {"layout": "Dia 12", "element": 1, "center": [-73.05, 4.15], "scale": 10000000}
+# 2 · Fondo de la página, del color del mar del mapa base Midnight, mandado detrás de todo
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#1A1F26FF", "outline": "#1A1F26FF", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Dia 12", "element": 2, "to": "back"}
+
+# Banda del título
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "30DAYMAPCHALLENGE · DÍA 12 · ENERGÍA · COLOMBIA", "size": 7.5, "color": "#FFD23F", "letterSpacing": 2.5, "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "El sol llegó tarde, y de golpe", "size": 26, "bold": true, "color": "#FFFFFF", "x": 12, "y": 10, "w": 186, "h": 12}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Plantas de generación del Sistema Interconectado Nacional, en operación o en pruebas, y la red de transmisión", "size": 9, "color": "#B8C4D6", "x": 12, "y": 22.5, "w": 186, "h": 5}
+
+# Arriba a la izquierda, sobre el Caribe: la cifra como entrada (consultado el 2026-11-11)
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "204", "size": 44, "bold": true, "color": "#FFD23F", "x": 10, "y": 34, "w": 55, "h": 18}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "plantas solares entraron al sistema\nen 2026: más que las 186 de 2019\na 2025 juntas.", "size": 7.5, "color": "#E6ECF5", "x": 10, "y": 53, "w": 55, "h": 12}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "70 siguen en pruebas · hasta el 11 de noviembre", "size": 6, "color": "#8A97AB", "x": 10, "y": 65.5, "w": 60, "h": 3.5}
+
+# Arriba a la derecha, sobre Venezuela: la leyenda. Un círculo por fuente, con su parte de los
+# 23 553 MW en operación o en pruebas
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "FUENTE · PARTE DE LOS MW", "size": 6.5, "color": "#8A97AB", "letterSpacing": 1.2, "x": 150, "y": 40, "w": 52, "h": 3.5}
+layout.addElement {"layout": "Dia 12", "kind": "circle", "fill": "#FFD23FFF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 45.5, "w": 3, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Solar, entró en 2026 · 5,8 %", "size": 7, "color": "#FFFFFF", "x": 155, "y": 45.2, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Dia 12", "kind": "circle", "fill": "#B98A2EFF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 51, "w": 3, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Solar, de 2019 a 2025 · 10,0 %", "size": 7, "color": "#E6ECF5", "x": 155, "y": 50.7, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Dia 12", "kind": "circle", "fill": "#4FA3E0FF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 56.5, "w": 3, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Hidráulica · 56,2 %", "size": 7, "color": "#E6ECF5", "x": 155, "y": 56.2, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Dia 12", "kind": "circle", "fill": "#E4572EFF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 62, "w": 3, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Térmica · 27,0 %", "size": 7, "color": "#E6ECF5", "x": 155, "y": 61.7, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Dia 12", "kind": "circle", "fill": "#A7B1C0FF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 67.5, "w": 3, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Cogeneración · 0,9 %", "size": 7, "color": "#E6ECF5", "x": 155, "y": 67.2, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Dia 12", "kind": "circle", "fill": "#5FD3C4FF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 73, "w": 3, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Eólica · 0,2 %", "size": 7, "color": "#E6ECF5", "x": 155, "y": 72.7, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "de 23 553 MW, en operación o en pruebas", "size": 6, "color": "#8A97AB", "x": 150, "y": 78, "w": 52, "h": 3.5}
+# Tamaños: el diámetro del círculo del mapa en el papel (1,2 + 0,5·√MW puntos; 1 pt = 0,353 mm),
+# con la base alineada
+layout.addElement {"layout": "Dia 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 150, "y": 84, "w": 6, "h": 6}
+layout.addElement {"layout": "Dia 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 162, "y": 87.8, "w": 2.2, "h": 2.2}
+layout.addElement {"layout": "Dia 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 172.6, "y": 89, "w": 1, "h": 1}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "1 000", "size": 6, "color": "#B8C4D6", "align": "center", "x": 147, "y": 91, "w": 12, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "100", "size": 6, "color": "#B8C4D6", "align": "center", "x": 157.1, "y": 91, "w": 12, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "10 MW", "size": 6, "color": "#B8C4D6", "align": "center", "x": 167.1, "y": 91, "w": 12, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "line", "dir": "horizontal", "color": "#6C7A90", "width": 1.1, "x": 150, "y": 98, "w": 8, "h": 0.5}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Línea de 500 kV (las de 57,5 a\n230 kV, más finas)", "size": 6, "color": "#B8C4D6", "x": 160, "y": 96.5, "w": 44, "h": 6.5}
+
+# Abajo a la derecha, sobre Brasil: la planta más grande y dónde se juntan
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "LA SOLAR MÁS GRANDE", "size": 6.5, "bold": true, "color": "#FFD23F", "letterSpacing": 1.2, "x": 150, "y": 178, "w": 52, "h": 3.5}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Guayepo, 388 MW, en Ponedera\n(Atlántico), desde 2024. Atlántico\nsuma 1 040 MW solares; Cesar, 500,\ny Tolima, 477.", "size": 7, "color": "#E6ECF5", "x": 150, "y": 182.5, "w": 54, "h": 13}
+# Norte y escala, discretos
+layout.addElement {"layout": "Dia 12", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#B8C4D6", "outline": "#B8C4D6", "x": 195, "y": 203, "w": 6, "h": 9}
+layout.addElement {"layout": "Dia 12", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "color": "#B8C4D6", "x": 150, "y": 214, "w": 40, "h": 6}
+
+# Banda de abajo: los MW que entran cada año, de 2015 a 2026, a mano. Una barra por año (11 mm
+# de ancho, cada 15,5 mm): la solar abajo y las otras fuentes encima, 0,018 mm por MW, base en
+# y = 268. Cifras: suma de capacidad_efectiva_neta_mw por anio_fpo de las plantas en operación o
+# en pruebas (las que siguen en el sistema; las que salieron no cuentan)
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "MW QUE ENTRAN CADA AÑO", "size": 6.5, "color": "#8A97AB", "letterSpacing": 1.2, "x": 12, "y": 229.5, "w": 100, "h": 3.5}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 150, "y": 229.8, "w": 3, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Solar", "size": 6.5, "color": "#E6ECF5", "x": 154.5, "y": 229.5, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 168, "y": 229.8, "w": 3, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Otras fuentes", "size": 6.5, "color": "#E6ECF5", "x": 172.5, "y": 229.5, "w": 26, "h": 3.5}
+# Otras fuentes (gris azulado)
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 12, "y": 251, "w": 11, "h": 17}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 27.5, "y": 265.9, "w": 11, "h": 2.1}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 43, "y": 264.7, "w": 11, "h": 3.3}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 58.5, "y": 258.8, "w": 11, "h": 9.2}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 74, "y": 266.3, "w": 11, "h": 1.4}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 89.5, "y": 263.7, "w": 11, "h": 2.8}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 105, "y": 266.4, "w": 11, "h": 1}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 120.5, "y": 238.6, "w": 11, "h": 26.4}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 136, "y": 253.2, "w": 11, "h": 10.7}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 151.5, "y": 241.7, "w": 11, "h": 1.6}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 167, "y": 259, "w": 11, "h": 1}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 182.5, "y": 240.6, "w": 11, "h": 2.7}
+# Solar (amarillo), desde 2019
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 74, "y": 267.7, "w": 11, "h": 0.3}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 89.5, "y": 266.5, "w": 11, "h": 1.5}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 105, "y": 267.4, "w": 11, "h": 0.6}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 120.5, "y": 265, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 136, "y": 263.9, "w": 11, "h": 4.1}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 151.5, "y": 243.3, "w": 11, "h": 24.7}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 167, "y": 260, "w": 11, "h": 8}
+layout.addElement {"layout": "Dia 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 182.5, "y": 243.3, "w": 11, "h": 24.7}
+# Notas sobre las barras: Ituango en 2022 y los dos saltos del sol
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Ituango", "size": 6, "color": "#B8C4D6", "align": "center", "x": 115, "y": 234.8, "w": 22, "h": 3.2}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "1 374", "size": 6.5, "bold": true, "color": "#FFD23F", "align": "center", "x": 146, "y": 237.9, "w": 22, "h": 3.5}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "1 371", "size": 6.5, "bold": true, "color": "#FFD23F", "align": "center", "x": 177, "y": 236.8, "w": 22, "h": 3.5}
+# Los años
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2015", "size": 6, "color": "#B8C4D6", "align": "center", "x": 12, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2016", "size": 6, "color": "#B8C4D6", "align": "center", "x": 27.5, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2017", "size": 6, "color": "#B8C4D6", "align": "center", "x": 43, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2018", "size": 6, "color": "#B8C4D6", "align": "center", "x": 58.5, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2019", "size": 6, "color": "#B8C4D6", "align": "center", "x": 74, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2020", "size": 6, "color": "#B8C4D6", "align": "center", "x": 89.5, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2021", "size": 6, "color": "#B8C4D6", "align": "center", "x": 105, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2022", "size": 6, "color": "#B8C4D6", "align": "center", "x": 120.5, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2023", "size": 6, "color": "#B8C4D6", "align": "center", "x": 136, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2024", "size": 6, "color": "#B8C4D6", "align": "center", "x": 151.5, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2025", "size": 6, "color": "#B8C4D6", "align": "center", "x": 167, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "2026*", "size": 6, "bold": true, "color": "#FFD23F", "align": "center", "x": 180.5, "y": 269, "w": 15, "h": 3}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Por año de entrada en operación, de las plantas que siguen en el sistema. * 2026, hasta el 11 de noviembre.", "size": 6, "color": "#8A97AB", "x": 12, "y": 273, "w": 186, "h": 3.5}
+
+# Pie: una línea fina, las fuentes y la firma
+layout.addElement {"layout": "Dia 12", "kind": "line", "dir": "horizontal", "color": "#2A3A52", "width": 0.5, "x": 12, "y": 278.5, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "Datos: UPME, Geoportal, capas de energía eléctrica: plantas de generación (con datos de XM) y líneas de transmisión construidas,\nconsultado el 2026-11-11; la UPME no declara licencia y los presenta como informativos y aproximados. Departamentos: DANE, MGN 2025.\nMapa base: Midnight de RustGIS. Cómo se hizo: todo en RustGIS web (web.rustgis.app), con cuatro scripts: datos en PBF, Unique Values,\ntamaño por expresión (raíz de los MW) y layouts. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5.5, "color": "#8A97AB", "x": 12, "y": 280, "w": 186, "h": 11}
+layout.addElement {"layout": "Dia 12", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 12: Power · Hecho con RustGIS · rustgis.app", "size": 6.5, "color": "#FFD23F", "align": "right", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz

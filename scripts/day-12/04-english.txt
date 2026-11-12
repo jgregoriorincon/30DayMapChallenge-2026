@@ -1,0 +1,86 @@
+# Day 12 — Power: The sun came late, and all at once — 4 · ENGLISH LAYOUT
+# Same design as the Spanish layout (see 03-layout.txt, with the reasons for each choice): dark page,
+# edge-to-edge map at 1:10,000,000, a big number, a hand-built legend and the yearly MW bars.
+# Elements are numbered in order from 1: frame = 1, background = 2; no other id is needed.
+layout.new {"name": "Day 12", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Day 12", "map": "Energia", "x": 0, "y": 29, "w": 210, "h": 197}
+layout.update {"layout": "Day 12", "element": 1, "center": [-73.05, 4.15], "scale": 10000000}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#1A1F26FF", "outline": "#1A1F26FF", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Day 12", "element": 2, "to": "back"}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "30DAYMAPCHALLENGE · DAY 12 · POWER · COLOMBIA", "size": 7.5, "color": "#FFD23F", "letterSpacing": 2.5, "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "The sun came late, and all at once", "size": 26, "bold": true, "color": "#FFFFFF", "x": 12, "y": 10, "w": 186, "h": 12}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Power plants on the national grid, in operation or in testing, and the transmission network", "size": 9, "color": "#B8C4D6", "x": 12, "y": 22.5, "w": 186, "h": 5}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "204", "size": 44, "bold": true, "color": "#FFD23F", "x": 10, "y": 34, "w": 55, "h": 18}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "solar plants joined the grid in\n2026: more than the 186 from 2019\nto 2025 put together.", "size": 7.5, "color": "#E6ECF5", "x": 10, "y": 53, "w": 55, "h": 12}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "70 are still in testing · up to 11 November", "size": 6, "color": "#8A97AB", "x": 10, "y": 65.5, "w": 60, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "SOURCE · SHARE OF THE MW", "size": 6.5, "color": "#8A97AB", "letterSpacing": 1.2, "x": 150, "y": 40, "w": 52, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "circle", "fill": "#FFD23FFF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 45.5, "w": 3, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Solar, joined in 2026 · 5.8%", "size": 7, "color": "#FFFFFF", "x": 155, "y": 45.2, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "circle", "fill": "#B98A2EFF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 51, "w": 3, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Solar, 2019 to 2025 · 10.0%", "size": 7, "color": "#E6ECF5", "x": 155, "y": 50.7, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "circle", "fill": "#4FA3E0FF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 56.5, "w": 3, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Hydro · 56.2%", "size": 7, "color": "#E6ECF5", "x": 155, "y": 56.2, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "circle", "fill": "#E4572EFF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 62, "w": 3, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Thermal · 27.0%", "size": 7, "color": "#E6ECF5", "x": 155, "y": 61.7, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "circle", "fill": "#A7B1C0FF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 67.5, "w": 3, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Cogeneration · 0.9%", "size": 7, "color": "#E6ECF5", "x": 155, "y": 67.2, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "circle", "fill": "#5FD3C4FF", "outline": "#1A1F26", "width": 0.3, "x": 150, "y": 73, "w": 3, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Wind · 0.2%", "size": 7, "color": "#E6ECF5", "x": 155, "y": 72.7, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "of 23,553 MW, in operation or in testing", "size": 6, "color": "#8A97AB", "x": 150, "y": 78, "w": 52, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 150, "y": 84, "w": 6, "h": 6}
+layout.addElement {"layout": "Day 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 162, "y": 87.8, "w": 2.2, "h": 2.2}
+layout.addElement {"layout": "Day 12", "kind": "circle", "outline": "#B8C4D6", "width": 0.4, "x": 172.6, "y": 89, "w": 1, "h": 1}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "1,000", "size": 6, "color": "#B8C4D6", "align": "center", "x": 147, "y": 91, "w": 12, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "100", "size": 6, "color": "#B8C4D6", "align": "center", "x": 157.1, "y": 91, "w": 12, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "10 MW", "size": 6, "color": "#B8C4D6", "align": "center", "x": 167.1, "y": 91, "w": 12, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "line", "dir": "horizontal", "color": "#6C7A90", "width": 1.1, "x": 150, "y": 98, "w": 8, "h": 0.5}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "500 kV line (57.5 to 230 kV\nlines are thinner)", "size": 6, "color": "#B8C4D6", "x": 160, "y": 96.5, "w": 44, "h": 6.5}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "THE LARGEST SOLAR PLANT", "size": 6.5, "bold": true, "color": "#FFD23F", "letterSpacing": 1.2, "x": 150, "y": 178, "w": 52, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Guayepo, 388 MW, in Ponedera\n(Atlántico), since 2024. Atlántico\nhas 1,040 solar MW; Cesar, 500,\nand Tolima, 477.", "size": 7, "color": "#E6ECF5", "x": 150, "y": 182.5, "w": 54, "h": 13}
+layout.addElement {"layout": "Day 12", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#B8C4D6", "outline": "#B8C4D6", "x": 195, "y": 203, "w": 6, "h": 9}
+layout.addElement {"layout": "Day 12", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "color": "#B8C4D6", "x": 150, "y": 214, "w": 40, "h": 6}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "MW ADDED EACH YEAR", "size": 6.5, "color": "#8A97AB", "letterSpacing": 1.2, "x": 12, "y": 229.5, "w": 100, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 150, "y": 229.8, "w": 3, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Solar", "size": 6.5, "color": "#E6ECF5", "x": 154.5, "y": 229.5, "w": 14, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 168, "y": 229.8, "w": 3, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Other sources", "size": 6.5, "color": "#E6ECF5", "x": 172.5, "y": 229.5, "w": 26, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 12, "y": 251, "w": 11, "h": 17}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 27.5, "y": 265.9, "w": 11, "h": 2.1}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 43, "y": 264.7, "w": 11, "h": 3.3}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 58.5, "y": 258.8, "w": 11, "h": 9.2}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 74, "y": 266.3, "w": 11, "h": 1.4}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 89.5, "y": 263.7, "w": 11, "h": 2.8}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 105, "y": 266.4, "w": 11, "h": 1}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 120.5, "y": 238.6, "w": 11, "h": 26.4}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 136, "y": 253.2, "w": 11, "h": 10.7}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 151.5, "y": 241.7, "w": 11, "h": 1.6}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 167, "y": 259, "w": 11, "h": 1}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 182.5, "y": 240.6, "w": 11, "h": 2.7}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 74, "y": 267.7, "w": 11, "h": 0.3}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 89.5, "y": 266.5, "w": 11, "h": 1.5}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 105, "y": 267.4, "w": 11, "h": 0.6}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 120.5, "y": 265, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 136, "y": 263.9, "w": 11, "h": 4.1}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 151.5, "y": 243.3, "w": 11, "h": 24.7}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 167, "y": 260, "w": 11, "h": 8}
+layout.addElement {"layout": "Day 12", "kind": "rectangle", "fill": "#FFD23FFF", "outline": "#FFD23FFF", "width": 0, "x": 182.5, "y": 243.3, "w": 11, "h": 24.7}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Ituango", "size": 6, "color": "#B8C4D6", "align": "center", "x": 115, "y": 234.8, "w": 22, "h": 3.2}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "1,374", "size": 6.5, "bold": true, "color": "#FFD23F", "align": "center", "x": 146, "y": 237.9, "w": 22, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "1,371", "size": 6.5, "bold": true, "color": "#FFD23F", "align": "center", "x": 177, "y": 236.8, "w": 22, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2015", "size": 6, "color": "#B8C4D6", "align": "center", "x": 12, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2016", "size": 6, "color": "#B8C4D6", "align": "center", "x": 27.5, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2017", "size": 6, "color": "#B8C4D6", "align": "center", "x": 43, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2018", "size": 6, "color": "#B8C4D6", "align": "center", "x": 58.5, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2019", "size": 6, "color": "#B8C4D6", "align": "center", "x": 74, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2020", "size": 6, "color": "#B8C4D6", "align": "center", "x": 89.5, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2021", "size": 6, "color": "#B8C4D6", "align": "center", "x": 105, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2022", "size": 6, "color": "#B8C4D6", "align": "center", "x": 120.5, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2023", "size": 6, "color": "#B8C4D6", "align": "center", "x": 136, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2024", "size": 6, "color": "#B8C4D6", "align": "center", "x": 151.5, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2025", "size": 6, "color": "#B8C4D6", "align": "center", "x": 167, "y": 269, "w": 11, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "2026*", "size": 6, "bold": true, "color": "#FFD23F", "align": "center", "x": 180.5, "y": 269, "w": 15, "h": 3}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "By year of commercial operation, for plants still on the grid. * 2026, up to 11 November.", "size": 6, "color": "#8A97AB", "x": 12, "y": 273, "w": 186, "h": 3.5}
+layout.addElement {"layout": "Day 12", "kind": "line", "dir": "horizontal", "color": "#2A3A52", "width": 0.5, "x": 12, "y": 278.5, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "Data: UPME (Colombia's Mining and Energy Planning Unit) Geoportal, electricity layers: power plants (with XM data) and built\ntransmission lines, accessed 2026-11-11; UPME declares no licence and presents them as indicative and approximate. Departments:\nDANE, MGN 2025. Basemap: RustGIS Midnight. How it was made: all in RustGIS web (web.rustgis.app), with four scripts: PBF data,\nUnique Values, size by expression (square root of the MW) and layouts. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5.5, "color": "#8A97AB", "x": 12, "y": 280, "w": 186, "h": 11}
+layout.addElement {"layout": "Day 12", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 12: Power · Made with RustGIS · rustgis.app", "size": 6.5, "color": "#FFD23F", "align": "right", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Delivery: export the layout and save the project from the interface

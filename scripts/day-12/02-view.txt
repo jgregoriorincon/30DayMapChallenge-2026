@@ -1,0 +1,49 @@
+# Día 12 — Power: El sol llegó tarde, y de golpe — 2 · VISTA (proceso y estilo)
+
+# Orden de dibujo: las descargas llegan en cualquier orden, así que se fija aquí. Arriba las solares
+# de 2026, luego las de antes, las otras fuentes, las líneas y abajo los departamentos.
+# Ojo: layer.move de UNA capa falla ("the layer is already there") si ya está en ese puesto, y
+# no se sabe de antemano dónde quedó cada una. Una lista de capas nunca falla: va arriba (to 0)
+# o abajo y conserva el orden que traían. Por eso esta secuencia: cada movimiento de una sola
+# capa va a un puesto que, en ese momento, seguro ocupa otra
+# 1 · Cuatro arriba: las líneas quedan al fondo (puesto 4)
+layer.move {"layer": ["Solar 2026", "Solar hasta 2025", "Otras fuentes", "Departamentos"], "to": 0}
+# 2 · Los departamentos al fondo (ahí están las líneas): las líneas suben al 3
+layer.move {"layer": "Departamentos", "to": 4}
+# 3 · Las dos solares arriba: otras fuentes queda en el 2
+layer.move {"layer": ["Solar 2026", "Solar hasta 2025"], "to": 0}
+# 4 · Cuatro abajo: la solar de antes queda arriba (puesto 0), las demás conservan su orden
+layer.move {"layer": ["Solar 2026", "Otras fuentes", "Líneas de transmisión", "Departamentos"], "to": 4}
+# 5 · La solar de 2026 arriba (ahí está la de antes)
+layer.move {"layer": "Solar 2026", "to": 0}
+
+# Colombia un poco más clara que los países vecinos del mapa base, con límites discretos
+layer.color {"layer": "Departamentos", "color": "#363E4BFF"}
+layer.outline {"layer": "Departamentos", "color": "#535D6D", "width": 0.4}
+
+# La red, gris azulado y con el ancho según la tensión: la columna de 500 kV se lee sola
+layer.color {"layer": "Líneas de transmisión", "color": "#6C7A90B3"}
+layer.symbolBy {"layer": "Líneas de transmisión", "strokeWidth": "CASE WHEN tension >= 500 THEN 1.1 WHEN tension >= 220 THEN 0.6 ELSE 0.3 END"}
+
+# Plantas: círculos con un tamaño según la raíz de la capacidad (el área crece con los MW; el
+# 1,2 de base deja ver las plantas de 1 MW): 1 MW = 1,7 pt, 10 MW = 2,8 pt, 100 MW = 6,2 pt,
+# 1 000 MW = 17 pt de diámetro. Borde fino del color del fondo, para separar las vecinas
+layer.symbology {"layer": "Otras fuentes", "type": "unique", "field": "tipo_generacion"}
+layer.classStyle {"layer": "Otras fuentes", "value": "HIDRAULICA", "color": "#4FA3E0D9", "label": "Hidráulica"}
+layer.classStyle {"layer": "Otras fuentes", "value": "TERMICA", "color": "#E4572ED9", "label": "Térmica"}
+layer.classStyle {"layer": "Otras fuentes", "value": "COGENERADOR", "color": "#A7B1C0D9", "label": "Cogeneración"}
+layer.classStyle {"layer": "Otras fuentes", "value": "EOLICA", "color": "#5FD3C4D9", "label": "Eólica"}
+layer.marker {"layer": "Otras fuentes", "shape": "circle"}
+layer.outline {"layer": "Otras fuentes", "color": "#1A1F26", "width": 0.4}
+layer.symbolBy {"layer": "Otras fuentes", "size": "1.2 + 0.5 * sqrt(capacidad_efectiva_neta_mw)"}
+
+# Solares: las de antes en un dorado apagado, las de 2026 en amarillo encendido
+layer.marker {"layer": "Solar hasta 2025", "shape": "circle"}
+layer.color {"layer": "Solar hasta 2025", "color": "#B98A2ED9"}
+layer.outline {"layer": "Solar hasta 2025", "color": "#1A1F26", "width": 0.4}
+layer.symbolBy {"layer": "Solar hasta 2025", "size": "1.2 + 0.5 * sqrt(capacidad_efectiva_neta_mw)"}
+
+layer.marker {"layer": "Solar 2026", "shape": "circle"}
+layer.color {"layer": "Solar 2026", "color": "#FFD23FF2"}
+layer.outline {"layer": "Solar 2026", "color": "#1A1F26", "width": 0.4}
+layer.symbolBy {"layer": "Solar 2026", "size": "1.2 + 0.5 * sqrt(capacidad_efectiva_neta_mw)"}
