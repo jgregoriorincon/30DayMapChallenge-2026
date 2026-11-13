@@ -1,0 +1,39 @@
+# Día 13 — Interactions: El Magdalena en ocho paradas — 1 · DATOS
+# "Interactions" leído como mapa para interactuar: el proyecto trae un marcador por parada y
+# fichas al hacer clic; el PDF muestra el recorrido completo. Fuente a fuente, todo con CORS.
+map.rename {"name": "Magdalena"}
+# Mapa base Ocean: el mar azul y la tierra clara. El estilo del IGAC no pinta tierra ni mar a esta
+# escala (Paises y Batimetria empiezan en el zoom 9), así que el color lo pone este mapa base. Sin
+# cuadrícula: Ocean la trae y se vería en el layout
+map.basemap {"name": "ocean"}
+map.graticule {"on": false}
+# Relieve: el sombreado mundial de Esri, en teselas (no pesa en el proyecto). El mapa base físico del
+# IGAC trae su propio relieve, pero solo desde el zoom 9 (minzoom de sus capas de matiz): a esta escala
+# no se dibuja. Va en modo multiply, así oscurece sin tapar los límites y ríos del IGAC, quede en el
+# orden que quede
+map.addTiles {"url": "https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}", "kind": "raster", "name": "Sombreado (Esri World Hillshade)", "attribution": "Sombreado: Esri, USGS, NASA, CGIAR y otros", "maxZoom": 16, "opacity": 0.55, "blend": "multiply"}
+# Mapa base físico del IGAC (relieve en niveles y sombreado), teselas vectoriales: el oficial del país,
+# y no pesa en el proyecto (se guarda la dirección, no las teselas)
+map.addTiles {"url": "https://tiles.arcgis.com/tiles/RVvWzU3lgJISqdke/arcgis/rest/services/Mapa_base_fisico_vector/VectorTileServer/resources/styles/root.json", "kind": "style", "name": "Mapa base físico (IGAC)"}
+map.zoomToExtent {"extent": [-77.3, 1.5, -72.0, 11.4]}
+
+# La cuenca: las 9 zonas hidrográficas del área Magdalena-Cauca (Atlas del IGAC, capa 3), pedidas
+# por objectIds: el cortafuegos del IGAC bloquea consultas con LIKE. Cuantizado a 0,003°: 66 KB
+layer.addUrl {"url": "https://mapas.igac.gov.co/server/rest/services/atlas/hidrografiasuperficial/MapServer/3/query?objectIds=1,7,8,16,17,22,26,31,34&outFields=NOM_ZH&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.003%2C%22extent%22%3A%7B%22xmin%22%3A-79%2C%22ymin%22%3A0%2C%22xmax%22%3A-71%2C%22ymax%22%3A12%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&f=pbf", "name": "Cuenca Magdalena-Cauca", "zoom": false}
+# El río: tres polígonos del Atlas (el cauce y el brazo de Mompós), de San Agustín a Bocas de Ceniza.
+# El tramo de la laguna a San Agustín (unos 40 km) no está en esta capa, y el drenaje 1:500 000 del
+# IGAC no respondió (2026-11-11): la parada 1 queda como punto. Cuantizado a 0,001°: 81 KB
+layer.addUrl {"url": "https://mapas.igac.gov.co/server/rest/services/atlas/hidrografiasuperficial/MapServer/1/query?objectIds=41,72,170&outFields=NOMBRE_GEOGRAFICO&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.001%2C%22extent%22%3A%7B%22xmin%22%3A-79%2C%22ymin%22%3A0%2C%22xmax%22%3A-71%2C%22ymax%22%3A12%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&f=pbf", "name": "Río Magdalena", "zoom": false}
+
+# Las ocho paradas, escritas aquí (GeoJSON). Ubicadas sobre el cauce del Atlas, salvo:
+# 1, la laguna: 1°55'40" N y 2°30'15" al oeste del meridiano de Bogotá (74°04'51" W), según el
+#    diccionario geográfico de la Sociedad Geográfica de Colombia → 1,928 N, -76,585 W;
+# 2, el estrecho: el inicio del cauce del Atlas junto a San Agustín (aproximado);
+# 3, la planta de Betania en la capa de la UPME del día 12.
+# Fuentes de las fichas: longitud (1 528 km) y Alto Magdalena hasta Honda (565 km, 229 m): Cormagdalena,
+# citada por el Banco de la República; estrecho: oferta turística del Huila; represas: UPME/XM;
+# refinería: Ecopetrol en prensa (2025); confluencia: Brazo de Loba, Pinillos; Mompox: UNESCO (742);
+# Bocas de Ceniza: El Heraldo y DIMAR. La altura del nacimiento no va: las fuentes dicen 3 327, 3 500 o 3 685 m
+layer.addDataText {"fileName": "paradas.geojson", "text": "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"parada\":1,\"nombre\":\"Laguna de la Magdalena\",\"lugar\":\"San Agustín (Huila)\",\"dato\":\"El nacimiento, en el Páramo de Las Papas (Macizo Colombiano), dentro del PNN Puracé. El kilómetro 0 de 1 528.\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-76.585,1.928]}},{\"type\":\"Feature\",\"properties\":{\"parada\":2,\"nombre\":\"Estrecho del Magdalena\",\"lugar\":\"San Agustín (Huila)\",\"dato\":\"Cerca de San Agustín, el río pasa entre rocas por un cauce de unos 2,2 m de ancho.\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-76.23,1.867]}},{\"type\":\"Feature\",\"properties\":{\"parada\":3,\"nombre\":\"Betania y El Quimbo\",\"lugar\":\"Yaguará y Gigante (Huila)\",\"dato\":\"Dos represas seguidas: Betania (540 MW, desde 1987) y El Quimbo (400 MW, desde 2015).\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-75.516,2.647]}},{\"type\":\"Feature\",\"properties\":{\"parada\":4,\"nombre\":\"Honda\",\"lugar\":\"Honda (Tolima)\",\"dato\":\"El Salto de Honda partía la navegación en dos. Aquí termina el Alto Magdalena: 565 km desde la laguna, a 229 m de altura.\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.735,5.206]}},{\"type\":\"Feature\",\"properties\":{\"parada\":5,\"nombre\":\"Barrancabermeja\",\"lugar\":\"Barrancabermeja (Santander)\",\"dato\":\"El puerto del petróleo: su refinería, de 1922, procesa unos 250 000 barriles al día.\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-73.869,7.058]}},{\"type\":\"Feature\",\"properties\":{\"parada\":6,\"nombre\":\"Confluencia con el Cauca\",\"lugar\":\"Pinillos (Bolívar)\",\"dato\":\"En el Brazo de Loba, cerca de Pinillos, el Cauca se une al Magdalena.\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.462,8.912]}},{\"type\":\"Feature\",\"properties\":{\"parada\":7,\"nombre\":\"Mompox\",\"lugar\":\"Santa Cruz de Mompox (Bolívar)\",\"dato\":\"Por el brazo de Mompós pasa Santa Cruz de Mompox, Patrimonio Mundial de la UNESCO desde 1995.\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.425,9.245]}},{\"type\":\"Feature\",\"properties\":{\"parada\":8,\"nombre\":\"Bocas de Ceniza\",\"lugar\":\"Barranquilla (Atlántico)\",\"dato\":\"La desembocadura en el Caribe. Sus tajamares se inauguraron el 22 de diciembre de 1936.\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.849,11.105]}}]}", "name": "Paradas"}
+
+# Esperar a que las tres capas estén en el panel de capas (unos 150 KB). Luego, el script 2 (vista).

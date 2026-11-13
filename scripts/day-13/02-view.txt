@@ -1,0 +1,59 @@
+# Día 13 — Interactions: El Magdalena en ocho paradas — 2 · VISTA (estilo, fichas y marcadores)
+
+# Orden: paradas arriba, el río, la cuenca abajo. layer.move de una sola capa falla si ya está en
+# ese puesto, y el orden de llegada no se conoce (día 12), así que:
+# 1 · Paradas y río arriba: la cuenca queda seguro al fondo (puesto 2)
+layer.move {"layer": ["Paradas", "Río Magdalena"], "to": 0}
+# 2 · Paradas y cuenca arriba (conservan su orden: paradas, cuenca): el río queda al fondo
+layer.move {"layer": ["Paradas", "Cuenca Magdalena-Cauca"], "to": 0}
+# 3 · El río al puesto 1 (ahí está la cuenca): paradas, río, cuenca
+layer.move {"layer": "Río Magdalena", "to": 1}
+
+# La cuenca: un velo blanco muy suave y sus zonas con borde fino, para que el relieve se siga viendo
+layer.color {"layer": "Cuenca Magdalena-Cauca", "color": "#FFFFFF40"}
+layer.outline {"layer": "Cuenca Magdalena-Cauca", "color": "#2B5D8A", "width": 0.5}
+# El río: azul intenso, con borde del mismo azul para que no se corte donde el cauce es angosto
+layer.color {"layer": "Río Magdalena", "color": "#0B5FA5FF"}
+layer.outline {"layer": "Río Magdalena", "color": "#0B5FA5", "width": 0.9}
+# Paradas: círculo rojo de 36 (9,5 mm en el A3: en RustGIS un "punto" de símbolo es 1/96 de pulgada, 0,265 mm,
+# PT_PER_MM = 96 / 25,4 en crates/map/src/layout.rs) con borde blanco y su número encima
+layer.marker {"layer": "Paradas", "shape": "circle", "size": 36}
+layer.color {"layer": "Paradas", "color": "#C62828"}
+layer.outline {"layer": "Paradas", "color": "#FFFFFF", "width": 2.2}
+labels.field {"layer": "Paradas", "field": "parada"}
+labels.style {"layer": "Paradas", "size": 18, "bold": true, "color": "#FFFFFF", "halo": false}
+labels.placement {"layer": "Paradas", "position": "center", "showAll": true}
+
+# La interacción: clic en una parada → su ficha (nombre, lugar, dato); solo las capas visibles responden
+map.popupMode {"mode": "visible"}
+
+# Un marcador para el río entero y uno por parada, con su ficha como descripción. En el proyecto:
+# panel de marcadores, de la parada 1 a la 8
+map.zoomToExtent {"extent": [-77.3, 1.5, -72.0, 11.4]}
+bookmark.add {"name": "0 · El río entero"}
+bookmark.describe {"name": "0 · El río entero", "description": "El Magdalena, de la laguna donde nace a Bocas de Ceniza: 1 528 km y una cuenca de 257 440 km², el 23 % del país."}
+map.zoomToExtent {"extent": [-76.705, 1.808, -76.465, 2.048]}
+bookmark.add {"name": "1 · Laguna de la Magdalena"}
+bookmark.describe {"name": "1 · Laguna de la Magdalena", "description": "San Agustín (Huila). El nacimiento, en el Páramo de Las Papas (Macizo Colombiano), dentro del PNN Puracé. El kilómetro 0 de 1 528."}
+map.zoomToExtent {"extent": [-76.35, 1.747, -76.11, 1.987]}
+bookmark.add {"name": "2 · Estrecho del Magdalena"}
+bookmark.describe {"name": "2 · Estrecho del Magdalena", "description": "San Agustín (Huila). Cerca de San Agustín, el río pasa entre rocas por un cauce de unos 2,2 m de ancho."}
+map.zoomToExtent {"extent": [-75.636, 2.527, -75.396, 2.767]}
+bookmark.add {"name": "3 · Betania y El Quimbo"}
+bookmark.describe {"name": "3 · Betania y El Quimbo", "description": "Yaguará y Gigante (Huila). Dos represas seguidas: Betania (540 MW, desde 1987) y El Quimbo (400 MW, desde 2015)."}
+map.zoomToExtent {"extent": [-74.855, 5.086, -74.615, 5.326]}
+bookmark.add {"name": "4 · Honda"}
+bookmark.describe {"name": "4 · Honda", "description": "Honda (Tolima). El Salto de Honda partía la navegación en dos. Aquí termina el Alto Magdalena: 565 km desde la laguna, a 229 m de altura."}
+map.zoomToExtent {"extent": [-73.989, 6.938, -73.749, 7.178]}
+bookmark.add {"name": "5 · Barrancabermeja"}
+bookmark.describe {"name": "5 · Barrancabermeja", "description": "Barrancabermeja (Santander). El puerto del petróleo: su refinería, de 1922, procesa unos 250 000 barriles al día."}
+map.zoomToExtent {"extent": [-74.582, 8.792, -74.342, 9.032]}
+bookmark.add {"name": "6 · Confluencia con el Cauca"}
+bookmark.describe {"name": "6 · Confluencia con el Cauca", "description": "Pinillos (Bolívar). En el Brazo de Loba, cerca de Pinillos, el Cauca se une al Magdalena."}
+map.zoomToExtent {"extent": [-74.545, 9.125, -74.305, 9.365]}
+bookmark.add {"name": "7 · Mompox"}
+bookmark.describe {"name": "7 · Mompox", "description": "Santa Cruz de Mompox (Bolívar). Por el brazo de Mompós pasa Santa Cruz de Mompox, Patrimonio Mundial de la UNESCO desde 1995."}
+map.zoomToExtent {"extent": [-74.969, 10.985, -74.729, 11.225]}
+bookmark.add {"name": "8 · Bocas de Ceniza"}
+bookmark.describe {"name": "8 · Bocas de Ceniza", "description": "Barranquilla (Atlántico). La desembocadura en el Caribe. Sus tajamares se inauguraron el 22 de diciembre de 1936."}
+bookmark.go {"name": "0 · El río entero"}
