@@ -1,0 +1,27 @@
+# Día 14 — Borgesian map: Del rigor en una manzana — 1 · DATOS
+# El mapa que quiere decirlo todo de un solo lugar: la manzana del Palacio de la Inquisición, en el
+# Centro Histórico de Cartagena, con todo lo que Overture sabe de ella. Cartagena no publica su
+# catastro como servicio abierto; Overture sí, en GeoParquet, con CORS y lectura por rangos.
+map.rename {"name": "Manzana"}
+map.basemap {"name": "blank"}
+
+# El territorio: las imágenes de Esri (en la manzana llegan al zoom 19), bajo todo lo demás
+map.addTiles {"url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", "kind": "raster", "name": "Imágenes (Esri World Imagery)", "attribution": "Imágenes: Esri, Maxar, Earthstar Geographics", "maxZoom": 19}
+map.zoomToExtent {"extent": [-75.5527, 10.4227, -75.5506, 10.4245]}
+
+# Overture, versión 2026-10-21.0: el archivo de cada tema que cubre la manzana (del catálogo STAC,
+# stac.overturemaps.org), leído en su sitio, por rangos: solo lo que cae en la vista.
+# PASO A MANO, después de este script: en la web ningún comando de script puede abrir un GeoParquet
+# remoto (layer.addUrl y overture.add fallan con "waiting for the file's bytes": no esperan a que se
+# baje el pie del archivo; ui.addUrl, que sí espera, "can't run in a script"). Así que, uno por uno,
+# Home › Add › From URL, pegar la dirección y esperar a que aparezca la capa:
+#   Edificios:   https://overturemaps-us-west-2.s3.us-west-2.amazonaws.com/release/2026-10-21.0/theme=buildings/type=building/part-00015-f62256b2-493b-518a-8db5-3d5f32601c06-c000.zstd.parquet
+#   Lugares:     https://overturemaps-us-west-2.s3.us-west-2.amazonaws.com/release/2026-10-21.0/theme=places/type=place/part-00000-a0a9949b-7e8e-59fe-803b-6cc55b17f790-c000.zstd.parquet
+#   Direcciones: https://overturemaps-us-west-2.s3.us-west-2.amazonaws.com/release/2026-10-21.0/theme=addresses/type=address/part-00004-840e4c45-87f6-5cd9-afcc-2a36efc5379e-c000.zstd.parquet
+# En el diálogo, a cada una su nombre: Edificios, Lugares, Direcciones (el script 2 los usa).
+
+# La manzana: su contorno, trazado con los ejes de las calles de Overture que la rodean. Y la máscara,
+# todo lo demás (un rectángulo con la manzana como hueco), para apagar las vecinas. La máscara va
+# primero, así la manzana queda encima de ella
+layer.addDataText {"fileName": "mascara.geojson", "name": "Máscara", "text": "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"nombre\":\"Fuera de la manzana\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-75.5535,10.4222],[-75.5498,10.4222],[-75.5498,10.4251],[-75.5535,10.4251],[-75.5535,10.4222]],[[-75.552247,10.423149],[-75.552163,10.423713],[-75.552136,10.42411],[-75.551904,10.424129],[-75.551109,10.424208],[-75.551015,10.423508],[-75.551465,10.423461],[-75.551498,10.423451],[-75.551504,10.423426],[-75.551531,10.423026],[-75.552141,10.4231],[-75.552248,10.423117],[-75.552247,10.423149]]]}}]}"}
+layer.addDataText {"fileName": "manzana.geojson", "name": "Manzana", "text": "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"nombre\":\"Manzana del Palacio de la Inquisición\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-75.552247,10.423149],[-75.552248,10.423117],[-75.552141,10.4231],[-75.551531,10.423026],[-75.551504,10.423426],[-75.551498,10.423451],[-75.551465,10.423461],[-75.551015,10.423508],[-75.551109,10.424208],[-75.551904,10.424129],[-75.552136,10.42411],[-75.552163,10.423713],[-75.552247,10.423149]]]}}]}"}

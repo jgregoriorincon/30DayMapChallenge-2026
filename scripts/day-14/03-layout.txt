@@ -1,0 +1,52 @@
+# Día 14 — Borgesian map: Del rigor en una manzana — 3 · LAYOUT
+# La firma de la serie (página oscura) en A3 vertical: la manzana a 1:700 arriba, y abajo la cita,
+# la leyenda y el inventario. El texto no se parte solo al ancho del elemento: saltos a mano.
+# Elementos numerados desde 1: marco = 1, fondo = 2.
+layout.new {"name": "Dia 14", "page": "a3", "orientation": "portrait", "template": "blank"}
+
+# 1 · El mapa: la manzana a escala fija 1:700
+layout.addFrame {"layout": "Dia 14", "map": "Manzana", "x": 10, "y": 44, "w": 277, "h": 250}
+layout.update {"layout": "Dia 14", "element": 1, "center": [-75.551632, 10.423617], "scale": 700}
+# 2 · Fondo
+layout.addElement {"layout": "Dia 14", "kind": "rectangle", "fill": "#14202BFF", "outline": "#14202BFF", "width": 0, "x": 0, "y": 0, "w": 297, "h": 420}
+layout.arrange {"layout": "Dia 14", "element": 2, "to": "back"}
+
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "30DAYMAPCHALLENGE · DÍA 14 · MAPA BORGIANO · CARTAGENA", "size": 9, "color": "#5FA8E8", "letterSpacing": 2.5, "x": 14, "y": 8, "w": 270, "h": 5}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Del rigor en una manzana", "size": 34, "bold": true, "color": "#FFFFFF", "x": 14, "y": 14, "w": 270, "h": 16}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Todo lo que Overture sabe de la manzana del Palacio de la Inquisición, en el Centro Histórico de Cartagena", "size": 11, "color": "#B8C4D6", "x": 14, "y": 31.5, "w": 270, "h": 6}
+
+# Sobre el mapa: la plaza, apagada bajo la máscara, y el panel de escala
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Plaza de\nBolívar", "size": 10, "italic": true, "color": "#B8C4D6", "align": "center", "x": 192, "y": 214, "w": 34, "h": 10}
+layout.addElement {"layout": "Dia 14", "kind": "rectangle", "fill": "#14202BFF", "outline": "#5FA8E8", "width": 0.6, "radius": 1.5, "x": 14, "y": 270, "w": 92, "h": 20}
+layout.addElement {"layout": "Dia 14", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#FFFFFF", "outline": "#FFFFFF", "x": 18, "y": 273, "w": 5, "h": 14}
+layout.addElement {"layout": "Dia 14", "kind": "scaleBar", "frame": 1, "style": "line", "units": "meters", "divisions": 2, "color": "#FFFFFF", "x": 27, "y": 275, "w": 34, "h": 8}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "1:700\ntodavía no es 1:1", "size": 8, "color": "#FFD23F", "x": 65, "y": 274, "w": 40, "h": 10}
+
+# Banda de abajo: la cita, la leyenda hecha a mano y el inventario
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "EL MAPA DEL TAMAÑO DEL IMPERIO", "size": 8, "bold": true, "color": "#5FA8E8", "letterSpacing": 2, "x": 14, "y": 301, "w": 120, "h": 4}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "«…levantaron un Mapa del Imperio, que tenía\nel tamaño del Imperio y coincidía\npuntualmente con él.»", "size": 11, "italic": true, "color": "#FFFFFF", "x": 14, "y": 307, "w": 125, "h": 18}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Jorge Luis Borges, «Del rigor en la ciencia», 1946", "size": 7, "color": "#8FB3D9", "x": 14, "y": 326, "w": 125, "h": 12}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "LOS 45 LUGARES, POR GRUPO", "size": 8, "bold": true, "color": "#5FA8E8", "letterSpacing": 2, "x": 14, "y": 343, "w": 120, "h": 4}
+layout.addElement {"layout": "Dia 14", "kind": "circle", "fill": "#E4572EFF", "outline": "#14202B", "width": 0.4, "x": 15, "y": 349.0, "w": 4, "h": 4}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Comer y beber · 14", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 348.6, "w": 80, "h": 4.5}
+layout.addElement {"layout": "Dia 14", "kind": "circle", "fill": "#FFD23FFF", "outline": "#14202B", "width": 0.4, "x": 15, "y": 355.5, "w": 4, "h": 4}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Comprar · 13", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 355.1, "w": 80, "h": 4.5}
+layout.addElement {"layout": "Dia 14", "kind": "circle", "fill": "#7BD389FF", "outline": "#14202B", "width": 0.4, "x": 15, "y": 362.0, "w": 4, "h": 4}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Instituciones · 8", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 361.6, "w": 80, "h": 4.5}
+layout.addElement {"layout": "Dia 14", "kind": "circle", "fill": "#5FA8E8FF", "outline": "#14202B", "width": 0.4, "x": 15, "y": 368.5, "w": 4, "h": 4}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Dormir · 5", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 368.1, "w": 80, "h": 4.5}
+layout.addElement {"layout": "Dia 14", "kind": "circle", "fill": "#C9B8F0FF", "outline": "#14202B", "width": 0.4, "x": 15, "y": 375.0, "w": 4, "h": 4}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Servicios y demás · 5", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 374.6, "w": 80, "h": 4.5}
+layout.addElement {"layout": "Dia 14", "kind": "rectangle", "fill": "#FFFFFFFF", "outline": "#14202B", "width": 0.3, "x": 15.5, "y": 382.3, "w": 3, "h": 3}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Dirección · 21", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 381.6, "w": 40, "h": 4.5}
+layout.addElement {"layout": "Dia 14", "kind": "rectangle", "fill": "#FFFFFF00", "outline": "#FFFFFF", "width": 0.6, "x": 66, "y": 381.8, "w": 5, "h": 4}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Edificio · 28", "size": 8.5, "color": "#E6ECF5", "x": 74, "y": 381.6, "w": 40, "h": 4.5}
+layout.addElement {"layout": "Dia 14", "kind": "rectangle", "fill": "#FFFFFF00", "outline": "#FFD23F", "width": 0.9, "x": 110, "y": 381.8, "w": 5, "h": 4}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Manzana", "size": 8.5, "color": "#E6ECF5", "x": 118, "y": 381.6, "w": 30, "h": 4.5}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "EL INVENTARIO, A LA MANERA DE BORGES", "size": 8, "bold": true, "color": "#5FA8E8", "letterSpacing": 2, "x": 150, "y": 301, "w": 137, "h": 4}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Según Overture, los 45 lugares de la manzana se dividen en\n(a) restaurantes, 9; (b) tiendas de ropa y joyerías, 8; (c) hoteles, 4;\n(d) oficinas de gobierno, entre ellas un «Instituto geográfico Agustín\nCodaci», 3; (e) heladerías, yogures y paletas, 3; (f) museos que son el\nmismo museo, 2; (g) bancos y créditos, 2; (h) regalos y antigüedades, 2;\n(i) un bar, Bourbon St., y un servicio de eventos, Borboun St.; (j) un\ncentro comercial llamado Colombian Coffee; (k) una biblioteca que es\nservicio comunitario; (l) un alojamiento del que Overture está seguro al\n12 %; (m) un restaurante llamado Cartagena; (n) otros siete, de uno en\nuno; (ñ) los que siguen abiertos: no se sabe, ninguno dice si opera.\nDe sus 28 edificios, uno tiene nombre («Palacio de la Inquisión») y otro,\nnúmero de pisos: dos.", "size": 11, "color": "#E6ECF5", "x": 150, "y": 307, "w": 137, "h": 80}
+
+# Pie: fuentes y firma
+layout.addElement {"layout": "Dia 14", "kind": "line", "dir": "horizontal", "color": "#2A3A52", "width": 0.5, "x": 14, "y": 393, "w": 270, "h": 0.5}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "Datos: Overture Maps Foundation, versión 2026-10-21.0: edificios (© colaboradores de OpenStreetMap y Overture, ODbL), lugares (CDLA Permissive 2.0) y\ndirecciones (Overture y sus fuentes), en GeoParquet leído en su sitio. Imágenes: Esri World Imagery (Esri, Maxar, Earthstar Geographics). Contorno de la\nmanzana: trazado con los ejes de calle de Overture. Conteos: DuckDB sobre los mismos archivos. Cita: J. L. Borges, «Del rigor en la ciencia» (1946).\nCómo se hizo: todo en RustGIS web (web.rustgis.app): los tres GeoParquet de Overture, agregados a mano por su dirección (Home › Add › From URL) y\nleídos por rangos, y cuatro scripts: filtro por id, color y etiquetas por expresión, y layouts.\nScripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 6, "color": "#8A97AB", "x": 14, "y": 394.5, "w": 270, "h": 17}
+layout.addElement {"layout": "Dia 14", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 14: Borgesian map · Hecho con RustGIS · rustgis.app", "size": 7, "color": "#5FA8E8", "align": "right", "x": 14, "y": 412, "w": 270, "h": 4}

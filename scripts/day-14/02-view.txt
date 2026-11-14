@@ -1,0 +1,49 @@
+# Día 14 — Borgesian map: Del rigor en una manzana — 2 · VISTA (proceso y estilo)
+# Correr cuando las tres capas de Overture (agregadas a mano, ver el script 1) ya estén en el mapa,
+# con los nombres Edificios, Lugares y Direcciones (se ponen en el diálogo From URL).
+
+# Orden de dibujo, de arriba abajo: Lugares, Direcciones, Manzana, Máscara, Edificios. Las de
+# Overture llegan en cualquier orden y layer.move de una sola capa falla si ya está en su puesto;
+# una lista de varias nunca falla y conserva el orden que traían entre ellas. Por eso, pares:
+# 1 · Lugares y Edificios arriba: Direcciones queda debajo de las dos
+layer.move {"layer": ["Lugares", "Edificios"], "to": 0}
+# 2 · Lugares y Direcciones arriba: Lugares venía sobre Direcciones, así que queda en el 0 y
+#     Direcciones en el 1; Edificios baja al 2 (Manzana sigue sobre Máscara, se añadió después)
+layer.move {"layer": ["Lugares", "Direcciones"], "to": 0}
+# 3 · Manzana y Máscara arriba, en ese orden
+layer.move {"layer": ["Manzana", "Máscara"], "to": 0}
+# 4 · Lugares y Direcciones encima de todo: si quedan bajo la máscara, el borde oscuro tapa media
+#     bola de los que caen sobre el contorno. Edificios sí sigue bajo la máscara, para apagar las vecinas
+layer.move {"layer": ["Lugares", "Direcciones"], "to": 0}
+
+# Lugares y direcciones solo de la manzana: los 45 lugares y las 21 direcciones que caen dentro
+# de su contorno, por su id de Overture (sacados con DuckDB sobre los mismos archivos). Un filtro y no
+# layer.mask: la máscara corta a la mitad los puntos que caen sobre el eje de la calle y no oculta
+# las etiquetas de las vecinas
+layer.definitionQuery {"layer": "Lugares", "where": "id IN ('09541665-e7e4-4f63-9692-c3f2f645031f', '0aaca27e-0b6d-4021-9974-5dd434a51afe', '0fd09f3f-2cd5-4199-bfa0-175ac1644e65', '109bd350-b875-4114-ae9e-90a745d3dd46', '137c02b1-3024-40ad-b377-75484f9800dc', '14263f91-249b-4434-bda1-1003e400cc2a', '1982df1b-2d79-44fa-841f-89b22d1311b8', '2697ccdb-66e3-4537-9c21-a264c128b6aa', '284d74cb-057a-4555-8ad7-24026c7eb685', '362c50c1-9d54-4c62-b428-0ca6a2918c32', '46f28462-5b41-4530-8546-80157621ed8d', '47a3d840-0c14-4414-a2eb-9f88e4be61e8', '49b1a97d-6dfc-48f4-9a67-d0da626b4725', '598fa931-3ba9-4693-92d2-6df4b26fa7ff', '5f774cbd-2f29-4297-b765-14db6bf0fc18', '646e928e-5027-4284-a707-bb5282985b54', '69044873-aad3-4577-ae5e-410992e7f47f', '70a1a2fd-55d9-4c53-8577-a9987eaf2463', '72f4a5b7-4dfa-4213-ac0e-14aed22bea6a', '73d5b1e2-31e5-4086-91c9-6d32b0bf6afb', '73d6e92c-d90d-43e7-b608-f56bf6703938', '83b0e64f-672c-499e-93e3-10aec4fc18ed', '85a47923-7687-4fcb-9bf2-f48f3a84f0df', '8adb739f-74d4-4bef-a580-b36be2300de5', '8ba7f65a-b2c6-4841-aa6d-44623eb398d4', '8f7e2fbb-996c-4d7e-94c6-7071ffadc418', '90460ebe-9c54-4ec7-b31a-4ca144d0890c', '9a8daddf-a986-48a2-a323-1ec4008a134c', '9e24c45b-fae5-4000-8a04-20c023994580', '9fce1e07-2895-48d6-a2e0-96a39aca8917', 'a73daf96-63e6-4265-a2c8-432b85a2854b', 'ac294e76-5cb6-4211-89c2-0ba364e26294', 'acf02a07-61ba-4ee6-9c1d-4aa066b86f70', 'ad0407c3-224f-4380-bf77-2fc32bcdbcd8', 'b065cff5-f2f7-4bd0-9667-e88a3f758b96', 'b4019e31-331d-488c-9d0a-bbce685889fd', 'ba225c1d-c216-4693-a7c2-e4ed9a47acd6', 'cff14dde-6747-4311-882b-4a22dc31b327', 'd1cbe107-c80d-431e-92de-98d1ab1c899b', 'dae52805-7a79-4a34-a91b-43f15701718d', 'e73cd48c-0650-4e2f-8a59-398bc967da35', 'f0f43c69-e9cd-4296-ad85-04bee6005838', 'f27655fb-cc5c-4a3b-92c1-a6911586c97f', 'fd6c8328-8fb3-44d5-84b7-a1dff0df80f1', 'fea8666c-edd8-4a0b-b8b1-324eafe19683')"}
+layer.definitionQuery {"layer": "Direcciones", "where": "id IN ('02031507-e2f8-440f-baa2-448b40257e1c', '323f236d-92c9-496e-98da-145c9b211493', '52d41514-9600-4e2d-a625-0cad7da9c535', '67c9426c-ab8c-4eba-8441-4adcf21269ba', '7d09f39d-a66f-4472-adf3-b37aa5e55663', '886373d3-1d90-4e09-9e40-b245abdb43fe', '88aa55b3-c775-4331-a9a8-946c631bd1be', '893a4a34-549d-45e2-a5fd-d3bd0b5e47c5', '9cc56f70-7d96-4d64-9323-471fba027889', 'a6fbffa0-5de4-429b-af9b-d381189be1fa', 'b1d8c6dc-aa61-46d7-bf0c-e3bfd819190c', 'b331b698-1a9e-4ad7-9d28-6281e2df6978', 'b85ab9e0-d597-4959-8270-08094cfe68b6', 'be620194-c40c-4f99-9e3e-fb758a042a9e', 'bf025f06-8012-49ea-a2f2-a759d75eea82', 'd973e656-e59d-430e-a1f0-c90e85524cde', 'dc2ff4c5-1397-40c6-8144-150a09c9ba34', 'f28d56e2-a074-4643-9fea-002b00b4a86b', 'f639c665-81cd-4060-beb0-433b27de86c5', 'fbe1857f-0382-4018-9b9d-63b83f0f87b7', 'fd933378-9682-483f-908f-046f0bea13ec')"}
+
+# Todo lo de afuera, apagado con el azul oscuro de la página; la manzana, con un borde amarillo
+layer.color {"layer": "Máscara", "color": "#14202BD9"}
+layer.outline {"layer": "Máscara", "color": "#14202B00", "width": 0}
+layer.color {"layer": "Manzana", "color": "#FFFFFF00"}
+layer.outline {"layer": "Manzana", "color": "#FFD23F", "width": 1.6}
+
+# Edificios: solo el contorno, para ver el techo de la imagen debajo
+layer.color {"layer": "Edificios", "color": "#FFFFFF00"}
+layer.outline {"layer": "Edificios", "color": "#FFFFFFE6", "width": 0.9}
+
+# Lugares: un círculo por cada uno, de color según el grupo de su categoría de Overture
+# (basic_category). Los grupos y sus cuentas, en la leyenda del layout
+layer.marker {"layer": "Lugares", "shape": "circle", "size": 9}
+layer.color {"layer": "Lugares", "color": "#C9B8F0"}
+layer.outline {"layer": "Lugares", "color": "#14202B", "width": 0.8}
+layer.symbolBy {"layer": "Lugares", "fill": "CASE WHEN basic_category IN ('restaurant', 'casual_eatery', 'bar', 'lounge') THEN '#E4572E' WHEN basic_category IN ('fashion_and_apparel_store', 'flowers_and_gifts_store', 'arts_crafts_and_hobby_store', 'food_and_beverage_store', 'shopping_mall') THEN '#FFD23F' WHEN basic_category IN ('government_office', 'museum', 'bank_or_credit_union', 'social_or_community_service') THEN '#7BD389' WHEN basic_category IN ('hotel', 'private_lodging') THEN '#5FA8E8' ELSE '#C9B8F0' END"}
+
+# Direcciones: un cuadradito blanco y la dirección como se escribe en Colombia (KR 3, 33 88 → Cra. 3 # 33-88)
+layer.marker {"layer": "Direcciones", "shape": "square", "size": 4}
+layer.color {"layer": "Direcciones", "color": "#FFFFFF"}
+layer.outline {"layer": "Direcciones", "color": "#14202B", "width": 0.5}
+labels.by {"layer": "Direcciones", "text": "replace(replace(replace(street, 'KR ', 'Cra. '), 'CL ', 'Cl. '), 'DG ', 'Dg. ') || ' # ' || replace(number, ' ', '-')"}
+labels.enable {"layer": "Direcciones", "on": true}
+labels.style {"layer": "Direcciones", "size": 6.5, "color": "#14202B", "halo": true, "haloColor": "#FFFFFF"}

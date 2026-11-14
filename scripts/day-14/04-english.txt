@@ -1,0 +1,52 @@
+# Day 14 — Borgesian map: On Exactitude in a Block — 4 · LAYOUT IN ENGLISH
+# The series signature (dark page) on A3 portrait: the block at 1:700 on top, and below the quote,
+# the legend and the inventory. Text does not wrap to the element width: line breaks by hand.
+# Elements are numbered from 1: frame = 1, background = 2.
+layout.new {"name": "Day 14", "page": "a3", "orientation": "portrait", "template": "blank"}
+
+# 1 · The map: the block at a fixed 1:700
+layout.addFrame {"layout": "Day 14", "map": "Manzana", "x": 10, "y": 44, "w": 277, "h": 250}
+layout.update {"layout": "Day 14", "element": 1, "center": [-75.551632, 10.423617], "scale": 700}
+# 2 · Background
+layout.addElement {"layout": "Day 14", "kind": "rectangle", "fill": "#14202BFF", "outline": "#14202BFF", "width": 0, "x": 0, "y": 0, "w": 297, "h": 420}
+layout.arrange {"layout": "Day 14", "element": 2, "to": "back"}
+
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "30DAYMAPCHALLENGE · DAY 14 · BORGESIAN MAP · CARTAGENA", "size": 9, "color": "#5FA8E8", "letterSpacing": 2.5, "x": 14, "y": 8, "w": 270, "h": 5}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "On Exactitude in a Block", "size": 34, "bold": true, "color": "#FFFFFF", "x": 14, "y": 14, "w": 270, "h": 16}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Everything Overture knows about the block of the Palace of the Inquisition, in Cartagena's historic centre", "size": 11, "color": "#B8C4D6", "x": 14, "y": 31.5, "w": 270, "h": 6}
+
+# On the map: the square, dimmed under the mask, and the scale panel
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Plaza de\nBolívar", "size": 10, "italic": true, "color": "#B8C4D6", "align": "center", "x": 192, "y": 214, "w": 34, "h": 10}
+layout.addElement {"layout": "Day 14", "kind": "rectangle", "fill": "#14202BFF", "outline": "#5FA8E8", "width": 0.6, "radius": 1.5, "x": 14, "y": 270, "w": 92, "h": 20}
+layout.addElement {"layout": "Day 14", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#FFFFFF", "outline": "#FFFFFF", "x": 18, "y": 273, "w": 5, "h": 14}
+layout.addElement {"layout": "Day 14", "kind": "scaleBar", "frame": 1, "style": "line", "units": "meters", "divisions": 2, "color": "#FFFFFF", "x": 27, "y": 275, "w": 34, "h": 8}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "1:700\nnot yet 1:1", "size": 8, "color": "#FFD23F", "x": 65, "y": 274, "w": 40, "h": 10}
+
+# Bottom band: the quote, the hand-made legend and the inventory
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "THE MAP THE SIZE OF THE EMPIRE", "size": 8, "bold": true, "color": "#5FA8E8", "letterSpacing": 2, "x": 14, "y": 301, "w": 120, "h": 4}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "«…levantaron un Mapa del Imperio, que tenía\nel tamaño del Imperio y coincidía\npuntualmente con él.»", "size": 11, "italic": true, "color": "#FFFFFF", "x": 14, "y": 307, "w": 125, "h": 18}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Jorge Luis Borges, «Del rigor en la ciencia», 1946:\n\"they drew up a Map of the Empire that was the size\nof the Empire and matched it exactly\"", "size": 7, "color": "#8FB3D9", "x": 14, "y": 326, "w": 125, "h": 12}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "THE 45 PLACES, BY GROUP", "size": 8, "bold": true, "color": "#5FA8E8", "letterSpacing": 2, "x": 14, "y": 343, "w": 120, "h": 4}
+layout.addElement {"layout": "Day 14", "kind": "circle", "fill": "#E4572EFF", "outline": "#14202B", "width": 0.4, "x": 15, "y": 349.0, "w": 4, "h": 4}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Eating and drinking · 14", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 348.6, "w": 80, "h": 4.5}
+layout.addElement {"layout": "Day 14", "kind": "circle", "fill": "#FFD23FFF", "outline": "#14202B", "width": 0.4, "x": 15, "y": 355.5, "w": 4, "h": 4}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Shopping · 13", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 355.1, "w": 80, "h": 4.5}
+layout.addElement {"layout": "Day 14", "kind": "circle", "fill": "#7BD389FF", "outline": "#14202B", "width": 0.4, "x": 15, "y": 362.0, "w": 4, "h": 4}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Institutions · 8", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 361.6, "w": 80, "h": 4.5}
+layout.addElement {"layout": "Day 14", "kind": "circle", "fill": "#5FA8E8FF", "outline": "#14202B", "width": 0.4, "x": 15, "y": 368.5, "w": 4, "h": 4}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Sleeping · 5", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 368.1, "w": 80, "h": 4.5}
+layout.addElement {"layout": "Day 14", "kind": "circle", "fill": "#C9B8F0FF", "outline": "#14202B", "width": 0.4, "x": 15, "y": 375.0, "w": 4, "h": 4}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Services and others · 5", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 374.6, "w": 80, "h": 4.5}
+layout.addElement {"layout": "Day 14", "kind": "rectangle", "fill": "#FFFFFFFF", "outline": "#14202B", "width": 0.3, "x": 15.5, "y": 382.3, "w": 3, "h": 3}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Address · 21", "size": 8.5, "color": "#E6ECF5", "x": 22, "y": 381.6, "w": 40, "h": 4.5}
+layout.addElement {"layout": "Day 14", "kind": "rectangle", "fill": "#FFFFFF00", "outline": "#FFFFFF", "width": 0.6, "x": 66, "y": 381.8, "w": 5, "h": 4}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Building · 28", "size": 8.5, "color": "#E6ECF5", "x": 74, "y": 381.6, "w": 40, "h": 4.5}
+layout.addElement {"layout": "Day 14", "kind": "rectangle", "fill": "#FFFFFF00", "outline": "#FFD23F", "width": 0.9, "x": 110, "y": 381.8, "w": 5, "h": 4}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Block", "size": 8.5, "color": "#E6ECF5", "x": 118, "y": 381.6, "w": 30, "h": 4.5}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "THE INVENTORY, AFTER BORGES", "size": 8, "bold": true, "color": "#5FA8E8", "letterSpacing": 2, "x": 150, "y": 301, "w": 137, "h": 4}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "According to Overture, the 45 places in the block are divided into\n(a) restaurants, 9; (b) clothing and jewellery shops, 8; (c) hotels, 4;\n(d) government offices, among them an \"Instituto geográfico Agustín\nCodaci\", 3; (e) ice cream, yoghurt and ice lolly shops, 3; (f) museums\nthat are the same museum, 2; (g) banks and lenders, 2; (h) gifts and\nantiques, 2; (i) a bar, Bourbon St., and an events service, Borboun St.;\n(j) a shopping centre called Colombian Coffee; (k) a library listed as a\ncommunity service; (l) a lodging Overture is 12% sure of; (m) a\nrestaurant called Cartagena; (n) seven more, one of each; (ñ) those still\nopen: unknown, none says whether it operates.\nOf its 28 buildings, one has a name (\"Palacio de la Inquisión\") and\nanother, a number of floors: two.", "size": 11, "color": "#E6ECF5", "x": 150, "y": 307, "w": 137, "h": 80}
+
+# Footer: sources and signature
+layout.addElement {"layout": "Day 14", "kind": "line", "dir": "horizontal", "color": "#2A3A52", "width": 0.5, "x": 14, "y": 393, "w": 270, "h": 0.5}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "Data: Overture Maps Foundation, release 2026-10-21.0: buildings (© OpenStreetMap contributors and Overture, ODbL), places (CDLA Permissive 2.0) and\naddresses (Overture and its sources), as GeoParquet read in place. Imagery: Esri World Imagery (Esri, Maxar, Earthstar Geographics). Block outline:\ndrawn from Overture's street centre lines. Counts: DuckDB on the same files. Quote: J. L. Borges, \"Del rigor en la ciencia\" (1946), our translation.\nHow it was made: all in RustGIS web (web.rustgis.app): the three Overture GeoParquet files, added by hand from their address (Home › Add › From URL) and\nread by range, and four scripts: filter by id, colour and labels by expression, and layouts.\nScripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 6, "color": "#8A97AB", "x": 14, "y": 394.5, "w": 270, "h": 17}
+layout.addElement {"layout": "Day 14", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 14: Borgesian map · Made with RustGIS · rustgis.app", "size": 7, "color": "#5FA8E8", "align": "right", "x": 14, "y": 412, "w": 270, "h": 4}
