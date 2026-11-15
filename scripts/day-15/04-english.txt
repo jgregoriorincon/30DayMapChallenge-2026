@@ -1,0 +1,60 @@
+# Day 15 — Inside out: When it rains, the street is the river — 4 · ENGLISH LAYOUT
+# Same design as the Spanish layout (see 03-layout.txt, with the reasons for each choice): light page,
+# edge-to-edge map at 1:85,000 framed on the streams, a big number, a hand-built legend with each
+# group's real stroke and the two-basins bars. The map's legend classes are not used here: the legend
+# is drawn by hand, so it is in English.
+# Elements are numbered in order from 1: frame = 1, background = 2; no other id is needed.
+layout.new {"name": "Day 15", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Day 15", "map": "Barranquilla", "x": 0, "y": 29, "w": 210, "h": 188}
+layout.update {"layout": "Day 15", "element": 1, "center": [-74.8205, 10.9840], "scale": 85000}
+layout.addElement {"layout": "Day 15", "kind": "rectangle", "fill": "#F5F2EDFF", "outline": "#F5F2EDFF", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Day 15", "element": 2, "to": "back"}
+
+# Title band
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "30DAYMAPCHALLENGE · DAY 15 · INSIDE OUT · BARRANQUILLA", "size": 7.5, "color": "#0038B8", "letterSpacing": 2.5, "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "When it rains, the street is the river", "size": 26, "bold": true, "color": "#14202B", "x": 12, "y": 10, "w": 186, "h": 12}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "Barranquilla's storm streams by where the water runs: inside, underground, or outside, down the street", "size": 9, "color": "#4A5866", "x": 12, "y": 22.5, "w": 186, "h": 5}
+
+# Bottom band, left: the number
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "65 km", "size": 36, "bold": true, "color": "#0038B8", "x": 10, "y": 219, "w": 60, "h": 15}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "of streets are built to be a river:\nwhen it rains, the stream runs\ndown them. They are called viacanales.", "size": 7.5, "color": "#2B3846", "x": 10, "y": 235, "w": 62, "h": 13}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "Another 80 km of streams are still not\nchannelled, and only 23 km run underground.", "size": 6.5, "color": "#4A5866", "x": 10, "y": 250, "w": 62, "h": 7}
+
+# Centre: how the water runs, the hand-built legend (km out of 291 in all)
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "HOW THE WATER RUNS", "size": 6.5, "bold": true, "color": "#0038B8", "letterSpacing": 1.2, "x": 74, "y": 221, "w": 60, "h": 3.5}
+layout.addElement {"layout": "Day 15", "kind": "line", "dir": "horizontal", "color": "#0038B8", "width": 2.6, "x": 74, "y": 228, "w": 9, "h": 0.5}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "Down the street (viacanal) · 64.7 km", "size": 6.5, "bold": true, "color": "#14202B", "x": 86, "y": 226.5, "w": 52, "h": 3.5}
+layout.addElement {"layout": "Day 15", "kind": "line", "dir": "horizontal", "color": "#1E88E5", "width": 1.6, "x": 74, "y": 234, "w": 9, "h": 0.5}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "Not channelled · 80.4 km", "size": 6.5, "color": "#2B3846", "x": 86, "y": 232.5, "w": 52, "h": 3.5}
+layout.addElement {"layout": "Day 15", "kind": "line", "dir": "horizontal", "color": "#00897B", "width": 1.3, "x": 74, "y": 240, "w": 9, "h": 0.5}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "Open channel · 83.2 km", "size": 6.5, "color": "#2B3846", "x": 86, "y": 238.5, "w": 52, "h": 3.5}
+layout.addElement {"layout": "Day 15", "kind": "line", "dir": "horizontal", "color": "#37474F", "width": 1.1, "dash": [3, 2], "x": 74, "y": 246, "w": 9, "h": 0.5}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "Underground · 23.3 km", "size": 6.5, "color": "#2B3846", "x": 86, "y": 244.5, "w": 52, "h": 3.5}
+layout.addElement {"layout": "Day 15", "kind": "line", "dir": "horizontal", "color": "#9AA3AD", "width": 0.7, "x": 74, "y": 252, "w": 9, "h": 0.5}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "No data or under construction · 39.2 km", "size": 6.5, "color": "#2B3846", "x": 86, "y": 250.5, "w": 52, "h": 3.5}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "\"Not channelled\" is not always a street: the\nlongest, the León and Grande streams, are\nnatural creeks on the western edge.", "size": 6, "color": "#6F7A87", "x": 74, "y": 257, "w": 62, "h": 10}
+
+# Right: the two halves of the city, by basin (same bars as the Spanish layout, 0.35 mm per km)
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "TWO CITIES", "size": 6.5, "bold": true, "color": "#0038B8", "letterSpacing": 1.2, "x": 140, "y": 221, "w": 60, "h": 3.5}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "Towards the Magdalena, the old city · 89 km", "size": 6.5, "color": "#2B3846", "x": 140, "y": 226.5, "w": 62, "h": 3.5}
+layout.addElement {"layout": "Day 15", "kind": "rectangle", "fill": "#0038B8FF", "outline": "#F5F2EDFF", "width": 0.2, "x": 140, "y": 231, "w": 8.99, "h": 3}
+layout.addElement {"layout": "Day 15", "kind": "rectangle", "fill": "#00897BFF", "outline": "#F5F2EDFF", "width": 0.2, "x": 148.99, "y": 231, "w": 7.2, "h": 3}
+layout.addElement {"layout": "Day 15", "kind": "rectangle", "fill": "#37474FFF", "outline": "#F5F2EDFF", "width": 0.2, "x": 156.19, "y": 231, "w": 7.42, "h": 3}
+layout.addElement {"layout": "Day 15", "kind": "rectangle", "fill": "#9AA3ADFF", "outline": "#F5F2EDFF", "width": 0.2, "x": 163.61, "y": 231, "w": 7.58, "h": 3}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "Towards Mallorquín, the growing city · 153 km", "size": 6.5, "color": "#2B3846", "x": 140, "y": 237.5, "w": 62, "h": 3.5}
+layout.addElement {"layout": "Day 15", "kind": "rectangle", "fill": "#0038B8FF", "outline": "#F5F2EDFF", "width": 0.2, "x": 140, "y": 242, "w": 1.43, "h": 3}
+layout.addElement {"layout": "Day 15", "kind": "rectangle", "fill": "#1E88E5FF", "outline": "#F5F2EDFF", "width": 0.2, "x": 141.43, "y": 242, "w": 26.2, "h": 3}
+layout.addElement {"layout": "Day 15", "kind": "rectangle", "fill": "#00897BFF", "outline": "#F5F2EDFF", "width": 0.2, "x": 167.63, "y": 242, "w": 19.83, "h": 3}
+layout.addElement {"layout": "Day 15", "kind": "rectangle", "fill": "#9AA3ADFF", "outline": "#F5F2EDFF", "width": 0.2, "x": 187.46, "y": 242, "w": 6.14, "h": 3}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "The old city has given its streams a course:\ndown the street or underground. In the growing\none, almost half (49%) is still not channelled.", "size": 6.5, "color": "#4A5866", "x": 140, "y": 248, "w": 62, "h": 10}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "Another 48 km have no basin in the data (35 of\nthem, viacanal).", "size": 6, "color": "#6F7A87", "x": 140, "y": 259, "w": 62, "h": 6.5}
+
+# North arrow and scale
+layout.addElement {"layout": "Day 15", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#4A5866", "outline": "#4A5866", "x": 140, "y": 268.5, "w": 4, "h": 6}
+layout.addElement {"layout": "Day 15", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "color": "#4A5866", "x": 148, "y": 269, "w": 40, "h": 6}
+
+# Footer
+layout.addElement {"layout": "Day 15", "kind": "line", "dir": "horizontal", "color": "#C9C3B8", "width": 0.5, "x": 12, "y": 278.5, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "Data: Barranquilla City Hall, Mi Ciudad: storm streams (Planning Department and District Infrastructure Agency), CC BY-SA 4.0, accessed 2026-11-13.\nBasemap: Mi Ciudad, Barranquilla City Hall. Kilometres measured on the same layer, in UTM 18N. This map and its project: CC BY-SA 4.0.\nHow it was made: all in RustGIS web (web.rustgis.app): one layer by URL, five groups by expression and strokes by levels (underground, dashed).\nScripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5.5, "color": "#6F7A87", "x": 12, "y": 280, "w": 186, "h": 11}
+layout.addElement {"layout": "Day 15", "kind": "text", "text": "#30DayMapChallenge 2026 · Day 15: Inside out · Made with RustGIS · rustgis.app", "size": 6.5, "color": "#0038B8", "align": "right", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Delivery: export the layout and save the project from the interface

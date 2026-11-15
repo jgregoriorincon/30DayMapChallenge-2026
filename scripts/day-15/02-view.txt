@@ -1,0 +1,36 @@
+# Día 15 — Inside out: Cuando llueve, la calle es el río — 2 · VISTA (proceso y estilo)
+# Correr cuando la capa Arroyos ya esté en el panel de capas.
+
+# Cinco grupos según por dónde va el agua (campo estado del servicio). Km medidos en UTM 18N sobre la
+# misma capa (2026-11-13, consola de web.rustgis.app):
+#   1 · Por la calle: Viacanal, calles construidas para ser cauce                    64,7 km
+#   2 · Sin canalizar: No_canalizado (casi todo en la cuenca occidental, a Mallorquín) 80,4 km
+#   3 · Canalizado a cielo abierto: Canalizado_abierto 56,0 + Canalizado_natural 23,3
+#       + Canaleta 3,8                                                               83,2 km
+#   4 · Bajo tierra: Canalizado_cerrado                                              23,3 km
+#   5 · Sin información (35,4) y en obra (En_ejecucion, 3,8)                         39,2 km
+# Total: 290,8 km. Ojo: "sin canalizar" no es siempre calle; los más largos (Arroyo León, 9,4 km;
+# Arroyo Grande, 8,2) son cauces naturales del borde occidental
+edit.addField {"layer": "Arroyos", "name": "Grupo", "type": "long"}
+edit.calculateField {"layer": "Arroyos", "field": "Grupo", "expression": "CASE WHEN estado = 'Viacanal' THEN 1 WHEN estado = 'No_canalizado' THEN 2 WHEN estado IN ('Canalizado_abierto', 'Canalizado_natural', 'Canaleta') THEN 3 WHEN estado = 'Canalizado_cerrado' THEN 4 ELSE 5 END"}
+layer.symbology {"layer": "Arroyos", "type": "unique", "field": "Grupo"}
+# El color de la clase es el de la muestra en la leyenda. Primera prueba (2026-11-13): el gris del
+# canalizado se confundía con las calles del mapa base y el punteado fino no se veía. Ahora cada grupo
+# tiene un tono propio: azules para el agua suelta, verde azulado para el canal abierto, gris carbón
+# punteado y grueso para lo que va bajo tierra
+layer.classStyle {"layer": "Arroyos", "value": 1, "color": "#0038B8", "label": "Por la calle (viacanal) · 64,7 km"}
+layer.classStyle {"layer": "Arroyos", "value": 2, "color": "#1E88E5", "label": "Sin canalizar · 80,4 km"}
+layer.classStyle {"layer": "Arroyos", "value": 3, "color": "#00897B", "label": "Canalizado a cielo abierto · 83,2 km"}
+layer.classStyle {"layer": "Arroyos", "value": 4, "color": "#37474F", "label": "Bajo tierra · 23,3 km"}
+layer.classStyle {"layer": "Arroyos", "value": 5, "color": "#9AA3AD", "label": "Sin información o en obra · 39,2 km"}
+
+# El gesto del día: lo que va por dentro, bajo tierra, punteado; lo que va por fuera, por la calle,
+# en azul intenso y grueso, con un borde blanco que lo separa de las vías del mapa base. Se probó una
+# variante oscura (2026-11-13) y se descartó: el mapa base oscuro dibuja sus vías principales en cian
+# con halo, y competían con la viacanal. Niveles: los grupos de fondo abajo, la viacanal arriba
+layer.strokeLevels {"layer": "Arroyos", "on": true}
+layer.lineStrokes {"layer": "Arroyos", "value": 5, "strokes": [{"color": "#9AA3ADD9", "width": 0.7, "cap": "round", "join": "round", "level": 0}]}
+layer.lineStrokes {"layer": "Arroyos", "value": 4, "strokes": [{"color": "#37474F", "width": 1.1, "cap": "flat", "join": "round", "dash": [3, 2], "level": 1}]}
+layer.lineStrokes {"layer": "Arroyos", "value": 3, "strokes": [{"color": "#00897B", "width": 1.3, "cap": "round", "join": "round", "level": 2}]}
+layer.lineStrokes {"layer": "Arroyos", "value": 2, "strokes": [{"color": "#1E88E5", "width": 1.6, "cap": "round", "join": "round", "level": 3}]}
+layer.lineStrokes {"layer": "Arroyos", "value": 1, "strokes": [{"color": "#FFFFFF", "width": 4.2, "cap": "round", "join": "round", "level": 4}, {"color": "#0038B8", "width": 2.6, "cap": "round", "join": "round", "level": 5}]}

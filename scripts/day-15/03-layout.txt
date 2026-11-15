@@ -1,0 +1,71 @@
+# Día 15 — Inside out: Cuando llueve, la calle es el río — 3 · LAYOUT
+# La firma de la serie desde el día 11, en claro: página del color de la ciudad en el mapa base,
+# antetítulo espaciado, una cifra grande, la leyenda hecha a mano (la de RustGIS escribe en gris
+# oscuro fijo) y el pie con las fuentes. El gesto de este día está en el mapa: lo que va por dentro
+# (bajo tierra) punteado, lo que va por fuera (por la calle) en azul intenso con borde blanco. Abajo,
+# las dos mitades de la ciudad en barras.
+# Los elementos se numeran en orden desde 1: marco = 1, fondo = 2; no hace falta ningún otro id.
+layout.new {"name": "Dia 15", "page": "a4", "orientation": "portrait", "template": "blank"}
+
+# 1 · Mapa de borde a borde, entre la banda del título y la de abajo. Encuadre en los arroyos, no en
+# el distrito: ocupan unos 14,6 × 14 km (de -74.887 a -74.754 y de 10.921 a 11.047, medido sobre la
+# primera exportación). A 1:85 000 entran con margen y el río queda a la derecha; a 1:122 000 la mitad
+# de arriba era mar, río y la isla de Salamanca
+layout.addFrame {"layout": "Dia 15", "map": "Barranquilla", "x": 0, "y": 29, "w": 210, "h": 188}
+layout.update {"layout": "Dia 15", "element": 1, "center": [-74.8205, 10.9840], "scale": 85000}
+# 2 · Fondo de la página, un poco más claro que la ciudad en el mapa base Mi Ciudad (#EDE9E4), detrás de todo
+layout.addElement {"layout": "Dia 15", "kind": "rectangle", "fill": "#F5F2EDFF", "outline": "#F5F2EDFF", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Dia 15", "element": 2, "to": "back"}
+
+# Banda del título
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "30DAYMAPCHALLENGE · DÍA 15 · DEL REVÉS · BARRANQUILLA", "size": 7.5, "color": "#0038B8", "letterSpacing": 2.5, "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Cuando llueve, la calle es el río", "size": 26, "bold": true, "color": "#14202B", "x": 12, "y": 10, "w": 186, "h": 12}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Los arroyos de Barranquilla según por dónde va el agua: por dentro, bajo tierra, o por fuera, por la calle", "size": 9, "color": "#4A5866", "x": 12, "y": 22.5, "w": 186, "h": 5}
+
+# Banda de abajo, a la izquierda: la cifra como entrada (km medidos en UTM 18N sobre la misma capa)
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "65 km", "size": 36, "bold": true, "color": "#0038B8", "x": 10, "y": 219, "w": 60, "h": 15}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "de calles están hechas para ser\nrío: cuando llueve, el arroyo baja\npor ellas. Se llaman viacanales.", "size": 7.5, "color": "#2B3846", "x": 10, "y": 235, "w": 60, "h": 13}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Otros 80 km de arroyos siguen sin canalizar,\ny solo 23 km van bajo tierra.", "size": 6.5, "color": "#4A5866", "x": 10, "y": 250, "w": 60, "h": 7}
+
+# Al centro: cómo va el agua, la leyenda a mano con el trazo de cada grupo (km de 291 en total)
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "CÓMO VA EL AGUA", "size": 6.5, "bold": true, "color": "#0038B8", "letterSpacing": 1.2, "x": 74, "y": 221, "w": 60, "h": 3.5}
+layout.addElement {"layout": "Dia 15", "kind": "line", "dir": "horizontal", "color": "#0038B8", "width": 2.6, "x": 74, "y": 228, "w": 9, "h": 0.5}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Por la calle (viacanal) · 64,7 km", "size": 6.5, "bold": true, "color": "#14202B", "x": 86, "y": 226.5, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Dia 15", "kind": "line", "dir": "horizontal", "color": "#1E88E5", "width": 1.6, "x": 74, "y": 234, "w": 9, "h": 0.5}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Sin canalizar · 80,4 km", "size": 6.5, "color": "#2B3846", "x": 86, "y": 232.5, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Dia 15", "kind": "line", "dir": "horizontal", "color": "#00897B", "width": 1.3, "x": 74, "y": 240, "w": 9, "h": 0.5}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Canalizado a cielo abierto · 83,2 km", "size": 6.5, "color": "#2B3846", "x": 86, "y": 238.5, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Dia 15", "kind": "line", "dir": "horizontal", "color": "#37474F", "width": 1.1, "dash": [3, 2], "x": 74, "y": 246, "w": 9, "h": 0.5}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Bajo tierra · 23,3 km", "size": 6.5, "color": "#2B3846", "x": 86, "y": 244.5, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Dia 15", "kind": "line", "dir": "horizontal", "color": "#9AA3AD", "width": 0.7, "x": 74, "y": 252, "w": 9, "h": 0.5}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Sin información o en obra · 39,2 km", "size": 6.5, "color": "#2B3846", "x": 86, "y": 250.5, "w": 50, "h": 3.5}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "«Sin canalizar» no siempre es calle: los\nmás largos, los arroyos León y Grande, son\ncauces naturales del occidente.", "size": 6, "color": "#6F7A87", "x": 74, "y": 257, "w": 62, "h": 10}
+
+# A la derecha: las dos mitades de la ciudad, por cuenca. Barras apiladas a mano, 0,35 mm por km,
+# desde x = 140, en el orden de la leyenda (los tramos de menos de 0,2 km no se dibujan)
+# Oriental: viacanal 25,7 · sin canalizar 0,05 · abierto 20,6 · bajo tierra 21,2 · sin info u obra 21,7 = 89,1 km
+# Occidental: viacanal 4,1 · sin canalizar 74,9 · abierto 56,7 · bajo tierra 0,2 · sin info u obra 17,6 = 153,4 km
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "DOS CIUDADES", "size": 6.5, "bold": true, "color": "#0038B8", "letterSpacing": 1.2, "x": 140, "y": 221, "w": 60, "h": 3.5}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Hacia el Magdalena, la ciudad vieja · 89 km", "size": 6.5, "color": "#2B3846", "x": 140, "y": 226.5, "w": 60, "h": 3.5}
+layout.addElement {"layout": "Dia 15", "kind": "rectangle", "fill": "#0038B8FF", "outline": "#F5F2EDFF", "width": 0.2, "x": 140, "y": 231, "w": 8.99, "h": 3}
+layout.addElement {"layout": "Dia 15", "kind": "rectangle", "fill": "#00897BFF", "outline": "#F5F2EDFF", "width": 0.2, "x": 148.99, "y": 231, "w": 7.2, "h": 3}
+layout.addElement {"layout": "Dia 15", "kind": "rectangle", "fill": "#37474FFF", "outline": "#F5F2EDFF", "width": 0.2, "x": 156.19, "y": 231, "w": 7.42, "h": 3}
+layout.addElement {"layout": "Dia 15", "kind": "rectangle", "fill": "#9AA3ADFF", "outline": "#F5F2EDFF", "width": 0.2, "x": 163.61, "y": 231, "w": 7.58, "h": 3}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Hacia Mallorquín, la ciudad que crece · 153 km", "size": 6.5, "color": "#2B3846", "x": 140, "y": 237.5, "w": 62, "h": 3.5}
+layout.addElement {"layout": "Dia 15", "kind": "rectangle", "fill": "#0038B8FF", "outline": "#F5F2EDFF", "width": 0.2, "x": 140, "y": 242, "w": 1.43, "h": 3}
+layout.addElement {"layout": "Dia 15", "kind": "rectangle", "fill": "#1E88E5FF", "outline": "#F5F2EDFF", "width": 0.2, "x": 141.43, "y": 242, "w": 26.2, "h": 3}
+layout.addElement {"layout": "Dia 15", "kind": "rectangle", "fill": "#00897BFF", "outline": "#F5F2EDFF", "width": 0.2, "x": 167.63, "y": 242, "w": 19.83, "h": 3}
+layout.addElement {"layout": "Dia 15", "kind": "rectangle", "fill": "#9AA3ADFF", "outline": "#F5F2EDFF", "width": 0.2, "x": 187.46, "y": 242, "w": 6.14, "h": 3}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "La ciudad vieja ya le dio cauce a sus arroyos:\npor la calle o bajo tierra. En la que crece,\ncasi la mitad (49 %) sigue sin canalizar.", "size": 6.5, "color": "#4A5866", "x": 140, "y": 248, "w": 62, "h": 10}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Otros 48 km no traen cuenca en el dato (35 de\nellos, viacanal).", "size": 6, "color": "#6F7A87", "x": 140, "y": 259, "w": 62, "h": 6.5}
+
+# Norte y escala, discretos, abajo a la derecha de la banda
+layout.addElement {"layout": "Dia 15", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#4A5866", "outline": "#4A5866", "x": 140, "y": 268.5, "w": 4, "h": 6}
+layout.addElement {"layout": "Dia 15", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "color": "#4A5866", "x": 148, "y": 269, "w": 40, "h": 6}
+
+# Pie: una línea fina, las fuentes y la firma. Los datos son CC BY-SA 4.0 (según el catálogo de Mi
+# Ciudad), así que el mapa y su proyecto también, como el día 8
+layout.addElement {"layout": "Dia 15", "kind": "line", "dir": "horizontal", "color": "#C9C3B8", "width": 0.5, "x": 12, "y": 278.5, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "Datos: Alcaldía de Barranquilla, Mi Ciudad: arroyos (Secretaría de Planeación y Agencia Distrital de Infraestructura), CC BY-SA 4.0, consultado el 2026-11-13.\nMapa base: Mi Ciudad, Alcaldía de Barranquilla. Kilómetros medidos sobre la misma capa, en UTM 18N. Este mapa y su proyecto: CC BY-SA 4.0.\nCómo se hizo: todo en RustGIS web (web.rustgis.app): una capa por URL, cinco grupos por expresión y trazos por niveles (lo que va bajo tierra, punteado).\nScripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5.5, "color": "#6F7A87", "x": 12, "y": 280, "w": 186, "h": 11}
+layout.addElement {"layout": "Dia 15", "kind": "text", "text": "#30DayMapChallenge 2026 · Día 15: Inside out · Hecho con RustGIS · rustgis.app", "size": 6.5, "color": "#0038B8", "align": "right", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz

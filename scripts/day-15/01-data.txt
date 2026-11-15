@@ -1,0 +1,28 @@
+# Día 15 — Inside out: Cuando llueve, la calle es el río — 1 · DATOS
+# Barranquilla y sus arroyos: cuando llueve fuerte, el agua no va por dentro (bajo tierra) sino por
+# fuera, por la calle. La ciudad tiene incluso calles construidas para eso: las viacanales.
+# Fuente: el catálogo del visor BAQ v2 (Mi Ciudad, el servidor oficial de la Alcaldía). Verificado el
+# 2026-11-13 desde la consola de web.rustgis.app: CORS, PBF, tope de 2000.
+
+map.rename {"name": "Barranquilla"}
+map.basemap {"name": "blank"}
+map.graticule {"on": false}
+
+# El mapa base oficial claro de la Alcaldía (Mi Ciudad), el que se probó el día 3
+# (ciudad #EDE9E4, agua #77BEF0, vías principales #F6CA91). Su estilo no trae crédito, así que va en
+# "attribution". Otra opción clara del mismo servidor, sin probar: mapareferencia_papel (cambiar la URL
+# por la de la línea comentada). Al 55 % de opacidad sobre el fondo blanco de blank: el mapa base no
+# se toca, pero queda como un velo y las vías naranjas, el sombreado y el agua dejan de competir con
+# los arroyos (primera prueba al 100 %, 2026-11-13)
+map.addTiles {"url": "https://miciudad.barranquilla.gov.co/server/rest/services/Hosted/VectorTile_MiCiudad/VectorTileServer/resources/styles/root.json", "kind": "style", "name": "Mapa base Mi Ciudad (Alcaldía de Barranquilla)", "attribution": "Mapa base: Mi Ciudad, Alcaldía de Barranquilla", "opacity": 0.55}
+# map.addTiles {"url": "https://miciudad.barranquilla.gov.co/server/rest/services/Hosted/mapareferencia_papel/VectorTileServer/resources/styles/root.json", "kind": "style", "name": "Mapa base Mi Ciudad papel (Alcaldía de Barranquilla)", "attribution": "Mapa base: Mi Ciudad, Alcaldía de Barranquilla", "opacity": 0.55}
+
+# El distrito entero (extensión del límite municipal del IGAC, con un margen)
+map.zoomToExtent {"extent": [-74.925, 10.905, -74.750, 11.112]}
+
+# Arroyos: 417 tramos, 291 km (Secretaría de Planeación / Agencia Distrital de Infraestructura,
+# fecha del catálogo 2026-04-16, CC BY-SA 4.0 según el catálogo; el servicio no la declara).
+# Campos: estado (cómo va el agua), nombre, cuenca. Una consulta: 417 < 2000
+layer.addUrl {"url": "https://miciudad.barranquilla.gov.co/gis/rest/services/ambiente/hidrografia/MapServer/3/query?where=1%3D1&outFields=estado,nombre,cuenca&outSR=4326&f=pbf", "name": "Arroyos", "zoom": false}
+
+# Esperar a que la capa esté en el panel de capas. Luego, el script 2 (vista).
