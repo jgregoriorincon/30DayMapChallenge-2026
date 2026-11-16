@@ -1,0 +1,93 @@
+# Día 16 — Collaborative map: Donde ninguna obra evita el riesgo — 3 · LAYOUT (español)
+# Correr después del script 2, con el mapa ya dibujado. A4 vertical: la franja es casi tres veces más
+# alta que ancha. Mapa a la izquierda; cifra, barras y leyenda a la derecha; notas y pie abajo.
+# Barras: predios en riesgo por barrio (suman 2 121; 30 mm = 244). Metropolitana (552) = Las Américas,
+# Carrizal, Santo Domingo de Guzmán y 7 de Abril.
+# Falta el nombre o rol de la supervisora: buscar "⟨".
+
+layout.new {"name": "Dia 16", "page": "a4", "orientation": "portrait", "template": "blank"}
+# Marco 110 × 215 mm a 1:33 000 = 3,63 × 7,1 km: la franja (6,8 km) con los nombres al oeste,
+# centrado en los 113 polígonos de riesgo
+layout.addFrame {"layout": "Dia 16", "map": "Barranquilla", "x": 12, "y": 32, "w": 110, "h": 215}
+layout.update {"layout": "Dia 16", "element": 1, "center": [-74.8200, 10.956], "scale": 33000}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#F5F2EDFF", "outline": "#F5F2EDFF", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Dia 16", "element": 2, "to": "back"}
+
+# ── Encabezado ──
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "30DAYMAPCHALLENGE · DÍA 16 · MAPA COLABORATIVO · BARRANQUILLA", "size": 7, "color": "#8B1A12", "letterSpacing": 2, "x": 12, "y": 6, "w": 186, "h": 4}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Donde ninguna obra evita el riesgo", "size": 22, "bold": true, "color": "#1F2328", "x": 12, "y": 11, "w": 186, "h": 10}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Predios informales sobre la ladera del suroccidente de Barranquilla, en zonas de riesgo por remoción en masa alto no mitigable", "size": 8.5, "color": "#4A5866", "x": 12, "y": 22.5, "w": 186, "h": 5}
+
+# ── La cifra ──
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "2 121", "size": 36, "bold": true, "color": "#B2182B", "x": 126, "y": 36, "w": 74, "h": 15}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "predios informales están donde\nel riesgo es alto y no mitigable.\nAhí la salida no es el título:\nes el reasentamiento.", "size": 8, "color": "#1F2328", "x": 126, "y": 52, "w": 74, "h": 16}
+
+# ── Barras por barrio (orden de mayor a menor; 30 mm = 244) ──
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "PREDIOS EN RIESGO NO MITIGABLE,\nPOR BARRIO", "size": 6.5, "bold": true, "color": "#8B1A12", "letterSpacing": 1.2, "x": 126, "y": 74, "w": 74, "h": 7}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Carlos Meisel", "size": 6.3, "color": "#1F2328", "align": "right", "x": 126, "y": 83.6, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182BE6", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 84.0, "w": 30.0, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "244", "size": 6, "color": "#1F2328", "x": 195.7, "y": 83.6, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "El Bosque", "size": 6.3, "color": "#1F2328", "align": "right", "x": 126, "y": 90.19999999999999, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182BE6", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 90.6, "w": 29.02, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "236", "size": 6, "color": "#1F2328", "x": 194.72, "y": 90.19999999999999, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Me Quejo", "size": 6.3, "color": "#1F2328", "align": "right", "x": 126, "y": 96.8, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182BE6", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 97.2, "w": 28.77, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "234", "size": 6, "color": "#1F2328", "x": 194.47, "y": 96.8, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "La Esmeralda", "size": 6.3, "color": "#1F2328", "align": "right", "x": 126, "y": 103.39999999999999, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182BE6", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 103.8, "w": 26.93, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "219", "size": 6, "color": "#1F2328", "x": 192.63, "y": 103.39999999999999, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Las Terrazas", "size": 6.3, "color": "#1F2328", "align": "right", "x": 126, "y": 110.0, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182BE6", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 110.4, "w": 26.68, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "217", "size": 6, "color": "#1F2328", "x": 192.38, "y": 110.0, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "7 de Abril", "size": 6.3, "italic": true, "color": "#4A5866", "align": "right", "x": 126, "y": 116.6, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182B99", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 117.0, "w": 26.68, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "217", "size": 6, "color": "#1F2328", "x": 192.38, "y": 116.6, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Cuchilla de Villate", "size": 6.3, "color": "#1F2328", "align": "right", "x": 126, "y": 123.19999999999999, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182BE6", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 123.6, "w": 23.24, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "189", "size": 6, "color": "#1F2328", "x": 188.94, "y": 123.19999999999999, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Carrizal", "size": 6.3, "italic": true, "color": "#4A5866", "align": "right", "x": 126, "y": 129.79999999999998, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182B99", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 130.2, "w": 22.99, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "187", "size": 6, "color": "#1F2328", "x": 188.69, "y": 129.79999999999998, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Nueva Colombia", "size": 6.3, "color": "#1F2328", "align": "right", "x": 126, "y": 136.4, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182BE6", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 136.8, "w": 19.55, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "159", "size": 6, "color": "#1F2328", "x": 185.25, "y": 136.4, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Las Américas", "size": 6.3, "italic": true, "color": "#4A5866", "align": "right", "x": 126, "y": 143.0, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182B99", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 143.4, "w": 11.19, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "91", "size": 6, "color": "#1F2328", "x": 176.89, "y": 143.0, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Villa del Rosario", "size": 6.3, "color": "#1F2328", "align": "right", "x": 126, "y": 149.6, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182BE6", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 150.0, "w": 7.62, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "62", "size": 6, "color": "#1F2328", "x": 173.32, "y": 149.6, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Santo Domingo de Guzmán", "size": 6.3, "italic": true, "color": "#4A5866", "align": "right", "x": 126, "y": 156.2, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182B99", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 156.6, "w": 7.01, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "57", "size": 6, "color": "#1F2328", "x": 172.71, "y": 156.2, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "El Valle", "size": 6.3, "color": "#1F2328", "align": "right", "x": 126, "y": 162.79999999999998, "w": 37, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#B2182BE6", "outline": "#B2182B00", "width": 0, "x": 164.5, "y": 163.2, "w": 1.11, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "9", "size": 6, "color": "#1F2328", "x": 166.81, "y": 162.79999999999998, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "En cursiva, los de la localidad Metropolitana\n(552); los demás, Suroccidente (1 569).", "size": 6, "color": "#6B7280", "x": 126, "y": 170.3, "w": 74, "h": 7}
+
+# ── Leyenda ──
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "LEYENDA", "size": 6.5, "bold": true, "color": "#8B1A12", "letterSpacing": 1.2, "x": 126, "y": 180.8, "w": 74, "h": 3.5}
+layout.addElement {"layout": "Dia 16", "kind": "circle", "fill": "#B2182BE6", "outline": "#FFFFFF00", "width": 0, "x": 127, "y": 186.1, "w": 2.4, "h": 2.4}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Predio informal en riesgo no mitigable", "size": 6.3, "color": "#1F2328", "x": 132, "y": 185.6, "w": 68, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "circle", "fill": "#5B6B8CCC", "outline": "#FFFFFF00", "width": 0, "x": 127, "y": 191.1, "w": 2.4, "h": 2.4}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Predio informal fuera de esa zona", "size": 6.3, "color": "#1F2328", "x": 132, "y": 190.6, "w": 68, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#D7301F1A", "outline": "#C62A1E", "width": 0.6, "x": 126.6, "y": 195.8, "w": 3.2, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Riesgo por remoción alto no mitigable", "size": 6.3, "color": "#1F2328", "x": 132, "y": 195.6, "w": 68, "h": 3.2}
+# Ladera: el velo con borde y una diagonal encima que evoca la trama del mapa (un rectángulo del
+# layout no lleva trama)
+layout.addElement {"layout": "Dia 16", "kind": "rectangle", "fill": "#8C6A4A14", "outline": "#8C6A4A", "width": 0.3, "x": 126.6, "y": 200.8, "w": 3.2, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "line", "dir": "rising", "color": "#8C6A4AA6", "width": 0.5, "x": 126.6, "y": 200.8, "w": 3.2, "h": 3}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Ladera empinada", "size": 6.3, "color": "#1F2328", "x": 132, "y": 200.6, "w": 68, "h": 3.2}
+layout.addElement {"layout": "Dia 16", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#4A5866", "outline": "#4A5866", "x": 106, "y": 230, "w": 4, "h": 6}
+layout.addElement {"layout": "Dia 16", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "color": "#4A5866", "x": 16, "y": 238, "w": 40, "h": 6}
+
+# ── Notas ──
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "POR QUÉ AHÍ", "size": 6.5, "bold": true, "color": "#8B1A12", "letterSpacing": 1.2, "x": 12, "y": 251, "w": 90, "h": 3.5}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Los barrios crecieron hasta el borde de la loma. Donde la\nladera es empinada (rayado, curvas apretadas), el Decreto\n0893 de 2024 marca un riesgo que ninguna obra estabiliza. Cada punto\nes un predio informal, no prueba una casa a punto de caer.", "size": 7, "color": "#4A5866", "x": 12, "y": 255.5, "w": 92, "h": 16}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "QUÉ DICE LA NORMA", "size": 6.5, "bold": true, "color": "#8B1A12", "letterSpacing": 1.2, "x": 108, "y": 251, "w": 90, "h": 3.5}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "El Decreto 0893 de 2024 adoptó el estudio detallado de riesgo\n(1:2 000) de las localidades Suroccidente y Metropolitana.\nLa Ley 388 de 1997 manda fijar las zonas no urbanizables por\nriesgo.", "size": 7, "color": "#4A5866", "x": 108, "y": 255.5, "w": 92, "h": 16}
+
+# ── Pie ──
+layout.addElement {"layout": "Dia 16", "kind": "line", "dir": "horizontal", "color": "#D9D3C7", "width": 0.4, "x": 12, "y": 274, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "Datos: Alcaldía de Barranquilla (CC BY-SA 4.0), consultados el 2026-11-15. Predios informales: Gerencia de Gestión Catastral, Concentración de informalidad (2026-11-03).\nRiesgo: estudio detallado de riesgo por movimientos en masa de la ladera occidental (CI Ambiental, convenio AFD), adoptado por el Decreto 0893 de 2024; nivel alto no mitigable.\nRelieve y barrios: Secretaría de Planeación. Mapa base: Mi Ciudad. Cómo se hizo: todo en RustGIS web (web.rustgis.app), con cuatro scripts.\nLos predios se cruzan con la zona de riesgo (Spatial Join) y los barrios con esos predios. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5, "color": "#6B7280", "x": 12, "y": 276, "w": 186, "h": 10}
+layout.addElement {"layout": "Dia 16", "kind": "text", "text": "© José Gregorio Rincón · Pamela Mayorga Ramos · CC BY-SA 4.0 · #30DayMapChallenge 2026 · Día 16: Collaborative map · Hecho con RustGIS · rustgis.app", "size": 6.5, "color": "#8B1A12", "align": "right", "x": 12, "y": 291.5, "w": 186, "h": 4}

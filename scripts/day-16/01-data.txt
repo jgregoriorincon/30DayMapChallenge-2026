@@ -1,0 +1,43 @@
+# Día 16 — Collaborative map: Donde ninguna obra evita el riesgo — 1 · DATOS
+# 2 121 predios informales (ocupaciones y posesiones) de Barranquilla están en zonas de riesgo por
+# remoción en masa alto no mitigable. Son 13 barrios en una sola franja: el borde de la loma del
+# suroccidente (1 569 en Suroccidente y 552 en Metropolitana).
+# Mapa colaborativo: José Gregorio Rincón y Pamela Mayorga Ramos, Gerente de Gestión Catastral.
+
+map.rename {"name": "Barranquilla"}
+map.basemap {"name": "blank"}
+map.graticule {"on": false}
+
+# Mapa base oficial de la Alcaldía (Mi Ciudad), atenuado para que no compita con los datos. Su estilo
+# no trae crédito, así que va en "attribution"
+map.addTiles {"url": "https://miciudad.barranquilla.gov.co/server/rest/services/Hosted/VectorTile_MiCiudad/VectorTileServer/resources/styles/root.json", "kind": "style", "name": "Mapa base Mi Ciudad (Alcaldía de Barranquilla)", "attribution": "Mapa base: Mi Ciudad, Alcaldía de Barranquilla", "opacity": 0.4}
+
+# La franja: el rectángulo de los 113 polígonos de riesgo con unos 500 m de margen. Las consultas de
+# abajo piden solo lo que cae en él
+map.zoomToExtent {"extent": [-74.836, 10.920, -74.804, 10.992]}
+
+# ── Riesgo por remoción en masa alto no mitigable: 113 polígonos, 97,7 ha ──
+# Estudio detallado de riesgo por movimientos en masa de la Ladera Occidental (1:2 000), adoptado por
+# el Decreto 0893 de 2024. ArcGIS Online de la Alcaldía
+layer.addUrl {"url": "https://services3.arcgis.com/oGYAc07w6wsvgUYr/ArcGIS/rest/services/completa_RIESGO_POR_REMOCION_ESTUDIO_2024/FeatureServer/0/query?where=NIVEL%3D%27ALTO%20NO%20MITIGABLE%27&outFields=NIVEL&outSR=4326&f=pbf", "name": "Riesgo no mitigable", "zoom": false, "service": true}
+
+# ── Predios informales del rectángulo ──
+# Gerencia de Gestión Catastral, Concentración de informalidad (2026-11-03, CC BY-SA 4.0). Solo trae
+# dos tipos: ocupación y posesión. Son decenas de miles: "service": true para leerlos en páginas de 2000
+layer.addUrl {"url": "https://miciudad.barranquilla.gov.co/gis/rest/services/catastro/concentracioninformalidad/MapServer/1/query?where=1%3D1&geometry=-74.836%2C10.920%2C-74.804%2C10.992&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=tipo,barrio,localidad&outSR=4326&f=pbf", "name": "Predios informales", "zoom": false, "service": true}
+
+# ── Barrios del rectángulo, para nombrar los afectados ──
+# Secretaría de Planeación, unidades administrativas. Nombre en el campo nombre_barrio
+layer.addUrl {"url": "https://miciudad.barranquilla.gov.co/gis/rest/services/ordenamiento/unidadesadministrativas/MapServer/1/query?where=1%3D1&geometry=-74.836%2C10.920%2C-74.804%2C10.992&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=nombre_barrio&outSR=4326&f=pbf", "name": "Barrios", "zoom": false, "service": true}
+
+# ── El relieve: por qué ahí (Secretaría de Planeación, topografía) ──
+# Pendiente: solo la clase "Empinado", la ladera
+layer.addUrl {"url": "https://miciudad.barranquilla.gov.co/gis/rest/services/ordenamiento/topografia/MapServer/1/query?where=pendiente%3D%27Empinado%27&outFields=pendiente&outSR=4326&f=pbf", "name": "Ladera empinada", "zoom": false, "service": true}
+
+# Curvas de nivel: 197 líneas, campo altura (m). El servidor las simplifica a 3 m antes de mandarlas
+# (maxAllowableOffset; 0,1 mm a 1:33 000), y sin eso el proyecto pesaría unos 166 MB. Va en GeoJSON y
+# sin "service": true, porque el servidor solo simplifica en JSON y RustGIS lee en PBF las capas que
+# pagina. Son menos de 2000: llegan en una sola respuesta
+layer.addUrl {"url": "https://miciudad.barranquilla.gov.co/gis/rest/services/ordenamiento/topografia/MapServer/2/query?where=1%3D1&geometry=-74.836%2C10.920%2C-74.804%2C10.992&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=altura&outSR=4326&maxAllowableOffset=0.00003&f=geojson", "name": "Curvas de nivel", "zoom": false}
+
+# Esperar a que estén las 5 capas en el panel ("Riesgo no mitigable": 113 filas). Luego, el script 2.

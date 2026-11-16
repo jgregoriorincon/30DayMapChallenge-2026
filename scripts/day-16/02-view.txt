@@ -1,0 +1,65 @@
+# Día 16 — Collaborative map: Donde ninguna obra evita el riesgo — 2 · PROCESO Y VISTA
+# Correr cuando estén las 5 capas del script 1.
+# El gesto: cada predio informal en riesgo no mitigable en rojo, sobre la ladera rayada; los demás, en
+# gris azulado. Nombres solo para los barrios que tienen predios en riesgo.
+
+# ── 1. Los predios dentro de la zona de riesgo (uno por fila aunque toque dos polígonos) ──
+# Tiene que dar 2 121
+gp.run {"tool": "spatialJoin", "params": {"target": "Predios informales", "join": "Riesgo no mitigable", "match": "Intersects", "operation": "Join one to one", "keepAll": "Keep only matching", "output": "En riesgo no mitigable"}}
+
+# ── 2. Los barrios con predios en riesgo, con cuántos (join_count) ──
+# Tienen que salir 13. El conteo es por posición, no por el nombre de barrio del dato catastral
+gp.run {"tool": "spatialJoin", "params": {"target": "Barrios", "join": "En riesgo no mitigable", "match": "Intersects", "operation": "Join one to one", "keepAll": "Keep only matching", "output": "Barrios afectados"}}
+
+# ── 3. Estilo ──
+# La zona de riesgo: se lee por su borde rojo; el relleno, muy suave, porque los puntos ya la llenan
+layer.transparency {"layer": "Riesgo no mitigable", "value": 0}
+layer.color {"layer": "Riesgo no mitigable", "color": "#D7301F1A"}
+layer.outline {"layer": "Riesgo no mitigable", "color": "#C62A1ECC", "width": 0.6}
+
+# Todos los barrios del rectángulo: solo el límite, gris tenue
+layer.noFill {"layer": "Barrios"}
+layer.outline {"layer": "Barrios", "color": "#9AA0A680", "width": 0.25}
+
+# Los 13 barrios afectados: límite más oscuro y su nombre
+layer.noFill {"layer": "Barrios afectados"}
+layer.outline {"layer": "Barrios afectados", "color": "#3A3F47", "width": 0.5}
+labels.field {"layer": "Barrios afectados", "field": "nombre_barrio"}
+labels.style {"layer": "Barrios afectados", "size": 7, "bold": true, "color": "#1F2328", "halo": true, "haloColor": "#FFFFFF"}
+labels.placement {"layer": "Barrios afectados", "position": "center", "showAll": true}
+
+# El relieve: el rojo cae donde la ladera es empinada y las curvas se aprietan; ese es el "por qué".
+# La ladera, con trama diagonal sepia sobre un velo muy suave: el mapa base no tiene tramas, así que se
+# lee sobre cualquier fondo y se distingue del riesgo por la textura. layer.fillLayers apila los
+# rellenos de abajo arriba
+layer.fillLayers {"layer": "Ladera empinada", "fills": [{"color": "#8C6A4A14", "pattern": "solid"}, {"color": "#8C6A4ABF", "pattern": "hatch", "angle": 45, "spacing": 3, "width": 0.7}]}
+layer.outline {"layer": "Ladera empinada", "color": "#8C6A4A00", "width": 0}
+layer.outline {"layer": "Curvas de nivel", "color": "#8C735559", "width": 0.25}
+
+# Predios fuera de la zona: gris azulado (un tono que el mapa base no tiene, para no confundirse con
+# sus edificios), suave para que el rojo mande
+layer.marker {"layer": "Predios informales", "shape": "circle", "size": 1.6}
+layer.color {"layer": "Predios informales", "color": "#5B6B8C4D"}
+layer.outline {"layer": "Predios informales", "color": "#5B6B8C00", "width": 0}
+
+# Predios en riesgo: rojo fuerte, más grandes, con un borde blanco fino para separarlos entre sí
+layer.marker {"layer": "En riesgo no mitigable", "shape": "circle", "size": 3}
+layer.color {"layer": "En riesgo no mitigable", "color": "#B2182BE6"}
+layer.outline {"layer": "En riesgo no mitigable", "color": "#FFFFFFB3", "width": 0.3}
+
+# ── 4. Orden, de arriba abajo: En riesgo no mitigable, Barrios afectados, Ladera empinada, Predios
+# informales, Riesgo no mitigable, Barrios, Curvas de nivel ──
+# La ladera va encima de los predios grises y de la zona de riesgo: ocupa casi el mismo lugar que el
+# riesgo, y debajo de los puntos no se vería.
+# Las capas del script 1 llegan en el orden en que termina cada descarga, que no es fijo. Por eso se
+# suben de una en una a la cima, de la de más abajo a la de más arriba; ninguna está ya en la cima
+# cuando se mueve (las dos del paso 1 entraron después), así que no sale el error "already there"
+layer.move {"layer": "Curvas de nivel", "to": 0}
+layer.move {"layer": "Barrios", "to": 0}
+layer.move {"layer": "Riesgo no mitigable", "to": 0}
+layer.move {"layer": "Predios informales", "to": 0}
+layer.move {"layer": "Ladera empinada", "to": 0}
+layer.move {"layer": "Barrios afectados", "to": 0}
+layer.move {"layer": "En riesgo no mitigable", "to": 0}
+
+# Luego, los scripts 3 (layout en español) y 4 (en inglés).
