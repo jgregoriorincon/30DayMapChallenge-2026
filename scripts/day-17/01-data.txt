@@ -1,0 +1,42 @@
+# Día 17 — Light & dark: La luz no llega al campo — 1 · DATOS
+# Colombia de noche, y encima lo que la noche no muestra: las viviendas rurales sin servicio de energía
+# eléctrica, por municipio. 1 027 113 de 4 729 817 viviendas rurales (21,7 %) no lo tienen, y casi la
+# mitad (46 %) está en el Caribe.
+# Historia de este día: la primera idea (la frontera de Cúcuta de noche, 2016 frente a 2026) se
+# descartó el 2026-11-15. Con píxeles de 600 m, la frontera no se ve dentro de la ciudad y los dos
+# productos no se podían comparar. Las luces nocturnas sirven a escala de país, y aquí se usan así.
+
+map.rename {"name": "Colombia"}
+map.basemap {"name": "blank"}
+map.graticule {"on": false}
+
+# Luces: radiancia de la banda día/noche de VIIRS en NOAA-20, corregida (BRDF) y con los huecos de nube
+# rellenados con noches anteriores ("Gap-Filled BRDF Corrected Radiance", NASA GIBS; CORS "*", nivel
+# máximo 8). Noche del 14 de enero de 2025, temporada seca, cerca del año del dato de la UPME. Se eligió
+# entre 23 noches, del 1-dic-2024 al 27-feb-2025, midiendo las 9 teselas de zoom 5 que cubren el país:
+# ninguna sin dato y la de menos ruido (1,34 % de píxeles encendidos). Ojo: hay fechas con teselas sin
+# dato (azul 0,0,160), como la del 5-nov-2026 en el oriente
+map.addTiles {"url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_NOAA20_GapFilled_BRDF_Corrected_DayNightBand_Radiance/default/2025-01-14/GoogleMapsCompatible_Level8/{z}/{y}/{x}.png", "kind": "raster", "name": "Luces NOAA-20 2025-01-14", "maxZoom": 8}
+
+# La imagen viene en gris. Un rectángulo ámbar encima en modo multiply (script 2) la tiñe: negro ×
+# ámbar = negro, blanco × ámbar = ámbar. Comprobado en la primera versión de este día: funciona en la
+# vista y en la exportación
+layer.addDataText {"fileName": "tinte.geojson", "name": "Tinte ámbar", "text": "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"nombre\":\"Tinte ámbar\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-84,-8],[-62,-8],[-62,16],[-84,16],[-84,-8]]]}}]}"}
+
+# Departamentos: DANE, MGN 2025, capa 319, igual que el día 12 (cuantizado a 0,005°, unos 190 KB)
+layer.addUrl {"url": "https://portalgis.dane.gov.co/mparcgis/rest/services/MGN2025/Serv_CapasMGN_2025/FeatureServer/319/query?where=1%3D1&outFields=DPTO_CCDGO,DPTO_CNMBRE&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.005%2C%22extent%22%3A%7B%22xmin%22%3A-82%2C%22ymin%22%3A-5%2C%22xmax%22%3A-66%2C%22ymax%22%3A13.5%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&f=pbf", "name": "Departamentos", "zoom": false}
+
+# Cobertura eléctrica: UPME, Índice de Cobertura de Energía Eléctrica por municipio, vigencia 2024
+# (1 122 municipios; CORS para web.rustgis.app, PBF, tope de 2000; la UPME no declara licencia). Campos
+# rurales: vtrural (viviendas), vcsrural (con servicio), vssrural (sin servicio = vtrural − vcsrural,
+# comprobado en las 1 122 filas) e iceerural (cobertura, %). Solo los 792 municipios con alguna vivienda
+# rural sin servicio. Generalizado a 0,01° (unos 1,1 km): 218 KB. Los polígonos solo sirven para sacar
+# un punto por municipio (script 2) y después se quitan.
+# Por qué solo lo rural: en las ciudades la diferencia no siempre son casas a oscuras. Bogotá figura con
+# 209 930 viviendas "sin servicio" y 93 % de cobertura, y Soacha con 72 149, encima de sus propias luces
+layer.addUrl {"url": "https://geo.upme.gov.co/server/rest/services/Capas_EnergiaElectrica/indice_cobertura_energia_electrica_mpio/FeatureServer/26/query?where=vssrural%3E0&outFields=municipio,departamento,vssrural,vtrural,iceerural&outSR=4326&maxAllowableOffset=0.01&f=pbf", "name": "Municipios", "zoom": false}
+
+# Tierra firme, como el día 12
+map.zoomToExtent {"extent": [-79.3, -4.3, -66.8, 12.6]}
+
+# Esperar a que "Departamentos" y "Municipios" estén en el panel de capas. Luego, el script 2 (vista).

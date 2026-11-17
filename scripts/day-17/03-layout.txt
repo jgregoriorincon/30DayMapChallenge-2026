@@ -1,0 +1,81 @@
+# Día 17 — Light & dark: La luz no llega al campo — 3 · LAYOUT
+# La firma de la serie desde el día 11, en oscuro, con el armazón del día 12 (el otro mapa de Colombia
+# en vertical): mapa de borde a borde a 1:10 000 000, una cifra grande sobre el Caribe, la leyenda
+# sobre Venezuela, un dato sobre Brasil y dos notas abajo. El gesto de este día: la luz en ámbar y lo que
+# la noche no muestra en cian.
+# Los elementos se numeran en orden desde 1: marco = 1, fondo = 2; no hace falta ningún otro id.
+layout.new {"name": "Dia 17", "page": "a4", "orientation": "portrait", "template": "blank"}
+
+# 1 · Mapa de borde a borde, con la misma escala y el mismo centro del día 12: 1° son unos 11 mm y los
+# textos caen sobre el mar y los países vecinos
+layout.addFrame {"layout": "Dia 17", "map": "Colombia", "x": 0, "y": 29, "w": 210, "h": 197}
+layout.update {"layout": "Dia 17", "element": 1, "center": [-73.05, 4.15], "scale": 10000000}
+# 2 · Fondo de la página, casi negro como la noche de la imagen, detrás de todo
+layout.addElement {"layout": "Dia 17", "kind": "rectangle", "fill": "#07090FFF", "outline": "#07090FFF", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Dia 17", "element": 2, "to": "back"}
+
+# Banda del título
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "30DAYMAPCHALLENGE · DÍA 17 · LUZ Y OSCURIDAD · COLOMBIA", "size": 7.5, "color": "#FFC46B", "letterSpacing": 2.5, "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "La luz no llega al campo", "size": 26, "bold": true, "color": "#F2EEE6", "x": 12, "y": 10, "w": 186, "h": 12}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "Colombia de noche y, en cian, las viviendas rurales sin servicio de energía eléctrica de cada municipio", "size": 9, "color": "#B8C0CC", "x": 12, "y": 22.5, "w": 186, "h": 5}
+
+# Arriba a la izquierda, sobre el Caribe: la cifra como entrada (UPME, vigencia 2024)
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "1 de cada 5", "size": 34, "bold": true, "color": "#00E5FF", "x": 10, "y": 34, "w": 70, "h": 15}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "viviendas del campo colombiano\nno tiene servicio de energía eléctrica:\n1 027 113 de 4 729 817.", "size": 7.5, "color": "#E6ECF5", "x": 10, "y": 50, "w": 62, "h": 12}
+
+# Arriba a la derecha, sobre Venezuela: la leyenda. Círculos con el diámetro del mapa en el papel
+# (0,6 + 0,15·√v puntos de 0,265 mm), con la base alineada en y = 58
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "VIVIENDAS RURALES SIN\nSERVICIO, POR MUNICIPIO", "size": 6.5, "bold": true, "color": "#00E5FF", "letterSpacing": 1.2, "x": 150, "y": 38, "w": 55, "h": 7}
+layout.addElement {"layout": "Dia 17", "kind": "circle", "fill": "#00E5FF73", "outline": "#7DF3FF", "width": 0.3, "x": 152, "y": 48.96, "w": 9.04, "h": 9.04}
+layout.addElement {"layout": "Dia 17", "kind": "circle", "fill": "#00E5FF73", "outline": "#7DF3FF", "width": 0.3, "x": 167.5, "y": 53.87, "w": 4.13, "h": 4.13}
+layout.addElement {"layout": "Dia 17", "kind": "circle", "fill": "#00E5FF73", "outline": "#7DF3FF", "width": 0.3, "x": 180.5, "y": 56.59, "w": 1.41, "h": 1.41}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "50 000", "size": 6, "color": "#E6ECF5", "align": "center", "x": 149.5, "y": 59.5, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "10 000", "size": 6, "color": "#E6ECF5", "align": "center", "x": 162.5, "y": 59.5, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "1 000", "size": 6, "color": "#E6ECF5", "align": "center", "x": 174.2, "y": 59.5, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "El área es proporcional a las viviendas.\nCada círculo va en un punto dentro del\nmunicipio, no donde están las casas.", "size": 6, "color": "#8A97AB", "x": 150, "y": 64.5, "w": 55, "h": 10}
+
+# Abajo a la derecha, sobre Brasil: dónde se juntan. Caribe continental = La Guajira, Cesar, Magdalena,
+# Atlántico, Bolívar, Sucre y Córdoba: 476 423 de 1 027 113 (46 %)
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "EL CARIBE, CASI LA MITAD", "size": 6.5, "bold": true, "color": "#00E5FF", "letterSpacing": 1.2, "x": 150, "y": 178, "w": 52, "h": 3.5}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "476 423 de esas viviendas (46 %)\nestán en el Caribe. Solo en Uribia\n(La Guajira) son 49 180: 95 de cada\n100 de sus viviendas rurales.", "size": 7, "color": "#E6ECF5", "x": 150, "y": 182.5, "w": 54, "h": 13}
+
+# Norte y escala, discretos (las posiciones del día 12)
+layout.addElement {"layout": "Dia 17", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#8A97AB", "outline": "#8A97AB", "x": 195, "y": 203, "w": 6, "h": 9}
+layout.addElement {"layout": "Dia 17", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "color": "#8A97AB", "x": 150, "y": 214, "w": 40, "h": 6}
+
+# Banda de abajo: dos notas
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "CÓMO LEERLO", "size": 6.5, "bold": true, "color": "#FFC46B", "letterSpacing": 1.2, "x": 12, "y": 229.5, "w": 88, "h": 3.5}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "El fondo es Colombia de noche, vista por el satélite\nNOAA-20 el 14 de enero de 2025. Brillan los pueblos\ny las ciudades; el campo sin luz no se distingue a esta\nescala, y por eso los círculos: lo que la noche no muestra.", "size": 7, "color": "#D5DAE2", "x": 12, "y": 234, "w": 90, "h": 16}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "QUÉ MIDE", "size": 6.5, "bold": true, "color": "#FFC46B", "letterSpacing": 1.2, "x": 108, "y": 229.5, "w": 90, "h": 3.5}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "El índice de cobertura de la UPME (2024): viviendas sin\nservicio = viviendas totales − viviendas con servicio.\nSolo la parte rural: en las ciudades esa resta no siempre\nson casas a oscuras (Bogotá figura con 209 930).", "size": 7, "color": "#D5DAE2", "x": 108, "y": 234, "w": 90, "h": 16}
+
+# Barras: los siete departamentos con más viviendas rurales sin servicio (suma de vssrural por
+# departamento). 10 mm para La Guajira (117 162), base en y = 272; cian los del Caribe, gris los demás
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "VIVIENDAS RURALES SIN SERVICIO · LOS SIETE DEPARTAMENTOS CON MÁS · EN CIAN, LOS DEL CARIBE", "size": 6.5, "bold": true, "color": "#00E5FF", "letterSpacing": 1.2, "x": 12, "y": 251.5, "w": 186, "h": 3.5}
+layout.addElement {"layout": "Dia 17", "kind": "rectangle", "fill": "#00E5FFB3", "outline": "#00E5FFB3", "width": 0, "x": 16.25, "y": 262.0, "w": 18, "h": 10.0}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "117 162", "size": 6, "color": "#E6ECF5", "align": "center", "x": 12.0, "y": 258.6, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "La Guajira", "size": 6, "color": "#E6ECF5", "align": "center", "x": 12.0, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "rectangle", "fill": "#00E5FFB3", "outline": "#00E5FFB3", "width": 0, "x": 42.75, "y": 264.71, "w": 18, "h": 7.29}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "85 434", "size": 6, "color": "#E6ECF5", "align": "center", "x": 38.5, "y": 261.31, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "Bolívar", "size": 6, "color": "#E6ECF5", "align": "center", "x": 38.5, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "rectangle", "fill": "#00E5FFB3", "outline": "#00E5FFB3", "width": 0, "x": 69.25, "y": 264.8, "w": 18, "h": 7.2}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "84 397", "size": 6, "color": "#E6ECF5", "align": "center", "x": 65.0, "y": 261.4, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "Córdoba", "size": 6, "color": "#E6ECF5", "align": "center", "x": 65.0, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 95.75, "y": 265.46, "w": 18, "h": 6.54}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "76 576", "size": 6, "color": "#E6ECF5", "align": "center", "x": 91.5, "y": 262.06, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "Cauca", "size": 6, "color": "#B8C0CC", "align": "center", "x": 91.5, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 122.25, "y": 265.63, "w": 18, "h": 6.37}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "74 592", "size": 6, "color": "#E6ECF5", "align": "center", "x": 118.0, "y": 262.23, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "Nariño", "size": 6, "color": "#B8C0CC", "align": "center", "x": 118.0, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "rectangle", "fill": "#00E5FFB3", "outline": "#00E5FFB3", "width": 0, "x": 148.75, "y": 265.76, "w": 18, "h": 6.24}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "73 148", "size": 6, "color": "#E6ECF5", "align": "center", "x": 144.5, "y": 262.36, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "Magdalena", "size": 6, "color": "#E6ECF5", "align": "center", "x": 144.5, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "rectangle", "fill": "#00E5FFB3", "outline": "#00E5FFB3", "width": 0, "x": 175.25, "y": 266.03, "w": 18, "h": 5.97}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "69 937", "size": 6, "color": "#E6ECF5", "align": "center", "x": 171.0, "y": 262.63, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "Cesar", "size": 6, "color": "#E6ECF5", "align": "center", "x": 171.0, "y": 272.8, "w": 26.5, "h": 3}
+
+# Pie: una línea fina, las fuentes y la firma
+layout.addElement {"layout": "Dia 17", "kind": "line", "dir": "horizontal", "color": "#2A3140", "width": 0.5, "x": 12, "y": 278.5, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "Datos: UPME, Índice de Cobertura de Energía Eléctrica por municipio, vigencia 2024 (geo.upme.gov.co), consultado el 2026-11-15; la UPME no declara\nlicencia. Luces: NASA GIBS, Gap-Filled BRDF Corrected Radiance (Day/Night Band, NOAA-20), 14 de enero de 2025. Departamentos: DANE, MGN 2025.\nCómo se hizo: todo en RustGIS web (web.rustgis.app): teselas de GIBS con la fecha en la dirección, tinte ámbar en multiply y máscara (Erase);\nun punto por municipio (Feature To Point) y círculos con el tamaño por expresión. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5.5, "color": "#7F8A99", "x": 12, "y": 280, "w": 186, "h": 11}
+layout.addElement {"layout": "Dia 17", "kind": "text", "text": "© José Gregorio Rincón · CC BY 4.0 · #30DayMapChallenge 2026 · Día 17: Light & dark · Hecho con RustGIS · rustgis.app", "size": 6.5, "color": "#FFC46B", "align": "right", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz

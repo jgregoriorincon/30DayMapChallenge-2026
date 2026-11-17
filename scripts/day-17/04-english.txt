@@ -1,0 +1,74 @@
+# Day 17 — Light & dark: Light does not reach the countryside — 4 · ENGLISH LAYOUT
+# Same design as the Spanish layout (see 03-layout.txt, with the reasons for each choice): dark page,
+# edge-to-edge map at 1:10,000,000, a big number over the Caribbean, the legend over Venezuela, one fact
+# over Brazil and two notes below. The map labels (municipality names) are the same in both languages.
+# Elements are numbered in order from 1: frame = 1, background = 2; no other id is needed.
+layout.new {"name": "Day 17", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Day 17", "map": "Colombia", "x": 0, "y": 29, "w": 210, "h": 197}
+layout.update {"layout": "Day 17", "element": 1, "center": [-73.05, 4.15], "scale": 10000000}
+layout.addElement {"layout": "Day 17", "kind": "rectangle", "fill": "#07090FFF", "outline": "#07090FFF", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Day 17", "element": 2, "to": "back"}
+
+# Title band
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "30DAYMAPCHALLENGE · DAY 17 · LIGHT & DARK · COLOMBIA", "size": 7.5, "color": "#FFC46B", "letterSpacing": 2.5, "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "Light does not reach the countryside", "size": 26, "bold": true, "color": "#F2EEE6", "x": 12, "y": 10, "w": 186, "h": 12}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "Colombia at night and, in cyan, each municipality's rural homes without electricity", "size": 9, "color": "#B8C0CC", "x": 12, "y": 22.5, "w": 186, "h": 5}
+
+# Top left, over the Caribbean: the number
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "1 in 5", "size": 34, "bold": true, "color": "#00E5FF", "x": 10, "y": 34, "w": 70, "h": 15}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "rural homes in Colombia\nhave no electricity service:\n1,027,113 out of 4,729,817.", "size": 7.5, "color": "#E6ECF5", "x": 10, "y": 50, "w": 62, "h": 12}
+
+# Top right, over Venezuela: the legend (same circles as the Spanish layout)
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "RURAL HOMES WITHOUT\nELECTRICITY, BY MUNICIPALITY", "size": 6.5, "bold": true, "color": "#00E5FF", "letterSpacing": 1.2, "x": 150, "y": 38, "w": 58, "h": 7}
+layout.addElement {"layout": "Day 17", "kind": "circle", "fill": "#00E5FF73", "outline": "#7DF3FF", "width": 0.3, "x": 152, "y": 48.96, "w": 9.04, "h": 9.04}
+layout.addElement {"layout": "Day 17", "kind": "circle", "fill": "#00E5FF73", "outline": "#7DF3FF", "width": 0.3, "x": 167.5, "y": 53.87, "w": 4.13, "h": 4.13}
+layout.addElement {"layout": "Day 17", "kind": "circle", "fill": "#00E5FF73", "outline": "#7DF3FF", "width": 0.3, "x": 180.5, "y": 56.59, "w": 1.41, "h": 1.41}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "50,000", "size": 6, "color": "#E6ECF5", "align": "center", "x": 149.5, "y": 59.5, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "10,000", "size": 6, "color": "#E6ECF5", "align": "center", "x": 162.5, "y": 59.5, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "1,000", "size": 6, "color": "#E6ECF5", "align": "center", "x": 174.2, "y": 59.5, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "Area is proportional to the homes.\nEach circle sits at a point inside the\nmunicipality, not where the homes are.", "size": 6, "color": "#8A97AB", "x": 150, "y": 64.5, "w": 55, "h": 10}
+
+# Bottom right, over Brazil: where they cluster
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "THE CARIBBEAN, ALMOST HALF", "size": 6.5, "bold": true, "color": "#00E5FF", "letterSpacing": 1.2, "x": 150, "y": 178, "w": 55, "h": 3.5}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "476,423 of those homes (46%)\nare in the Caribbean region. In\nUribia (La Guajira) alone, 49,180:\n95 in every 100 of its rural homes.", "size": 7, "color": "#E6ECF5", "x": 150, "y": 182.5, "w": 54, "h": 13}
+
+# North arrow and scale
+layout.addElement {"layout": "Day 17", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#8A97AB", "outline": "#8A97AB", "x": 195, "y": 203, "w": 6, "h": 9}
+layout.addElement {"layout": "Day 17", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "color": "#8A97AB", "x": 150, "y": 214, "w": 40, "h": 6}
+
+# Bottom band: two notes
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "HOW TO READ IT", "size": 6.5, "bold": true, "color": "#FFC46B", "letterSpacing": 1.2, "x": 12, "y": 229.5, "w": 88, "h": 3.5}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "The background is Colombia at night, seen by the\nNOAA-20 satellite on 14 January 2025. Towns and cities\nshine; the dark countryside can't be told apart at this\nscale, hence the circles: what the night does not show.", "size": 7, "color": "#D5DAE2", "x": 12, "y": 234, "w": 90, "h": 16}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "WHAT IT MEASURES", "size": 6.5, "bold": true, "color": "#FFC46B", "letterSpacing": 1.2, "x": 108, "y": 229.5, "w": 90, "h": 3.5}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "UPME's electricity coverage index (2024): homes without\nservice = all homes − homes with service. Rural part only:\nin cities that difference is not always homes in the dark\n(Bogotá shows 209,930).", "size": 7, "color": "#D5DAE2", "x": 108, "y": 234, "w": 90, "h": 16}
+
+# Bars: the seven departments with the most rural homes without electricity (sum of vssrural by
+# department). 10 mm for La Guajira (117,162), base at y = 272; Caribbean ones in cyan, others in grey
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "RURAL HOMES WITHOUT ELECTRICITY · THE SEVEN DEPARTMENTS WITH THE MOST · CARIBBEAN ONES IN CYAN", "size": 6.5, "bold": true, "color": "#00E5FF", "letterSpacing": 1.2, "x": 12, "y": 251.5, "w": 186, "h": 3.5}
+layout.addElement {"layout": "Day 17", "kind": "rectangle", "fill": "#00E5FFB3", "outline": "#00E5FFB3", "width": 0, "x": 16.25, "y": 262.0, "w": 18, "h": 10.0}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "117,162", "size": 6, "color": "#E6ECF5", "align": "center", "x": 12.0, "y": 258.6, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "La Guajira", "size": 6, "color": "#E6ECF5", "align": "center", "x": 12.0, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "rectangle", "fill": "#00E5FFB3", "outline": "#00E5FFB3", "width": 0, "x": 42.75, "y": 264.71, "w": 18, "h": 7.29}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "85,434", "size": 6, "color": "#E6ECF5", "align": "center", "x": 38.5, "y": 261.31, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "Bolívar", "size": 6, "color": "#E6ECF5", "align": "center", "x": 38.5, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "rectangle", "fill": "#00E5FFB3", "outline": "#00E5FFB3", "width": 0, "x": 69.25, "y": 264.8, "w": 18, "h": 7.2}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "84,397", "size": 6, "color": "#E6ECF5", "align": "center", "x": 65.0, "y": 261.4, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "Córdoba", "size": 6, "color": "#E6ECF5", "align": "center", "x": 65.0, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 95.75, "y": 265.46, "w": 18, "h": 6.54}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "76,576", "size": 6, "color": "#E6ECF5", "align": "center", "x": 91.5, "y": 262.06, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "Cauca", "size": 6, "color": "#B8C0CC", "align": "center", "x": 91.5, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "rectangle", "fill": "#5B6B82FF", "outline": "#5B6B82FF", "width": 0, "x": 122.25, "y": 265.63, "w": 18, "h": 6.37}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "74,592", "size": 6, "color": "#E6ECF5", "align": "center", "x": 118.0, "y": 262.23, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "Nariño", "size": 6, "color": "#B8C0CC", "align": "center", "x": 118.0, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "rectangle", "fill": "#00E5FFB3", "outline": "#00E5FFB3", "width": 0, "x": 148.75, "y": 265.76, "w": 18, "h": 6.24}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "73,148", "size": 6, "color": "#E6ECF5", "align": "center", "x": 144.5, "y": 262.36, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "Magdalena", "size": 6, "color": "#E6ECF5", "align": "center", "x": 144.5, "y": 272.8, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "rectangle", "fill": "#00E5FFB3", "outline": "#00E5FFB3", "width": 0, "x": 175.25, "y": 266.03, "w": 18, "h": 5.97}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "69,937", "size": 6, "color": "#E6ECF5", "align": "center", "x": 171.0, "y": 262.63, "w": 26.5, "h": 3}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "Cesar", "size": 6, "color": "#E6ECF5", "align": "center", "x": 171.0, "y": 272.8, "w": 26.5, "h": 3}
+
+# Footer
+layout.addElement {"layout": "Day 17", "kind": "line", "dir": "horizontal", "color": "#2A3140", "width": 0.5, "x": 12, "y": 278.5, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "Data: UPME (Mining and Energy Planning Unit), Electricity Coverage Index by municipality, 2024 (geo.upme.gov.co), accessed 2026-11-15; UPME declares\nno licence. Lights: NASA GIBS, Gap-Filled BRDF Corrected Radiance (Day/Night Band, NOAA-20), 14 January 2025. Departments: DANE, MGN 2025.\nHow it was made: all in RustGIS web (web.rustgis.app): GIBS tiles with the date in the address, amber tint in multiply and a mask (Erase);\none point per municipality (Feature To Point) and circles sized by expression. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5.5, "color": "#7F8A99", "x": 12, "y": 280, "w": 186, "h": 11}
+layout.addElement {"layout": "Day 17", "kind": "text", "text": "© José Gregorio Rincón · CC BY 4.0 · #30DayMapChallenge 2026 · Day 17: Light & dark · Made with RustGIS · rustgis.app", "size": 6.5, "color": "#FFC46B", "align": "right", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Delivery: export the layout and save the project from the interface
