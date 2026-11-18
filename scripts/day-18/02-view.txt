@@ -1,0 +1,45 @@
+# Día 18 — NULL: Paradero en blanco — 2 · VISTA
+# El gesto: Colombia oscura y, sobre cada municipio, un círculo vacío del tamaño de las personas que
+# siguen desaparecidas allí. Vacío a propósito: es el lugar de lo que falta.
+
+# ── 1. Cuántas por municipio: por el código, no por el punto ──
+# Una fila por código con su número de víctimas (FREQUENCY). La tabla sale como
+# "Desaparecidos_Statistics"
+gp.run {"tool": "summaryStatistics", "params": {"input": "Desaparecidos", "statistics": [{"field": "Geo_municipio", "statistic": "COUNT"}], "case": "Geo_municipio"}}
+
+# Al municipio del MGN por su código. Casan 996 códigos con 71 998 víctimas (2026-11-16). No casan:
+# 3 382 sin lugar ("0"), 277 con solo el departamento ("05000"…), 65 en una frontera y 11 en Belén de
+# Bajirá y Mapiripana, que no están en el MGN 2025. Las cuentan las notas del layout
+gp.run {"tool": "joinField", "params": {"target": "Municipios", "targetField": "MPIO_CDPMP", "joinTable": "Desaparecidos_Statistics", "joinField": "Geo_municipio", "fields": "FREQUENCY", "output": "Municipios del MGN"}}
+# "Desaparecidos" llegó sin geometría: es una tabla suelta, como la de sus estadísticas, y se quita con
+# table.remove (layer.remove no las ve)
+layer.remove {"layer": "Municipios"}
+table.remove {"table": "Desaparecidos"}
+table.remove {"table": "Desaparecidos_Statistics"}
+
+# Un punto dentro de cada municipio, y solo los que tienen víctimas (996)
+gp.run {"tool": "featureToPoint", "params": {"input": "Municipios del MGN", "output": "Puntos"}}
+gp.run {"tool": "exportFeatures", "params": {"input": "Puntos", "where": "FREQUENCY > 0", "output": "Siguen desaparecidas"}}
+layer.remove {"layer": "Puntos"}
+
+# ── 2. Estilo ──
+# Fondo y país, en grises casi negros; sin acento de color: el blanco es solo de los círculos. Con
+# alfa explícito (FF): con #RRGGBB, layer.color conserva la transparencia del polígono y el fondo sale gris
+layer.color {"layer": "Fondo", "color": "#0B0C0FFF"}
+layer.outline {"layer": "Fondo", "color": "#0B0C0F00", "width": 0}
+layer.color {"layer": "Departamentos", "color": "#1A1D22FF"}
+layer.outline {"layer": "Departamentos", "color": "#3B414B", "width": 0.4}
+layer.noFill {"layer": "Municipios del MGN"}
+layer.outline {"layer": "Municipios del MGN", "color": "#2A2F37", "width": 0.15}
+
+# Círculos vacíos: borde blanco y un relleno apenas visible. Área proporcional a las víctimas; el tamaño
+# está en px de 96 ppp (0,265 mm): Medellín (2 396) mide 30,4 px, unos 8 mm, y uno de 19 (la mediana), 1 mm
+layer.marker {"layer": "Siguen desaparecidas", "shape": "circle", "size": 4}
+layer.color {"layer": "Siguen desaparecidas", "color": "#FFFFFF14"}
+layer.outline {"layer": "Siguen desaparecidas", "color": "#FFFFFF", "width": 0.5}
+layer.symbolBy {"layer": "Siguen desaparecidas", "size": "1 + 0.6 * sqrt(FREQUENCY)"}
+
+# Sin etiquetas en el mapa: los siete nombres van en el layout, cada uno fuera de los círculos y con
+# una línea guía hasta el suyo. En el mapa caían encima de los círculos vecinos
+
+# Luego, los scripts 3 (layout en español) y 4 (en inglés).

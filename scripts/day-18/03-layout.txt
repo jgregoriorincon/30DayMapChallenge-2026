@@ -1,0 +1,133 @@
+# Día 18 — NULL: Paradero en blanco — 3 · LAYOUT
+# Armazón de los días 12 y 17 (Colombia de borde a borde a 1:10 000 000), sin acento de color: el
+# blanco es solo de los círculos vacíos. Marco = 1, fondo = 2. Lo genera dia18-paradero.py.
+layout.new {"name": "Dia 18", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addFrame {"layout": "Dia 18", "map": "Colombia", "x": 0, "y": 29, "w": 210, "h": 197}
+layout.update {"layout": "Dia 18", "element": 1, "center": [-73.05, 4.15], "scale": 10000000}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#0B0C0FFF", "outline": "#0B0C0FFF", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Dia 18", "element": 2, "to": "back"}
+# El marco siempre lleva un borde gris de 0,8 pt (no se puede quitar): cuatro franjas del color
+# de la página lo tapan. Solo cubren 0,3 mm del fondo del mapa
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#0B0C0FFF", "outline": "#0B0C0FFF", "width": 0, "x": 0, "y": 28.6, "w": 210, "h": 0.8}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#0B0C0FFF", "outline": "#0B0C0FFF", "width": 0, "x": 0, "y": 225.6, "w": 210, "h": 0.8}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#0B0C0FFF", "outline": "#0B0C0FFF", "width": 0, "x": 0, "y": 28.6, "w": 0.4, "h": 198}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#0B0C0FFF", "outline": "#0B0C0FFF", "width": 0, "x": 209.6, "y": 28.6, "w": 0.4, "h": 198}
+
+# Los siete municipios con más de 900, fuera de los círculos y con una línea guía hasta el
+# suyo. Centros medidos en la vista del 2026-11-16 (mm de la página); el texto, en hueco libre
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Medellín 2 396", "size": 7, "color": "#F2F2F2", "y": 88.8, "h": 3.5, "x": 10.5, "w": 40, "align": "right"}
+layout.addElement {"layout": "Dia 18", "kind": "line", "dir": "falling", "color": "#F2F2F2", "width": 0.4, "x": 51.0, "y": 90.5, "w": 22.02, "h": 10.76}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Turbo 1 544", "size": 7, "color": "#F2F2F2", "y": 73.3, "h": 3.5, "x": 16.0, "w": 40, "align": "right"}
+layout.addElement {"layout": "Dia 18", "kind": "line", "dir": "falling", "color": "#F2F2F2", "width": 0.4, "x": 56.5, "y": 75.0, "w": 6.94, "h": 6.5}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Santa Marta 1 138", "size": 7, "color": "#F2F2F2", "y": 39.3, "h": 3.5, "x": 43.3, "w": 40, "align": "right"}
+layout.addElement {"layout": "Dia 18", "kind": "line", "dir": "falling", "color": "#F2F2F2", "width": 0.4, "x": 83.8, "y": 41.0, "w": 9.69, "h": 6.1}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Tibú 1 293", "size": 7, "color": "#F2F2F2", "y": 69.6, "h": 3.5, "x": 117.0, "w": 40, "align": "left"}
+layout.addElement {"layout": "Dia 18", "kind": "line", "dir": "rising", "color": "#F2F2F2", "width": 0.4, "x": 111.14, "y": 71.3, "w": 5.36, "h": 3.03}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Barrancabermeja 934", "size": 7, "color": "#F2F2F2", "y": 88.1, "h": 3.5, "x": 122.0, "w": 40, "align": "left"}
+layout.addElement {"layout": "Dia 18", "kind": "line", "dir": "rising", "color": "#F2F2F2", "width": 0.4, "x": 100.31, "y": 89.8, "w": 21.19, "h": 4.13}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Bogotá 1 147", "size": 7, "color": "#F2F2F2", "y": 119.0, "h": 3.5, "x": 123.5, "w": 40, "align": "left"}
+layout.addElement {"layout": "Dia 18", "kind": "line", "dir": "rising", "color": "#F2F2F2", "width": 0.4, "x": 96.08, "y": 120.7, "w": 26.92, "h": 4.11}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "San José del Guaviare 1 128", "size": 7, "color": "#F2F2F2", "y": 139.3, "h": 3.5, "x": 127.8, "w": 40, "align": "left"}
+layout.addElement {"layout": "Dia 18", "kind": "line", "dir": "rising", "color": "#F2F2F2", "width": 0.4, "x": 121.78, "y": 141.0, "w": 5.52, "h": 2.69}
+
+# Título
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "30DAYMAPCHALLENGE · DÍA 18 · NULL · COLOMBIA", "size": 7.5, "color": "#9AA3AE", "letterSpacing": 2.5, "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Paradero: en blanco", "size": 26, "bold": true, "color": "#F2EEE6", "x": 12, "y": 10, "w": 186, "h": 12}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Víctimas de desaparición forzada en el conflicto armado que siguen desaparecidas, por municipio del hecho", "size": 9, "color": "#B8C0CC", "x": 12, "y": 22.5, "w": 186, "h": 5}
+
+# Sobre el Caribe: la cifra
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "75 733", "size": 34, "bold": true, "color": "#FFFFFF", "x": 10, "y": 34, "w": 70, "h": 15}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "víctimas de desaparición forzada\nsiguen desaparecidas en Colombia.\nEl dato que falta es dónde están.", "size": 7.5, "color": "#E6ECF5", "x": 10, "y": 50, "w": 62, "h": 12}
+
+# Sobre Venezuela: la leyenda, con el diámetro del mapa en el papel y la base en y = 58
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "SIGUEN DESAPARECIDAS,\nPOR MUNICIPIO", "size": 6.5, "bold": true, "color": "#FFFFFF", "letterSpacing": 1.2, "x": 150, "y": 38, "w": 55, "h": 7}
+layout.addElement {"layout": "Dia 18", "kind": "circle", "fill": "#FFFFFF14", "outline": "#FFFFFF", "width": 0.3, "x": 152.82, "y": 50.64, "w": 7.36, "h": 7.36}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "2 000", "size": 6, "color": "#E6ECF5", "align": "center", "x": 149.5, "y": 59.5, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 18", "kind": "circle", "fill": "#FFFFFF14", "outline": "#FFFFFF", "width": 0.3, "x": 167.59, "y": 54.19, "w": 3.81, "h": 3.81}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "500", "size": 6, "color": "#E6ECF5", "align": "center", "x": 162.5, "y": 59.5, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 18", "kind": "circle", "fill": "#FFFFFF14", "outline": "#FFFFFF", "width": 0.3, "x": 180.5, "y": 56.61, "w": 1.39, "h": 1.39}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "50", "size": 6, "color": "#E6ECF5", "align": "center", "x": 174.2, "y": 59.5, "w": 14, "h": 3}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "El área es proporcional a las víctimas.\nCada círculo va en un punto dentro del\nmunicipio, no donde desaparecieron.", "size": 6, "color": "#8A97AB", "x": 150, "y": 64.5, "w": 55, "h": 10}
+
+# Sobre el Pacífico: las que no se pueden poner en el mapa, con el círculo de su tamaño
+layout.addElement {"layout": "Dia 18", "kind": "circle", "fill": "#FFFFFF14", "outline": "#FFFFFF", "width": 0.3, "x": 14, "y": 98, "w": 9.5, "h": 9.5}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "SIN LUGAR · 3 382", "size": 6.5, "bold": true, "color": "#FFFFFF", "letterSpacing": 1.2, "x": 12, "y": 110, "w": 40, "h": 3.5}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "víctimas sin municipio ni\ndepartamento. En el servicio\nestán todas en un mismo\npunto, 4° N 72° O, en los\nLlanos: un punto fijo que\nno dice dónde desaparecieron.", "size": 6.5, "color": "#D5DAE2", "x": 12, "y": 114.5, "w": 40, "h": 24}
+
+# Sobre Brasil: qué pasó con las víctimas registradas (Situacion_victima)
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "DE 86 714 VÍCTIMAS REGISTRADAS", "size": 6.5, "bold": true, "color": "#FFFFFF", "letterSpacing": 1.2, "x": 150, "y": 176, "w": 55, "h": 3.5}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "75 733 siguen desaparecidas\n8 821 aparecieron muertas\n1 819 aparecieron vivas\n341 en otras siete situaciones", "size": 7, "color": "#E6ECF5", "x": 150, "y": 180.5, "w": 55, "h": 14}
+
+# Norte y escala, discretos
+layout.addElement {"layout": "Dia 18", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#8A97AB", "outline": "#8A97AB", "x": 195, "y": 203, "w": 6, "h": 9}
+layout.addElement {"layout": "Dia 18", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "color": "#8A97AB", "x": 150, "y": 214, "w": 40, "h": 6}
+
+# Banda de abajo: dos notas
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "CÓMO LEERLO", "size": 6.5, "bold": true, "color": "#FFFFFF", "letterSpacing": 1.2, "x": 12, "y": 229.5, "w": 88, "h": 3.5}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Cada círculo es un municipio; su área, las personas que\nsiguen desaparecidas por hechos ocurridos allí. Vacíos a\npropósito: son el lugar de lo que falta. El punto es el\ncentro del municipio, no el sitio exacto.", "size": 7, "color": "#D5DAE2", "x": 12, "y": 234, "w": 92, "h": 16}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "TAMPOCO ESTÁN EN EL MAPA", "size": 6.5, "bold": true, "color": "#FFFFFF", "letterSpacing": 1.2, "x": 108, "y": 229.5, "w": 90, "h": 3.5}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Además de las 3 382 sin lugar: 277 con solo el\ndepartamento, 65 en una frontera y 11 en Belén de\nBajirá y Mapiripana, que no están en el MGN 2025.\nEl mapa ubica 71 998 en 996 municipios.", "size": 7, "color": "#D5DAE2", "x": 108, "y": 234, "w": 90, "h": 16}
+
+# Por año del hecho, 1980-2026 (CNMH, 2026-11-16). 13 mm para 2002 (7 123), base en y = 270
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "SIGUEN DESAPARECIDAS · POR AÑO DEL HECHO · 1980-2026", "size": 6.5, "bold": true, "color": "#FFFFFF", "letterSpacing": 1.2, "x": 12, "y": 251.5, "w": 130, "h": 3.5}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Antes de 1980: 461 · Sin año: 3 917", "size": 6, "color": "#8A97AB", "align": "right", "x": 128, "y": 256.2, "w": 70, "h": 3}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 12.45, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "1980", "size": 5.5, "color": "#8A97AB", "align": "center", "x": 9.45, "y": 271, "w": 9.06, "h": 3}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 16.41, "y": 269.66, "w": 3.06, "h": 0.34}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 20.36, "y": 269.5, "w": 3.06, "h": 0.5}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 24.32, "y": 269.45, "w": 3.06, "h": 0.55}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 28.28, "y": 269.37, "w": 3.06, "h": 0.63}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 32.24, "y": 268.55, "w": 3.06, "h": 1.45}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 36.19, "y": 267.95, "w": 3.06, "h": 2.05}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 40.15, "y": 268.04, "w": 3.06, "h": 1.96}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 44.11, "y": 267.4, "w": 3.06, "h": 2.6}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 48.07, "y": 267.33, "w": 3.06, "h": 2.67}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 52.02, "y": 266.72, "w": 3.06, "h": 3.28}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "1990", "size": 5.5, "color": "#8A97AB", "align": "center", "x": 49.02, "y": 271, "w": 9.06, "h": 3}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 55.98, "y": 267.2, "w": 3.06, "h": 2.8}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 59.94, "y": 267.18, "w": 3.06, "h": 2.82}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 63.9, "y": 267.2, "w": 3.06, "h": 2.8}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 67.85, "y": 266.77, "w": 3.06, "h": 3.23}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#FFFFFFD9", "outline": "#00000000", "width": 0, "x": 71.81, "y": 266.13, "w": 3.06, "h": 3.87}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#FFFFFFD9", "outline": "#00000000", "width": 0, "x": 75.77, "y": 265.2, "w": 3.06, "h": 4.8}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#FFFFFFD9", "outline": "#00000000", "width": 0, "x": 79.73, "y": 264.48, "w": 3.06, "h": 5.52}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#FFFFFFD9", "outline": "#00000000", "width": 0, "x": 83.68, "y": 263.95, "w": 3.06, "h": 6.05}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#FFFFFFD9", "outline": "#00000000", "width": 0, "x": 87.64, "y": 262.81, "w": 3.06, "h": 7.19}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#FFFFFFD9", "outline": "#00000000", "width": 0, "x": 91.6, "y": 259.72, "w": 3.06, "h": 10.28}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "2000", "size": 5.5, "color": "#8A97AB", "align": "center", "x": 88.6, "y": 271, "w": 9.06, "h": 3}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#FFFFFFD9", "outline": "#00000000", "width": 0, "x": 95.56, "y": 259.29, "w": 3.06, "h": 10.71}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#FFFFFFD9", "outline": "#00000000", "width": 0, "x": 99.51, "y": 257.0, "w": 3.06, "h": 13.0}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#FFFFFFD9", "outline": "#00000000", "width": 0, "x": 103.47, "y": 260.14, "w": 3.06, "h": 9.86}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#FFFFFFD9", "outline": "#00000000", "width": 0, "x": 107.43, "y": 261.92, "w": 3.06, "h": 8.08}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#FFFFFFD9", "outline": "#00000000", "width": 0, "x": 111.39, "y": 264.62, "w": 3.06, "h": 5.38}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 115.34, "y": 266.47, "w": 3.06, "h": 3.53}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 119.3, "y": 266.53, "w": 3.06, "h": 3.47}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 123.26, "y": 267.47, "w": 3.06, "h": 2.53}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 127.22, "y": 267.88, "w": 3.06, "h": 2.12}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 131.17, "y": 268.16, "w": 3.06, "h": 1.84}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "2010", "size": 5.5, "color": "#8A97AB", "align": "center", "x": 128.17, "y": 271, "w": 9.06, "h": 3}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 135.13, "y": 268.44, "w": 3.06, "h": 1.56}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 139.09, "y": 268.86, "w": 3.06, "h": 1.14}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 143.05, "y": 269.64, "w": 3.06, "h": 0.36}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 147.0, "y": 269.66, "w": 3.06, "h": 0.34}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 150.96, "y": 269.78, "w": 3.06, "h": 0.22}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 154.92, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 158.88, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 162.83, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 166.79, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 170.75, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "2020", "size": 5.5, "color": "#8A97AB", "align": "center", "x": 167.75, "y": 271, "w": 9.06, "h": 3}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 174.71, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 178.66, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 182.62, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 186.58, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 190.54, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "rectangle", "fill": "#8A93A0FF", "outline": "#00000000", "width": 0, "x": 194.49, "y": 269.8, "w": 3.06, "h": 0.2}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "2002: 7 123", "size": 6, "color": "#E6ECF5", "x": 103.02, "y": 256.2, "w": 20, "h": 3}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "1995-2005: 46 422, seis de cada diez", "size": 6, "color": "#E6ECF5", "x": 116.89, "y": 262, "w": 60, "h": 3}
+
+# Pie: línea, fuentes y firma
+layout.addElement {"layout": "Dia 18", "kind": "line", "dir": "horizontal", "color": "#2A3140", "width": 0.5, "x": 12, "y": 278.5, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "Datos: Centro Nacional de Memoria Histórica (CNMH), Observatorio de Memoria y Conflicto, SIEVCAC: víctimas de desaparición forzada, 1944-2026,\ncorte 31-03-2026, información sujeta a actualizaciones (serviciosgiscnmh.centrodememoriahistorica.gov.co), consultado el 2026-11-16. Municipios y\ndepartamentos: DANE, MGN 2025. Cómo se hizo: todo en RustGIS web (web.rustgis.app), con cuatro scripts: Summary Statistics por código de municipio\ny Join Field con el MGN. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5.5, "color": "#7F8A99", "x": 12, "y": 280, "w": 186, "h": 11}
+layout.addElement {"layout": "Dia 18", "kind": "text", "text": "© José Gregorio Rincón · CC BY 4.0 · #30DayMapChallenge 2026 · Día 18: NULL · Hecho con RustGIS · rustgis.app", "size": 6.5, "color": "#C9CED6", "align": "right", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz

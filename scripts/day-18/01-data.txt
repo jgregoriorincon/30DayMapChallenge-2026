@@ -1,0 +1,43 @@
+# Día 18 — NULL: Paradero en blanco — 1 · DATOS
+# 75 733 víctimas de desaparición forzada en el conflicto armado siguen desaparecidas, según el registro
+# del Centro Nacional de Memoria Histórica (corte 31-03-2026). Su paradero es el dato que falta. De 3 382
+# no se registró ni dónde desaparecieron.
+# Historia de este día: la primera idea (manzanas de Cali con el nivel de vulnerabilidad en blanco) se
+# descartó el 2026-11-16. Era una observación de la tabla, no una historia: se eligió la idea primero y
+# después se buscaron los datos.
+
+map.rename {"name": "Colombia"}
+map.basemap {"name": "blank"}
+map.graticule {"on": false}
+
+# Fondo: un rectángulo oscuro que cubre el mapa (va al fondo de la lista de capas)
+layer.addDataText {"fileName": "fondo.geojson", "name": "Fondo", "text": "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"nombre\":\"Fondo\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-84,-8],[-62,-8],[-62,16],[-84,16],[-84,-8]]]}}]}"}
+
+# Departamentos: DANE, MGN 2025, capa 319, como los días 12 y 17 (cuantizado a 0,005°), y además
+# simplificado en el servidor (maxAllowableOffset 0,005° ≈ 550 m, 0,06 mm en el papel a 1:10 000 000):
+# el cuantizado solo ajusta a la rejilla y deja la escalera de vértices. 94 646 → 13 028 vértices
+# (comprobado el 2026-11-16 en JSON; el PBF baja de 191 a 28 KB, este servidor sí lo respeta en PBF)
+layer.addUrl {"url": "https://portalgis.dane.gov.co/mparcgis/rest/services/MGN2025/Serv_CapasMGN_2025/FeatureServer/319/query?where=1%3D1&outFields=DPTO_CCDGO,DPTO_CNMBRE&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.005%2C%22extent%22%3A%7B%22xmin%22%3A-82%2C%22ymin%22%3A-5%2C%22xmax%22%3A-66%2C%22ymax%22%3A13.5%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&maxAllowableOffset=0.005&f=pbf", "name": "Departamentos", "zoom": false}
+
+# Municipios: DANE, MGN 2025, capa 317 (1 122). Código en MPIO_CDPMP. Cuantizado y simplificado igual:
+# 387 721 → 54 678 vértices, PBF de 805 a 135 KB. Sin simplificar, estos polígonos eran 13 de los
+# 14,5 MB del .rgis
+layer.addUrl {"url": "https://portalgis.dane.gov.co/mparcgis/rest/services/MGN2025/Serv_CapasMGN_2025/FeatureServer/317/query?where=1%3D1&outFields=MPIO_CDPMP,MPIO_CNMBRE,DPTO_CNMBRE&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.005%2C%22extent%22%3A%7B%22xmin%22%3A-82%2C%22ymin%22%3A-5%2C%22xmax%22%3A-66%2C%22ymax%22%3A13.5%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&maxAllowableOffset=0.005&f=pbf", "name": "Municipios", "zoom": false}
+
+# ── Víctimas que siguen desaparecidas ──
+# CNMH, Observatorio de Memoria y Conflicto, SIEVCAC: capa 9 "Víctimas Desaparición forzada (DF)"
+# (86 714 víctimas, 1944-2026, corte 31-03-2026; CORS para web.rustgis.app; hasta 400 000 por consulta).
+# Situacion_victima, 2026-11-16: DESAPARECIDO 61 951 · SIGUE DESAPARECIDO PERO EXISTE INFORMACIÓN
+# 12 897 · DESAPARECIDO FORZADO 885 = 75 733. Las demás: APARECIÓ MUERTO 8 821, APARECIÓ VIVO 1 819 y
+# 341 en otras siete situaciones.
+# Los puntos del servicio están en el centro del municipio (Medellín: 2 013 en una sola coordenada), y
+# las 3 382 sin municipio ni departamento (Geo_municipio "0") están todas en 4° N 72° O. Por eso se trae
+# solo el código del municipio, sin geometría: el script 2 cuenta por código y une con el MGN.
+# Una sola descarga, en PBF, de unos 820 KB
+layer.addUrl {"url": "https://serviciosgiscnmh.centrodememoriahistorica.gov.co/agccnmh/rest/services/OMC/Desaparicion_Forzada/MapServer/9/query?where=Situacion_victima%20IN%20%28%27DESAPARECIDO%27%2C%27SIGUE%20DESAPARECIDO%20PERO%20EXISTE%20INFORMACI%C3%93N%27%2C%27DESAPARECIDO%20FORZADO%27%29&outFields=Geo_municipio&returnGeometry=false&f=pbf", "name": "Desaparecidos", "zoom": false}
+
+# Tierra firme, como los días 12 y 17
+map.zoomToExtent {"extent": [-79.3, -4.3, -66.8, 12.6]}
+
+# Esperar a que "Departamentos", "Municipios" (1 122) y "Desaparecidos" (75 733 filas) estén en el panel.
+# Luego, el script 2.
