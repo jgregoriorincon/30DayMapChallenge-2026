@@ -1,8 +1,7 @@
 # Día 17 — Light & dark: La luz no llega al campo — 2 · VISTA (proceso y estilo)
 # Correr cuando "Departamentos" y "Municipios" ya estén en el panel de capas.
 # El gesto: dos luces. Las ciudades en ámbar y las viviendas rurales sin servicio encendidas en cian.
-# Fuera de Colombia, una máscara casi opaca: los vecinos brillaban más que el país (primera prueba,
-# 2026-11-15).
+# Fuera de Colombia, una máscara casi opaca: sin ella, los vecinos brillan más que el país.
 
 # Un punto por municipio, siempre dentro de su polígono (Feature To Point usa un punto interior, no el
 # centroide, que en un municipio con forma de media luna puede caer fuera). Lleva todos los campos
@@ -15,9 +14,8 @@ gp.run {"tool": "erase", "params": {"input": "Tinte ámbar", "erase": "Departame
 layer.color {"layer": "Fuera de Colombia", "color": "#07090FE6"}
 layer.outline {"layer": "Fuera de Colombia", "color": "#07090F00", "width": 0}
 
-# Las luces de Colombia a todo su brillo: el tinte en multiply, en ámbar claro (#FFC46B). Se probó
-# opacarlas (#A87F45 y #D4A15A, 2026-11-15) y el mapa perdía fuerza; lo que competía con los círculos
-# eran los vecinos, y eso lo resuelve la máscara. No se baja la opacidad de las teselas: el fondo de
+# Las luces de Colombia a todo su brillo: el tinte en multiply, en ámbar claro (#FFC46B): opacarlas
+# le quita fuerza al mapa; a los vecinos los apaga la máscara. No se baja la opacidad de las teselas: el fondo de
 # blank es blanco y las luces se volverían grises
 layer.color {"layer": "Tinte ámbar", "color": "#FFC46B"}
 layer.outline {"layer": "Tinte ámbar", "color": "#FFC46B00", "width": 0}

@@ -21,8 +21,7 @@ map.zoomToExtent {"extent": [-77.3, 1.5, -72.0, 11.4]}
 # por objectIds: el cortafuegos del IGAC bloquea consultas con LIKE. Cuantizado a 0,003°: 66 KB
 layer.addUrl {"url": "https://mapas.igac.gov.co/server/rest/services/atlas/hidrografiasuperficial/MapServer/3/query?objectIds=1,7,8,16,17,22,26,31,34&outFields=NOM_ZH&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.003%2C%22extent%22%3A%7B%22xmin%22%3A-79%2C%22ymin%22%3A0%2C%22xmax%22%3A-71%2C%22ymax%22%3A12%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&f=pbf", "name": "Cuenca Magdalena-Cauca", "zoom": false}
 # El río: tres polígonos del Atlas (el cauce y el brazo de Mompós), de San Agustín a Bocas de Ceniza.
-# El tramo de la laguna a San Agustín (unos 40 km) no está en esta capa, y el drenaje 1:500 000 del
-# IGAC no respondió (2026-11-11): la parada 1 queda como punto. Cuantizado a 0,001°: 81 KB
+# El tramo de la laguna a San Agustín (unos 40 km) no está en esta capa: la parada 1 queda como punto. Cuantizado a 0,001°: 81 KB
 layer.addUrl {"url": "https://mapas.igac.gov.co/server/rest/services/atlas/hidrografiasuperficial/MapServer/1/query?objectIds=41,72,170&outFields=NOMBRE_GEOGRAFICO&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.001%2C%22extent%22%3A%7B%22xmin%22%3A-79%2C%22ymin%22%3A0%2C%22xmax%22%3A-71%2C%22ymax%22%3A12%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&f=pbf", "name": "Río Magdalena", "zoom": false}
 
 # Las ocho paradas, escritas aquí (GeoJSON). Ubicadas sobre el cauce del Atlas, salvo:

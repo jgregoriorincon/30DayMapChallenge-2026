@@ -2,9 +2,6 @@
 # 75 733 víctimas de desaparición forzada en el conflicto armado siguen desaparecidas, según el registro
 # del Centro Nacional de Memoria Histórica (corte 31-03-2026). Su paradero es el dato que falta. De 3 382
 # no se registró ni dónde desaparecieron.
-# Historia de este día: la primera idea (manzanas de Cali con el nivel de vulnerabilidad en blanco) se
-# descartó el 2026-11-16. Era una observación de la tabla, no una historia: se eligió la idea primero y
-# después se buscaron los datos.
 
 map.rename {"name": "Colombia"}
 map.basemap {"name": "blank"}

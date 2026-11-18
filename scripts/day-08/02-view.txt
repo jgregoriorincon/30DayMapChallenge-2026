@@ -2,6 +2,7 @@
 
 # El 30: la media de la imagen de vegetación (0 o 1) en cada comuna es la parte de su área con
 # NDVI > 0,3. Queda en el campo veg_mean, de 0 a 1
+map.activate {"name": "El 30"}
 gp.run {"tool": "zonalStats", "params": {"raster": "Vegetación (NDVI > 0,3)", "polygons": "Comunas", "stats": "Mean", "prefix": "veg", "output": "Vegetación · Vegetation"}}
 # La imagen ya dio su número: sale del proyecto (el script 1 la vuelve a traer con su URL)
 layer.remove {"layer": "Vegetación (NDVI > 0,3)"}

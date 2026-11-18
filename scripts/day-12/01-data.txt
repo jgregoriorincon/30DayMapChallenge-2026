@@ -8,7 +8,7 @@ map.basemap {"name": "midnight"}
 map.zoomToExtent {"extent": [-79.3, -4.3, -66.8, 12.6]}
 
 # Departamentos: DANE, Marco Geoestadístico Nacional 2025, capa 319 (33 polígonos). Cuantizado a
-# 0,005° (unos 550 m, 0,05 mm en el layout): 190 KB (2026-11-11)
+# 0,005° (unos 550 m, 0,05 mm en el layout): 190 KB
 layer.addUrl {"url": "https://portalgis.dane.gov.co/mparcgis/rest/services/MGN2025/Serv_CapasMGN_2025/FeatureServer/319/query?where=1%3D1&outFields=DPTO_CCDGO,DPTO_CNMBRE&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.005%2C%22extent%22%3A%7B%22xmin%22%3A-82%2C%22ymin%22%3A-5%2C%22xmax%22%3A-66%2C%22ymax%22%3A13.5%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&f=pbf", "name": "Departamentos", "zoom": false}
 
 # Líneas de transmisión construidas (UPME, capa 17: 798 tramos de 57,5 a 500 kV). Cuantizado a

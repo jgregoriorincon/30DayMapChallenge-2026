@@ -1,6 +1,7 @@
 # Día 7 — 10 minute map: Una tarde de nubes sobre Colombia — 2 · VISTA
 # Esperar a que "Colombia" esté en el panel de capas. Su límite en rojo: resalta sobre las nubes
 # blancas, la selva verde y la noche oscura
+map.activate {"name": "12:00"}
 layer.noFill {"layer": "Colombia"}
 layer.outline {"layer": "Colombia", "color": "#FF3B30", "width": 0.9}
 
