@@ -1,0 +1,42 @@
+# Día 19 — Senses: Smell: De aquí salen las flores — 1 · DATOS
+# Idea: cuando alguien en Estados Unidos huele flores importadas, lo más probable es que vengan
+# de Colombia, y en Colombia, sobre todo de aquí: la Sabana de Bogotá, bajo plástico. Pregunta: ¿de dónde
+# viene el olor de las flores que regala el mundo?
+# Cifras (2026-11-17): Colombia fue más del 60 % del valor de las flores que importó EE. UU. en 2024
+# (1 240 de 1 980 millones de dólares; USDA, en farmdoc daily). Cundinamarca y Bogotá tienen 9 629 de las
+# 14 260 ha bajo invernadero del país (IDEAM, 2024): dos de cada tres. En 2018 eran 6 514: +48 %.
+
+map.rename {"name": "Sabana de Bogotá"}
+map.basemap {"name": "blank"}
+map.graticule {"on": false}
+
+# Fondo: la tierra, del color de la página (el mapa base "blank" es blanco)
+layer.addDataText {"fileName": "fondo.geojson", "name": "Fondo", "text": "{\"type\": \"FeatureCollection\", \"features\": [{\"type\": \"Feature\", \"properties\": {\"nombre\": \"Fondo\"}, \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-75.5, 3.5], [-72.5, 3.5], [-72.5, 6.5], [-75.5, 6.5], [-75.5, 3.5]]]}}]}"}
+
+# Municipios de Cundinamarca y Bogotá, solo como líneas: DANE, MGN 2025, capa 317 (117), simplificados en el servidor a
+# 0,0005° (unos 55 m, 0,09 mm en el papel a 1:625 000): 21 045 vértices, 162 KB
+layer.addUrl {"url": "https://portalgis.dane.gov.co/mparcgis/rest/services/MGN2025/Serv_CapasMGN_2025/FeatureServer/317/query?where=DPTO_CCDGO%20IN%20(%2725%27%2C%2711%27)&outFields=MPIO_CDPMP,MPIO_CNMBRE&outSR=4326&maxAllowableOffset=0.0005&f=pbf", "name": "Municipios", "zoom": false}
+
+# Cobertura de la tierra 2024, IDEAM, escala 1:100 000, capa 10 "Cobertura de la tierra 100K Periodo 2024
+# límite administrativo" (cortada por municipio: trae nom_mpio y cod_dane_mpio). CORS "*", PBF, hasta
+# 20 000 por consulta. El servicio no declara licencia.
+# Clase 2.2.5 "Cultivos confinados": cultivos bajo invernadero. Solo Cundinamarca y Bogotá: 158 polígonos,
+# 8 950 vértices, 64 KB. En PBF este servidor no simplifica (maxAllowableOffset no cambia nada); no hace falta
+layer.addUrl {"url": "https://visualizador.ideam.gov.co/gisserver/rest/services/Estado_Cobertura_Tierra/MapServer/10/query?where=codigo%3D%27225%27%20AND%20(cod_dane_dpto%3D%2725%27%20OR%20cod_dane_dpto%3D%2711%27)&outFields=cod_dane_mpio,nom_mpio,area_ha&outSR=4326&f=pbf", "name": "Cultivos bajo invernadero", "zoom": false}
+
+# Ciudades y pueblos: clases 1.1.1 y 1.1.2 (tejido urbano continuo y discontinuo) dentro del encuadre.
+# En GeoJSON, porque ahí sí respeta maxAllowableOffset: 76 956 → 11 020 vértices, 270 KB (524 polígonos,
+# muy por debajo del tope de 20 000)
+layer.addUrl {"url": "https://visualizador.ideam.gov.co/gisserver/rest/services/Estado_Cobertura_Tierra/MapServer/10/query?where=codigo%20IN%20(%27111%27%2C%27112%27)&geometry=-74.47%2C4.36%2C-73.68%2C5.46&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=codigo,leyenda&outSR=4326&maxAllowableOffset=0.0005&f=geojson", "name": "Tejido urbano", "zoom": false}
+
+# Agua: embalses (5.1.4.1) y lagunas (5.1.2): Tominé, Neusa, Sisga, Fúquene… (21 polígonos, 16 KB)
+layer.addUrl {"url": "https://visualizador.ideam.gov.co/gisserver/rest/services/Estado_Cobertura_Tierra/MapServer/10/query?where=codigo%20IN%20(%275141%27%2C%27512%27)&geometry=-74.47%2C4.36%2C-73.68%2C5.46&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=codigo,leyenda&outSR=4326&maxAllowableOffset=0.0005&f=geojson", "name": "Embalses y lagunas", "zoom": false}
+
+# La Sabana, de Fusagasugá a Fúquene
+map.zoomToExtent {"extent": [-74.47, 4.36, -73.68, 5.46]}
+
+# Las capas por URL llegan en cualquier orden, y da igual: invernaderos, ciudades y agua son clases de la
+# misma cobertura y no se pisan, y los municipios van sin relleno. Los nombres, que sí deben ir encima de
+# todo, se crean en el script 2.
+# Esperar a que "Municipios", "Cultivos bajo invernadero" (158), "Tejido urbano" (524) y "Embalses y
+# lagunas" (21) estén en el panel. Luego, el script 2.

@@ -1,0 +1,111 @@
+# Day 19 — Senses: Smell: This is where the flowers come from — 4 · ENGLISH LAYOUT
+# Una lupa grande a 1:150 000 sobre el oeste (46 % de las 9 629 ha). La Sabana y Colombia van dentro
+# del mapa, arriba a la izquierda, donde no hay invernaderos; las cifras, abajo. Ids: lupa 1, fondo 2,
+# caja de localización 3, Sabana 4, Colombia 5.
+# Minimapa: estilo del mapa "Colombia"
+map.activate {"name": "Colombia"}
+layer.color {"layer": "Fondo Colombia", "color": "#F1EADFFF"}
+layer.outline {"layer": "Fondo Colombia", "color": "#F1EADF00", "width": 0}
+layer.color {"layer": "Departamentos", "color": "#D9CBB8FF"}
+layer.outline {"layer": "Departamentos", "color": "#F1EADF", "width": 0.3}
+layout.new {"name": "Day 19", "page": "a4", "orientation": "portrait", "template": "blank"}
+# 1 · La lupa
+layout.addFrame {"layout": "Day 19", "map": "Sabana de Bogotá", "x": 12, "y": 37, "w": 186, "h": 176}
+layout.update {"layout": "Day 19", "element": 1, "center": [-74.3, 4.8], "scale": 150000}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Day 19", "element": 2, "to": "back"}
+# 3 · Caja del color de la página bajo la localización
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFF2", "outline": "#F1EADF00", "width": 0, "x": 12, "y": 37, "w": 50, "h": 41}
+# 4 · La Sabana entera, con el recuadro de la lupa (los nombres no se ven: layer.scaleRange)
+layout.addFrame {"layout": "Day 19", "map": "Sabana de Bogotá", "x": 14, "y": 39, "w": 25, "h": 37}
+layout.update {"layout": "Day 19", "element": 4, "center": [-74.075, 4.905], "scale": 3400000}
+layout.addElement {"layout": "Day 19", "kind": "extentIndicator", "frame": 4, "of": 1, "color": "#C2185B", "width": 0.8}
+# 5 · Colombia, con el recuadro de la Sabana
+layout.addFrame {"layout": "Day 19", "map": "Colombia", "x": 40, "y": 40, "w": 21, "h": 30}
+layout.update {"layout": "Day 19", "element": 5, "center": [-73.2, 4.1], "scale": 66000000}
+layout.addElement {"layout": "Day 19", "kind": "extentIndicator", "frame": 5, "of": 4, "color": "#C2185B", "width": 0.8}
+# El marco siempre lleva un borde gris de 0,8 pt (no se puede quitar): franjas del color de la página
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 11.6, "y": 36.6, "w": 186.8, "h": 0.8}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 11.6, "y": 212.6, "w": 186.8, "h": 0.8}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 11.6, "y": 36.6, "w": 0.8, "h": 176.8}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 197.6, "y": 36.6, "w": 0.8, "h": 176.8}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 13.6, "y": 38.6, "w": 25.8, "h": 0.8}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 13.6, "y": 75.6, "w": 25.8, "h": 0.8}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 13.6, "y": 38.6, "w": 0.8, "h": 37.8}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 38.6, "y": 38.6, "w": 0.8, "h": 37.8}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 39.6, "y": 39.6, "w": 21.8, "h": 0.8}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 39.6, "y": 69.6, "w": 21.8, "h": 0.8}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 39.6, "y": 39.6, "w": 0.8, "h": 30.8}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 60.6, "y": 39.6, "w": 0.8, "h": 30.8}
+
+# Título y leyenda en una fila
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "30DAYMAPCHALLENGE · DAY 19 · SMELL · SABANA DE BOGOTÁ", "size": 7.5, "color": "#C2185B", "letterSpacing": 2.5, "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "This is where the flowers come from", "size": 26, "bold": true, "color": "#2B2620", "x": 12, "y": 10, "w": 186, "h": 12}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Greenhouse crops west of Bogotá, 2024, and where the wind carries them", "size": 9, "color": "#4E463C", "x": 12, "y": 22.5, "w": 186, "h": 5}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#C2185BFF", "outline": "#C2185B00", "width": 0, "x": 12, "y": 30.5, "w": 6, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Greenhouse crops", "size": 6.5, "color": "#2B2620", "x": 20, "y": 30.3, "w": 38, "h": 4}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#B3A99DFF", "outline": "#B3A99D00", "width": 0, "x": 58, "y": 30.5, "w": 6, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Cities and towns", "size": 6.5, "color": "#2B2620", "x": 66, "y": 30.3, "w": 26, "h": 4}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#A7C7D6FF", "outline": "#A7C7D600", "width": 0, "x": 92, "y": 30.5, "w": 6, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Reservoirs and lakes", "size": 6.5, "color": "#2B2620", "x": 100, "y": 30.3, "w": 30, "h": 4}
+layout.addElement {"layout": "Day 19", "kind": "line", "dir": "horizontal", "color": "#C2185BB3", "width": 0.7, "x": 130, "y": 32, "w": 6, "h": 0.5}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Scent contours", "size": 6.5, "color": "#2B2620", "x": 138, "y": 30.3, "w": 58, "h": 4}
+
+# Abajo a la izquierda, dentro del mapa (sin invernaderos): la cifra del oeste, la escala y el norte
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#F1EADFF2", "outline": "#F1EADF00", "width": 0, "x": 12, "y": 178.5, "w": 84, "h": 34.5}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "46%", "size": 24, "bold": true, "color": "#C2185B", "x": 14, "y": 179.5, "w": 40, "h": 10}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "WEST · MADRID, FACATATIVÁ, EL ROSAL AND FUNZA", "size": 6, "bold": true, "color": "#C2185B", "letterSpacing": 1, "x": 14, "y": 190.5, "w": 80, "h": 3.5}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "of the savanna's hectares: 4,442, in some\n23 × 21 km. The wind blows west (282°)\nthree hours in four.", "size": 7, "color": "#2B2620", "x": 14, "y": 194.5, "w": 80, "h": 10.5}
+layout.addElement {"layout": "Day 19", "kind": "scaleBar", "frame": 1, "style": "line", "units": "kilometers", "divisions": 2, "color": "#857A6C", "x": 14, "y": 206.0, "w": 40, "h": 5.5}
+layout.addElement {"layout": "Day 19", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#857A6C", "outline": "#857A6C", "x": 58, "y": 205.0, "w": 3.5, "h": 6.5}
+
+# Abajo, tres columnas: la cifra del olor, las hectáreas por municipio y el crecimiento
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "6 in 10", "size": 20, "bold": true, "color": "#C2185B", "x": 12, "y": 216, "w": 62, "h": 9}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "dollars the United States paid for imported\nflowers in 2024 went to Colombia:\n1,240 of 1,980 million.", "size": 7, "color": "#2B2620", "x": 12, "y": 226, "w": 62, "h": 11}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "If someone there smells imported flowers,\nthey most likely come from Colombia. And\nin Colombia, mostly from here.", "size": 7, "italic": true, "color": "#4E463C", "x": 12, "y": 238.5, "w": 62, "h": 11}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Cundinamarca and Bogotá have 9,629 ha under\ngreenhouses, two in three in the country. The\nnorth, Zipaquirá to Suesca, adds another 27%.", "size": 7, "color": "#2B2620", "x": 12, "y": 251, "w": 62, "h": 11}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "HECTARES, BY MUNICIPALITY", "size": 6, "bold": true, "color": "#C2185B", "letterSpacing": 1, "x": 80, "y": 217, "w": 58, "h": 3.5}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Madrid", "size": 6.3, "color": "#2B2620", "align": "right", "x": 80, "y": 222.5, "w": 19, "h": 3.6}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#C2185BFF", "outline": "#C2185B00", "width": 0, "x": 101, "y": 222.8, "w": 24.0, "h": 3.2}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "2,095", "size": 6, "color": "#4E463C", "x": 126.2, "y": 222.6, "w": 12, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Facatativá", "size": 6.3, "color": "#2B2620", "align": "right", "x": 80, "y": 227.9, "w": 19, "h": 3.6}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#C2185BFF", "outline": "#C2185B00", "width": 0, "x": 101, "y": 228.20000000000002, "w": 10.25, "h": 3.2}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "895", "size": 6, "color": "#4E463C", "x": 112.45, "y": 228.0, "w": 12, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "El Rosal", "size": 6.3, "color": "#2B2620", "align": "right", "x": 80, "y": 233.3, "w": 19, "h": 3.6}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#C2185BFF", "outline": "#C2185B00", "width": 0, "x": 101, "y": 233.60000000000002, "w": 10.02, "h": 3.2}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "875", "size": 6, "color": "#4E463C", "x": 112.22, "y": 233.4, "w": 12, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Nemocón", "size": 6.3, "color": "#2B2620", "align": "right", "x": 80, "y": 238.7, "w": 19, "h": 3.6}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#E3A3BCFF", "outline": "#E3A3BC00", "width": 0, "x": 101, "y": 239.0, "w": 7.72, "h": 3.2}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "674", "size": 6, "color": "#4E463C", "x": 109.92, "y": 238.79999999999998, "w": 12, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Tocancipá", "size": 6.3, "color": "#2B2620", "align": "right", "x": 80, "y": 244.1, "w": 19, "h": 3.6}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#E3A3BCFF", "outline": "#E3A3BC00", "width": 0, "x": 101, "y": 244.4, "w": 7.06, "h": 3.2}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "616", "size": 6, "color": "#4E463C", "x": 109.26, "y": 244.2, "w": 12, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Funza", "size": 6.3, "color": "#2B2620", "align": "right", "x": 80, "y": 249.5, "w": 19, "h": 3.6}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#C2185BFF", "outline": "#C2185B00", "width": 0, "x": 101, "y": 249.8, "w": 6.62, "h": 3.2}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "578", "size": 6, "color": "#4E463C", "x": 108.82000000000001, "y": 249.6, "w": 12, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Suesca", "size": 6.3, "color": "#2B2620", "align": "right", "x": 80, "y": 254.9, "w": 19, "h": 3.6}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#E3A3BCFF", "outline": "#E3A3BC00", "width": 0, "x": 101, "y": 255.20000000000002, "w": 5.1, "h": 3.2}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "445", "size": 6, "color": "#4E463C", "x": 107.3, "y": 255.0, "w": 12, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Bogotá", "size": 6.3, "color": "#2B2620", "align": "right", "x": 80, "y": 260.3, "w": 19, "h": 3.6}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#E3A3BCFF", "outline": "#E3A3BC00", "width": 0, "x": 101, "y": 260.6, "w": 3.61, "h": 3.2}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "315", "size": 6, "color": "#4E463C", "x": 105.81, "y": 260.40000000000003, "w": 12, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Dark rose: the ones on the map", "size": 5.6, "italic": true, "color": "#857A6C", "x": 101, "y": 266.0, "w": 40, "h": 3}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "HOW IT GREW · +48% IN SIX YEARS", "size": 6, "bold": true, "color": "#C2185B", "letterSpacing": 1, "x": 144, "y": 217, "w": 56, "h": 3.5}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#E3A3BCFF", "outline": "#E3A3BC00", "width": 0, "x": 145.0, "y": 241.0, "w": 10, "h": 23.0}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "6,514", "size": 6, "color": "#4E463C", "align": "center", "x": 143.0, "y": 237.2, "w": 14, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "2018", "size": 6, "color": "#857A6C", "align": "center", "x": 143.0, "y": 264.8, "w": 14, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#E3A3BCFF", "outline": "#E3A3BC00", "width": 0, "x": 158.5, "y": 238.1, "w": 10, "h": 25.9}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "7,334", "size": 6, "color": "#4E463C", "align": "center", "x": 156.5, "y": 234.29999999999998, "w": 14, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "2020", "size": 6, "color": "#857A6C", "align": "center", "x": 156.5, "y": 264.8, "w": 14, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#E3A3BCFF", "outline": "#E3A3BC00", "width": 0, "x": 172.0, "y": 232.73, "w": 10, "h": 31.27}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "8,857", "size": 6, "color": "#4E463C", "align": "center", "x": 170.0, "y": 228.92999999999998, "w": 14, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "2022", "size": 6, "color": "#857A6C", "align": "center", "x": 170.0, "y": 264.8, "w": 14, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "rectangle", "fill": "#C2185BFF", "outline": "#C2185B00", "width": 0, "x": 185.5, "y": 230.0, "w": 10, "h": 34.0}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "9,629", "size": 6, "color": "#4E463C", "align": "center", "x": 183.5, "y": 226.2, "w": 14, "h": 3.4}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "2024", "size": 6, "color": "#857A6C", "align": "center", "x": 183.5, "y": 264.8, "w": 14, "h": 3.4}
+
+# Pie: línea, notas y fuentes, y firma
+layout.addElement {"layout": "Day 19", "kind": "line", "dir": "horizontal", "color": "#CDBFAE", "width": 0.5, "x": 12, "y": 272, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "Notes: IDEAM's \"confined crops\" are any crop under plastic or glass; on the savanna, mostly flowers. At 1:100,000, small greenhouses do not show. The 60% is of the value,\nnot of the stems. The contours shift slightly with the wind measured at 10 m in 2024; their shape is illustrative: the scent was not measured. Data: IDEAM, Land cover 1:100,000,\n2018 (v2), 2020, 2022 and 2024, class 2.2.5 (visualizador.ideam.gov.co), accessed 2026-11-17. Municipalities and town centres: DANE, MGN 2025. US flower imports in 2024:\nUSDA, in farmdoc daily (University of Illinois, February 2025). Wind: Open-Meteo, ERA5 reanalysis (Copernicus), 2024. How it was made: all in RustGIS web\n(web.rustgis.app), with four scripts. Scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5.2, "color": "#857A6C", "x": 12, "y": 273.5, "w": 186, "h": 14}
+layout.addElement {"layout": "Day 19", "kind": "text", "text": "© José Gregorio Rincón · CC BY 4.0 · #30DayMapChallenge 2026 · Day 19: Senses: Smell · Made with RustGIS · rustgis.app", "size": 6.5, "color": "#4E463C", "align": "right", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz
