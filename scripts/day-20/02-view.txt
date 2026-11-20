@@ -1,0 +1,55 @@
+# Día 20 — Hexagons: La ciudad vive en el sur y trabaja en el norte — 2 · PROCESO Y VISTA
+# Correr cuando estén las 3 capas del script 1.
+# La malla: "Densidad poblacional 2025" de la Alcaldía YA es hexagonal. Es una malla oficial: cada
+# celda es la misma para quien la use.
+# El gesto: la ALTURA de cada hexágono son sus empresas; el COLOR, su gente.
+# Torres altas y pálidas: donde se trabaja y casi nadie vive (norte y centro). Hexágonos planos y
+# morados: donde vive la mayoría y casi no hay empresas (sur y suroccidente). Con el norte arriba, las
+# torres quedan al fondo y el sur plano delante: nada tapa nada.
+
+# ── 1. Solo los hexágonos del Distrito ──
+# Se quedan los hexágonos cuyo centro cae dentro de alguna localidad: una celda de borde va a un solo
+# lado: quedan 310 de 630
+gp.run {"tool": "spatialJoin", "params": {"target": "Población 2025", "join": "Localidades", "match": "Have their center in", "operation": "Join one to one", "keepAll": "Keep only matching", "output": "Hexágonos del Distrito"}}
+
+# ── 2. Empresas dentro de cada hexágono del Distrito (campo point_count) ──
+# countPoints cuenta un punto en cada polígono cuyo borde toca: una empresa sobre un lado compartido
+# cuenta en las dos celdas
+gp.run {"tool": "countPoints", "params": {"polygons": "Hexágonos del Distrito", "points": "Empresas vigentes", "output": "Hexágonos"}}
+# Cifras: suma y máximo de empresas por celda, y la población
+gp.run {"tool": "summaryStatistics", "params": {"input": "Hexágonos", "statistics": [{"field": "point_count", "statistic": "SUM"}, {"field": "point_count", "statistic": "MAX"}, {"field": "poblacion_sum", "statistic": "SUM"}]}}
+# Empresas y población por localidad (cada hexágono, en la localidad de su centro): las barras y la
+# primera cifra del layout. El spatialJoin antepone "join_" a los campos: la localidad es "join_nombre"
+gp.run {"tool": "summaryStatistics", "params": {"input": "Hexágonos", "statistics": [{"field": "point_count", "statistic": "SUM"}, {"field": "poblacion_sum", "statistic": "SUM"}], "case": ["join_nombre"]}}
+# La localidad del hexágono más lleno (626 empresas), para la segunda cifra del layout
+gp.run {"tool": "summaryStatistics", "params": {"input": "Hexágonos", "statistics": [{"field": "point_count", "statistic": "MAX"}], "case": ["join_nombre"]}}
+
+# ── 3. Las celdas que cuentan algo: con empresas o con gente ──
+# No basta con la gente: las celdas del centro tienen poca población y muchas empresas, y son las
+# torres más altas
+layer.definitionQuery {"layer": "Hexágonos", "where": "point_count > 0 OR poblacion_sum >= 500"}
+
+# ── 4. Color: la población de la celda (son de igual área: es densidad). 5 cuantiles, Dusk (lila claro
+# = poca gente, morado oscuro = mucha) ──
+layer.symbology {"layer": "Hexágonos", "type": "graduated", "field": "poblacion_sum", "method": "quantile", "classes": 5, "ramp": "Dusk"}
+layer.outline {"layer": "Hexágonos", "color": "#FFFFFF80", "width": 0.3}
+
+# ── 5. Altura: las empresas de la celda ──
+# 4 m por empresa: la celda más llena (626) sube unos 2 500 m. Pocas celdas tienen cientos de empresas
+# y la mayoría pocas: esa concentración es la historia
+layer.extrusion {"layer": "Hexágonos", "type": "field", "field": "point_count", "factor": 4}
+
+# ── 6. Las capas de origen e intermedias, ocultas: el mapa es solo la malla ──
+layer.visibility {"layer": "Empresas vigentes", "visible": false}
+layer.visibility {"layer": "Población 2025", "visible": false}
+layer.visibility {"layer": "Localidades", "visible": false}
+layer.visibility {"layer": "Hexágonos del Distrito", "visible": false}
+
+# ── 7. Vista inclinada con el norte arriba, como se conoce la ciudad ──
+# Encuadre ceñido a los hexágonos del Distrito: con el del script 1, inclinada, la ciudad queda
+# pequeña en una esquina
+map.zoomToExtent {"extent": [-74.87, 10.92, -74.76, 11.04]}
+map.setPitch {"pitch": 55}
+map.setBearing {"bearing": 0}
+
+# "Hexágonos" es la última capa creada: queda arriba sin moverla

@@ -1,0 +1,29 @@
+# Día 20 — Hexagons: La ciudad vive en el sur y trabaja en el norte — 1 · DATOS
+# Idea: Barranquilla vive en un lado y trabaja en otro. En la malla hexagonal oficial de población, el
+# norte y el centro tienen muchas empresas y poca gente; el sur y el suroccidente, mucha gente y casi
+# ninguna empresa.
+# Pregunta: ¿las empresas están donde vive la gente?
+
+map.rename {"name": "Barranquilla"}
+map.basemap {"name": "blank"}
+map.graticule {"on": false}
+
+# Mapa base oficial claro de la Alcaldía (Mi Ciudad), atenuado
+map.addTiles {"url": "https://miciudad.barranquilla.gov.co/server/rest/services/Hosted/VectorTile_MiCiudad/VectorTileServer/resources/styles/root.json", "kind": "style", "name": "Mapa base Mi Ciudad (Alcaldía de Barranquilla)", "attribution": "Mapa base: Mi Ciudad, Alcaldía de Barranquilla", "opacity": 0.5}
+
+map.zoomToExtent {"extent": [-74.92, 10.90, -74.74, 11.07]}
+
+# ── Empresas vigentes (Mi Ciudad, economico/tejidoempresarial) ──
+# 23 017 puntos: "service": true los lee en 12 páginas de 2000
+layer.addUrl {"url": "https://miciudad.barranquilla.gov.co/gis/rest/services/economico/tejidoempresarial/MapServer/1/query?where=1%3D1&outFields=sector,tamano&outSR=4326&f=pbf", "name": "Empresas vigentes", "zoom": false, "service": true}
+
+# ── Densidad poblacional 2025 (Mi Ciudad, social/demografia): la malla hexagonal oficial ──
+# 630 hexágonos iguales de 0,28867513 km² (unos 577 m entre lados planos), con la población modelada
+# en poblacion_sum (suma 1 444 289 en toda la malla). Una sola respuesta
+layer.addUrl {"url": "https://miciudad.barranquilla.gov.co/gis/rest/services/social/demografia/MapServer/2/query?where=1%3D1&outFields=poblacion_sum,area_km2&outSR=4326&f=pbf", "name": "Población 2025", "zoom": false}
+
+# ── Localidades: para quedarse solo con los hexágonos del Distrito ──
+layer.addUrl {"url": "https://miciudad.barranquilla.gov.co/gis/rest/services/ordenamiento/unidadesadministrativas/MapServer/3/query?where=1%3D1&outFields=*&outSR=4326&f=pbf", "name": "Localidades", "zoom": false}
+
+# Esperar a que estén las 3 capas ("Empresas vigentes": 23 017; "Población 2025": 630; "Localidades":
+# 5). Luego, el script 2.

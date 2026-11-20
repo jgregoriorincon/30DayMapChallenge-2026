@@ -1,0 +1,90 @@
+# Día 20 — Hexagons: La ciudad vive en el sur y trabaja en el norte — 3 · LAYOUT (español)
+# Correr después del script 2, con el mapa ya dibujado. A4 vertical: la vista 3D arriba, tres cifras y
+# la historia abajo. Ids: marco 1, fondo 2. Cifras: las tablas del script 2.
+
+layout.new {"name": "Dia 20", "page": "a4", "orientation": "portrait", "template": "blank"}
+# 1 · La vista 3D, con la misma cámara del mapa: norte arriba, inclinada 55°. Marco 186 × 148 mm a
+# 1:68 000 = 12,6 km de ancho. Debajo, las barras por localidad
+layout.addFrame {"layout": "Dia 20", "map": "Barranquilla", "x": 12, "y": 35, "w": 186, "h": 148}
+layout.update {"layout": "Dia 20", "element": 1, "center": [-74.805, 10.968], "scale": 68000, "pitch": 55, "bearing": 0}
+# 2 · Fondo de la página
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#F7F5F2FF", "outline": "#F7F5F200", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Dia 20", "element": 2, "to": "back"}
+# El marco lleva un borde gris de 0,8 pt que no se quita: franjas del color de la página
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#F7F5F2FF", "outline": "#F7F5F200", "width": 0, "x": 11.6, "y": 34.6, "w": 186.8, "h": 0.8}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#F7F5F2FF", "outline": "#F7F5F200", "width": 0, "x": 11.6, "y": 182.6, "w": 186.8, "h": 0.8}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#F7F5F2FF", "outline": "#F7F5F200", "width": 0, "x": 11.6, "y": 34.6, "w": 0.8, "h": 148.8}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#F7F5F2FF", "outline": "#F7F5F200", "width": 0, "x": 197.6, "y": 34.6, "w": 0.8, "h": 148.8}
+# Norte: la vista tiene bearing 0; la flecha, ligada al marco, lo confirma aunque el mapa esté inclinado
+layout.addElement {"layout": "Dia 20", "kind": "northArrow", "frame": 1, "style": "triangle", "fill": "#4A5866", "outline": "#4A5866", "x": 190, "y": 38, "w": 4, "h": 6}
+
+# ── Empresas y gente por localidad: barras enfrentadas, la misma escala a los dos lados (1,05 mm por
+# punto porcentual). Cifras de la tabla por localidad del script 2. De norte a sur ──
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "EMPRESAS Y GENTE POR LOCALIDAD · % DEL DISTRITO", "size": 6.5, "bold": true, "letterSpacing": 1.2, "align": "center", "color": "#451D6B", "x": 12, "y": 184.6, "w": 186, "h": 3.5}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "← % de las empresas", "size": 6, "align": "right", "color": "#6B7280", "x": 40, "y": 187.2, "w": 46, "h": 3}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "% de la gente →", "size": 6, "color": "#6B7280", "x": 124, "y": 187.2, "w": 46, "h": 3}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#E6E1EAFF", "outline": "#8A8296FF", "width": 0.3, "x": 64.26, "y": 190.0, "w": 21.74, "h": 3.6}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#7E459AFF", "outline": "#7E459A00", "width": 0, "x": 124, "y": 190.0, "w": 6.91, "h": 3.6}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "Riomar", "size": 6.5, "bold": true, "align": "center", "color": "#1F2328", "x": 86, "y": 190.2, "w": 38, "h": 3.4}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "20,7", "size": 6, "align": "right", "color": "#4A5866", "x": 51.26, "y": 190.3, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "6,6", "size": 6, "color": "#4A5866", "x": 131.91, "y": 190.3, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#E6E1EAFF", "outline": "#8A8296FF", "width": 0.3, "x": 26.52, "y": 195.6, "w": 59.48, "h": 3.6}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#7E459AFF", "outline": "#7E459A00", "width": 0, "x": 124, "y": 195.6, "w": 13.94, "h": 3.6}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "Norte-centro histórico", "size": 6.5, "bold": true, "align": "center", "color": "#1F2328", "x": 86, "y": 195.8, "w": 38, "h": 3.4}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "56,7", "size": 6, "align": "right", "color": "#4A5866", "x": 13.52, "y": 195.9, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "13,3", "size": 6, "color": "#4A5866", "x": 138.94, "y": 195.9, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#E6E1EAFF", "outline": "#8A8296FF", "width": 0.3, "x": 75.93, "y": 201.2, "w": 10.07, "h": 3.6}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#7E459AFF", "outline": "#7E459A00", "width": 0, "x": 124, "y": 201.2, "w": 29.75, "h": 3.6}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "Suroccidente", "size": 6.5, "bold": true, "align": "center", "color": "#1F2328", "x": 86, "y": 201.4, "w": 38, "h": 3.4}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "9,6", "size": 6, "align": "right", "color": "#4A5866", "x": 62.93, "y": 201.5, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "28,3", "size": 6, "color": "#4A5866", "x": 154.75, "y": 201.5, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#E6E1EAFF", "outline": "#8A8296FF", "width": 0.3, "x": 75.81, "y": 206.8, "w": 10.19, "h": 3.6}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#7E459AFF", "outline": "#7E459A00", "width": 0, "x": 124, "y": 206.8, "w": 27.39, "h": 3.6}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "Suroriente", "size": 6.5, "bold": true, "align": "center", "color": "#1F2328", "x": 86, "y": 207.0, "w": 38, "h": 3.4}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "9,7", "size": 6, "align": "right", "color": "#4A5866", "x": 62.81, "y": 207.1, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "26,1", "size": 6, "color": "#4A5866", "x": 152.39, "y": 207.1, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#E6E1EAFF", "outline": "#8A8296FF", "width": 0.3, "x": 82.49, "y": 212.4, "w": 3.51, "h": 3.6}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#7E459AFF", "outline": "#7E459A00", "width": 0, "x": 124, "y": 212.4, "w": 27.0, "h": 3.6}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "Metropolitana", "size": 6.5, "bold": true, "align": "center", "color": "#1F2328", "x": 86, "y": 212.6, "w": 38, "h": 3.4}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "3,3", "size": 6, "align": "right", "color": "#4A5866", "x": 69.49, "y": 212.7, "w": 12, "h": 3.2}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "25,7", "size": 6, "color": "#4A5866", "x": 152.0, "y": 212.7, "w": 12, "h": 3.2}
+
+# ── Encabezado ──
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "30DAYMAPCHALLENGE · DÍA 20 · HEXAGONS · BARRANQUILLA", "size": 7.5, "letterSpacing": 2.5, "color": "#451D6B", "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "La ciudad vive en el sur y trabaja en el norte", "size": 22, "bold": true, "color": "#1F2328", "x": 12, "y": 10, "w": 186, "h": 11}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "Cada hexágono es una celda de la malla oficial de población de Barranquilla (0,29 km²). Su altura son las empresas\nvigentes que hay en él; su color, la gente que vive en él.", "size": 8.5, "color": "#4A5866", "x": 12, "y": 21.5, "w": 186, "h": 8}
+
+# ── Leyenda en una fila, arriba del mapa ──
+# Población: los cinco tonos de Dusk de la leyenda del panel (cuantiles). Si el panel muestra otros
+# tonos, copiarlos de ahí
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "Habitantes por hexágono", "size": 6.5, "color": "#1F2328", "x": 12, "y": 29.5, "w": 32, "h": 4}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#F6EFF7FF", "outline": "#BFB6C4FF", "width": 0.3, "x": 44, "y": 30, "w": 9, "h": 2.6}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#D4B9DAFF", "outline": "#D4B9DA00", "width": 0, "x": 53, "y": 30, "w": 9, "h": 2.6}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#B07AB8FF", "outline": "#B07AB800", "width": 0, "x": 62, "y": 30, "w": 9, "h": 2.6}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#7E459AFF", "outline": "#7E459A00", "width": 0, "x": 71, "y": 30, "w": 9, "h": 2.6}
+layout.addElement {"layout": "Dia 20", "kind": "rectangle", "fill": "#451D6BFF", "outline": "#451D6B00", "width": 0, "x": 80, "y": 30, "w": 9, "h": 2.6}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "1 500", "size": 5.5, "align": "center", "color": "#6B7280", "x": 48, "y": 32.6, "w": 10, "h": 2.6}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "5 400", "size": 5.5, "align": "center", "color": "#6B7280", "x": 66, "y": 32.6, "w": 10, "h": 2.6}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "7 400", "size": 5.5, "align": "center", "color": "#6B7280", "x": 75, "y": 32.6, "w": 10, "h": 2.6}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "17 000", "size": 5.5, "align": "right", "color": "#6B7280", "x": 81, "y": 32.6, "w": 10, "h": 2.6}
+# Altura: una regla vertical de 626 empresas no cabe en la fila; va como texto
+layout.addElement {"layout": "Dia 20", "kind": "line", "dir": "vertical", "color": "#6B7280", "width": 1.2, "x": 100, "y": 29.5, "w": 0.5, "h": 4}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "Altura: empresas vigentes en el hexágono (4 m por empresa; la torre más alta, 626)", "size": 6.5, "color": "#1F2328", "x": 102, "y": 29.5, "w": 96, "h": 4}
+
+# ── Tres cifras en columnas ──
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "77 %", "size": 20, "bold": true, "color": "#451D6B", "x": 12, "y": 224, "w": 60, "h": 9}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "de las empresas vigentes está en Riomar y\nNorte-centro histórico, donde vive el 20 %\nde la gente.", "size": 7, "color": "#1F2328", "x": 12, "y": 233.5, "w": 60, "h": 11}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "626", "size": 20, "bold": true, "color": "#451D6B", "x": 75, "y": 224, "w": 60, "h": 9}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "empresas en el hexágono más lleno, en\nNorte-centro histórico: la torre más alta\ndel mapa, en 0,29 km².", "size": 7, "color": "#1F2328", "x": 75, "y": 233.5, "w": 60, "h": 11}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "1 349 524", "size": 20, "bold": true, "color": "#451D6B", "x": 138, "y": 224, "w": 60, "h": 9}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "habitantes en 310 hexágonos del Distrito,\ny 22 436 empresas vigentes. El sur pone\nla gente; el norte, las empresas.", "size": 7, "color": "#1F2328", "x": 138, "y": 233.5, "w": 60, "h": 11}
+
+# ── Historia ──
+layout.addElement {"layout": "Dia 20", "kind": "line", "dir": "horizontal", "color": "#CFC8D6", "width": 0.5, "x": 12, "y": 248, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "Las torres pálidas son el norte y el centro: muchas empresas y poca gente. Los hexágonos planos y morados son Metropolitana,\nSuroccidente y Suroriente: mucha gente y casi ninguna empresa. Donde vive la mayoría no están las empresas.\nLos hexágonos no se generaron aquí: son la malla con la que la Alcaldía publica la población.", "size": 7, "italic": true, "color": "#4A5866", "x": 12, "y": 249.5, "w": 186, "h": 11.5}
+
+# ── Notas ──
+layout.addElement {"layout": "Dia 20", "kind": "line", "dir": "horizontal", "color": "#CFC8D6", "width": 0.5, "x": 12, "y": 268, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "Notas: población 2025 modelada por la Alcaldía en su malla hexagonal (0,28867 km² por celda completa); se cuentan las celdas cuyo centro cae en el Distrito\n(310 de 630). Empresas: registro de empresas vigentes, contadas por celda con Summarize Within; una empresa sobre un lado compartido cuenta\nen las dos celdas. Se ocultan las celdas sin empresas y con menos de 500 habitantes. Altura: 4 m por empresa.\nLas celdas del borde vienen recortadas al límite del Distrito en la malla de la Alcaldía.\nDatos: Alcaldía de Barranquilla (CC BY-SA 4.0), Mi Ciudad, consultados el 2026-11-18: Densidad poblacional 2025, Empresas vigentes, Localidades.\nMapa base: Mi Ciudad. Cómo se hizo: todo en RustGIS web (web.rustgis.app), con cuatro scripts: github.com/jgregoriorincon/30DayMapChallenge-2026", "size": 5, "color": "#6B7280", "x": 12, "y": 269, "w": 186, "h": 16.5}
+layout.addElement {"layout": "Dia 20", "kind": "text", "text": "© José Gregorio Rincón · CC BY-SA 4.0 · #30DayMapChallenge 2026 · Día 20: Hexagons · Hecho con RustGIS · rustgis.app", "size": 6.5, "align": "right", "color": "#4A5866", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz
