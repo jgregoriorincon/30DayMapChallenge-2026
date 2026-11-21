@@ -1,0 +1,76 @@
+# Day 21 — OpenStreetMap: Central Pereira lost 455 houses. OpenStreetMap didn't erase them. — 4 · ENGLISH LAYOUT
+# A4 horizontal. Protagonistas, de cerca: cuatro zonas del centro, y en cada una la casa perdida como un contorno
+# vacío (la casa ya no está, el mapa conserva su silueta). A la derecha, dónde: las 455 en el centro.
+# Ids: marcos 1-4 (zonas, mapa Centro) y 5 (Pereira); fondo 6.
+map.activate {"name": "Centro"}
+layout.new {"name": "Day 21", "page": "a4", "orientation": "landscape", "template": "blank"}
+
+# 1-4 · Cuatro zonas de cerca, a 1:5 000 (465 × 370 m cada una), una por cuadrante de la zona revisada:
+# la combinación con más casas colapsadas (76 de las 223) con los centros a 1 km o más entre sí. La
+# prioridad son las que cayeron con el sismo. Barrio: el polígono de OSM (admin_level 9) que contiene el centro
+layout.addFrame {"layout": "Day 21", "map": "Centro", "x": 12, "y": 31, "w": 93, "h": 74}
+layout.update {"layout": "Day 21", "element": 1, "center": [-75.7012, 4.8160], "scale": 5000, "pitch": 0, "bearing": 0}
+layout.addFrame {"layout": "Day 21", "map": "Centro", "x": 109, "y": 31, "w": 93, "h": 74}
+layout.update {"layout": "Day 21", "element": 2, "center": [-75.6910, 4.8150], "scale": 5000, "pitch": 0, "bearing": 0}
+layout.addFrame {"layout": "Day 21", "map": "Centro", "x": 12, "y": 109, "w": 93, "h": 74}
+layout.update {"layout": "Day 21", "element": 3, "center": [-75.6970, 4.8070], "scale": 5000, "pitch": 0, "bearing": 0}
+layout.addFrame {"layout": "Day 21", "map": "Centro", "x": 109, "y": 109, "w": 93, "h": 74}
+layout.update {"layout": "Day 21", "element": 4, "center": [-75.6870, 4.8060], "scale": 5000, "pitch": 0, "bearing": 0}
+# 5 · Dónde, a 1:46 000: el centro de Pereira con las 455 como puntos, alineado con la primera fila
+layout.addFrame {"layout": "Day 21", "map": "Pereira", "x": 208, "y": 31, "w": 77, "h": 74}
+layout.update {"layout": "Day 21", "element": 5, "center": [-75.6962, 4.8099], "scale": 46000, "pitch": 0, "bearing": 0}
+
+# 6 · Fondo de la página
+layout.addElement {"layout": "Day 21", "kind": "rectangle", "fill": "#FFFFFFFF", "outline": "#FFFFFF00", "width": 0, "x": 0, "y": 0, "w": 297, "h": 210}
+layout.arrange {"layout": "Day 21", "element": 6, "to": "back"}
+
+# Dónde está cada zona, sobre el mapa pequeño. Un marco tiene un solo indicador de extensión
+# (layout.update: extentIndicator), así que van como rectángulos: posición a 1:46 000 desde el centro;
+# el número va encima de cada uno
+layout.addElement {"layout": "Day 21", "kind": "rectangle", "fill": "#FFFFFF00", "outline": "#2B2620", "width": 1, "x": 229.39, "y": 49.32, "w": 10.11, "h": 8.04}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "1", "size": 6.5, "bold": true, "align": "center", "color": "#2B2620", "background": {"fill": "#FFFFFFDD", "radius": 0.6, "padding": 0.3}, "x": 232.94, "y": 45.72, "w": 3, "h": 3.2}
+layout.addElement {"layout": "Day 21", "kind": "rectangle", "fill": "#FFFFFF00", "outline": "#2B2620", "width": 1, "x": 253.99, "y": 51.72, "w": 10.11, "h": 8.04}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "2", "size": 6.5, "bold": true, "align": "center", "color": "#2B2620", "background": {"fill": "#FFFFFFDD", "radius": 0.6, "padding": 0.3}, "x": 257.54, "y": 48.12, "w": 3, "h": 3.2}
+layout.addElement {"layout": "Day 21", "kind": "rectangle", "fill": "#FFFFFF00", "outline": "#2B2620", "width": 1, "x": 239.52, "y": 70.95, "w": 10.11, "h": 8.04}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "3", "size": 6.5, "bold": true, "align": "center", "color": "#2B2620", "background": {"fill": "#FFFFFFDD", "radius": 0.6, "padding": 0.3}, "x": 243.07, "y": 67.35, "w": 3, "h": 3.2}
+layout.addElement {"layout": "Day 21", "kind": "rectangle", "fill": "#FFFFFF00", "outline": "#2B2620", "width": 1, "x": 263.63, "y": 73.35, "w": 10.11, "h": 8.04}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "4", "size": 6.5, "bold": true, "align": "center", "color": "#2B2620", "background": {"fill": "#FFFFFFDD", "radius": 0.6, "padding": 0.3}, "x": 267.19, "y": 69.75, "w": 3, "h": 3.2}
+
+# El nombre de cada zona y lo que perdió en el recuadro (por los centros de las casas)
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "1 · LAGO URIBE · 17 collapsed", "size": 6, "bold": true, "color": "#2B2620", "background": {"fill": "#FFFFFFE6", "radius": 1, "padding": 0.6}, "x": 14, "y": 33, "w": 33, "h": 3.6}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "2 · GALERÍA CENTRAL · 23 collapsed · 9 demolished", "size": 6, "bold": true, "color": "#2B2620", "background": {"fill": "#FFFFFFE6", "radius": 1, "padding": 0.6}, "x": 111, "y": 33, "w": 56, "h": 3.6}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "3 · CENTENARIO · 22 collapsed", "size": 6, "bold": true, "color": "#2B2620", "background": {"fill": "#FFFFFFE6", "radius": 1, "padding": 0.6}, "x": 14, "y": 111, "w": 33, "h": 3.6}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "4 · LOS ALPES · 14 collapsed · 13 demolished", "size": 6, "bold": true, "color": "#2B2620", "background": {"fill": "#FFFFFFE6", "radius": 1, "padding": 0.6}, "x": 111, "y": 111, "w": 51, "h": 3.6}
+
+# Encabezado
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "30DAYMAPCHALLENGE · DAY 21 · OPENSTREETMAP · PEREIRA", "size": 7.5, "letterSpacing": 2.5, "color": "#D7263D", "x": 12, "y": 5.5, "w": 273, "h": 4}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "Central Pereira lost 455 houses. OpenStreetMap didn't erase them.", "size": 17, "bold": true, "color": "#2B2620", "x": 12, "y": 9.5, "w": 273, "h": 9}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "After the earthquake of 10 August 2026, the OSM community went through central Pereira house by house. It didn't delete the houses that are gone: it changed their state.\nEach empty outline is a house that no longer exists and that the map keeps: in red, those that collapsed in the quake; in black, those demolished afterwards.", "size": 8, "color": "#4E463C", "x": 12, "y": 19.5, "w": 273, "h": 9}
+
+# Sobre el mapa pequeño
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "WHERE · THE 455 IN THE CENTRE", "size": 6, "bold": true, "color": "#2B2620", "background": {"fill": "#FFFFFFE6", "radius": 1, "padding": 0.6}, "x": 210, "y": 33, "w": 42, "h": 3.6}
+
+# Tres cifras, bajo el mapa pequeño: lo que dice cada etiqueta de OSM
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "223 collapsed", "size": 15, "bold": true, "color": "#D7263D", "x": 208, "y": 109, "w": 77, "h": 7.5}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "in the quake. In OSM their outline is still there,\ntagged destroyed:building.", "size": 6.6, "color": "#2B2620", "x": 208, "y": 116.5, "w": 77, "h": 8}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "232 demolished", "size": 15, "bold": true, "color": "#2B2620", "x": 208, "y": 131, "w": 77, "h": 7.5}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "afterwards: left standing, but they had to be\npulled down. Tagged demolished:building.", "size": 6.6, "color": "#2B2620", "x": 208, "y": 138.5, "w": 77, "h": 8}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "1,327 damaged", "size": 15, "bold": true, "color": "#B8862F", "x": 208, "y": 153, "w": 77, "h": 7.5}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "still standing, tagged with the quake.\nIn OSM, a building doesn't vanish: it changes state.", "size": 6.6, "color": "#2B2620", "x": 208, "y": 160.5, "w": 77, "h": 8}
+
+# Leyenda a mano, bajo el mapa grande
+layout.addElement {"layout": "Day 21", "kind": "rectangle", "fill": "#CFC8BEFF", "outline": "#CFC8BE00", "width": 0, "x": 12, "y": 186, "w": 3.6, "h": 2.6}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "standing", "size": 6, "color": "#2B2620", "x": 17, "y": 185.6, "w": 12, "h": 3.4}
+layout.addElement {"layout": "Day 21", "kind": "rectangle", "fill": "#F0D9AEFF", "outline": "#F0D9AE00", "width": 0, "x": 30, "y": 186, "w": 3.6, "h": 2.6}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "damaged", "size": 6, "color": "#2B2620", "x": 35, "y": 185.6, "w": 14, "h": 3.4}
+layout.addElement {"layout": "Day 21", "kind": "rectangle", "fill": "#FFFFFF00", "outline": "#D7263D", "width": 1.2, "x": 51, "y": 186, "w": 3.6, "h": 2.6}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "collapsed in the quake", "size": 6, "color": "#2B2620", "x": 56, "y": 185.6, "w": 27, "h": 3.4}
+layout.addElement {"layout": "Day 21", "kind": "rectangle", "fill": "#FFFFFF00", "outline": "#2B2620", "width": 1.2, "x": 84, "y": 186, "w": 3.6, "h": 2.6}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "demolished afterwards", "size": 6, "color": "#2B2620", "x": 89, "y": 185.6, "w": 28, "h": 3.4}
+layout.addElement {"layout": "Day 21", "kind": "scaleBar", "frame": 1, "style": "line", "units": "meters", "divisions": 2, "color": "#4E463C", "x": 170, "y": 184.5, "w": 32, "h": 6}
+
+# Pie: notas y fuentes, y firma
+layout.addElement {"layout": "Day 21", "kind": "line", "dir": "horizontal", "color": "#CDBFAE", "width": 0.5, "x": 12, "y": 193, "w": 273, "h": 0.5}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "Notes: OpenStreetMap buildings as of 20 November 2026 (Overpass), in the municipality of Pereira. A lost house has destroyed:building or demolished:building and damage:event=2026ColombiaEarthquake-Palmar;\nthe 39 with the prefix but without the quake are left out. OSM Colombia and AC3 (HOT project 67260) tagged them from drone photos taken days after the quake and reports sent over WhatsApp (ChatMap):\nit is what was identified in the reviewed centre, not a damage census, and the project is still open. Data: © OpenStreetMap contributors (ODbL); DANE, Marco Geoestadístico Nacional 2025.", "size": 5.4, "color": "#857A6C", "x": 12, "y": 194.3, "w": 273, "h": 9}
+layout.addElement {"layout": "Day 21", "kind": "text", "text": "© José Gregorio Rincón · CC BY 4.0 · #30DayMapChallenge 2026 · Day 21: OpenStreetMap · Made with RustGIS · rustgis.app", "size": 6.5, "align": "right", "color": "#4E463C", "x": 12, "y": 204.5, "w": 273, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz

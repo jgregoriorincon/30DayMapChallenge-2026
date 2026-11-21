@@ -1,0 +1,26 @@
+# Día 21 — OpenStreetMap: El centro de Pereira perdió 455 casas. OpenStreetMap no las borró. — 1 · DATOS
+# Después del terremoto del 10 de agosto de 2026 (M 7,4, San José del Palmar, Chocó), la comunidad
+# de OSM en Colombia (AC3 y OSM Colombia, proyecto HOT 67260) revisó Pereira con una ortofoto de dron
+# tomada días después del sismo y con los reportes enviados por WhatsApp (ChatMap). A las casas que ya
+# no están no las borró: les cambió el estado. destroyed:building si colapsaron con el sismo,
+# demolished:building si quedaron en pie y se demolieron después, y en las dos damage:event con el sismo.
+# Dos mapas: "Pereira" (este script: la ciudad) y "Centro" (el acercamiento, al final del script 2).
+
+map.rename {"name": "Pereira"}
+map.basemap {"name": "blank"}
+map.graticule {"on": false}
+
+# Edificios de OpenStreetMap en Pereira y Dosquebradas (caja 4,70 a 4,95 N, −75,85 a −75,55), con las
+# etiquetas de su estado: building, destroyed:building (campo destruida), demolished:building
+# (demolida) y damage:event (sismo). 112 329 polígonos, Overpass del 20 de noviembre de 2026. Copia en
+# Pages (ODbL): RustGIS solo baja de OSM los que tienen building=, y los perdidos ya no lo tienen
+layer.addUrl {"url": "https://jgregoriorincon.github.io/30DayMapChallenge-2026/data/day-21/osm-edificios-pereira-2026-11-20.geojson", "name": "Edificios OSM 20-nov-2026", "zoom": false}
+
+# El municipio: DANE, MGN 2025, capa 317, Pereira (66001), generalizado a unos 10 m
+layer.addUrl {"url": "https://portalgis.dane.gov.co/mparcgis/rest/services/MGN2025/Serv_CapasMGN_2025/FeatureServer/317/query?where=MPIO_CDPMP%3D%2766001%27&outFields=MPIO_CDPMP,MPIO_CNMBRE&outSR=4326&maxAllowableOffset=0.0001&f=pbf", "name": "Municipio", "zoom": false}
+
+# El centro de Pereira, donde la comunidad de OSM revisó casa por casa (proyecto HOT 67260)
+map.zoomToExtent {"extent": [-75.7145, 4.7950, -75.6780, 4.8250]}
+
+# No cambiar de mapa hasta que lleguen las descargas.
+# Esperar a que las 2 capas estén en el panel de capas (los edificios pesan unos 34 MB). Luego, el script 2.

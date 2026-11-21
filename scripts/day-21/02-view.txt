@@ -1,0 +1,89 @@
+# Día 21 — OpenStreetMap: El centro de Pereira perdió 455 casas. OpenStreetMap no las borró. — 2 · PROCESO Y VISTA
+# Correr cuando las 2 capas del script 1 estén en el panel de capas.
+# El gesto: la ciudad en gris, y encima las casas que el sismo le quitó, que OSM conserva con su
+# estado. A escala de ciudad una casa mide 0,2 mm: las perdidas van como puntos. En el mapa "Centro",
+# de cerca, van con su forma. Las capas visibles son copias hechas aquí, en orden: así quedan apiladas
+# sin mover ninguna.
+map.activate {"name": "Pereira"}
+
+# ── 1. Los edificios de Pereira (sin Dosquebradas ni lo rural fuera del municipio) ──
+gp.run {"tool": "selectByLocation", "params": {"input": "Edificios OSM 20-nov-2026", "select": "Municipio"}}
+gp.run {"tool": "exportFeatures", "params": {"input": "Edificios OSM 20-nov-2026", "output": "Edificios Pereira"}}
+# Sin selección: el resaltado saldría en el layout
+select.clear {}
+
+# ── 2. Cuatro estados, de abajo arriba ──
+# Una casa perdida cuenta si tiene el prefijo y la etiqueta del sismo. Las 39 que tienen el prefijo
+# sin damage:event (causa desconocida) quedan fuera. Si un objeto tiene building= y el prefijo a la vez
+# (error de etiquetado, unos 240), manda el prefijo
+gp.run {"tool": "exportFeatures", "params": {"input": "Edificios Pereira", "where": "sismo IS NULL AND building IS NOT NULL", "output": "En pie"}}
+gp.run {"tool": "exportFeatures", "params": {"input": "Edificios Pereira", "where": "sismo IS NOT NULL AND building IS NOT NULL AND destruida IS NULL AND demolida IS NULL", "output": "Con daño"}}
+gp.run {"tool": "exportFeatures", "params": {"input": "Edificios Pereira", "where": "sismo IS NOT NULL AND demolida IS NOT NULL AND destruida IS NULL", "output": "Demolidas"}}
+gp.run {"tool": "exportFeatures", "params": {"input": "Edificios Pereira", "where": "sismo IS NOT NULL AND destruida IS NOT NULL", "output": "Colapsaron"}}
+
+# Cifras (por los centros, fuera de RustGIS, el 20 de noviembre): colapsaron 223 y demolidas 232
+# (455), con daño unos 1 330 y en pie unos 40 180. Pueden variar un poco: aquí cuenta la casa que
+# toca el municipio
+gp.run {"tool": "summaryStatistics", "params": {"input": "Colapsaron", "statistics": [{"field": "osm_id", "statistic": "COUNT"}]}}
+gp.run {"tool": "summaryStatistics", "params": {"input": "Demolidas", "statistics": [{"field": "osm_id", "statistic": "COUNT"}]}}
+gp.run {"tool": "summaryStatistics", "params": {"input": "Con daño", "statistics": [{"field": "osm_id", "statistic": "COUNT"}]}}
+gp.run {"tool": "summaryStatistics", "params": {"input": "En pie", "statistics": [{"field": "osm_id", "statistic": "COUNT"}]}}
+
+layer.color {"layer": "En pie", "color": "#CFC8BEFF"}
+layer.outline {"layer": "En pie", "color": "#00000000", "width": 0}
+layer.color {"layer": "Con daño", "color": "#F0D9AEFF"}
+layer.outline {"layer": "Con daño", "color": "#00000000", "width": 0}
+layer.color {"layer": "Demolidas", "color": "#2B2620FF"}
+layer.outline {"layer": "Demolidas", "color": "#00000000", "width": 0}
+layer.color {"layer": "Colapsaron", "color": "#D7263DFF"}
+layer.outline {"layer": "Colapsaron", "color": "#00000000", "width": 0}
+
+# ── 3. Las perdidas como puntos, para la escala de ciudad (arriba de todo) ──
+gp.run {"tool": "featureToPoint", "params": {"input": "Demolidas", "output": "Demolidas (punto)"}}
+layer.marker {"layer": "Demolidas (punto)", "shape": "circle"}
+layer.color {"layer": "Demolidas (punto)", "color": "#2B2620FF"}
+layer.outline {"layer": "Demolidas (punto)", "color": "#FFFFFFFF", "width": 0.4}
+layer.symbolBy {"layer": "Demolidas (punto)", "size": "4"}
+gp.run {"tool": "featureToPoint", "params": {"input": "Colapsaron", "output": "Colapsaron (punto)"}}
+layer.marker {"layer": "Colapsaron (punto)", "shape": "circle"}
+layer.color {"layer": "Colapsaron (punto)", "color": "#D7263DFF"}
+layer.outline {"layer": "Colapsaron (punto)", "color": "#FFFFFFFF", "width": 0.4}
+layer.symbolBy {"layer": "Colapsaron (punto)", "size": "4"}
+
+# Ocultas en la ciudad: las de origen y los polígonos perdidos (los puntos los representan)
+layer.visibility {"layer": "Edificios OSM 20-nov-2026", "visible": false}
+layer.visibility {"layer": "Municipio", "visible": false}
+layer.visibility {"layer": "Edificios Pereira", "visible": false}
+layer.visibility {"layer": "Demolidas", "visible": false}
+layer.visibility {"layer": "Colapsaron", "visible": false}
+
+map.zoomToExtent {"extent": [-75.7145, 4.7950, -75.6780, 4.8250]}
+
+# ════════ Mapa 2: Centro, el acercamiento (map.new lo deja activo) ════════
+# A 1:5 000 una casa mide 2 mm: se ven los huecos en la manzana. Copias de los cuatro estados, cada
+# una pegada arriba de la anterior
+map.new {"name": "Centro"}
+map.basemap {"name": "blank"}
+map.graticule {"on": false}
+map.activate {"name": "Pereira"}
+layer.copy {"layer": "En pie"}
+layer.paste {"map": "Centro"}
+layer.copy {"layer": "Con daño"}
+layer.paste {"map": "Centro"}
+layer.copy {"layer": "Demolidas"}
+layer.paste {"map": "Centro"}
+layer.copy {"layer": "Colapsaron"}
+layer.paste {"map": "Centro"}
+map.activate {"name": "Centro"}
+layer.visibility {"layer": "Demolidas", "visible": true}
+layer.visibility {"layer": "Colapsaron", "visible": true}
+# De cerca, un borde fino separa casas vecinas que comparten pared
+layer.outline {"layer": "En pie", "color": "#FFFFFFFF", "width": 0.4}
+layer.outline {"layer": "Con daño", "color": "#FFFFFFFF", "width": 0.4}
+# Las perdidas, como contorno vacío: la casa ya no está, el mapa conserva su silueta
+layer.noFill {"layer": "Demolidas"}
+layer.outline {"layer": "Demolidas", "color": "#2B2620FF", "width": 1.2}
+layer.noFill {"layer": "Colapsaron"}
+layer.outline {"layer": "Colapsaron", "color": "#D7263DFF", "width": 1.2}
+# La ventana de 600 × 480 m con más casas perdidas: 69 (39 colapsaron, 30 demolidas)
+map.zoomToExtent {"extent": [-75.6941, 4.8112, -75.6887, 4.8156]}
