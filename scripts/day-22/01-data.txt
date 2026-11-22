@@ -1,0 +1,17 @@
+# Día 22 — Projections: El mapa oficial de Colombia no mide igual en todas partes — 1 · DATOS
+# El plano oficial de coordenadas del país desde 2020: MAGNA-SIRGAS 2018 / Origen-Nacional (CTM12,
+# EPSG:9377), Transversa de Mercator con meridiano central −73° y factor de escala 0,9992.
+
+map.rename {"name": "Colombia"}
+map.basemap {"name": "blank"}
+map.graticule {"on": false}
+map.projection {"type": "EPSG:9377"}
+
+# Departamentos: DANE, MGN 2025, capa 319, igual que los días 12 y 17 (cuantizado a 0,005°, unos
+# 190 KB). Incluye San Andrés y Providencia, el extremo occidental del país. Malpelo (1,6 km) no recibe
+# círculo en color pleno: el mapa no la nombra
+layer.addUrl {"url": "https://portalgis.dane.gov.co/mparcgis/rest/services/MGN2025/Serv_CapasMGN_2025/FeatureServer/319/query?where=1%3D1&outFields=DPTO_CCDGO,DPTO_CNMBRE&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.005%2C%22extent%22%3A%7B%22xmin%22%3A-82%2C%22ymin%22%3A-5%2C%22xmax%22%3A-66%2C%22ymax%22%3A13.5%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&f=pbf", "name": "Departamentos", "zoom": false}
+
+map.zoomToExtent {"extent": [-84, -4.3, -64, 13.5]}
+
+# Esperar a que "Departamentos" esté en el panel de capas. Luego, el script 2.

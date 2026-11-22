@@ -1,0 +1,59 @@
+# Día 22 — Projections: El mapa oficial de Colombia no mide igual en todas partes — 2 · PROCESO Y VISTA
+# Correr cuando "Departamentos" esté en el panel de capas (script 1).
+# El gesto: un campo de círculos de Tissot (el mismo círculo de 20 km en el terreno, cada 0,5°),
+# coloreado por el error de escala del plano oficial: cuántos metros de más o de menos mide el mapa en
+# cada kilómetro del terreno ((k − 1) × 1 000). Azul: el plano encoge; claro: casi exacto; rojo: estira.
+# CTM12 encoge 0,8 m/km sobre el meridiano −73° (k = 0,9992), mide exacto a 254 km a cada lado (IGAC)
+# y estira hasta +10,3 m/km en San Andrés. Es conforme: h = k, y el área crece como k².
+# El campo entero se ve tenue; los círculos que tocan Colombia, en color pleno.
+map.activate {"name": "Colombia"}
+map.zoomToExtent {"extent": [-84, -4.3, -64, 13.5]}
+
+# ── 1. Círculos de Tissot sobre la vista ──
+# Cada círculo lleva h, k, a, b, area_scale y max_angle de la proyección del mapa al correr la
+# herramienta, redondeados a 4 decimales
+gp.run {"tool": "tissot", "params": {"spacing": 0.5, "radius": 20, "area": "Map Extent", "output": "Tissot"}}
+# El campo: lo que cubre el marco del layout, alrededor del país
+gp.run {"tool": "exportFeatures", "params": {"input": "Tissot", "where": "lon >= -84 AND lon <= -64 AND lat >= -5 AND lat <= 14", "output": "Campo"}}
+layer.remove {"layer": "Tissot"}
+
+# ── 2. Los círculos de Colombia ──
+# A 10 km de algún departamento: así entran San Andrés y Providencia, más pequeños que la
+# separación entre círculos
+gp.run {"tool": "selectByLocation", "params": {"input": "Campo", "select": "Departamentos", "distance": 10, "units": "Kilometers"}}
+gp.run {"tool": "exportFeatures", "params": {"input": "Campo", "output": "Deformación"}}
+# Sin selección: el resaltado saldría en el layout
+select.clear {}
+
+# Cifras: k mínimo y máximo en Colombia (esperado: 0,9992 y unos 1,010 a 1,011 en los círculos de San Andrés y Providencia) y el área más inflada
+gp.run {"tool": "summaryStatistics", "params": {"input": "Deformación", "statistics": [{"field": "k", "statistic": "MIN"}, {"field": "k", "statistic": "MAX"}, {"field": "area_scale", "statistic": "MAX"}]}}
+
+# ── 3. Estilo: 7 clases de k (límites superiores) ──
+# El límite entre "encoge" y "exacto" va en 0,99995, no en 1: k viene redondeado a 4 decimales, y un
+# círculo donde la escala es exacta trae k = 1,0 justo. El último límite (1,05) cierra el campo entero
+layer.symbology {"layer": "Deformación", "type": "graduated", "field": "k", "breaks": [0.9996, 0.99995, 1.0005, 1.0025, 1.005, 1.0075, 1.05]}
+layer.classStyle {"layer": "Deformación", "index": 0, "color": "#2B5C8AFF", "label": "−0,8 a −0,4 m por km"}
+layer.classStyle {"layer": "Deformación", "index": 1, "color": "#8DB6D9FF", "label": "−0,4 a 0"}
+layer.classStyle {"layer": "Deformación", "index": 2, "color": "#E3DED3FF", "label": "0 a +0,5"}
+layer.classStyle {"layer": "Deformación", "index": 3, "color": "#F5C38EFF", "label": "+0,5 a +2,5"}
+layer.classStyle {"layer": "Deformación", "index": 4, "color": "#EC8B4EFF", "label": "+2,5 a +5"}
+layer.classStyle {"layer": "Deformación", "index": 5, "color": "#CF4A36FF", "label": "+5 a +7,5"}
+layer.classStyle {"layer": "Deformación", "index": 6, "color": "#8C1C2CFF", "label": "más de +7,5"}
+layer.outline {"layer": "Deformación", "color": "#00000000", "width": 0}
+
+layer.symbology {"layer": "Campo", "type": "graduated", "field": "k", "breaks": [0.9996, 0.99995, 1.0005, 1.0025, 1.005, 1.0075, 1.05]}
+layer.classStyle {"layer": "Campo", "index": 0, "color": "#2B5C8AFF"}
+layer.classStyle {"layer": "Campo", "index": 1, "color": "#8DB6D9FF"}
+layer.classStyle {"layer": "Campo", "index": 2, "color": "#E3DED3FF"}
+layer.classStyle {"layer": "Campo", "index": 3, "color": "#F5C38EFF"}
+layer.classStyle {"layer": "Campo", "index": 4, "color": "#EC8B4EFF"}
+layer.classStyle {"layer": "Campo", "index": 5, "color": "#CF4A36FF"}
+layer.classStyle {"layer": "Campo", "index": 6, "color": "#8C1C2CFF"}
+layer.outline {"layer": "Campo", "color": "#00000000", "width": 0}
+layer.transparency {"layer": "Campo", "value": 75}
+
+# ── 4. Departamentos: solo el borde, encima de los círculos ──
+layer.noFill {"layer": "Departamentos"}
+layer.outline {"layer": "Departamentos", "color": "#3A3F47", "width": 0.4}
+# "Departamentos" es la capa más vieja y encima hay dos creadas después: no puede estar ya en la cima
+layer.move {"layer": "Departamentos", "to": 0}

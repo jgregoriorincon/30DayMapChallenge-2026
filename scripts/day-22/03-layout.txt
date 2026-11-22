@@ -1,0 +1,60 @@
+# Día 22 — Projections: El mapa oficial de Colombia no mide igual en todas partes — 3 · LAYOUT
+# A4 vertical: el campo de círculos de lado a lado, la leyenda en una fila, tres cifras y el pie.
+# Ids: mapa 1, fondo 2.
+layout.new {"name": "Dia 22", "page": "a4", "orientation": "portrait", "template": "blank"}
+
+# 1 · El mapa, a 1:10 500 000 (190 mm de alto: el país de Leticia a Providencia). Centro: el punto medio
+# de Colombia en CTM12
+layout.addFrame {"layout": "Dia 22", "map": "Colombia", "x": 12, "y": 36, "w": 186, "h": 190}
+layout.update {"layout": "Dia 22", "element": 1, "center": [-74.17, 4.66], "scale": 10500000, "pitch": 0, "bearing": 0}
+
+# 2 · Fondo de la página
+layout.addElement {"layout": "Dia 22", "kind": "rectangle", "fill": "#FFFFFFFF", "outline": "#FFFFFF00", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Dia 22", "element": 2, "to": "back"}
+
+# Encabezado
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "30DAYMAPCHALLENGE · DÍA 22 · PROJECTIONS · COLOMBIA", "size": 7.5, "letterSpacing": 2.5, "color": "#8C1C2C", "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "El mapa oficial de Colombia no mide igual en todas partes", "size": 17, "bold": true, "color": "#2B2620", "x": 12, "y": 9.5, "w": 186, "h": 9}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "Desde 2020 todo el país se dibuja en un solo plano, el Origen Nacional (CTM12, EPSG:9377). Pero un plano no puede copiar\nuna Tierra curva: cada círculo es el mismo círculo de 20 km en el terreno, y su color dice cuántos metros de más o de menos\nmide el mapa en cada kilómetro. Encoge en el centro, mide exacto en dos franjas y estira hacia los bordes.", "size": 8, "color": "#4E463C", "x": 12, "y": 19.5, "w": 186, "h": 13}
+
+# Etiquetas sobre el mapa (posición: la proyección del punto a 1:10 500 000 desde el centro del marco)
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "San Andrés · +10,3", "size": 6.5, "bold": true, "color": "#8C1C2C", "background": {"fill": "#FFFFFFCC", "radius": 1, "padding": 0.5}, "x": 31, "y": 44.6, "w": 26, "h": 3.8}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "Tumaco · +4,4", "size": 6.5, "bold": true, "color": "#B5462F", "background": {"fill": "#FFFFFFCC", "radius": 1, "padding": 0.5}, "x": 59.5, "y": 159.1, "w": 20, "h": 3.8}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "Bogotá · −0,6", "size": 6.5, "bold": true, "color": "#2B5C8A", "background": {"fill": "#FFFFFFCC", "radius": 1, "padding": 0.5}, "x": 109.5, "y": 129.2, "w": 20, "h": 3.8}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "Puerto Carreño · +3,8", "size": 6.5, "bold": true, "align": "right", "color": "#B5462F", "background": {"fill": "#FFFFFFCC", "radius": 1, "padding": 0.5}, "x": 142, "y": 112.7, "w": 30, "h": 3.8}
+# Las dos franjas donde la escala es exacta (k = 1), a 254 km del meridiano −73°: texto vertical
+# sobre cada una, a la altura de Putumayo y Vaupés
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "escala exacta", "size": 6, "italic": true, "align": "center", "rotation": -90, "color": "#2B2620", "background": {"fill": "#FFFFFFAA", "radius": 1, "padding": 0.4}, "x": 84, "y": 173.4, "w": 18, "h": 3.4}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "escala exacta", "size": 6, "italic": true, "align": "center", "rotation": -90, "color": "#2B2620", "background": {"fill": "#FFFFFFAA", "radius": 1, "padding": 0.4}, "x": 132.7, "y": 173.4, "w": 18, "h": 3.4}
+
+# Leyenda a mano, en una fila: los colores de las 7 clases del script 2
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "Error de escala: metros de más (+) o de menos (−) por cada kilómetro", "size": 6.5, "bold": true, "color": "#2B2620", "x": 12, "y": 228.5, "w": 126, "h": 3.6}
+layout.addElement {"layout": "Dia 22", "kind": "rectangle", "fill": "#2B5C8AFF", "outline": "#2B5C8A00", "width": 0, "x": 12, "y": 233, "w": 17.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "rectangle", "fill": "#8DB6D9FF", "outline": "#8DB6D900", "width": 0, "x": 30, "y": 233, "w": 17.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "rectangle", "fill": "#E3DED3FF", "outline": "#E3DED300", "width": 0, "x": 48, "y": 233, "w": 17.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "rectangle", "fill": "#F5C38EFF", "outline": "#F5C38E00", "width": 0, "x": 66, "y": 233, "w": 17.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "rectangle", "fill": "#EC8B4EFF", "outline": "#EC8B4E00", "width": 0, "x": 84, "y": 233, "w": 17.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "rectangle", "fill": "#CF4A36FF", "outline": "#CF4A3600", "width": 0, "x": 102, "y": 233, "w": 17.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "rectangle", "fill": "#8C1C2CFF", "outline": "#8C1C2C00", "width": 0, "x": 120, "y": 233, "w": 17.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "−0,8 a −0,4", "size": 5.8, "align": "center", "color": "#4E463C", "x": 11, "y": 236.6, "w": 19.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "−0,4 a 0", "size": 5.8, "align": "center", "color": "#4E463C", "x": 29, "y": 236.6, "w": 19.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "0 a +0,5", "size": 5.8, "align": "center", "color": "#4E463C", "x": 47, "y": 236.6, "w": 19.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "+0,5 a +2,5", "size": 5.8, "align": "center", "color": "#4E463C", "x": 65, "y": 236.6, "w": 19.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "+2,5 a +5", "size": 5.8, "align": "center", "color": "#4E463C", "x": 83, "y": 236.6, "w": 19.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "+5 a +7,5", "size": 5.8, "align": "center", "color": "#4E463C", "x": 101, "y": 236.6, "w": 19.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "más de +7,5", "size": 5.8, "align": "center", "color": "#4E463C", "x": 119, "y": 236.6, "w": 19.6, "h": 3}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "Lo tenue es el mismo cálculo\nfuera del país.", "size": 6, "italic": true, "color": "#857A6C", "x": 144, "y": 232, "w": 54, "h": 7}
+
+# Tres cifras en columnas: la misma distancia de 100 km en el terreno, medida en el mapa
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "99,94 km", "size": 16, "bold": true, "color": "#2B5C8A", "x": 12, "y": 243, "w": 60, "h": 8}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "mide en el mapa un camino de 100 km cerca\nde Bogotá: el plano encoge 0,6 m por kilómetro\n(0,8 sobre el meridiano −73°).", "size": 6.8, "color": "#2B2620", "x": 12, "y": 251.5, "w": 60, "h": 11}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "101,03 km", "size": 16, "bold": true, "color": "#8C1C2C", "x": 75, "y": 243, "w": 60, "h": 8}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "mide el mismo camino en San Andrés: 10,3 m\nde más por kilómetro, y las áreas se inflan\nun 2,08 %.", "size": 6.8, "color": "#2B2620", "x": 75, "y": 251.5, "w": 60, "h": 11}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "254 km", "size": 16, "bold": true, "color": "#2B2620", "x": 138, "y": 243, "w": 60, "h": 8}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "a cada lado del meridiano −73°, el mapa mide\nexacto: dos franjas que cruzan el país de norte\na sur, entre lo que encoge y lo que estira.", "size": 6.8, "color": "#2B2620", "x": 138, "y": 251.5, "w": 60, "h": 11}
+
+# Pie: notas y fuentes, y firma
+layout.addElement {"layout": "Dia 22", "kind": "line", "dir": "horizontal", "color": "#CDBFAE", "width": 0.5, "x": 12, "y": 265, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "Notas: círculos de Tissot de 20 km de radio cada 0,5°, con el factor de escala k que RustGIS calcula para el Origen Nacional (Transversa de Mercator,\nmeridiano −73°, k = 0,9992); el color es (k − 1) × 1 000. La proyección es conforme: el error es el mismo en todas las direcciones y el del área es\nel doble. Antes de 2020 había cinco orígenes Gauss-Krüger, franjas de 3° con no más de 0,35 m/km de error, pero cinco sistemas de coordenadas. Mapa a\n1:10 500 000. Datos: DANE, Marco Geoestadístico Nacional 2025 (departamentos); IGAC, Resolución 471 de 2020 (Origen Nacional).", "size": 5.6, "color": "#857A6C", "x": 12, "y": 266.5, "w": 186, "h": 12.5}
+layout.addElement {"layout": "Dia 22", "kind": "text", "text": "© José Gregorio Rincón · CC BY 4.0 · #30DayMapChallenge 2026 · Día 22: Projections · Hecho con RustGIS · rustgis.app", "size": 6.5, "align": "right", "color": "#4E463C", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz
