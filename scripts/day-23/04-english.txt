@@ -1,0 +1,44 @@
+# Day 23 — Senses: Taste: All of Colombia's sugar cane grows in a single valley — 4 · ENGLISH LAYOUT
+# A4 vertical: el valle de lado a lado, la leyenda en una fila, tres cifras con Colombia junto al
+# 99,99 % y el pie.
+# Ids: mapa 1, fondo 2, Colombia 3.
+map.activate {"name": "Valle"}
+layout.new {"name": "Day 23", "page": "a4", "orientation": "portrait", "template": "blank"}
+
+# 1 · El valle, a 1:420 000 (el encuadre del script 1)
+layout.addFrame {"layout": "Day 23", "map": "Valle", "x": 12, "y": 36, "w": 186, "h": 192}
+layout.update {"layout": "Day 23", "element": 1, "center": [-76.40, 3.35], "scale": 420000, "pitch": 0, "bearing": 0, "border": {"width": 0}}
+
+# 2 · Fondo de la página: el mismo crema que el papel de los dos mapas (map.basemap "color")
+layout.addElement {"layout": "Day 23", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Day 23", "element": 2, "to": "back"}
+
+# 3 · Colombia, a 1:72 000 000, en la fila de las cifras, junto al 99,99 %: sin borde, su papel crema es
+# el de la página
+layout.addFrame {"layout": "Day 23", "map": "Colombia", "x": 118, "y": 237, "w": 22, "h": 27}
+layout.update {"layout": "Day 23", "element": 3, "center": [-72.95, 4.15], "scale": 72000000, "pitch": 0, "bearing": 0, "border": {"width": 0}}
+
+# Encabezado
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "30DAYMAPCHALLENGE · DAY 23 · SENSES: TASTE · CALI", "size": 7.5, "letterSpacing": 2.5, "color": "#9A6B00", "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "All of Colombia's sugar cane grows in a single valley", "size": 17, "bold": true, "color": "#2B2620", "x": 12, "y": 9.5, "w": 186, "h": 9}
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "The country's sweetness comes from the Cauca River valley. In this Sentinel-2 image of 10 August 2026, only the cane fields\nthat IDEAM identifies in 2024 keep their colour; the rest of the valley fades. Cali sits in the middle of a sea of cane\nthat runs from northern Cauca to Risaralda and Caldas.", "size": 8, "color": "#4E463C", "x": 12, "y": 19.5, "w": 186, "h": 13}
+
+# Leyenda en una fila
+layout.addElement {"layout": "Day 23", "kind": "rectangle", "fill": "#7C8A3AFF", "outline": "#F2C230", "width": 0.5, "x": 12, "y": 231, "w": 8, "h": 4}
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "Sugar cane (IDEAM, 2024): the image in full colour, with a gold outline", "size": 6.5, "color": "#2B2620", "x": 22, "y": 231.3, "w": 90, "h": 3.6}
+layout.addElement {"layout": "Day 23", "kind": "rectangle", "fill": "#D6D1BFFF", "outline": "#D6D1BF00", "width": 0, "x": 118, "y": 231, "w": 8, "h": 4}
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "The rest: the same image, faded", "size": 6.5, "color": "#2B2620", "x": 128, "y": 231.3, "w": 70, "h": 3.6}
+
+# Tres cifras en columnas; Colombia entre la segunda y la tercera
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "302,058 ha", "size": 16, "bold": true, "color": "#9A6B00", "x": 12, "y": 241, "w": 52, "h": 8}
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "of sugar cane in Colombia, according\nto IDEAM's 2024 land cover map\n(scale 1:100,000).", "size": 6.8, "color": "#2B2620", "x": 12, "y": 249.5, "w": 52, "h": 11}
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "99.99%", "size": 16, "bold": true, "color": "#2B2620", "x": 66, "y": 241, "w": 52, "h": 8}
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "is in the Cauca River valley: Valle\ndel Cauca, Cauca, Risaralda and\nCaldas. Outside it, only 43 ha, in Huila.", "size": 6.8, "color": "#2B2620", "x": 66, "y": 249.5, "w": 52, "h": 11}
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "43,179 ha", "size": 16, "bold": true, "color": "#2B2620", "x": 146, "y": 241, "w": 52, "h": 8}
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "in Palmira, the municipality with the\nmost cane. Cali has 5,724; the whole\nValle del Cauca, 237,257 (79%).", "size": 6.8, "color": "#2B2620", "x": 146, "y": 249.5, "w": 52, "h": 11}
+
+# Pie: notas y fuentes, y firma
+layout.addElement {"layout": "Day 23", "kind": "line", "dir": "horizontal", "color": "#CDBFAE", "width": 0.5, "x": 12, "y": 265, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "Notes: Copernicus Sentinel-2 L2A natural-colour image (10 m) of 10 August 2026: four scenes from two passes on the same day (S2A and S2B), read in parts\nfrom Earth Search (Element 84, AWS Open Data). The cane is class 2.2.1.2.1 \"Caña de azúcar\" of IDEAM's 2024 land cover map at 1:100,000; the hectares are\nsums of its area_ha field. Outside the cane fields, the same image at 35%. Cane grown for panela is another class and is not included. Map at 1:420,000.\nData: contains modified Copernicus Sentinel data 2026; IDEAM, Land cover 2024; DANE, National Geostatistical Framework 2025 (town centres and departments).", "size": 5.6, "color": "#857A6C", "x": 12, "y": 266.5, "w": 186, "h": 12.5}
+layout.addElement {"layout": "Day 23", "kind": "text", "text": "© José Gregorio Rincón · CC BY 4.0 · #30DayMapChallenge 2026 · Day 23: Senses: Taste · Made with RustGIS · rustgis.app", "size": 6.5, "align": "right", "color": "#4E463C", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz

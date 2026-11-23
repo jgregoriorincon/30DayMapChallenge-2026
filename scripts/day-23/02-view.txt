@@ -1,0 +1,83 @@
+# Día 23 — Senses: Taste: Toda la caña de azúcar de Colombia crece en un solo valle — 2 · PROCESO Y VISTA
+# Correr cuando las 7 capas del script 1 estén en el panel de capas.
+# El gesto: la misma imagen dos veces. Abajo, entera y apagada; encima, recortada a los polígonos de
+# caña y a todo color: solo los cañaduzales se ven como son.
+map.activate {"name": "Valle"}
+
+# ── 1. Las dos copias de las cuatro escenas, en un orden fijo ──
+# Las descargas llegan en cualquier orden. layer.paste deja lo pegado arriba, con su nombre si está
+# libre: se copian las cuatro escenas, se quitan, se pegan (abajo: el fondo) y se vuelven a pegar (encima)
+layer.copy {"layer": ["Imagen oeste", "Imagen este", "Imagen noroeste", "Imagen noreste"]}
+layer.remove {"layer": ["Imagen oeste", "Imagen este", "Imagen noroeste", "Imagen noreste"]}
+layer.paste {"map": "Valle"}
+layer.rename {"layer": "Imagen oeste", "name": "Fondo oeste"}
+layer.rename {"layer": "Imagen este", "name": "Fondo este"}
+layer.rename {"layer": "Imagen noroeste", "name": "Fondo noroeste"}
+layer.rename {"layer": "Imagen noreste", "name": "Fondo noreste"}
+# El velo: un rectángulo crema al 65 % sobre las imágenes de fondo, entre ellas y las de color. Apaga
+# todo el fondo por igual; con transparencia en cada imagen, donde las escenas se solapan el fondo
+# salía más oscuro
+layer.addDataText {"fileName": "velo.geojson", "name": "Velo", "text": "{\"type\": \"FeatureCollection\", \"features\": [{\"type\": \"Feature\", \"properties\": {\"nombre\": \"Velo\"}, \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-77.2, 2.5], [-75.6, 2.5], [-75.6, 4.0], [-77.2, 4.0], [-77.2, 2.5]]]}}]}"}
+layer.color {"layer": "Velo", "color": "#F1EADFFF"}
+layer.outline {"layer": "Velo", "color": "#00000000", "width": 0}
+layer.transparency {"layer": "Velo", "value": 35}
+layer.paste {"map": "Valle"}
+# La caña, encima de todo
+layer.copy {"layer": "Caña de azúcar"}
+layer.remove {"layer": "Caña de azúcar"}
+layer.paste {"map": "Valle"}
+
+# ── 2. Estilo ──
+# Encima: la imagen solo dentro de los polígonos de caña
+layer.mask {"layer": "Imagen oeste", "mask": "Caña de azúcar"}
+layer.mask {"layer": "Imagen este", "mask": "Caña de azúcar"}
+layer.mask {"layer": "Imagen noroeste", "mask": "Caña de azúcar"}
+layer.mask {"layer": "Imagen noreste", "mask": "Caña de azúcar"}
+# La caña: solo recorta la imagen, sin relleno ni borde
+layer.noFill {"layer": "Caña de azúcar"}
+layer.outline {"layer": "Caña de azúcar", "color": "#00000000", "width": 0}
+# El borde dorado, sobre la caña disuelta en una sola entidad: la capa del IDEAM viene partida por
+# municipio, y su borde dibujaba los límites municipales y departamentales dentro de la caña
+gp.run {"tool": "dissolve", "params": {"input": "Caña de azúcar", "output": "Borde caña"}}
+layer.noFill {"layer": "Borde caña"}
+layer.outline {"layer": "Borde caña", "color": "#F2C230", "width": 0.35}
+
+# ── 3. Cifra: la caña del país, con RustGIS (esperado: 302 058 ha, la suma del servidor del IDEAM) ──
+gp.run {"tool": "summaryStatistics", "params": {"input": "Caña Colombia", "statistics": [{"field": "area_ha", "statistic": "SUM"}, {"field": "area_ha", "statistic": "COUNT"}]}}
+
+# ── 4. Cabeceras: punto en el centroide de la zona urbana (DANE, MGN 2025, capa 305, CLAS_CCDGO = 1).
+# Los nombres se escriben igual en español y en inglés ──
+layer.addDataText {"fileName": "cabeceras.geojson", "name": "Cabeceras", "text": "{\"type\": \"FeatureCollection\", \"features\": [{\"type\": \"Feature\", \"properties\": {\"nombre\": \"CALI\"}, \"geometry\": {\"type\": \"Point\", \"coordinates\": [-76.5213, 3.4137]}}, {\"type\": \"Feature\", \"properties\": {\"nombre\": \"Yumbo\"}, \"geometry\": {\"type\": \"Point\", \"coordinates\": [-76.4999, 3.5401]}}, {\"type\": \"Feature\", \"properties\": {\"nombre\": \"Palmira\"}, \"geometry\": {\"type\": \"Point\", \"coordinates\": [-76.2989, 3.5315]}}, {\"type\": \"Feature\", \"properties\": {\"nombre\": \"Candelaria\"}, \"geometry\": {\"type\": \"Point\", \"coordinates\": [-76.3465, 3.4083]}}, {\"type\": \"Feature\", \"properties\": {\"nombre\": \"Pradera\"}, \"geometry\": {\"type\": \"Point\", \"coordinates\": [-76.2418, 3.4198]}}, {\"type\": \"Feature\", \"properties\": {\"nombre\": \"Florida\"}, \"geometry\": {\"type\": \"Point\", \"coordinates\": [-76.2335, 3.3242]}}, {\"type\": \"Feature\", \"properties\": {\"nombre\": \"Miranda\"}, \"geometry\": {\"type\": \"Point\", \"coordinates\": [-76.2287, 3.2547]}}, {\"type\": \"Feature\", \"properties\": {\"nombre\": \"Jamundí\"}, \"geometry\": {\"type\": \"Point\", \"coordinates\": [-76.5381, 3.2578]}}, {\"type\": \"Feature\", \"properties\": {\"nombre\": \"Puerto Tejada\"}, \"geometry\": {\"type\": \"Point\", \"coordinates\": [-76.4177, 3.2333]}}, {\"type\": \"Feature\", \"properties\": {\"nombre\": \"Santander de Quilichao\"}, \"geometry\": {\"type\": \"Point\", \"coordinates\": [-76.4852, 3.0149]}}]}"}
+# Creada aquí, después de las capas por URL, entra arriba de todo
+layer.marker {"layer": "Cabeceras", "shape": "circle", "size": 3}
+layer.color {"layer": "Cabeceras", "color": "#2B2620FF"}
+layer.outline {"layer": "Cabeceras", "color": "#FFFFFF", "width": 0.5}
+labels.by {"layer": "Cabeceras", "text": "nombre"}
+labels.style {"layer": "Cabeceras", "size": 8, "bold": true, "color": "#2B2620", "halo": true, "haloColor": "#F1EADF"}
+labels.placement {"layer": "Cabeceras", "position": "right", "showAll": true}
+
+map.zoomToExtent {"extent": [-76.7515, 2.985, -76.0485, 3.715]}
+
+# ════════ Mapa 2: Colombia, el recuadro (map.new lo deja activo) ════════
+map.new {"name": "Colombia"}
+map.basemap {"name": "blank", "color": "#F1EADF"}
+map.graticule {"on": false}
+# Una por una: el pegado deja cada capa arriba, y la caña tiene que quedar encima de los departamentos
+map.activate {"name": "Valle"}
+layer.copy {"layer": "Departamentos"}
+layer.paste {"map": "Colombia"}
+layer.copy {"layer": "Caña Colombia"}
+layer.paste {"map": "Colombia"}
+layer.remove {"layer": ["Departamentos", "Caña Colombia"]}
+
+map.activate {"name": "Colombia"}
+layer.color {"layer": "Departamentos", "color": "#FFFDF8FF"}
+layer.outline {"layer": "Departamentos", "color": "#B9AFA2", "width": 0.25}
+# A esta escala el valle mide menos de 1 mm de ancho: un borde del mismo color lo engrosa
+layer.color {"layer": "Caña Colombia", "color": "#C8961EFF"}
+layer.outline {"layer": "Caña Colombia", "color": "#C8961E", "width": 0.8}
+# El encuadre del mapa principal
+layer.addDataText {"fileName": "recuadro.geojson", "name": "Recuadro", "text": "{\"type\": \"FeatureCollection\", \"features\": [{\"type\": \"Feature\", \"properties\": {\"nombre\": \"Mapa principal\"}, \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[[-76.7515, 2.985], [-76.0485, 2.985], [-76.0485, 3.715], [-76.7515, 3.715], [-76.7515, 2.985]]]}}]}"}
+layer.noFill {"layer": "Recuadro"}
+layer.outline {"layer": "Recuadro", "color": "#2B2620", "width": 0.6}
+map.zoomToExtent {"extent": [-79.3, -4.3, -66.8, 12.6]}

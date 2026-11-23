@@ -1,0 +1,33 @@
+# Día 23 — Senses: Taste: Toda la caña de azúcar de Colombia crece en un solo valle — 1 · DATOS
+# Lo dulce del país sale del valle del río Cauca: el 99,99 % de la caña de azúcar que el IDEAM
+# reconoce en 2024 (302 058 ha) está ahí, y Cali queda en medio.
+# Dos mapas: "Valle" (este script: la imagen y la caña) y "Colombia" (el recuadro, en el script 2).
+
+map.rename {"name": "Valle"}
+map.basemap {"name": "blank", "color": "#F1EADF"}
+map.graticule {"on": false}
+
+# Imagen: Copernicus Sentinel-2 L2A en color natural (TCI, 10 m), 10 de agosto de 2026, cuadrículas
+# 18NUJ (hasta 3,62° N) y 18NUK (el norte del encuadre). Ese día pasaron los dos satélites: S2A cubre
+# Cali, Jamundí y Yumbo; S2B, Palmira, Candelaria y Florida; las cuatro escenas cubren el encuadre. Son COG en AWS (Earth Search, Element 84), con CORS: RustGIS los
+# lee por partes, solo lo que la vista pide (cada uno pesa más de 130 MB). Su "sin dato" es 0
+layer.addUrl {"url": "https://e84-earth-search-sentinel-data.s3.us-west-2.amazonaws.com/sentinel-2-c1-l2a/18/N/UJ/2026/8/S2A_T18NUJ_20260810T154105_L2A/TCI.tif", "name": "Imagen oeste", "zoom": false}
+layer.addUrl {"url": "https://e84-earth-search-sentinel-data.s3.us-west-2.amazonaws.com/sentinel-2-c1-l2a/18/N/UJ/2026/8/S2B_T18NUJ_20260810T152745_L2A/TCI.tif", "name": "Imagen este", "zoom": false}
+layer.addUrl {"url": "https://e84-earth-search-sentinel-data.s3.us-west-2.amazonaws.com/sentinel-2-c1-l2a/18/N/UK/2026/8/S2A_T18NUK_20260810T154105_L2A/TCI.tif", "name": "Imagen noroeste", "zoom": false}
+layer.addUrl {"url": "https://e84-earth-search-sentinel-data.s3.us-west-2.amazonaws.com/sentinel-2-c1-l2a/18/N/UK/2026/8/S2B_T18NUK_20260810T152745_L2A/TCI.tif", "name": "Imagen noreste", "zoom": false}
+
+# Caña de azúcar: IDEAM, Cobertura de la tierra 100K 2024 (capa 10), clase 22121 "2.2.1.2.1. Caña de
+# azúcar". Dos descargas:
+# - la del encuadre, sin generalizar (87 polígonos, unos 350 KB): recorta la imagen
+layer.addUrl {"url": "https://visualizador.ideam.gov.co/gisserver/rest/services/Estado_Cobertura_Tierra/MapServer/10/query?where=codigo%3D22121&geometry=-76.76%2C2.97%2C-76.04%2C3.73&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=nom_mpio,area_ha&outSR=4326&f=pbf", "name": "Caña de azúcar", "zoom": false}
+# - la del país, generalizada a 0,002° (271 polígonos, unos 585 KB): para el recuadro y la cifra
+layer.addUrl {"url": "https://visualizador.ideam.gov.co/gisserver/rest/services/Estado_Cobertura_Tierra/MapServer/10/query?where=codigo%3D22121&outFields=cod_dane_dpto,nom_mpio,area_ha&outSR=4326&maxAllowableOffset=0.002&f=pbf", "name": "Caña Colombia", "zoom": false}
+
+# Departamentos: DANE, MGN 2025, capa 319, igual que el día 22 (cuantizado a 0,005°): para el recuadro
+layer.addUrl {"url": "https://portalgis.dane.gov.co/mparcgis/rest/services/MGN2025/Serv_CapasMGN_2025/FeatureServer/319/query?where=1%3D1&outFields=DPTO_CCDGO,DPTO_CNMBRE&outSR=4326&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A0.005%2C%22extent%22%3A%7B%22xmin%22%3A-82%2C%22ymin%22%3A-5%2C%22xmax%22%3A-66%2C%22ymax%22%3A13.5%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D%7D&f=pbf", "name": "Departamentos", "zoom": false}
+
+# El encuadre del layout: de los Farallones a la cordillera Central, de Santander de Quilichao a El Cerrito
+map.zoomToExtent {"extent": [-76.7515, 2.985, -76.0485, 3.715]}
+
+# No cambiar de mapa hasta que lleguen las descargas.
+# Esperar a que las 7 capas estén en el panel de capas. Luego, el script 2.

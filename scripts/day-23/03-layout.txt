@@ -1,0 +1,44 @@
+# Día 23 — Senses: Taste: Toda la caña de azúcar de Colombia crece en un solo valle — 3 · LAYOUT
+# A4 vertical: el valle de lado a lado, la leyenda en una fila, tres cifras con Colombia junto al
+# 99,99 % y el pie.
+# Ids: mapa 1, fondo 2, Colombia 3.
+map.activate {"name": "Valle"}
+layout.new {"name": "Dia 23", "page": "a4", "orientation": "portrait", "template": "blank"}
+
+# 1 · El valle, a 1:420 000 (el encuadre del script 1)
+layout.addFrame {"layout": "Dia 23", "map": "Valle", "x": 12, "y": 36, "w": 186, "h": 192}
+layout.update {"layout": "Dia 23", "element": 1, "center": [-76.40, 3.35], "scale": 420000, "pitch": 0, "bearing": 0, "border": {"width": 0}}
+
+# 2 · Fondo de la página: el mismo crema que el papel de los dos mapas (map.basemap "color")
+layout.addElement {"layout": "Dia 23", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Dia 23", "element": 2, "to": "back"}
+
+# 3 · Colombia, a 1:72 000 000, en la fila de las cifras, junto al 99,99 %: sin borde, su papel crema es
+# el de la página
+layout.addFrame {"layout": "Dia 23", "map": "Colombia", "x": 118, "y": 237, "w": 22, "h": 27}
+layout.update {"layout": "Dia 23", "element": 3, "center": [-72.95, 4.15], "scale": 72000000, "pitch": 0, "bearing": 0, "border": {"width": 0}}
+
+# Encabezado
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "30DAYMAPCHALLENGE · DÍA 23 · SENSES: TASTE · CALI", "size": 7.5, "letterSpacing": 2.5, "color": "#9A6B00", "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "Toda la caña de azúcar de Colombia crece en un solo valle", "size": 17, "bold": true, "color": "#2B2620", "x": 12, "y": 9.5, "w": 186, "h": 9}
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "Lo dulce del país sale del valle del río Cauca. En esta imagen Sentinel-2 del 10 de agosto de 2026, solo los cañaduzales\nque el IDEAM reconoce en 2024 conservan su color; el resto del valle se apaga. Cali queda en medio de un mar de caña\nque va del norte del Cauca hasta Risaralda y Caldas.", "size": 8, "color": "#4E463C", "x": 12, "y": 19.5, "w": 186, "h": 13}
+
+# Leyenda en una fila
+layout.addElement {"layout": "Dia 23", "kind": "rectangle", "fill": "#7C8A3AFF", "outline": "#F2C230", "width": 0.5, "x": 12, "y": 231, "w": 8, "h": 4}
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "Caña de azúcar (IDEAM, 2024): la imagen a todo color, con borde dorado", "size": 6.5, "color": "#2B2620", "x": 22, "y": 231.3, "w": 90, "h": 3.6}
+layout.addElement {"layout": "Dia 23", "kind": "rectangle", "fill": "#D6D1BFFF", "outline": "#D6D1BF00", "width": 0, "x": 118, "y": 231, "w": 8, "h": 4}
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "El resto: la misma imagen, apagada", "size": 6.5, "color": "#2B2620", "x": 128, "y": 231.3, "w": 70, "h": 3.6}
+
+# Tres cifras en columnas; Colombia entre la segunda y la tercera
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "302 058 ha", "size": 16, "bold": true, "color": "#9A6B00", "x": 12, "y": 241, "w": 52, "h": 8}
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "de caña de azúcar hay en Colombia,\nsegún la cobertura de la tierra 2024\ndel IDEAM (escala 1:100 000).", "size": 6.8, "color": "#2B2620", "x": 12, "y": 249.5, "w": 52, "h": 11}
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "99,99 %", "size": 16, "bold": true, "color": "#2B2620", "x": 66, "y": 241, "w": 52, "h": 8}
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "está en el valle del río Cauca: Valle\ndel Cauca, Cauca, Risaralda y Caldas.\nFuera del valle, solo 43 ha en el Huila.", "size": 6.8, "color": "#2B2620", "x": 66, "y": 249.5, "w": 52, "h": 11}
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "43 179 ha", "size": 16, "bold": true, "color": "#2B2620", "x": 146, "y": 241, "w": 52, "h": 8}
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "tiene Palmira, el municipio con más\ncaña. Cali tiene 5 724; el Valle del\nCauca entero, 237 257 (el 79 %).", "size": 6.8, "color": "#2B2620", "x": 146, "y": 249.5, "w": 52, "h": 11}
+
+# Pie: notas y fuentes, y firma
+layout.addElement {"layout": "Dia 23", "kind": "line", "dir": "horizontal", "color": "#CDBFAE", "width": 0.5, "x": 12, "y": 265, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "Notas: imagen Copernicus Sentinel-2 L2A en color natural (10 m) del 10 de agosto de 2026: cuatro escenas de dos pasadas del mismo día (S2A y S2B), leídas\npor partes desde Earth Search (Element 84, AWS Open Data). La caña es la clase 2.2.1.2.1 «Caña de azúcar» de la cobertura de la tierra 1:100 000 de 2024 del IDEAM;\nlas hectáreas son sumas de su campo area_ha. Fuera de los cañaduzales, la misma imagen al 35 %. La caña panelera es otra clase y no está. Mapa a 1:420 000.\nDatos: contiene datos modificados de Copernicus Sentinel 2026; IDEAM, Cobertura de la tierra 2024; DANE, Marco Geoestadístico Nacional 2025 (cabeceras y departamentos).", "size": 5.6, "color": "#857A6C", "x": 12, "y": 266.5, "w": 186, "h": 12.5}
+layout.addElement {"layout": "Dia 23", "kind": "text", "text": "© José Gregorio Rincón · CC BY 4.0 · #30DayMapChallenge 2026 · Día 23: Senses: Taste · Hecho con RustGIS · rustgis.app", "size": 6.5, "align": "right", "color": "#4E463C", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz
