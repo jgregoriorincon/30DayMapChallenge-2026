@@ -1,0 +1,74 @@
+# Day 24 — Network: Before it was a parade, it was a path — 4 · ENGLISH LAYOUT
+# Bloque 3D del MDE de 1 m con el camino arriba; el perfil, con los mismos colores, abajo; tres cifras y la
+# historia al pie. Ids: bloque 1, fondo 2, perfil 3.
+# Etiquetas del mapa en inglés (campo en)
+map.activate {"name": "Medellín"}
+labels.by {"layer": "Marcas", "text": "CASE WHEN tipo = 'km' THEN en END"}
+labels.by {"layer": "Nota empinado", "text": "en"}
+layout.new {"name": "Day 24", "page": "a4", "orientation": "portrait", "template": "blank"}
+# 1 · El bloque 3D, con la misma cámara del mapa
+layout.addFrame {"layout": "Day 24", "map": "Medellín", "x": 0, "y": 38, "w": 210, "h": 146}
+layout.update {"layout": "Day 24", "element": 1, "center": [-75.5292, 6.2440], "scale": 62500, "pitch": 35, "bearing": 0, "border": {"width": 0}}
+# 2 · Fondo de la página: el mismo crema que el papel de los dos mapas (map.basemap "color")
+layout.addElement {"layout": "Day 24", "kind": "rectangle", "fill": "#F1EADFFF", "outline": "#F1EADF00", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.arrange {"layout": "Day 24", "element": 2, "to": "back"}
+# 3 · El perfil: 1:84 000 (14,6 km en unos 173 mm), la base de 1 400 m a 3 mm del borde inferior
+layout.addFrame {"layout": "Day 24", "map": "Perfil", "x": 12, "y": 192, "w": 186, "h": 42}
+layout.update {"layout": "Day 24", "element": 3, "center": [0.0611214, 0.0135825], "scale": 84000, "pitch": 0, "bearing": 0, "border": {"width": 0}}
+
+# Los extremos del camino, junto a sus puntos del bloque
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "Santa Elena · 2,535 m", "size": 8, "bold": true, "color": "#2B2620", "background": {"fill": "#F1EADFCC", "radius": 1, "padding": 0.6}, "align": "right", "x": 156.3, "y": 137.7, "w": 34, "h": 4}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "Placita de Flórez · 1,502 m", "size": 8, "bold": true, "color": "#2B2620", "background": {"fill": "#F1EADFCC", "radius": 1, "padding": 0.6}, "x": 42.3, "y": 76.9, "w": 40, "h": 4}
+
+# Encabezado
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "30DAYMAPCHALLENGE · DAY 24 · NETWORK · MEDELLÍN", "size": 7.5, "letterSpacing": 2.5, "color": "#C2185B", "x": 12, "y": 5.5, "w": 186, "h": 4}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "Before it was a parade, it was a path", "size": 26, "bold": true, "color": "#2B2620", "x": 12, "y": 10, "w": 186, "h": 12}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "The silleteros carried flowers on their backs from Santa Elena down to the Placita de Flórez market.\nThis is that walk today, along the street network: 1,000 metres lower.", "size": 9, "color": "#4E463C", "x": 12, "y": 22, "w": 186, "h": 9}
+
+# Leyenda en una fila, arriba del bloque
+layout.addElement {"layout": "Day 24", "kind": "line", "dir": "horizontal", "color": "#C2185B", "width": 2.2, "x": 12, "y": 33.8, "w": 7, "h": 0.5}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "Walking path, on today's street network", "size": 6.5, "color": "#2B2620", "x": 21, "y": 32.0, "w": 62, "h": 4}
+layout.addElement {"layout": "Day 24", "kind": "line", "dir": "horizontal", "color": "#7A0E3A", "width": 3.6, "x": 84, "y": 33.8, "w": 7, "h": 0.5}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "The steepest kilometre", "size": 6.5, "color": "#2B2620", "x": 93, "y": 32.0, "w": 40, "h": 4}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "Elevation (m)", "size": 6.5, "align": "right", "color": "#2B2620", "x": 128, "y": 32.0, "w": 18, "h": 4}
+layout.addElement {"layout": "Day 24", "kind": "rectangle", "fill": "#73AC62FF", "outline": "#73AC6200", "width": 0, "x": 148.0, "y": 32.4, "w": 7.5, "h": 2.6}
+layout.addElement {"layout": "Day 24", "kind": "rectangle", "fill": "#B5CA79FF", "outline": "#B5CA7900", "width": 0, "x": 155.5, "y": 32.4, "w": 7.5, "h": 2.6}
+layout.addElement {"layout": "Day 24", "kind": "rectangle", "fill": "#E0CD84FF", "outline": "#E0CD8400", "width": 0, "x": 163.0, "y": 32.4, "w": 7.5, "h": 2.6}
+layout.addElement {"layout": "Day 24", "kind": "rectangle", "fill": "#B88E5DFF", "outline": "#B88E5D00", "width": 0, "x": 170.5, "y": 32.4, "w": 7.5, "h": 2.6}
+layout.addElement {"layout": "Day 24", "kind": "rectangle", "fill": "#9A7759FF", "outline": "#9A775900", "width": 0, "x": 178.0, "y": 32.4, "w": 7.5, "h": 2.6}
+layout.addElement {"layout": "Day 24", "kind": "rectangle", "fill": "#A99587FF", "outline": "#A9958700", "width": 0, "x": 185.5, "y": 32.4, "w": 7.5, "h": 2.6}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "1,500", "size": 5.5, "align": "center", "color": "#857A6C", "x": 143, "y": 35.2, "w": 10, "h": 3}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "2,100", "size": 5.5, "align": "center", "color": "#857A6C", "x": 165.5, "y": 35.2, "w": 10, "h": 3}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "2,700", "size": 5.5, "align": "center", "color": "#857A6C", "x": 188, "y": 35.2, "w": 10, "h": 3}
+
+# Perfil: título, ejes y anotaciones (posiciones calculadas desde la escala del marco)
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "PROFILE OF THE PATH · HEIGHT EXAGGERATED 2.5 TIMES", "size": 6, "bold": true, "letterSpacing": 1, "color": "#C2185B", "x": 12, "y": 187, "w": 120, "h": 3.5}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "1,600", "size": 5.5, "align": "right", "color": "#857A6C", "x": 12, "y": 223.45, "w": 10.5, "h": 3}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "2,000", "size": 5.5, "align": "right", "color": "#857A6C", "x": 12, "y": 211.54, "w": 10.5, "h": 3}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "2,400", "size": 5.5, "align": "right", "color": "#857A6C", "x": 12, "y": 199.64, "w": 10.5, "h": 3}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "0", "size": 5.5, "align": "center", "color": "#857A6C", "x": 17.0, "y": 231.6, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "5", "size": 5.5, "align": "center", "color": "#857A6C", "x": 76.52, "y": 231.6, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "10", "size": 5.5, "align": "center", "color": "#857A6C", "x": 136.05, "y": 231.6, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "14.6 km", "size": 5.5, "align": "right", "color": "#857A6C", "x": 184, "y": 231.6, "w": 14, "h": 3}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "Santa Elena · 2,535 m", "size": 7, "bold": true, "color": "#2B2620", "x": 25.5, "y": 192.24, "w": 60, "h": 3.8}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "Placita de Flórez · 1,502 m", "size": 7, "bold": true, "align": "right", "color": "#2B2620", "x": 136, "y": 221.48, "w": 60, "h": 3.8}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "THE STEEPEST KILOMETRE", "size": 6, "bold": true, "letterSpacing": 1, "color": "#7A0E3A", "x": 126, "y": 199, "w": 70, "h": 3.5}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "From 9.5 to 10.6: −217 m down the streets\nand stairs of La Sierra (comuna 8)", "size": 6.5, "color": "#4E463C", "x": 126, "y": 202.7, "w": 70, "h": 7}
+
+# Tres cifras en columnas
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "1,033 m", "size": 20, "bold": true, "color": "#C2185B", "x": 12, "y": 239, "w": 60, "h": 9}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "of drop: from 2,535 m in Santa Elena to\n1,502 m at the Placita de Flórez. Along the\nway it goes down 1,081 m and up just 48.", "size": 7, "color": "#2B2620", "x": 12, "y": 248.5, "w": 60, "h": 11}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "14.6 km", "size": 20, "bold": true, "color": "#C2185B", "x": 75, "y": 239, "w": 60, "h": 9}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "on foot, about 3 hours without a load. Half\nthe drop is done by km 8.3; the last 3.5 km,\nalready in the valley, are almost flat.", "size": 7, "color": "#2B2620", "x": 75, "y": 248.5, "w": 60, "h": 11}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "21%", "size": 20, "bold": true, "color": "#C2185B", "x": 138, "y": 239, "w": 60, "h": 9}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "grade on the steepest kilometre: 217 m\ndown in 1 km, with five flights of stairs.\nThe average grade is 7%.", "size": 7, "color": "#2B2620", "x": 138, "y": 248.5, "w": 60, "h": 11}
+
+# Historia
+layout.addElement {"layout": "Day 24", "kind": "line", "dir": "horizontal", "color": "#CDBFAE", "width": 0.5, "x": 12, "y": 261, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "Since 1918 there are records of Santa Elena farmers walking down to Medellín with a silleta, a wooden chair-frame, on their backs\nto sell flowers and vegetables. In 1925 Braulio Ochoa, from the El Llano hamlet, was the first to carry it loaded with flowers; they were\nunloaded at the Placita de Flórez and sold in the streets. They first paraded on 1 May 1957. Today they parade every August at the Flower Fair.", "size": 7, "italic": true, "color": "#4E463C", "x": 12, "y": 262.5, "w": 186, "h": 11.5}
+
+# Pie: notas y fuentes, y firma
+layout.addElement {"layout": "Day 24", "kind": "line", "dir": "horizontal", "color": "#CDBFAE", "width": 0.5, "x": 12, "y": 275.5, "w": 186, "h": 0.5}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "Notes: the path is the one Valhalla computes today for walking on the OpenStreetMap street network, not the historic trail, which is not mapped. Elevations from\nMedellín's 2024 digital elevation model (1 m, bare ground), 300 samples along the path; 3D relief exaggerated 1.5 times and profile 2.5 times. Data: Alcaldía de\nMedellín (DEM 2024; \"Historia de los silleteros\", 2023); Valhalla routing; © OpenStreetMap contributors.", "size": 5.6, "color": "#857A6C", "x": 12, "y": 276.5, "w": 186, "h": 10}
+layout.addElement {"layout": "Day 24", "kind": "text", "text": "© José Gregorio Rincón · CC BY 4.0 · #30DayMapChallenge 2026 · Day 24: Network · Made with RustGIS · rustgis.app", "size": 6.5, "align": "right", "color": "#4E463C", "x": 12, "y": 292.3, "w": 186, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz
