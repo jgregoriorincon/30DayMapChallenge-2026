@@ -1,0 +1,80 @@
+# Día 25 — Is this a map?: Barranquilla en afiche — 2 · VISTA
+# Correr cuando estén las 2 capas y los mapas base del script 1. Encima del mapa base turístico:
+# los desfiles del Carnaval en rojo y los sitios como círculo numerado
+map.activate {"name": "Barranquilla"}
+
+# ── 1. Orden fijo: otra orilla, desfiles, sitios, río (las descargas llegan en cualquier orden) ──
+# Cada capa, de abajo arriba, al fondo y luego arriba de todo: al final quedan en este orden. Primero
+# al fondo, porque layer.move a donde ya está la capa da error y para el script
+layer.move {"layer": "Otra orilla", "to": 99}
+layer.move {"layer": "Otra orilla", "to": 0}
+layer.move {"layer": "Desfiles del Carnaval", "to": 99}
+layer.move {"layer": "Desfiles del Carnaval", "to": 0}
+layer.move {"layer": "Sitios de interés turístico", "to": 99}
+layer.move {"layer": "Sitios de interés turístico", "to": 0}
+layer.move {"layer": "Río Magdalena", "to": 99}
+layer.move {"layer": "Río Magdalena", "to": 0}
+# El papel acuarela entró en el script 1 antes que las capas, que quedaron encima: se sube sobre la otra
+# orilla, los desfiles y los sitios (los rótulos, creados abajo, quedan sobre el papel)
+map.setTiles {"name": "Papel acuarela", "to": 0}
+
+# ── La otra orilla, del verde agua del río en el mapa base (#1AB7B6: medido en capturas en Display P3, pasado a sRGB y compensado por el papel acuarela que va encima), sin borde visible ──
+layer.color {"layer": "Otra orilla", "color": "#1AB7B6FF"}
+layer.outline {"layer": "Otra orilla", "color": "#1AB7B6", "width": 0.5}
+# Sin la transparencia que RustGIS da a los polígonos: si no, se mezcla con el gris de abajo
+layer.transparency {"layer": "Otra orilla", "value": 0}
+# Ocultar el rótulo "Parque Nacional Natural Isla de Salamanca" del mapa base turístico (tiene su propia source-layer) para que no se dibuje encima de Otra orilla ni del índice
+map.setTiles {"name": "Mapa de referencia turístico", "hiddenLayers": ["Isla de Salamanca"]}
+
+# ── 2. Desfiles: rojo con borde blanco ──
+layer.lineStrokes {"layer": "Desfiles del Carnaval", "strokes": [{"color": "#FFFFFF", "width": 4.2, "cap": "round", "join": "round"}, {"color": "#D7191C", "width": 2.6, "cap": "round", "join": "round"}]}
+
+# ── 3. Sitios: número nuevo (seguido dentro de cada categoría, como el índice) y categoría ──
+edit.addField {"layer": "Sitios de interés turístico", "name": "Num", "type": "long"}
+edit.calculateField {"layer": "Sitios de interés turístico", "field": "Num", "expression": "CASE objectid WHEN 1 THEN 0 WHEN 2 THEN 1 WHEN 3 THEN 14 WHEN 4 THEN 0 WHEN 5 THEN 0 WHEN 6 THEN 0 WHEN 7 THEN 0 WHEN 8 THEN 15 WHEN 9 THEN 16 WHEN 10 THEN 0 WHEN 11 THEN 6 WHEN 12 THEN 7 WHEN 13 THEN 8 WHEN 14 THEN 17 WHEN 15 THEN 2 WHEN 16 THEN 0 WHEN 17 THEN 0 WHEN 18 THEN 18 WHEN 19 THEN 19 WHEN 20 THEN 27 WHEN 21 THEN 20 WHEN 22 THEN 28 WHEN 23 THEN 0 WHEN 24 THEN 29 WHEN 25 THEN 30 WHEN 26 THEN 21 WHEN 27 THEN 22 WHEN 28 THEN 9 WHEN 29 THEN 0 WHEN 30 THEN 10 WHEN 31 THEN 3 WHEN 32 THEN 26 WHEN 33 THEN 0 WHEN 34 THEN 31 WHEN 35 THEN 32 WHEN 36 THEN 33 WHEN 37 THEN 11 WHEN 38 THEN 34 WHEN 39 THEN 35 WHEN 40 THEN 36 WHEN 41 THEN 37 WHEN 42 THEN 38 WHEN 43 THEN 39 WHEN 44 THEN 40 WHEN 45 THEN 41 WHEN 46 THEN 42 WHEN 47 THEN 0 WHEN 48 THEN 23 WHEN 49 THEN 43 WHEN 50 THEN 44 WHEN 51 THEN 45 WHEN 52 THEN 46 WHEN 53 THEN 47 WHEN 54 THEN 48 WHEN 55 THEN 4 WHEN 56 THEN 49 WHEN 57 THEN 5 WHEN 58 THEN 12 WHEN 59 THEN 13 WHEN 60 THEN 24 WHEN 62 THEN 25 END"}
+edit.addField {"layer": "Sitios de interés turístico", "name": "Cat", "type": "long"}
+edit.calculateField {"layer": "Sitios de interés turístico", "field": "Cat", "expression": "CASE WHEN tipo IN ('Atraccion', 'Malecon', 'Mirador', 'Playa', 'Senderismo', 'Tren', 'Zoologico') THEN 1 WHEN tipo IN ('Monumento') THEN 2 WHEN tipo IN ('Artesanias', 'Interes') THEN 3 WHEN tipo IN ('Estadio') THEN 4 WHEN tipo IN ('CC') THEN 5 END"}
+layer.symbology {"layer": "Sitios de interés turístico", "type": "unique", "field": "Cat"}
+layer.classStyle {"layer": "Sitios de interés turístico", "value": 1, "color": "#8C5A2BFF", "label": "Río, mar y paseos"}
+layer.classStyle {"layer": "Sitios de interés turístico", "value": 2, "color": "#F57C00FF", "label": "Monumentos"}
+layer.classStyle {"layer": "Sitios de interés turístico", "value": 3, "color": "#7B2CBFFF", "label": "Lugares de interés"}
+layer.classStyle {"layer": "Sitios de interés turístico", "value": 4, "color": "#1D3F8FFF", "label": "Estadios"}
+layer.classStyle {"layer": "Sitios de interés turístico", "value": 5, "color": "#E0115FFF", "label": "Centros comerciales"}
+# El sitio real: un punto pequeño de su color. El número va en los rótulos de abajo
+layer.marker {"layer": "Sitios de interés turístico", "shape": "circle", "size": 4}
+layer.outline {"layer": "Sitios de interés turístico", "color": "#FFFFFF", "width": 0.6}
+
+# ── 4. Rótulos desplazados: a 1:50 000 un círculo de 13 pt cubre unos 229 m y hay 19 parejas de sitios
+# más cerca que eso. Las posiciones se calcularon fuera de RustGIS (repulsión entre círculos, con un
+# tirón hacia el punto real): ninguno se encima con otro y el que más se aparta lo hace 307 m. Los 7
+# que se apartan 120 m o más llevan una línea guía hasta su punto. Creadas aquí, entran arriba de todo
+layer.addDataText {"fileName": "guias.geojson", "name": "Guías", "text": "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"Num\":7},\"geometry\":{\"type\":\"LineString\",\"coordinates\":[[-74.80617,10.99477],[-74.80498,10.996745]]}},{\"type\":\"Feature\",\"properties\":{\"Num\":10},\"geometry\":{\"type\":\"LineString\",\"coordinates\":[[-74.77367,10.94931],[-74.772486,10.949591]]}},{\"type\":\"Feature\",\"properties\":{\"Num\":13},\"geometry\":{\"type\":\"LineString\",\"coordinates\":[[-74.77447,10.94912],[-74.775654,10.948839]]}},{\"type\":\"Feature\",\"properties\":{\"Num\":14},\"geometry\":{\"type\":\"LineString\",\"coordinates\":[[-74.78897,11.01585],[-74.791444,11.015875]]}},{\"type\":\"Feature\",\"properties\":{\"Num\":20},\"geometry\":{\"type\":\"LineString\",\"coordinates\":[[-74.79492,11.02224],[-74.792679,11.022116]]}},{\"type\":\"Feature\",\"properties\":{\"Num\":23},\"geometry\":{\"type\":\"LineString\",\"coordinates\":[[-74.80622,10.99411],[-74.803536,10.99492]]}},{\"type\":\"Feature\",\"properties\":{\"Num\":47},\"geometry\":{\"type\":\"LineString\",\"coordinates\":[[-74.79953,10.92928],[-74.797384,10.930547]]}}]}"}
+layer.lineStrokes {"layer": "Guías", "strokes": [{"color": "#0B2545", "width": 0.6, "cap": "round", "join": "round"}]}
+layer.addDataText {"fileName": "rotulos.geojson", "name": "Rótulos", "text": "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"Num\":1,\"Cat\":1},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.85085,11.03045]}},{\"type\":\"Feature\",\"properties\":{\"Num\":2,\"Cat\":1},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.798,11.011]}},{\"type\":\"Feature\",\"properties\":{\"Num\":3,\"Cat\":1},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.834722,11.001856]}},{\"type\":\"Feature\",\"properties\":{\"Num\":4,\"Cat\":1},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.82907,10.99237]}},{\"type\":\"Feature\",\"properties\":{\"Num\":5,\"Cat\":1},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.793227,11.019881]}},{\"type\":\"Feature\",\"properties\":{\"Num\":6,\"Cat\":2},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.784823,10.994536]}},{\"type\":\"Feature\",\"properties\":{\"Num\":7,\"Cat\":2},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.80498,10.996745]}},{\"type\":\"Feature\",\"properties\":{\"Num\":8,\"Cat\":2},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.792599,10.994838]}},{\"type\":\"Feature\",\"properties\":{\"Num\":9,\"Cat\":2},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.777445,10.986623]}},{\"type\":\"Feature\",\"properties\":{\"Num\":10,\"Cat\":2},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.772486,10.949591]}},{\"type\":\"Feature\",\"properties\":{\"Num\":11,\"Cat\":2},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.8314,11.03313]}},{\"type\":\"Feature\",\"properties\":{\"Num\":12,\"Cat\":2},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.790294,11.017884]}},{\"type\":\"Feature\",\"properties\":{\"Num\":13,\"Cat\":2},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.775654,10.948839]}},{\"type\":\"Feature\",\"properties\":{\"Num\":14,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.791444,11.015875]}},{\"type\":\"Feature\",\"properties\":{\"Num\":15,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.75651,10.95071]}},{\"type\":\"Feature\",\"properties\":{\"Num\":16,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.794881,10.994382]}},{\"type\":\"Feature\",\"properties\":{\"Num\":17,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.78764,10.98737]}},{\"type\":\"Feature\",\"properties\":{\"Num\":18,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.775323,10.985679]}},{\"type\":\"Feature\",\"properties\":{\"Num\":19,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.79997,11.02399]}},{\"type\":\"Feature\",\"properties\":{\"Num\":20,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.792679,11.022116]}},{\"type\":\"Feature\",\"properties\":{\"Num\":21,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.778432,10.983034]}},{\"type\":\"Feature\",\"properties\":{\"Num\":22,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.79687,10.98427]}},{\"type\":\"Feature\",\"properties\":{\"Num\":23,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.803536,10.99492]}},{\"type\":\"Feature\",\"properties\":{\"Num\":24,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.781251,10.993075]}},{\"type\":\"Feature\",\"properties\":{\"Num\":25,\"Cat\":3},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.790231,10.988148]}},{\"type\":\"Feature\",\"properties\":{\"Num\":26,\"Cat\":4},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.783679,10.996539]}},{\"type\":\"Feature\",\"properties\":{\"Num\":27,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.782211,10.944872]}},{\"type\":\"Feature\",\"properties\":{\"Num\":28,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.77616,10.983534]}},{\"type\":\"Feature\",\"properties\":{\"Num\":29,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.788407,10.989576]}},{\"type\":\"Feature\",\"properties\":{\"Num\":30,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.78974,10.98429]}},{\"type\":\"Feature\",\"properties\":{\"Num\":31,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.81245,10.98938]}},{\"type\":\"Feature\",\"properties\":{\"Num\":32,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.81343,10.98543]}},{\"type\":\"Feature\",\"properties\":{\"Num\":33,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.805751,11.003995]}},{\"type\":\"Feature\",\"properties\":{\"Num\":34,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.807879,11.004925]}},{\"type\":\"Feature\",\"properties\":{\"Num\":35,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.82058,11.00919]}},{\"type\":\"Feature\",\"properties\":{\"Num\":36,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.829006,11.013824]}},{\"type\":\"Feature\",\"properties\":{\"Num\":37,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.826306,11.015247]}},{\"type\":\"Feature\",\"properties\":{\"Num\":38,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.83644,11.01402]}},{\"type\":\"Feature\",\"properties\":{\"Num\":39,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.831113,11.01612]}},{\"type\":\"Feature\",\"properties\":{\"Num\":40,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.84393,10.99406]}},{\"type\":\"Feature\",\"properties\":{\"Num\":41,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.785449,10.944508]}},{\"type\":\"Feature\",\"properties\":{\"Num\":42,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.800436,10.931696]}},{\"type\":\"Feature\",\"properties\":{\"Num\":43,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.81672,11.02122]}},{\"type\":\"Feature\",\"properties\":{\"Num\":44,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.828785,11.016113]}},{\"type\":\"Feature\",\"properties\":{\"Num\":45,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.82683,11.013007]}},{\"type\":\"Feature\",\"properties\":{\"Num\":46,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.79206,11.01224]}},{\"type\":\"Feature\",\"properties\":{\"Num\":47,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.797384,10.930547]}},{\"type\":\"Feature\",\"properties\":{\"Num\":48,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.835408,11.004054]}},{\"type\":\"Feature\",\"properties\":{\"Num\":49,\"Cat\":5},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-74.81905,11.00227]}}]}"}
+layer.symbology {"layer": "Rótulos", "type": "unique", "field": "Cat"}
+layer.classStyle {"layer": "Rótulos", "value": 1, "color": "#8C5A2BFF", "label": "Río, mar y paseos"}
+layer.classStyle {"layer": "Rótulos", "value": 2, "color": "#F57C00FF", "label": "Monumentos"}
+layer.classStyle {"layer": "Rótulos", "value": 3, "color": "#7B2CBFFF", "label": "Lugares de interés"}
+layer.classStyle {"layer": "Rótulos", "value": 4, "color": "#1D3F8FFF", "label": "Estadios"}
+layer.classStyle {"layer": "Rótulos", "value": 5, "color": "#E0115FFF", "label": "Centros comerciales"}
+layer.marker {"layer": "Rótulos", "shape": "circle", "size": 13}
+layer.outline {"layer": "Rótulos", "color": "#FFFFFF", "width": 1}
+# El número, blanco y en el centro del círculo
+labels.by {"layer": "Rótulos", "text": "Num"}
+labels.style {"layer": "Rótulos", "size": 6.5, "bold": true, "color": "#FFFFFF", "halo": false}
+labels.placement {"layer": "Rótulos", "position": "center", "showAll": true}
+
+# Cifras para el layout: sitios por categoría (esperado: 1: 9, 2: 12, 3: 14, 4: 3, 5: 23)
+gp.run {"tool": "summaryStatistics", "params": {"input": "Sitios de interés turístico", "statistics": [{"field": "Num", "statistic": "COUNT"}], "case": ["Cat"]}}
+
+# ── El rótulo del río: la línea, del azul del agua; el nombre, a lo largo del cauce ──
+layer.color {"layer": "Río Magdalena", "color": "#1E9BE000"}
+layer.lineStrokes {"layer": "Río Magdalena", "strokes": [{"color": "#1E9BE000", "width": 0.1}]}
+labels.by {"layer": "Río Magdalena", "text": "es"}
+labels.style {"layer": "Río Magdalena", "size": 11, "italic": true, "spacing": 20, "color": "#0B2545", "halo": false}
+labels.placement {"layer": "Río Magdalena", "position": "curved", "showAll": true}
+
+# ── Los 12 sitios que el mapa base ya dibuja (Playa de Puerto Mocho, Tren turístico las Flores, Luna del Río, Malecón de Rebolo, Locomotora de la Antigua Aduana, Ventana de Campeones, Letras Barranquilla, Estatua de Shakira, Caimán del Río, Casa del Carnaval, Estadio Romelio Martínez, Estadio Metropolitano Roberto Meléndez): sin
+# punto ni número (Num 0); su dibujo los señala y en el layout van en un bloque aparte. Después de las
+# cifras, que cuentan los 61 ──
+layer.definitionQuery {"layer": "Sitios de interés turístico", "where": "Num > 0"}
