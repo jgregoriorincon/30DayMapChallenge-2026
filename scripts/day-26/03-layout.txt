@@ -1,0 +1,24 @@
+# Día 26 — Water: Tanta agua, y sin agua en la casa — 3 · LAYOUT
+# A4 vertical oscuro. Ids: fondo 1, mapa 2. Correr cuando el mapa se vea completo.
+map.activate {"name": "Colombia"}
+layout.new {"name": "Dia 26 Colombia", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "rectangle", "fill": "#070B16FF", "outline": "#070B1600", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+# 1:9 000 000: Colombia continental entera en 190 × 210 mm, con margen arriba y abajo para Uribia y Leticia
+layout.addFrame {"layout": "Dia 26 Colombia", "map": "Colombia", "x": 10, "y": 38, "w": 190, "h": 210}
+layout.update {"layout": "Dia 26 Colombia", "element": 2, "center": [-73.0, 4.1], "scale": 9000000, "pitch": 0, "bearing": 0}
+
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "text", "text": "30DAYMAPCHALLENGE · DÍA 26 · WATER · COLOMBIA", "size": 7.5, "letterSpacing": 2.5, "color": "#00E5FF", "x": 10, "y": 7, "w": 190, "h": 4}
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "text", "text": "Tanta agua, y sin agua en la casa", "size": 22, "bold": true, "color": "#FFFFFF", "x": 10, "y": 12, "w": 190, "h": 11}
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "text", "text": "Colombia es el sexto país del mundo en agua dulce. Aun así, en 236 municipios la mayoría de las viviendas no tiene\nacueducto, y varios están a la orilla de los ríos más grandes del país.", "size": 9, "color": "#C9D2DE", "x": 10, "y": 24, "w": 190, "h": 10}
+
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "text", "text": "6.º", "size": 20, "bold": true, "color": "#00E5FF", "x": 10, "y": 250, "w": 60, "h": 9}
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "text", "text": "país del mundo en agua dulce renovable:\n2.145 km³ al año (FAO, 2020).", "size": 7, "color": "#C9D2DE", "x": 10, "y": 259.5, "w": 60, "h": 8}
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "text", "text": "236 municipios", "size": 20, "bold": true, "color": "#FF3DB8", "x": 75, "y": 250, "w": 65, "h": 9}
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "text", "text": "donde la mayoría de las viviendas no tiene\nacueducto; 1,8 millones en todo el país (Censo 2018).", "size": 7, "color": "#C9D2DE", "x": 75, "y": 259.5, "w": 65, "h": 8}
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "text", "text": "Ríos", "size": 9, "bold": true, "color": "#00E5FF", "x": 145, "y": 250, "w": 55, "h": 5}
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "text", "text": "más gruesos y brillantes, más caudal:\nde 10 a más de 5000 m³/s de media.", "size": 7, "color": "#C9D2DE", "x": 145, "y": 255.5, "w": 55, "h": 8}
+
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "line", "dir": "horizontal", "color": "#1C2640", "width": 0.5, "x": 10, "y": 270, "w": 190, "h": 0.5}
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "text", "text": "Cómo se hizo: RustGIS web (web.rustgis.app), con tres scripts; los datos van embebidos. Ríos con caudal medio de 10 m³/s o más, en cuatro clases.\nDatos: HydroRIVERS v1.0 (Lehner y Grill, 2013; HydroSHEDS). Viviendas sin servicio de acueducto: DANE, Censo Nacional de Población y Vivienda 2018,\nMarco Geoestadístico Nacional. Agua dulce renovable interna: Banco Mundial y FAO AQUASTAT (2020).", "size": 5.6, "color": "#8C97A6", "x": 10, "y": 271.5, "w": 190, "h": 10}
+layout.addElement {"layout": "Dia 26 Colombia", "kind": "text", "text": "© José Gregorio Rincón · CC BY 4.0 · #30DayMapChallenge 2026 · Día 26: Water · Hecho con RustGIS · rustgis.app", "size": 6.5, "align": "right", "color": "#C9D2DE", "x": 10, "y": 286, "w": 190, "h": 4}
+# Entrega: exportar el layout y guardar el proyecto desde la interfaz

@@ -1,0 +1,27 @@
+# Día 26 — Water: Tanta agua, y sin agua en la casa — 4 · LAYOUT EN INGLÉS
+# Correr después del 3, con el layout en español ya exportado: cambia los textos de los casos al inglés y
+# añade el layout "Day 26" con el mismo marco. Ids: fondo 1, mapa 2.
+map.activate {"name": "Colombia"}
+labels.by {"layer": "Casos", "text": "en"}
+labels.by {"layer": "Caso Leticia", "text": "en"}
+layout.new {"name": "Day 26", "page": "a4", "orientation": "portrait", "template": "blank"}
+layout.addElement {"layout": "Day 26", "kind": "rectangle", "fill": "#070B16FF", "outline": "#070B1600", "width": 0, "x": 0, "y": 0, "w": 210, "h": 297}
+layout.addFrame {"layout": "Day 26", "map": "Colombia", "x": 10, "y": 38, "w": 190, "h": 210}
+layout.update {"layout": "Day 26", "element": 2, "center": [-73.0, 4.1], "scale": 9000000, "pitch": 0, "bearing": 0}
+
+layout.addElement {"layout": "Day 26", "kind": "text", "text": "30DAYMAPCHALLENGE · DAY 26 · WATER · COLOMBIA", "size": 7.5, "letterSpacing": 2.5, "color": "#00E5FF", "x": 10, "y": 7, "w": 190, "h": 4}
+layout.addElement {"layout": "Day 26", "kind": "text", "text": "So much water, and none at home", "size": 22, "bold": true, "color": "#FFFFFF", "x": 10, "y": 12, "w": 190, "h": 11}
+layout.addElement {"layout": "Day 26", "kind": "text", "text": "Colombia ranks sixth in the world for fresh water. Yet in 236 municipalities most homes have no piped water,\nand several of them sit on the banks of the country's largest rivers.", "size": 9, "color": "#C9D2DE", "x": 10, "y": 24, "w": 190, "h": 10}
+
+layout.addElement {"layout": "Day 26", "kind": "text", "text": "6th", "size": 20, "bold": true, "color": "#00E5FF", "x": 10, "y": 250, "w": 60, "h": 9}
+layout.addElement {"layout": "Day 26", "kind": "text", "text": "country in the world for renewable fresh\nwater: 2,145 km³ a year (FAO, 2020).", "size": 7, "color": "#C9D2DE", "x": 10, "y": 259.5, "w": 60, "h": 8}
+# "236 municipalities" es más largo que "236 municipios": un poco más chico y con más ancho
+layout.addElement {"layout": "Day 26", "kind": "text", "text": "236 municipalities", "size": 18, "bold": true, "color": "#FF3DB8", "x": 75, "y": 250.5, "w": 72, "h": 9}
+layout.addElement {"layout": "Day 26", "kind": "text", "text": "where most homes have no piped water;\n1.8 million homes nationwide (2018 Census).", "size": 7, "color": "#C9D2DE", "x": 75, "y": 259.5, "w": 72, "h": 8}
+layout.addElement {"layout": "Day 26", "kind": "text", "text": "Rivers", "size": 9, "bold": true, "color": "#00E5FF", "x": 150, "y": 250, "w": 50, "h": 5}
+layout.addElement {"layout": "Day 26", "kind": "text", "text": "thicker and brighter, more flow:\nfrom 10 to over 5,000 m³/s on average.", "size": 7, "color": "#C9D2DE", "x": 150, "y": 255.5, "w": 50, "h": 8}
+
+layout.addElement {"layout": "Day 26", "kind": "line", "dir": "horizontal", "color": "#1C2640", "width": 0.5, "x": 10, "y": 270, "w": 190, "h": 0.5}
+layout.addElement {"layout": "Day 26", "kind": "text", "text": "How it was made: RustGIS web (web.rustgis.app), with four scripts; the data is embedded. Rivers with a mean flow of 10 m³/s or more, in four classes.\nData: HydroRIVERS v1.0 (Lehner and Grill, 2013; HydroSHEDS). Homes without piped water (acueducto): DANE, 2018 National Population and Housing\nCensus, National Geostatistical Framework. Renewable internal fresh water: World Bank and FAO AQUASTAT (2020).", "size": 5.6, "color": "#8C97A6", "x": 10, "y": 271.5, "w": 190, "h": 10}
+layout.addElement {"layout": "Day 26", "kind": "text", "text": "© José Gregorio Rincón · CC BY 4.0 · #30DayMapChallenge 2026 · Day 26: Water · Made with RustGIS · rustgis.app", "size": 6.5, "align": "right", "color": "#C9D2DE", "x": 10, "y": 286, "w": 190, "h": 4}
+# Entrega: exportar "Dia 26 Colombia" como day-26-es y "Day 26" como day-26-en; guardar el proyecto

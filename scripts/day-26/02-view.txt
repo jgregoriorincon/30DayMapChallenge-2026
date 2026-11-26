@@ -1,0 +1,44 @@
+# Día 26 — Water: Tanta agua, y sin agua en la casa — 2 · VISTA
+# El estilo neón del día 2: cada clase de río con un halo ancho y tenue, un trazo y, en los mayores, un centro blanco.
+
+map.activate {"name": "Colombia"}
+layer.color {"layer": "Colombia", "color": "#0E1730FF"}
+layer.outline {"layer": "Colombia", "color": "#26365C", "width": 0.6}
+
+layer.symbology {"layer": "Ríos", "type": "unique", "field": "clase"}
+layer.classStyle {"layer": "Ríos", "value": 1, "color": "#00E5FF", "label": "10 a 200 m³/s"}
+layer.classStyle {"layer": "Ríos", "value": 2, "color": "#00E5FF", "label": "200 a 1000 m³/s"}
+layer.classStyle {"layer": "Ríos", "value": 3, "color": "#00E5FF", "label": "1000 a 5000 m³/s"}
+layer.classStyle {"layer": "Ríos", "value": 4, "color": "#00E5FF", "label": "5000 m³/s o más"}
+layer.strokeLevels {"layer": "Ríos", "on": true}
+layer.lineStrokes {"layer": "Ríos", "value": 1, "strokes": [{"color": "#00E5FF1F", "width": 1.6, "cap": "round", "join": "round", "level": 0}, {"color": "#00E5FFCC", "width": 0.6, "cap": "round", "join": "round", "level": 4}]}
+layer.lineStrokes {"layer": "Ríos", "value": 2, "strokes": [{"color": "#00E5FF26", "width": 2.4, "cap": "round", "join": "round", "level": 1}, {"color": "#00E5FFB3", "width": 0.8, "cap": "round", "join": "round", "level": 4}]}
+layer.lineStrokes {"layer": "Ríos", "value": 3, "strokes": [{"color": "#00E5FF33", "width": 5, "cap": "round", "join": "round", "level": 2}, {"color": "#00E5FFCC", "width": 1.6, "cap": "round", "join": "round", "level": 5}, {"color": "#E6FFFF", "width": 0.4, "cap": "round", "join": "round", "level": 7}]}
+layer.lineStrokes {"layer": "Ríos", "value": 4, "strokes": [{"color": "#00E5FF40", "width": 9, "cap": "round", "join": "round", "level": 3}, {"color": "#00E5FFEE", "width": 2.8, "cap": "round", "join": "round", "level": 6}, {"color": "#FFFFFF", "width": 0.9, "cap": "round", "join": "round", "level": 8}]}
+
+# Un círculo magenta por municipio donde la mayoría no tiene acueducto, con el área según esas viviendas
+# Proportional Symbols fija los tamaños entre 4 y 28 pt; con una sola clase de Graduated Colors, layer.sizeBy
+# deja elegirlos
+layer.symbology {"layer": "Viviendas sin acueducto", "type": "graduated", "field": "sin", "classes": 1, "method": "equalInterval"}
+layer.classStyle {"layer": "Viviendas sin acueducto", "index": 0, "color": "#FF3DB8E6", "outline": "#FFE0F4", "label": "Viviendas sin acueducto"}
+layer.marker {"layer": "Viviendas sin acueducto", "shape": "circle", "size": 4}
+layer.outline {"layer": "Viviendas sin acueducto", "color": "#FFE0F4", "width": 0.5}
+layer.sizeBy {"layer": "Viviendas sin acueducto", "field": "sin", "min": 0, "max": 37316, "minSize": 2.5, "maxSize": 15, "scaling": "area"}
+
+# Los cuatro casos: un punto blanco y su texto, en tres líneas
+layer.marker {"layer": "Casos", "shape": "circle", "size": 3}
+layer.color {"layer": "Casos", "color": "#FFFFFFFF"}
+layer.outline {"layer": "Casos", "color": "#070B16", "width": 0.6}
+labels.by {"layer": "Casos", "text": "txt"}
+labels.style {"layer": "Casos", "size": 7.5, "bold": true, "color": "#FFFFFF", "halo": true, "haloColor": "#070B16", "wrapChar": "|", "lineAlign": "left"}
+# Un poco más a la izquierda y arriba, para que el texto de Uribia no pise los círculos de La Guajira
+labels.placement {"layer": "Casos", "position": "left", "offset": [-10, -4], "showAll": true}
+layer.marker {"layer": "Caso Leticia", "shape": "circle", "size": 3}
+layer.color {"layer": "Caso Leticia", "color": "#FFFFFFFF"}
+layer.outline {"layer": "Caso Leticia", "color": "#070B16", "width": 0.6}
+labels.by {"layer": "Caso Leticia", "text": "txt"}
+labels.style {"layer": "Caso Leticia", "size": 7.5, "bold": true, "color": "#FFFFFF", "halo": true, "haloColor": "#070B16", "wrapChar": "|", "lineAlign": "right"}
+labels.placement {"layer": "Caso Leticia", "position": "aboveLeft", "showAll": true}
+
+# Sin layer.move: el orden de carga ya deja Colombia abajo y los casos arriba
+map.zoomToExtent {"extent": [-79.5, -4.4, -66.5, 12.7]}
